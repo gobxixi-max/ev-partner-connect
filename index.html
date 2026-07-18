@@ -381,6 +381,8 @@
             scrollbar-width: none;
         }
         #appSaveNotice::-webkit-scrollbar { display: none; }
+        #appSaveNotice { pointer-events: none !important; }
+        .app-logout-btn { position: relative; z-index: 10000001; pointer-events: auto !important; }
         @media (max-width: 576px) {
             .app-topbar { display: block !important; }
             .app-header-actions {
@@ -897,7 +899,7 @@
         </div>
     </div>
 </div>
-<div class="container mt-3 mt-md-4" id="appContent" style="display: none;">    <div id="techWarning" class="alert alert-warning text-center text-muted shadow-sm d-none mb-3 py-2" style="font-size: 0.8rem; border-radius: 8px;">        📌 <strong>ข้อมูลภายใน:</strong> กรุณาใช้เพื่อการปฏิบัติงานเท่านั้น ไม่ส่งต่อให้บุคคลภายนอก    </div>    <div class="app-topbar mb-3 border-bottom pb-2">        <div class="app-brand-row">            <h2 class="app-brand-title m-0 fw-bold text-danger">⚡ EV Connect</h2>            <button class="btn btn-sm btn-danger rounded-pill fw-bold app-logout-btn" onclick="logout()">🚪 ออก</button>        </div>        <div class="app-header-actions">            <span class="badge bg-dark d-none" id="techTeamBadge">ทีมช่าง</span>            <button id="toggleStatsBtn" class="btn btn-sm btn-outline-secondary rounded-pill fw-bold admin-only" onclick="toggleStats()">👁️ ซ่อนยอด</button>            <button id="cloudRefreshBtn" class="btn btn-sm btn-outline-primary rounded-pill fw-bold" onclick="refreshFromCloud({ silent: false })"><span class="refresh-label">↻ อัปเดต</span><span class="refresh-time">--:--:--</span></button>            <span class="badge bg-secondary" id="firebaseStatusBadge">● กำลังเชื่อมต่อ</span>        </div>    </div>
+<div class="container mt-3 mt-md-4" id="appContent" style="display: none;">    <div id="techWarning" class="alert alert-warning text-center text-muted shadow-sm d-none mb-3 py-2" style="font-size: 0.8rem; border-radius: 8px;">        📌 <strong>ข้อมูลภายใน:</strong> กรุณาใช้เพื่อการปฏิบัติงานเท่านั้น ไม่ส่งต่อให้บุคคลภายนอก    </div>    <div class="app-topbar mb-3 border-bottom pb-2">        <div class="app-brand-row">            <h2 class="app-brand-title m-0 fw-bold text-danger">⚡ EV Connect</h2>            <button id="appLogoutBtn" type="button" class="btn btn-sm btn-danger rounded-pill fw-bold app-logout-btn" onclick="logout()">🚪 ออก</button>        </div>        <div class="app-header-actions">            <span class="badge bg-dark d-none" id="techTeamBadge">ทีมช่าง</span>            <button id="toggleStatsBtn" class="btn btn-sm btn-outline-secondary rounded-pill fw-bold admin-only" onclick="toggleStats()">👁️ ซ่อนยอด</button>            <button id="cloudRefreshBtn" class="btn btn-sm btn-outline-primary rounded-pill fw-bold" onclick="refreshFromCloud({ silent: false })"><span class="refresh-label">↻ อัปเดต</span><span class="refresh-time">--:--:--</span></button>            <span class="badge bg-secondary" id="firebaseStatusBadge">● กำลังเชื่อมต่อ</span>        </div>    </div>
     <div id="mainView" class="page-view active">        <!-- Dashboard Stats -->        <div class="row mb-3 g-2 admin-only" id="statsRow">            <div class="col-6 col-md-3 transition-all" id="boxCust"><div class="stat-box bg-info text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดเก็บลูกค้า (เดือนนี้)</h6><h3 id="totalCustomerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxPart"><div class="stat-box bg-warning text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดส่งช่าง (เดือนนี้)</h6><h3 id="totalPartnerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxComm"><div class="stat-box bg-primary shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ (เดือนนี้)</h6><h3 id="totalCommissionAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxCommDone"><div class="stat-box bg-success shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ (เสร็จสิ้น)</h6><h3 id="totalCommissionCompleted" class="fw-bold m-0">0&nbsp;฿</h3></div></div>        </div>
         <div class="row mb-4">            <div class="col-12">                <div class="card border-0" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">                    <div class="card-header bg-white border-bottom-0 d-flex justify-content-between align-items-center pt-3 pb-2 flex-wrap gap-2">                        <button class="btn btn-sm btn-light border" onclick="changeMonth(-1)">◀ ย้อน</button>                        <h5 class="m-0 fw-bold text-primary text-center flex-grow-1" id="calendarMonthYear" style="font-size: 1rem;">เดือน ปี</h5>                        <div>                            <button class="btn btn-sm btn-outline-primary fw-bold me-1 admin-only" onclick="openDetailView()">📄 สรุปแอดมิน</button>                            <button class="btn btn-sm btn-light border" onclick="changeMonth(1)">หน้า ▶</button>                        </div>                    </div>                    <div class="card-body pt-1 pb-3 px-2 px-md-3" id="calendarContainer">                        <div class="calendar-grid" id="calendarGrid"></div>                    </div>                </div>            </div>        </div>
         <!-- Add Job Form (มีคำนวณ) -->        <div class="row admin-only" id="addJobSection">            <div class="col-12">                <div class="card">                    <div class="card-header bg-dark text-white fw-bold" id="jobCardHeader">📝 เพิ่มงานใหม่ (ส่งช่าง)</div>                    <div class="card-body">                        <form id="jobForm">                            <input type="hidden" id="editJobId">                            <div class="smart-paste-section" id="smartPasteDiv">                                <h6 class="text-primary fw-bold">✨ ช่องทางลัด (วางแชท)</h6>                                <textarea id="smartPasteInput" class="form-control mb-2" rows="2" placeholder="วางข้อมูลแชทลูกค้าลงที่นี่..."></textarea>                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">                                    <small class="text-muted" style="font-size: 0.75rem;">ดึงชื่อ เบอร์ วันที่ ที่อยู่ และแมพอัตโนมัติ</small>                                    <button type="button" class="btn btn-sm btn-primary fw-bold px-3" onclick="processSmartPaste()" id="btnSmartPaste">🎯 ดึงข้อมูล</button>                                </div>                            </div>
@@ -1732,19 +1734,30 @@
         attachFirebaseListeners();
     }
 
+    function hideSaveNotice(immediate = false) {
+        const notice = document.getElementById('appSaveNotice');
+        if (!notice) return;
+        clearTimeout(showSaveNotice.timer);
+        clearTimeout(showSaveNotice.removeTimer);
+        notice.style.pointerEvents = 'none';
+        notice.style.opacity = '0';
+        const remove = () => {
+            if (notice.parentNode) notice.remove();
+        };
+        if (immediate) remove();
+        else showSaveNotice.removeTimer = setTimeout(remove, 240);
+    }
+
     function showSaveNotice(message, isSuccess = true) {
-        let notice = document.getElementById('appSaveNotice');
-        if (!notice) {
-            notice = document.createElement('div');
-            notice.id = 'appSaveNotice';
-            notice.style.cssText = 'position:fixed;left:50%;top:max(12px,env(safe-area-inset-top));transform:translateX(-50%);z-index:10000000;width:min(560px,calc(100% - 20px));max-width:min(560px,calc(100% - 20px));padding:13px 16px;border-radius:15px;color:#fff;font-size:.9rem;font-weight:900;line-height:1.4;text-align:center;white-space:normal;overflow-wrap:anywhere;box-shadow:0 14px 36px rgba(15,23,42,.32);transition:opacity .2s;';
-            document.body.appendChild(notice);
-        }
+        hideSaveNotice(true);
+        const notice = document.createElement('div');
+        notice.id = 'appSaveNotice';
+        notice.style.cssText = 'position:fixed;left:50%;top:max(12px,env(safe-area-inset-top));transform:translateX(-50%);z-index:10000000;width:min(560px,calc(100% - 20px));max-width:min(560px,calc(100% - 20px));padding:13px 16px;border-radius:15px;color:#fff;font-size:.9rem;font-weight:900;line-height:1.4;text-align:center;white-space:normal;overflow-wrap:anywhere;box-shadow:0 14px 36px rgba(15,23,42,.32);transition:opacity .2s;pointer-events:none;';
         notice.textContent = message;
         notice.style.background = isSuccess ? '#15803d' : '#b91c1c';
         notice.style.opacity = '1';
-        clearTimeout(showSaveNotice.timer);
-        showSaveNotice.timer = setTimeout(() => { notice.style.opacity = '0'; }, 4800);
+        document.body.appendChild(notice);
+        showSaveNotice.timer = setTimeout(() => hideSaveNotice(false), 4800);
     }
 
     // --- ระบบ Login & Init (Firebase Authentication + PIN) ---
@@ -1752,6 +1765,9 @@
     let loginPinValue = '';
     let isLoginPinVisible = true;
     let loginBusy = false;
+    // ต้องกรอก PIN ใหม่ทุกครั้งที่เปิดหรือรีเฟรชหน้าเว็บ
+    // ห้ามใช้สถานะล็อกอินเก่าที่ Firebase เคยจำไว้เพื่อข้ามหน้าล็อกอิน
+    let loginApprovedThisPage = false;
 
     async function sha256(value) {
         const data = new TextEncoder().encode(String(value));
@@ -1841,16 +1857,22 @@
         try {
             const role = await getLoginRole(pwd);
             if (!role) throw new Error('INVALID_PIN');
-            await firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+            // เก็บการล็อกอินไว้เฉพาะหน้านี้เท่านั้น ปิดหรือรีเฟรชเว็บต้องใส่ PIN ใหม่
+            await firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.NONE);
+            loginApprovedThisPage = true;
             await firebaseAuth.signInWithEmailAndPassword(ROLE_EMAILS[role], pwd);
             const signedRole = roleFromFirebaseUser(firebaseAuth.currentUser);
             if (!signedRole || signedRole !== role) {
+                loginApprovedThisPage = false;
                 await firebaseAuth.signOut();
                 throw new Error('ROLE_MISMATCH');
             }
             sessionStorage.setItem('ev_role', signedRole);
             clearLoginPin('เข้าสู่ระบบสำเร็จ', false);
+            await initApp();
         } catch (error) {
+            loginApprovedThisPage = false;
+            await firebaseAuth.signOut().catch(() => {});
             console.error('Firebase login error', error);
             const message = error?.code === 'auth/too-many-requests'
                 ? 'กดรหัสผิดหลายครั้ง กรุณารอสักครู่แล้วลองใหม่'
@@ -1885,12 +1907,43 @@
         });
     }
 
+    let logoutBusy = false;
     async function logout() {
+        if (logoutBusy) return;
+        hideSaveNotice(true);
         if (!confirm('แน่ใจหรือไม่ว่าต้องการออกจากระบบ?')) return;
-        clearFirebaseListeners();
-        sessionStorage.removeItem('ev_role');
-        await firebaseAuth.signOut().catch(() => {});
-        location.reload();
+
+        logoutBusy = true;
+        const button = document.getElementById('appLogoutBtn');
+        if (button) {
+            button.disabled = true;
+            button.textContent = cloudSaveInProgress ? '⏳ รอบันทึก...' : '⏳ กำลังออก...';
+        }
+
+        try {
+            // ถ้ามีข้อมูลกำลังส่งขึ้น Firebase ให้รอสั้น ๆ เพื่อไม่ให้การแก้ไขล่าสุดหาย
+            if (cloudSaveInProgress) {
+                await Promise.race([
+                    cloudSaveQueue.catch(() => false),
+                    new Promise(resolve => setTimeout(resolve, 5000))
+                ]);
+            }
+            clearFirebaseListeners();
+            sessionStorage.removeItem('ev_role');
+            loginApprovedThisPage = false;
+            firebaseAppInitialized = false;
+            currentUserRole = '';
+            await firebaseAuth.signOut().catch(() => {});
+            location.reload();
+        } catch (error) {
+            console.error('Logout error', error);
+            logoutBusy = false;
+            if (button) {
+                button.disabled = false;
+                button.textContent = '🚪 ออก';
+            }
+            alert('ออกจากระบบไม่สำเร็จ กรุณาลองอีกครั้ง');
+        }
     }
 
     function resolveTeam(job) { if (job.team) return job.team; if (job.installDate && job.installDate.substring(0, 10) < '2026-06-18') return 'team_old'; return 'team1'; }
@@ -1960,17 +2013,38 @@
 
     window.onload = function() {
         setupLoginControls();
-        firebaseAuth.onAuthStateChanged((user) => {
-            if (user) {
-                initApp();
-            } else {
-                firebaseAppInitialized = false;
-                currentUserRole = '';
-                document.getElementById('loginOverlay').style.display = 'flex';
-                document.getElementById('appContent').style.display = 'none';
+
+        // ล็อกหน้าระบบไว้ก่อนทุกครั้ง ห้ามบัญชีเก่าพาเข้าอัตโนมัติ
+        loginApprovedThisPage = false;
+        firebaseAppInitialized = false;
+        currentUserRole = '';
+        sessionStorage.removeItem('ev_role');
+        document.getElementById('loginOverlay').style.display = 'flex';
+        document.getElementById('appContent').style.display = 'none';
+
+        firebaseAuth.onAuthStateChanged(async (user) => {
+            if (user && loginApprovedThisPage) {
+                await initApp();
+                return;
             }
+
+            // พบ session เก่าจากไฟล์เวอร์ชันก่อน ให้ลบทิ้งและคงหน้ากรอก PIN ไว้
+            if (user && !loginApprovedThisPage) {
+                await firebaseAuth.signOut().catch(() => {});
+            }
+
+            firebaseAppInitialized = false;
+            currentUserRole = '';
+            document.getElementById('loginOverlay').style.display = 'flex';
+            document.getElementById('appContent').style.display = 'none';
         });
+
+        // ล้างการจำบัญชีแบบ LOCAL ที่อาจหลงเหลือจากเวอร์ชันก่อน
+        firebaseAuth.signOut().catch(() => {});
     };
+
+    // กดปุ่มย้อนกลับแล้วกลับมาหน้าเดิม ให้ใช้งานต่อได้ ไม่บังคับกรอก PIN ซ้ำ
+    // แต่การเปิดเว็บใหม่หรือรีเฟรชหน้า ยังคงต้องกรอก PIN ตามเดิม
     function cleanBadJobs(jobsArray) { return jobsArray.filter(j => !String(j.customerName || "").includes("<img") && !String(j.extraDetail || "").includes("<img")); }
     // --- ระบบ Sync ข้อมูล (กู้คืน) ---
     function showMessage(msg, isSuccess) { const msgDiv = document.getElementById('syncMessage'); msgDiv.innerHTML = msg; msgDiv.className = isSuccess ? "text-center mt-2 fw-bold text-success" : "text-center mt-2 fw-bold text-danger"; msgDiv.style.display = "block"; setTimeout(() => { msgDiv.style.display = "none"; }, 8000); }    function exportDataToBox() {        if(packages.length === 0 && jobs.length === 0 && extras.length === 0) return showMessage("❌ ไม่มีข้อมูล", false);        const dataObj = { packages: packages, extras: extras, jobs: jobs, fiberSettings: fiberSettings };        const compressedData = LZString.compressToBase64(JSON.stringify(dataObj));        document.getElementById('syncDataBox').value = compressedData; document.getElementById('syncDataBox').select();        try { document.execCommand('copy'); showMessage("✅ คัดลอกรหัสสำเร็จ!", true); } catch(e) { showMessage("✅ สร้างรหัสแล้ว!", true); }    }    function importDataFromBox() {        const inputStr = document.getElementById('syncDataBox').value.trim();        if(!inputStr) return showMessage("❌ กรุณาวางรหัส", false);        try {            let parsedData; const decompressed = LZString.decompressFromBase64(inputStr);            if (decompressed) parsedData = JSON.parse(decompressed); else parsedData = JSON.parse(decodeURIComponent(atob(inputStr)));            if(parsedData.packages || parsedData.jobs || parsedData.extras) {                packages = parsedData.packages || []; extras = parsedData.extras || []; jobs = cleanBadJobs(parsedData.jobs || []);                packages = packages.map(p => { if (p.partPrice3 === undefined) p.partPrice3 = p.partPrice1 || 0; return p; });                extras = extras.map(e => { if (e.partPrice3 === undefined) e.partPrice3 = e.partPrice1 || 0; return e; });                if(parsedData.fiberSettings) { fiberSettings = parsedData.fiberSettings; }                saveData(); renderPackages(); renderExtras(); renderFiberSettings(); updatePackageDropdown(); updateExtraDropdown(); updateAllViews();                showMessage("🎉 กู้ข้อมูลสำเร็จ!", true); document.getElementById('syncDataBox').value = "";             }        } catch(e) { showMessage("❌ รหัสไม่ถูกต้อง", false); }    }
