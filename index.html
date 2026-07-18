@@ -873,7 +873,7 @@
             addFirebaseListener(firebaseDb.ref(`${FIREBASE_ROOT}/teamJobs/${currentUserRole}`), 'value', (snap) => {
                 firebaseTeamJobsRaw[currentUserRole] = snap.val() || {};
                 const changed = rebuildJobsFromFirebase(true);
-                if (changed) showSaveNotice('🔄 แอดมินอัปเดตรายการงานแล้ว');
+                if (changed) showSaveNotice('🔄 แอดมินอัปเดตงานแล้ว');
             });
         }
     }
