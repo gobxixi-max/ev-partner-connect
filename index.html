@@ -684,7 +684,86 @@
             .job-money-box { padding: 7px 2px !important; }
         }
 
-    </style></head><body>
+    
+
+        /* ===== ปรับมือถือ: ปุ่มปิด หัวเว็บ วันที่ ล็อกอิน และคีย์บอร์ด ===== */
+        .app-topbar { display:grid !important; gap:7px; min-width:0; }
+        .app-brand-row { display:flex; align-items:center; justify-content:space-between; gap:10px; min-width:0; }
+        .app-brand-title { font-size:1.24rem !important; line-height:1.1; white-space:nowrap; }
+        .app-logout-btn { flex:0 0 auto; min-height:34px; padding:.32rem .72rem !important; font-size:.78rem !important; }
+        .app-header-actions { display:flex !important; align-items:center; justify-content:flex-end; gap:6px !important; min-width:0; flex-wrap:wrap !important; }
+        #techTeamBadge { display:inline-flex; align-items:center; justify-content:center; min-height:34px !important; line-height:1 !important; text-align:center; vertical-align:middle; }
+        #techTeamBadge:not(.d-none) { margin-right:auto; }
+        .job-card-top { display:grid !important; grid-template-columns:minmax(0,1fr) auto; align-items:center !important; }
+        .job-date-line, .job-date-line .job-date-text { min-width:0; white-space:nowrap !important; }
+        .job-date-line .job-date-text { display:block; overflow:hidden; text-overflow:ellipsis; }
+        .ho-floating-close { z-index:100006 !important; pointer-events:auto !important; }
+        .ho-confirm-warning { color:#92400e !important; background:#fffbeb !important; border-color:#fcd34d !important; }
+        #handoverOverlay { --ho-keyboard-height:0px; overscroll-behavior:contain; }
+        #handoverOverlay.keyboard-open { padding-bottom:calc(var(--ho-keyboard-height) + 34px) !important; }
+        #handoverOverlay.keyboard-open .ho-floating-actions { display:none !important; }
+        #handoverOverlay input, #handoverOverlay textarea, #handoverOverlay select { scroll-margin-top:86px; scroll-margin-bottom:120px; }
+        #result-build-status { display:none; flex-direction:column; align-items:center; justify-content:center; gap:9px; color:#fff; text-align:center; }
+        #result-build-status strong { font-size:1.08rem; }
+        #result-build-status span { color:#cbd5e1; font-size:.82rem; }
+        .result-spinner { width:48px; height:48px; border-radius:50%; border:5px solid rgba(255,255,255,.24); border-top-color:#facc15; animation:resultSpin .8s linear infinite; }
+        @keyframes resultSpin { to { transform:rotate(360deg); } }
+        #result-overlay.is-building > :not(#result-build-status) { display:none !important; }
+        #result-overlay.is-building #result-build-status { display:flex !important; }
+        #loginOverlay { align-items:center !important; min-height:100dvh; padding:max(8px, env(safe-area-inset-top)) 10px max(8px, env(safe-area-inset-bottom)) !important; }
+        .login-shell { width:min(390px,100%) !important; margin-top:0 !important; }
+        .login-brand { min-height:38px !important; margin-bottom:6px !important; }
+        .login-card { border-radius:17px !important; }
+        .login-head { padding:12px 14px 10px !important; grid-template-columns:44px minmax(0,1fr) !important; gap:10px !important; }
+        .login-icon { width:44px !important; height:44px !important; font-size:1.15rem !important; }
+        .login-title { font-size:1.18rem !important; }
+        .login-subtitle { font-size:.72rem !important; }
+        .login-head::after { padding-top:5px !important; font-size:.63rem !important; }
+        .login-body { padding:11px 12px 12px !important; }
+        .pin-box { height:43px !important; font-size:1.16rem !important; }
+        .pin-key { min-height:clamp(43px, 7.2dvh, 55px) !important; font-size:1.18rem !important; }
+        .legacy-login-toggle { min-height:35px !important; margin-top:7px !important; }
+        .login-security-note { margin-top:7px !important; padding-top:6px !important; }
+        @media (max-width:576px) {
+            .app-topbar { gap:6px; }
+            .app-brand-title { font-size:1.12rem !important; }
+            .app-logout-btn { min-height:32px; padding:.28rem .62rem !important; font-size:.74rem !important; }
+            .app-header-actions { width:100%; margin-top:0 !important; flex-wrap:wrap !important; justify-content:flex-end !important; }
+            #techTeamBadge { min-height:33px !important; padding:.34rem .55rem !important; font-size:.78rem !important; }
+            #cloudRefreshBtn { min-height:32px !important; }
+            #firebaseStatusBadge { min-height:24px !important; }
+            .job-card-top { display:block !important; text-align:center; }
+            .job-date-line { justify-content:center; width:100%; }
+            .job-date-line .job-date-text { overflow:visible; text-overflow:clip; font-size:.97rem !important; }
+            .job-header-badges { justify-content:center !important; margin-top:6px; }
+            #handoverOverlay { padding:66px 7px 124px !important; }
+            #handoverOverlay.keyboard-open { padding-top:64px !important; }
+            #handoverOverlay .ho-input-group input,
+            #handoverOverlay .ho-input-group textarea { font-size:16px !important; min-height:38px; padding:7px 3px !important; line-height:1.3 !important; }
+            #handoverOverlay .ho-compact-grid { grid-template-columns:1fr !important; gap:7px !important; }
+            #handoverOverlay .ho-phone-row { max-width:100% !important; }
+        }
+        @media (max-height:690px) {
+            .login-brand { display:none !important; }
+            .login-head { padding:9px 11px 8px !important; }
+            .login-head::after, .login-security-note { display:none !important; }
+            .login-body { padding:8px 10px 9px !important; }
+            .pin-box { height:38px !important; }
+            .pin-key { min-height:41px !important; }
+            .pin-help { margin-bottom:4px !important; min-height:18px !important; }
+        }
+        @media (max-width:360px) {
+            .app-header-actions { gap:4px !important; }
+            #techTeamBadge { font-size:.72rem !important; padding:.30rem .42rem !important; }
+            #cloudRefreshBtn .refresh-label { display:none; }
+            .login-title { font-size:1.08rem !important; }
+            .pin-boxes { gap:4px !important; }
+        }
+
+        .ho-8k-secondary { width:100%; margin-top:7px; min-height:34px; border:1px solid #cbd5e1; border-radius:10px; color:#475569; background:#f8fafc; font-size:.72rem; font-weight:850; }
+        .ho-8k-secondary small { font-size:.64rem; font-weight:700; }
+        .ho-8k-secondary:active { background:#e2e8f0; }
+</style></head><body>
 <div id="loginOverlay">
     <div class="login-shell">
         <div class="login-brand">
@@ -696,7 +775,7 @@
                 <div class="login-icon">🔐</div>
                 <div class="login-head-copy">
                     <h1 class="login-title">เข้าสู่ระบบงานช่าง</h1>
-                    <p class="login-subtitle">แตะ PIN 6 หลัก เพื่อเข้า Firebase อัตโนมัติ</p>
+                    <p class="login-subtitle">กรอก PIN 6 หลัก แล้วเข้าสู่ระบบทันที</p>
                 </div>
             </div>
             <div class="login-body">
@@ -737,7 +816,7 @@
         </div>
     </div>
 </div>
-<div class="container mt-3 mt-md-4" id="appContent" style="display: none;">    <div id="techWarning" class="alert alert-warning text-center text-muted shadow-sm d-none mb-3 py-2" style="font-size: 0.8rem; border-radius: 8px;">        📌 <strong>ข้อมูลภายใน:</strong> กรุณาใช้เพื่อการปฏิบัติงานเท่านั้น ไม่ส่งต่อให้บุคคลภายนอก    </div>    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2 gap-2 app-topbar">        <h2 class="m-0 fw-bold text-danger" style="font-size: 1.25rem;">⚡ EV Connect</h2>        <div class="d-flex gap-2 align-items-center app-header-actions">            <span class="badge bg-dark d-none" id="techTeamBadge">ทีมช่าง</span>            <button id="toggleStatsBtn" class="btn btn-sm btn-outline-secondary rounded-pill fw-bold px-2 px-md-3 shadow-sm admin-only" onclick="toggleStats()">👁️ ซ่อนยอด</button>            <button id="cloudRefreshBtn" class="btn btn-sm btn-outline-primary rounded-pill fw-bold px-2 px-md-3 shadow-sm" onclick="refreshFromCloud({ silent: false })"><span class="refresh-label">↻ อัปเดต</span><span class="refresh-time">--:--:--</span></button>            <span class="badge bg-secondary" id="firebaseStatusBadge">● กำลังเชื่อมต่อ</span>            <button class="btn btn-sm btn-danger rounded-pill fw-bold px-2 px-md-3 shadow-sm" onclick="logout()">🚪 ออก</button>        </div>    </div>
+<div class="container mt-3 mt-md-4" id="appContent" style="display: none;">    <div id="techWarning" class="alert alert-warning text-center text-muted shadow-sm d-none mb-3 py-2" style="font-size: 0.8rem; border-radius: 8px;">        📌 <strong>ข้อมูลภายใน:</strong> กรุณาใช้เพื่อการปฏิบัติงานเท่านั้น ไม่ส่งต่อให้บุคคลภายนอก    </div>    <div class="app-topbar mb-3 border-bottom pb-2">        <div class="app-brand-row">            <h2 class="app-brand-title m-0 fw-bold text-danger">⚡ EV Connect</h2>            <button class="btn btn-sm btn-danger rounded-pill fw-bold app-logout-btn" onclick="logout()">🚪 ออก</button>        </div>        <div class="app-header-actions">            <span class="badge bg-dark d-none" id="techTeamBadge">ทีมช่าง</span>            <button id="toggleStatsBtn" class="btn btn-sm btn-outline-secondary rounded-pill fw-bold admin-only" onclick="toggleStats()">👁️ ซ่อนยอด</button>            <button id="cloudRefreshBtn" class="btn btn-sm btn-outline-primary rounded-pill fw-bold" onclick="refreshFromCloud({ silent: false })"><span class="refresh-label">↻ อัปเดต</span><span class="refresh-time">--:--:--</span></button>            <span class="badge bg-secondary" id="firebaseStatusBadge">● กำลังเชื่อมต่อ</span>        </div>    </div>
     <div id="mainView" class="page-view active">        <!-- Dashboard Stats -->        <div class="row mb-3 g-2 admin-only" id="statsRow">            <div class="col-6 col-md-3 transition-all" id="boxCust"><div class="stat-box bg-info text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดเก็บลูกค้า (เดือนนี้)</h6><h3 id="totalCustomerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxPart"><div class="stat-box bg-warning text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดส่งช่าง (เดือนนี้)</h6><h3 id="totalPartnerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxComm"><div class="stat-box bg-primary shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ (เดือนนี้)</h6><h3 id="totalCommissionAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxCommDone"><div class="stat-box bg-success shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ (เสร็จสิ้น)</h6><h3 id="totalCommissionCompleted" class="fw-bold m-0">0&nbsp;฿</h3></div></div>        </div>
         <div class="row mb-4">            <div class="col-12">                <div class="card border-0" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">                    <div class="card-header bg-white border-bottom-0 d-flex justify-content-between align-items-center pt-3 pb-2 flex-wrap gap-2">                        <button class="btn btn-sm btn-light border" onclick="changeMonth(-1)">◀ ย้อน</button>                        <h5 class="m-0 fw-bold text-primary text-center flex-grow-1" id="calendarMonthYear" style="font-size: 1rem;">เดือน ปี</h5>                        <div>                            <button class="btn btn-sm btn-outline-primary fw-bold me-1 admin-only" onclick="openDetailView()">📄 สรุปแอดมิน</button>                            <button class="btn btn-sm btn-light border" onclick="changeMonth(1)">หน้า ▶</button>                        </div>                    </div>                    <div class="card-body pt-1 pb-3 px-2 px-md-3" id="calendarContainer">                        <div class="calendar-grid" id="calendarGrid"></div>                    </div>                </div>            </div>        </div>
         <!-- Add Job Form (มีคำนวณ) -->        <div class="row admin-only" id="addJobSection">            <div class="col-12">                <div class="card">                    <div class="card-header bg-dark text-white fw-bold" id="jobCardHeader">📝 เพิ่มงานใหม่ (ส่งช่าง)</div>                    <div class="card-body">                        <form id="jobForm">                            <input type="hidden" id="editJobId">                            <div class="smart-paste-section" id="smartPasteDiv">                                <h6 class="text-primary fw-bold">✨ ช่องทางลัด (วางแชท)</h6>                                <textarea id="smartPasteInput" class="form-control mb-2" rows="2" placeholder="วางข้อมูลแชทลูกค้าลงที่นี่..."></textarea>                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">                                    <small class="text-muted" style="font-size: 0.75rem;">ดึงชื่อ เบอร์ วันที่ ที่อยู่ และแมพอัตโนมัติ</small>                                    <button type="button" class="btn btn-sm btn-primary fw-bold px-3" onclick="processSmartPaste()" id="btnSmartPaste">🎯 ดึงข้อมูล</button>                                </div>                            </div>
@@ -749,7 +828,7 @@
         <div class="card mb-4 border-info shadow-sm admin-only" id="setupFiberSection">            <div class="card-header bg-info text-dark fw-bold">⚙️ ตั้งค่าเรทราคาสายไฟเบอร์ (ต่อเมตร)</div>            <div class="card-body p-2 p-md-3">                <div class="row g-2 mb-2">                    <div class="col-6 col-md-3"><label class="small text-danger fw-bold">ลูกค้าจ่าย (฿)</label><input type="number" id="setFiberCust" class="form-control form-control-sm border-danger" required></div>                    <div class="col-6 col-md-3"><label class="small text-primary fw-bold">ทุน(ช่างกราฟ)</label><input type="number" id="setFiberT1" class="form-control form-control-sm" required></div>                    <div class="col-6 col-md-3"><label class="small text-purple fw-bold">ทุน(ช่างโบ้)</label><input type="number" id="setFiberT3" class="form-control form-control-sm" required></div>                    <div class="col-6 col-md-3"><label class="small text-warning-emphasis fw-bold">ทุน(ทีม 2)</label><input type="number" id="setFiberT2" class="form-control form-control-sm" required></div>                </div>                <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" onclick="saveFiberSettings()">💾 บันทึกเรทสายไฟเบอร์</button>            </div>        </div>
         <div class="card mb-4 border-info shadow-sm admin-only" id="setupExtraSection">            <div class="card-header bg-info text-dark fw-bold">⚙️ ตั้งค่างานเพิ่มเติม (แยก 3 ทีม)</div>            <div class="card-body p-2 p-md-3">                <div class="row">                    <div class="col-md-5 mb-3">                        <form id="extraForm" class="bg-light p-2 rounded border">                            <input type="hidden" id="extId">                            <div class="mb-2"><label class="small fw-bold">ชื่อรายการ</label><input type="text" id="extName" class="form-control form-control-sm" required></div>                            <div class="mb-2"><label class="small text-danger fw-bold">ราคาลูกค้า (เก็บรวม)</label><input type="number" id="extCustPrice" class="form-control form-control-sm" required></div>                            <div class="row g-1 mb-3">                                <div class="col-4"><label class="small text-primary fw-bold" style="font-size: 0.7rem;">ทุน(ช่างกราฟ)</label><input type="number" id="extPartPrice1" class="form-control form-control-sm px-1" required></div>                                <div class="col-4"><label class="small text-purple fw-bold" style="font-size: 0.7rem;">ทุน(ช่างโบ้)</label><input type="number" id="extPartPrice3" class="form-control form-control-sm px-1" required></div>                                <div class="col-4"><label class="small text-warning-emphasis fw-bold" style="font-size: 0.7rem;">ทุน(ทีม 2)</label><input type="number" id="extPartPrice2" class="form-control form-control-sm px-1" required></div>                            </div>                            <button type="submit" class="btn btn-sm btn-primary w-100 fw-bold" id="btnSaveExt">บันทึกงานเสริม</button>                        </form>                    </div>                    <div class="col-md-7">                        <div class="scrollable-table">                            <table class="table table-sm table-bordered mb-0 bg-white text-center">                                <thead class="table-light" style="position: sticky; top: 0; z-index: 1;"><tr><th class="text-start">รายการ</th><th>เก็บลูกค้า</th><th>จัดการ</th></tr></thead>                                <tbody id="extraTableBody"></tbody>                            </table>                        </div>                    </div>                </div>            </div>        </div>
         <div class="card mb-5 border-secondary shadow-sm admin-only" id="setupPkgSection">            <div class="card-header bg-secondary text-white fw-bold">⚙️ ตั้งค่าแพ็กเกจหลัก (แยก 3 ทีม)</div>            <div class="card-body p-2 p-md-3">                <div class="row">                    <div class="col-md-5 mb-3">                        <form id="packageForm" class="bg-light p-2 rounded border">                            <input type="hidden" id="pkgId">                            <div class="mb-2"><label class="small fw-bold">ชื่อแพ็กเกจหลัก</label><input type="text" id="pkgName" class="form-control form-control-sm" required></div>                            <div class="mb-2"><label class="small text-danger fw-bold">ราคาลูกค้า (เก็บรวม)</label><input type="number" id="pkgCustomerPrice" class="form-control form-control-sm" required></div>                            <div class="row g-1 mb-3">                                <div class="col-4"><label class="small text-primary fw-bold" style="font-size: 0.7rem;">ทุน(ช่างกราฟ)</label><input type="number" id="pkgPartPrice1" class="form-control form-control-sm px-1" required></div>                                <div class="col-4"><label class="small text-purple fw-bold" style="font-size: 0.7rem;">ทุน(ช่างโบ้)</label><input type="number" id="pkgPartPrice3" class="form-control form-control-sm px-1" required></div>                                <div class="col-4"><label class="small text-warning-emphasis fw-bold" style="font-size: 0.7rem;">ทุน(ทีม 2)</label><input type="number" id="pkgPartPrice2" class="form-control form-control-sm px-1" required></div>                            </div>                            <button type="submit" class="btn btn-sm btn-secondary w-100 fw-bold" id="btnSavePkg">บันทึกแพ็กเกจ</button>                        </form>                    </div>                    <div class="col-md-7">                        <div class="scrollable-table">                            <table class="table table-sm table-bordered mb-0 bg-white">                                <thead class="table-light" style="position: sticky; top: 0; z-index: 1;"><tr><th>แพ็กเกจ</th><th>คอมฯ 3 ทีม</th><th class="text-center">จัดการ</th></tr></thead>                                <tbody id="packageTableBody"></tbody>                            </table>                        </div>                    </div>                </div>            </div>        </div>    </div>        <!-- สรุปของแอดมิน -->    <div id="detailView" class="page-view admin-only">        <div class="d-flex align-items-center mb-3">            <button class="btn btn-sm btn-secondary me-2 shadow-sm rounded-pill px-3" onclick="closeDetailView()">◀ กลับ</button>            <h5 class="m-0 fw-bold text-primary" id="detailMonthTitle">รายละเอียด</h5>        </div>        <div class="row mb-4 g-2">            <div class="col-4"><div class="card h-100 text-dark shadow-sm border-primary" style="background: #e0f0ff;"><div class="card-body p-2 text-center"><div class="small fw-bold text-primary mb-1" style="font-size: 0.7rem;">เก็บลูกค้า</div><h6 class="fw-bold m-0" id="detailCustSum">0 ฿</h6></div></div></div>            <div class="col-4"><div class="card h-100 text-dark shadow-sm border-warning" style="background: #fff3cd;"><div class="card-body p-2 text-center"><div class="small fw-bold text-warning-emphasis mb-1" style="font-size: 0.7rem;">ส่งช่าง</div><h6 class="fw-bold m-0" id="detailPartSum">0 ฿</h6></div></div></div>            <div class="col-4"><div class="card h-100 text-white shadow-sm border-success bg-success"><div class="card-body p-2 text-center"><div class="small fw-bold mb-1" style="font-size: 0.7rem;">ค่าคอมฯ</div><h6 class="fw-bold m-0" id="detailCommSum">0 ฿</h6></div></div></div>        </div>        <div class="card border-0 shadow-sm">            <div class="card-header bg-dark text-white fw-bold">📑 รายการงาน</div>            <div class="card-body bg-light p-2"><div id="detailListContainer"></div></div>        </div>    </div></div>
-<!-- ========================================== --><!-- ส่วนของใบส่งมอบงาน: ปุ่มไม่หาย บันทึกลายเซ็น และส่งออก JPG 8K --><!-- ========================================== --><div id="handoverOverlay">    <!-- ปุ่มกากบาทลอยค้าง กดแล้วบันทึกข้อมูลล่าสุดก่อนกลับหน้าหลัก -->    <button type="button" class="ho-floating-close hide-on-capture" onclick="closeHandover(true)" aria-label="ปิดและกลับหน้าหลัก">✕</button>
+<!-- ========================================== --><!-- ส่วนของใบส่งมอบงาน: ปุ่มไม่หาย บันทึกลายเซ็น และสร้างรูปพร้อมส่ง --><!-- ========================================== --><div id="handoverOverlay">    <!-- ปุ่มกากบาทลอยค้าง กดแล้วบันทึกข้อมูลล่าสุดก่อนกลับหน้าหลัก -->    <button type="button" class="ho-floating-close hide-on-capture" onclick="closeHandover(true)" aria-label="ปิดและกลับหน้าหลัก">✕</button>
     <div class="ho-container">        <!-- ตัวเอกสาร -->        <div class="ho-card" id="ho-document-card">            <div class="ho-header">                <h2>ใบส่งมอบงานและรับประกันการติดตั้ง</h2>                <p>EV Charger Installation &amp; Handover</p>            </div>            <div class="ho-content">                <input type="hidden" id="ho-job-id">                <div class="ho-compact-grid ho-date-customer-row">                    <div class="ho-input-group"><label>วันที่ติดตั้งเสร็จสิ้น:</label><input type="date" id="ho-date"></div>                    <div class="ho-input-group"><label>ชื่อลูกค้า:</label><input type="text" id="ho-customer" placeholder="ระบุชื่อลูกค้า..."></div>                </div>                <div class="ho-input-group ho-phone-row"><label>เบอร์โทรลูกค้า:</label><input type="tel" id="ho-phone" placeholder="08X-XXX-XXXX"></div>                <div class="ho-input-group"><label>สถานที่ติดตั้ง:</label><textarea id="ho-address" rows="1" placeholder="ระบบดึงจากข้อมูลแอดมินอัตโนมัติ แก้ไขได้หากหน้างานไม่ตรง"></textarea></div>                <button type="button" class="ho-sync-main-btn hide-on-capture" onclick="syncHandoverFromMainJob()">↻ ใช้ชื่อ เบอร์ และที่อยู่ล่าสุดจากรายการงาน</button>
                 <div class="ho-input-group" style="margin-top: 5px;">                    <label>รายละเอียดงานติดตั้ง <span style="font-size:0.75rem; color:#e74c3c; font-weight:normal;">*เฉพาะรายการที่ระบุ*</span></label>                    <textarea id="ho-details" rows="2" placeholder="รายการแพ็กเกจ..."></textarea>                </div>
                 <div class="ho-onsite-extra" id="ho-onsite-extra-section">                    <div class="ho-extra-heading">                        <h3>🧾 สรุปยอดชำระ</h3>                        <span>ให้ลูกค้าตรวจก่อนเซ็น</span>                    </div>
@@ -766,8 +845,8 @@
                         🛠️ ประกันงานติดตั้ง 2 ปี: <span id="ho-installation-warranty-end">-</span>
                     </div>                    <b>1. การรับประกัน:</b>รับประกันงานติดตั้ง 2 ปี (แก้ไขฟรีหากปัญหาเกิดจากการติดตั้ง) และรับประกันตัวอุปกรณ์ตามเงื่อนไขผู้ผลิต โดยทั่วไป 1 ปี (เคลมตัวใหม่ให้ทันทีในระยะประกัน)<br>                    <b>2. กรณีมีค่าบริการ:</b> หากตรวจสอบพบว่าปัญหาไม่ได้เกิดจากงานติดตั้ง หรืออุปกรณ์เสียหลังหมดประกันแล้ว จะมีค่าบริการและค่าอะไหล่เรียกเก็บตามจริง<br>                    <b>3. <span style="color:#e74c3c;">ข้อยกเว้น (สิ้นสุดประกันทันที):</span></b>                    <ul>                        <li>3.1 ความเสียหายจากอุบัติเหตุ หรือภัยธรรมชาติ (ไฟไหม้, ฟ้าผ่า, น้ำท่วม)</li>                        <li>3.2 มีการดัดแปลง รื้อถอน หรือต่อเติมระบบโดยช่างภายนอก</li>                        <li>3.3 อุปกรณ์ส่วนควบที่ผู้รับบริการจัดหามาเอง</li>			<li>3.4 การใช้งานผิดวิธี หรือนำวัตถุไวไฟเข้าใกล้อุปกรณ์จนเกิดความเสียหาย</li>                    </ul>                </div>
                 <div style="margin-top:5px;">                    <label style="font-weight:bold; color:#2c3e50; font-size:1rem;">✍️ ลายมือชื่อผู้รับมอบงาน (ลูกค้าเซ็นตรงนี้)</label>                    <div class="ho-sig-box" id="hoSignatureBox">                        <canvas id="hoSignatureCanvas" class="ho-sig-canvas" aria-label="ช่องลายเซ็นลูกค้า"></canvas>                        <div class="ho-sig-lock-note hide-on-capture">🔒 บันทึกแล้ว • เลื่อนผ่านได้</div>                        <button type="button" class="ho-sig-clear hide-on-capture" onclick="requestClearSignature()">🗑️ ลบลายเซ็น</button>                    </div>                </div>            </div>        </div>        <div style="height: 110px;"></div>    </div>
-    <!-- ปุ่มลอยค้างด้านล่าง เห็นเสมอ ไม่ต้องเลื่อนหา -->    <div class="ho-floating-actions hide-on-capture" id="hoActionBar">        <div class="ho-action-grid">            <button type="button" class="btn btn-info text-white shadow-sm" onclick="openHandoverSaveConfirm()">💾 บันทึกลายเซ็นแล้วออก</button>            <button type="button" class="btn btn-success shadow-sm" onclick="saveHandoverData(true, false)">📷 บันทึกและสร้าง JPG 8K</button>        </div>        <div id="ho-save-status" class="ho-save-status">ข้อมูลจะถูกเก็บไว้ในงานนี้ เปิดกลับมาทำต่อได้</div>    </div></div>
-<!-- ยืนยันอีกครั้งก่อนบันทึกลายเซ็นและออกจากใบส่งมอบ --><div id="handoverSaveConfirm" class="ho-confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="handoverConfirmTitle">    <div class="ho-confirm-box">        <div class="ho-confirm-head">            <div class="ho-confirm-icon">✍️</div>            <h3 id="handoverConfirmTitle">ตรวจสอบก่อนบันทึกและออก</h3>            <p>กรุณาตรวจสอบว่าลูกค้าเซ็นชื่อเรียบร้อยแล้ว จากนั้นกด “ตกลง” เพื่อบันทึกและกลับหน้ารายการงาน</p>        </div>        <div id="handoverNoSignatureWarning" class="ho-confirm-warning">⚠️ ระบบยังไม่พบลายเซ็นลูกค้า กรุณากลับไปให้ลูกค้าเซ็นก่อน</div>        <div id="handoverConfirmTotal" style="margin:14px 18px 0; padding:10px 12px; border-radius:12px; background:#ecfdf5; border:1px solid #bbf7d0; color:#166534; text-align:center; font-size:.9rem; font-weight:900;">ยอดที่ลูกค้าชำระรวม 0 ฿</div>        <div class="ho-confirm-actions">            <button type="button" class="btn btn-light border" onclick="closeHandoverSaveConfirm()">← กลับไปตรวจสอบ</button>            <button type="button" class="btn btn-success shadow-sm" onclick="confirmHandoverSaveAndExit()">ตกลง บันทึกและออก</button>        </div>    </div></div>
+    <!-- ปุ่มลอยค้างด้านล่าง เห็นเสมอ ไม่ต้องเลื่อนหา -->    <div class="ho-floating-actions hide-on-capture" id="hoActionBar">        <div class="ho-action-grid">            <button type="button" class="btn btn-info text-white shadow-sm" onclick="openHandoverSaveConfirm()">💾 บันทึกแล้วออก</button>            <button type="button" class="btn btn-success shadow-sm" onclick="saveHandoverData(true, false)">📷 สร้างรูปพร้อมส่ง</button>        </div>        <button type="button" class="ho-8k-secondary" onclick="saveHandoverData('8k', false)">สร้างไฟล์ 8K คมชัดพิเศษ <small>(ใช้เวลานานกว่า)</small></button>        <div id="ho-save-status" class="ho-save-status">ข้อมูลจะถูกเก็บไว้ในงานนี้ เปิดกลับมาทำต่อได้</div>    </div></div>
+<!-- ยืนยันอีกครั้งก่อนบันทึกลายเซ็นและออกจากใบส่งมอบ --><div id="handoverSaveConfirm" class="ho-confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="handoverConfirmTitle">    <div class="ho-confirm-box">        <div class="ho-confirm-head">            <div class="ho-confirm-icon">✍️</div>            <h3 id="handoverConfirmTitle">ตรวจสอบก่อนบันทึกและออก</h3>            <p>ตรวจข้อมูลก่อนบันทึก หากยังไม่มีลายเซ็น ระบบจะเก็บเป็นฉบับร่างและกลับหน้ารายการงานได้</p>        </div>        <div id="handoverNoSignatureWarning" class="ho-confirm-warning">⚠️ ยังไม่มีลายเซ็น ระบบจะบันทึกเป็นฉบับร่าง คุณกลับมาให้ลูกค้าเซ็นภายหลังได้</div>        <div id="handoverConfirmTotal" style="margin:14px 18px 0; padding:10px 12px; border-radius:12px; background:#ecfdf5; border:1px solid #bbf7d0; color:#166534; text-align:center; font-size:.9rem; font-weight:900;">ยอดที่ลูกค้าชำระรวม 0 ฿</div>        <div class="ho-confirm-actions">            <button type="button" class="btn btn-light border" onclick="closeHandoverSaveConfirm()">← กลับไปตรวจสอบ</button>            <button type="button" class="btn btn-success shadow-sm" id="handoverConfirmSaveBtn" onclick="confirmHandoverSaveAndExit()">บันทึกและออก</button>        </div>    </div></div>
 
 <!-- กล่องป้องกันการลบงาน: ต้องผ่าน PIN 4 หลักและยืนยันซ้ำ -->
 <div id="deleteJobOverlay" class="delete-job-overlay" role="dialog" aria-modal="true" aria-labelledby="deleteJobTitle">
@@ -826,7 +905,7 @@
     </div>
 </div>
 
-<!-- หน้าต่างแสดงรูป พร้อมดาวน์โหลด/แชร์เข้า LINE หรือ Messenger --><div id="result-overlay">    <h3 style="color:#f1c40f; text-align:center; margin-bottom:8px;">รูปใบส่งมอบพร้อมส่ง</h3>    <div id="result-resolution" style="color:#fff; font-size:.85rem; margin-bottom:12px;"></div>    <img id="result-image" src="" alt="ใบส่งมอบงาน">
+<!-- หน้าต่างแสดงรูป พร้อมดาวน์โหลด/แชร์เข้า LINE หรือ Messenger --><div id="result-overlay">    <div id="result-build-status"><div class="result-spinner"></div><strong>กำลังสร้างรูปพร้อมส่ง</strong><span>ใช้เวลาไม่นาน กรุณารอสักครู่</span></div>    <h3 style="color:#f1c40f; text-align:center; margin-bottom:8px;">รูปใบส่งมอบพร้อมส่ง</h3>    <div id="result-resolution" style="color:#fff; font-size:.85rem; margin-bottom:12px;"></div>    <img id="result-image" src="" alt="ใบส่งมอบงาน">
     <button type="button" id="share-btn" class="btn btn-primary w-100 mb-2 fw-bold py-3 fs-5 shadow" style="max-width:320px; border-radius:10px;" onclick="shareGeneratedImage()">        📤 แชร์รูปไป LINE / Messenger    </button>    <a id="download-btn" href="#" class="btn btn-success w-100 mb-3 fw-bold py-3 fs-5 shadow" style="max-width:320px; border-radius:10px;">        💾 บันทึกรูป JPG ลงเครื่อง    </a>
     <button type="button" class="btn btn-outline-light rounded-pill px-5 py-2 fw-bold shadow" onclick="closeResultOverlay()">✕ ปิดรูป กลับไปแก้ไข</button></div>
 <!-- ========================================== --><!-- SCRIPT การทำงานทั้งหมด (100% ครบทุกบรรทัด) --><!-- ========================================== --><script>    let currentUserRole = '';     let packages = JSON.parse(localStorage.getItem('ev_packages')) || [];    let extras = JSON.parse(localStorage.getItem('ev_extras')) || [];    let jobs = JSON.parse(localStorage.getItem('ev_jobs')) || [];    let fiberSettings = JSON.parse(localStorage.getItem('ev_fiber_settings')) || { custPrice: 300, team1: 300, team2: 300, team3: 280 };    let isStatsHidden = JSON.parse(localStorage.getItem('ev_hide_stats')) || false;    let calDate = new Date();
@@ -1677,11 +1756,11 @@
         if (loginBusy) return;
         const legacyInput = document.getElementById('loginPassword');
         const pwd = String(passwordOverride ?? legacyInput?.value ?? loginPinValue).trim();
-        setLoginBusy(true, 'กำลังตรวจสอบ PIN และเชื่อม Firebase...');
+        setLoginBusy(true, 'กำลังเข้าสู่ระบบ...');
         try {
             const role = await getLoginRole(pwd);
             if (!role) throw new Error('INVALID_PIN');
-            await firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+            await firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
             await firebaseAuth.signInWithEmailAndPassword(ROLE_EMAILS[role], pwd);
             const signedRole = roleFromFirebaseUser(firebaseAuth.currentUser);
             if (!signedRole || signedRole !== role) {
@@ -1744,18 +1823,9 @@
         sessionStorage.setItem('ev_role', role);
         if (firebaseAppInitialized) return;
         firebaseAppInitialized = true;
-        setFirebaseStatus('● กำลังโหลดข้อมูล', 'warning');
+        setFirebaseStatus('● กำลังโหลด', 'warning');
 
-        try {
-            await loadInitialFirebaseData(true);
-        } catch (error) {
-            firebaseAppInitialized = false;
-            console.error('Firebase initial load failed', error);
-            showLoginError('เข้าสู่ระบบได้ แต่โหลดฐานข้อมูลไม่ได้ ตรวจ Rules หรืออินเทอร์เน็ต');
-            await firebaseAuth.signOut().catch(() => {});
-            return;
-        }
-
+        // แสดงหน้าระบบก่อน แล้วซิงก์ข้อมูลล่าสุดเบื้องหลัง ไม่ค้างหน้าล็อกอิน
         document.getElementById('loginOverlay').style.display = 'none';
         document.getElementById('appContent').style.display = 'block';
         if(currentUserRole !== 'admin') {
@@ -1771,7 +1841,7 @@
                 badge.className = 'badge bg-primary';
             } else if(currentUserRole === 'team3') {
                 badge.innerText = '🟠 ทีมช่างโบ้';
-                badge.className = 'badge bg-warning text-dark border';
+                badge.className = 'badge';
                 badge.style.backgroundColor = '#fd7e14';
                 badge.style.color = 'white';
             } else if(currentUserRole === 'team2') {
@@ -1788,8 +1858,23 @@
         updateExtraDropdown();
         updateAllViews();
         initSignaturePad();
+
+        try {
+            await loadInitialFirebaseData(true);
+            renderPackages();
+            renderExtras();
+            renderFiberSettings();
+            updatePackageDropdown();
+            updateExtraDropdown();
+            updateAllViews();
+        } catch (error) {
+            console.error('Firebase initial load failed', error);
+            setFirebaseStatus('● ออฟไลน์', 'warning');
+            showSaveNotice('⚠️ เปิดระบบแล้ว แต่ยังโหลดข้อมูลล่าสุดไม่ได้ ระบบจะลองเชื่อมใหม่อัตโนมัติ', false);
+        }
+
         startCloudAutoRefresh();
-        setFirebaseStatus('● เรียลไทม์', 'success');
+        if (firebaseIsConnected) setFirebaseStatus('● เรียลไทม์', 'success');
     }
 
     window.onload = function() {
@@ -2140,7 +2225,7 @@
             let actionButtonsHTML = isAdmin ? `                <div class="job-admin-actions">                    <button onclick="editJobData(${job.id})" class="btn btn-sm btn-warning px-3 py-1 fw-bold">✏️ แก้ไขข้อมูล</button>                    <button onclick="deleteJob(${job.id})" class="btn btn-sm btn-outline-danger px-3 py-1 fw-bold" title="ต้องใส่รหัสลบงาน 4 หลัก">🔐 ลบงาน</button>                </div>` : '';
             container.innerHTML += `                <div class="col-12 col-md-6 job-card-container">                    <div class="card h-100 job-card ${teamThemeClass} ${completionClass}">                        <div class="job-card-top d-flex justify-content-between align-items-center gap-2">                            <div class="job-date-line">                                <span class="job-date-text">📅 ${formatThaiDate(job.installDate)}</span>                            </div>                            <div class="job-header-badges">                                ${saveStatusHtml}                                ${job.isCompleted ? '<span class="job-status-pill">✅ เสร็จสิ้น</span>' : '<span class="job-status-pill">⏳ รอดำเนินการ</span>'}                            </div>                        </div>                        ${adminActionHeaderHTML}                        <div class="card-body job-card-body d-flex flex-column">                            <h4 class="job-customer-name">👤 ${escapeHandoverText(job.customerName)}</h4>                            ${job.installAddress ? `<div class="job-address-preview">🏠 ${escapeHandoverText(job.installAddress)}</div>` : '<div class="job-address-preview text-warning">⚠️ ยังไม่มีที่อยู่สำหรับออกเอกสาร</div>'}                            <div class="job-quick-actions">                                <a href="tel:${job.phone}" class="btn job-phone-btn" style="font-size: 0.95rem;">📞 ${job.phone}</a>                                <a href="${job.mapLink}" target="_blank" class="btn job-map-btn" style="font-size: 0.95rem;">📍 แผนที่</a>                            </div>                                                        <div class="job-package-panel">                                <div class="job-package-main">📦แพ็จเกจ: ${job.packageName}</div>                                ${job.extraDetail ? `<div class="job-extra-line">🛠️ เพิ่มเติม: ${job.extraDetail}</div>` : ''}                                ${adminSiteExtraHTML}                            </div>                                                        ${moneyDisplayHTML}                                                        <button onclick="openHandover(${job.id})" class="btn w-100 fw-bold py-2 fs-6 mb-1 job-handover-btn">                                📝 ออกใบส่งมอบให้ลูกค้าเซ็น                            </button>                                                        ${actionButtonsHTML}                        </div>                    </div>                </div>`;        });                if(container.innerHTML === '') container.innerHTML = `<div class="col-12 text-center text-muted py-5"><h5 class="fw-bold">📭 ไม่มีรายการงาน</h5></div>`;    }
     // ==========================================
-    // ระบบใบส่งมอบงานและลายเซ็น: บันทึกกลับมาแก้ต่อ + JPG 8K
+    // ระบบใบส่งมอบงานและลายเซ็น: บันทึกกลับมาแก้ต่อ + รูปพร้อมส่ง
     // ==========================================
     let sigCanvas = null;    let sigCtx = null;    let isDrawing = false;    let signaturePadInitialized = false;    let signatureHasInk = false;    let signatureLocked = false;    let handoverDirty = false;    let lastGeneratedBlob = null;    let lastGeneratedObjectUrl = '';    let lastGeneratedFileName = 'ใบส่งมอบงาน.jpg';
     // แยกรายการเดิมจากแอดมินกับรายการที่ช่างเพิ่มหน้างาน ป้องกันยอดบวกซ้ำ
@@ -2226,47 +2311,147 @@
         document.getElementById('ho-date').value = job.handoverDate !== undefined ? job.handoverDate : (job.installDate || '');        updateHandoverWarrantyDates();        document.getElementById('ho-customer').value = job.handoverCustomer !== undefined ? job.handoverCustomer : (job.customerName || '');        document.getElementById('ho-phone').value = job.handoverPhone !== undefined ? job.handoverPhone : (job.phone || '');        document.getElementById('ho-address').value = job.handoverAddress !== undefined ? job.handoverAddress : (job.installAddress || '');
         const defaultDetails = composeHandoverDetails();        document.getElementById('ho-details').value = job.handoverDetails || defaultDetails;
         const teamKey = resolveTeam(job);        const teamInfo = teamContactInfo[teamKey] || { name: 'ทีมช่าง', phone: '-' };        document.getElementById('ho-tech-name').value = job.handoverTechName || teamInfo.name;        document.getElementById('ho-tech-phone').value = job.handoverTechPhone || teamInfo.phone;
-        const overlay = document.getElementById('handoverOverlay');        overlay.style.display = 'block';        overlay.scrollTop = 0;        document.body.style.overflow = 'hidden';
+        const overlay = document.getElementById('handoverOverlay');        overlay.style.display = 'block';        overlay.scrollTop = 0;        overlay.classList.remove('keyboard-open');        overlay.style.setProperty('--ho-keyboard-height', '0px');        document.body.style.overflow = 'hidden';        setTimeout(updateHandoverViewport, 80);
         requestAnimationFrame(() => requestAnimationFrame(() => {            handoverFieldIds.forEach((id) => {                const field = document.getElementById(id);                if(field?.tagName === 'TEXTAREA') autoResizeTextarea(field);            });            resizeCanvas(job.signature || '', Boolean(job.signature));            handoverDirty = false;            setHandoverStatus(job.signature                ? '🔒 ลายเซ็นบันทึกและล็อกแล้ว เลื่อนดูได้โดยไม่ขีดทับ'                : 'พร้อมให้ลูกค้าเซ็น แล้วกดบันทึก');        }));    }
     function collectHandoverData() {        return {            handoverDate: document.getElementById('ho-date').value,            handoverCustomer: document.getElementById('ho-customer').value.trim(),            handoverPhone: document.getElementById('ho-phone').value.trim(),            handoverAddress: document.getElementById('ho-address').value.trim(),            handoverDetails: document.getElementById('ho-details').value.trim(),            handoverTechName: document.getElementById('ho-tech-name').value.trim(),            handoverTechPhone: document.getElementById('ho-tech-phone').value.trim(),            signature: signatureHasInk && sigCanvas ? sigCanvas.toDataURL('image/png') : ''        };    }
     function persistHandoverData(silent = false) {        const jobId = Number(document.getElementById('ho-job-id').value);        const jobIndex = jobs.findIndex(j => Number(j.id) === jobId);        if(jobIndex < 0) {            if(!silent) alert('ไม่พบข้อมูลงาน กรุณาปิดแล้วเปิดใบส่งมอบใหม่');            return null;        }
         commitHandoverExtrasToJob(jobs[jobIndex]);        const handoverData = collectHandoverData();        Object.assign(jobs[jobIndex], handoverData);        jobs[jobIndex].handoverUpdatedAt = new Date().toISOString();        jobs[jobIndex].updatedAt = jobs[jobIndex].handoverUpdatedAt;        saveData();        updateAllViews();        handoverDirty = false;        if(handoverData.signature) {            setSignatureLocked(true);            setHandoverStatus('✅ บันทึกและล็อกลายเซ็นแล้ว เลื่อนดูได้โดยไม่ขีดทับ');        } else {            setSignatureLocked(false);            setHandoverStatus('✅ บันทึกข้อมูลแล้ว แต่ยังไม่มีลายเซ็นลูกค้า', true);        }        return jobs[jobIndex];    }
     function openHandoverSaveConfirm() {        const confirmOverlay = document.getElementById('handoverSaveConfirm');        const warning = document.getElementById('handoverNoSignatureWarning');        if(!confirmOverlay) return;
-        if(warning) warning.style.display = signatureHasInk ? 'none' : 'block';        const totalEl = document.getElementById('handoverConfirmTotal');        if(totalEl) {            const sums = getSiteExtraSums();            const grandTotal = handoverCurrentPackageCustomerPrice + handoverBaseExtraCustomerPrice + sums.customer;            totalEl.textContent = `ยอดที่ลูกค้าชำระรวม ${formatMoneyPlain(grandTotal)}`;        }        confirmOverlay.style.display = 'flex';    }
+        if(warning) warning.style.display = signatureHasInk ? 'none' : 'block';        const saveBtn = document.getElementById('handoverConfirmSaveBtn');        if(saveBtn) saveBtn.textContent = signatureHasInk ? 'บันทึกลายเซ็นและออก' : 'บันทึกฉบับร่างและออก';        const totalEl = document.getElementById('handoverConfirmTotal');        if(totalEl) {            const sums = getSiteExtraSums();            const grandTotal = handoverCurrentPackageCustomerPrice + handoverBaseExtraCustomerPrice + sums.customer;            totalEl.textContent = `ยอดที่ลูกค้าชำระรวม ${formatMoneyPlain(grandTotal)}`;        }        confirmOverlay.style.display = 'flex';    }
     function closeHandoverSaveConfirm() {        const confirmOverlay = document.getElementById('handoverSaveConfirm');        if(confirmOverlay) confirmOverlay.style.display = 'none';    }
-    async function confirmHandoverSaveAndExit() {        if(!signatureHasInk) {            closeHandoverSaveConfirm();            setHandoverStatus('⚠️ ยังไม่พบลายเซ็นลูกค้า กรุณาให้ลูกค้าเซ็นก่อนบันทึก', true);            return;        }
-        closeHandoverSaveConfirm();        await saveHandoverData(false, true);    }
+    async function confirmHandoverSaveAndExit() {        closeHandoverSaveConfirm();        await saveHandoverData(false, true);    }
     async function saveHandoverData(generateImg = false, closeAfterSave = false) {        const job = persistHandoverData(false);        if(!job) return;
-        setHandoverBusy(true, 'กำลังบันทึกขึ้น Firebase กรุณาอย่าเพิ่งปิด...');
+        setHandoverBusy(true, 'กำลังบันทึกขึ้น Firebase...');
         const cloudSaved = await cloudSaveQueue;
         setHandoverBusy(false);
         if(!cloudSaved) {            setHandoverStatus('❌ บันทึกในเครื่องแล้ว แต่ Firebase ยังไม่รับข้อมูล กรุณากดบันทึกอีกครั้ง', true);            alert('ข้อมูลยังไม่ขึ้น Firebase กรุณาอย่าเพิ่งออกจากใบส่งมอบ แล้วกดบันทึกอีกครั้ง');            return;        }
-        if(generateImg) {            await generateHandoverImage();            return;        }
+        if(generateImg) {            await generateHandoverImage(job, true, generateImg === '8k' ? '8k' : 'fast');            return;        }
         if(closeAfterSave) {            closeHandover(false);        }    }
-    function closeHandover(saveBeforeClose = false) {        closeHandoverSaveConfirm();        if(saveBeforeClose && handoverDirty) persistHandoverData(true);        document.getElementById('handoverOverlay').style.display = 'none';        document.body.style.overflow = '';        window.scrollTo({ top: window.scrollY, behavior: 'auto' });    }
+    function closeHandover(saveBeforeClose = false) {        closeHandoverSaveConfirm();        try {            if(saveBeforeClose && handoverDirty) persistHandoverData(true);        } catch(error) {            console.warn('บันทึกฉบับร่างก่อนปิดไม่สำเร็จ', error);        } finally {            const overlay = document.getElementById('handoverOverlay');            if(overlay) {                overlay.style.display = 'none';                overlay.classList.remove('keyboard-open');                overlay.style.removeProperty('--ho-keyboard-height');            }            document.body.style.overflow = '';            window.scrollTo({ top: window.scrollY, behavior: 'auto' });        }    }
     function setHandoverBusy(isBusy, message = '') {        const actionBar = document.getElementById('hoActionBar');        if(actionBar) actionBar.classList.toggle('ho-busy', isBusy);        if(message) setHandoverStatus(message, false);    }
     function formatDateForExport(value) {        if(!value) return '-';        const date = new Date(value + 'T00:00:00');        if(Number.isNaN(date.getTime())) return value;        return date.toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' });    }
     function buildExportCard() {        const original = document.getElementById('ho-document-card');        const clone = original.cloneNode(true);        clone.id = 'ho-document-card-export';        clone.style.margin = '0';        clone.style.borderRadius = '0';        clone.style.boxShadow = 'none';
         const originalFields = Array.from(original.querySelectorAll('input, textarea'));        const clonedFields = Array.from(clone.querySelectorAll('input, textarea'));        clonedFields.forEach((field, index) => {            const source = originalFields[index];            if(!source) return;            if(source.type === 'hidden') {                field.remove();                return;            }            const div = document.createElement('div');            div.className = 'ho-export-field';            div.textContent = source.type === 'date' ? formatDateForExport(source.value) : (source.value || '-');            field.replaceWith(div);        });
         const clonedCanvas = clone.querySelector('#hoSignatureCanvas');        if(clonedCanvas) {            const signatureImage = document.createElement('img');            signatureImage.alt = 'ลายเซ็นลูกค้า';            signatureImage.style.width = '100%';            signatureImage.style.height = '100%';            signatureImage.style.objectFit = 'contain';            signatureImage.style.display = 'block';            signatureImage.src = signatureHasInk && sigCanvas ? sigCanvas.toDataURL('image/png') : '';            clonedCanvas.replaceWith(signatureImage);        }        clone.querySelectorAll('.hide-on-capture').forEach(el => el.remove());        return clone;    }
     function canvasToBlob(canvas, type = 'image/jpeg', quality = .96) {        return new Promise((resolve, reject) => {            canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('สร้างไฟล์รูปไม่สำเร็จ')), type, quality);        });    }
-    async function generateHandoverImage() {        const job = persistHandoverData(true);        if(!job) return;
-        const cloudSaved = await cloudSaveQueue;
-        if(!cloudSaved) {            setHandoverStatus('❌ ยังส่งข้อมูลขึ้น Firebase ไม่สำเร็จ กรุณากดบันทึกอีกครั้ง', true);            return;        }
-        setHandoverBusy(true, 'กำลังสร้าง JPG 8K กรุณาอย่าปิดหน้านี้...');        document.body.classList.add('ho-capturing');        let stage = null;
-        try {            if(document.fonts?.ready) await document.fonts.ready;
-            stage = document.createElement('div');            stage.className = 'ho-export-stage';            const liveWidth = Math.max(480, Math.round(document.getElementById('ho-document-card').getBoundingClientRect().width));            stage.style.width = liveWidth + 'px';            const exportCard = buildExportCard();            exportCard.style.width = liveWidth + 'px';            stage.appendChild(exportCard);            document.body.appendChild(stage);
+    async function generateHandoverImage(savedJob = null, cloudAlreadySaved = false, mode = 'fast') {
+        const job = savedJob || persistHandoverData(true);
+        if(!job) return;
+        if(!cloudAlreadySaved) {
+            const cloudSaved = await cloudSaveQueue;
+            if(!cloudSaved) {
+                setHandoverStatus('❌ ยังส่งข้อมูลขึ้น Firebase ไม่สำเร็จ กรุณากดบันทึกอีกครั้ง', true);
+                return;
+            }
+        }
+        const is8K = mode === '8k';
+        const resultOverlay = document.getElementById('result-overlay');
+        const buildText = document.querySelector('#result-build-status strong');
+        const buildSubText = document.querySelector('#result-build-status span');
+        if(buildText) buildText.textContent = is8K ? 'กำลังสร้างไฟล์ 8K' : 'กำลังสร้างรูปพร้อมส่ง';
+        if(buildSubText) buildSubText.textContent = is8K ? 'ไฟล์ใหญ่จึงใช้เวลานานกว่าปกติ' : 'ใช้เวลาไม่นาน กรุณารอสักครู่';
+        resultOverlay?.classList.add('is-building');
+        if(resultOverlay) resultOverlay.style.display = 'flex';
+        setHandoverBusy(true, is8K ? 'กำลังสร้างไฟล์ 8K...' : 'กำลังสร้างรูปพร้อมส่ง...');
+        document.body.classList.add('ho-capturing');
+        let stage = null;
+        let completed = false;
+        try {
+            if(document.fonts?.ready) await document.fonts.ready;
+            stage = document.createElement('div');
+            stage.className = 'ho-export-stage';
+            const liveWidth = Math.max(460, Math.round(document.getElementById('ho-document-card').getBoundingClientRect().width));
+            stage.style.width = liveWidth + 'px';
+            const exportCard = buildExportCard();
+            exportCard.style.width = liveWidth + 'px';
+            stage.appendChild(exportCard);
+            document.body.appendChild(stage);
             await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-            const sourceCanvas = await html2canvas(exportCard, {                scale: 4,                useCORS: true,                allowTaint: false,                backgroundColor: '#ffffff',                logging: false,                imageTimeout: 15000,                scrollX: 0,                scrollY: 0,                windowWidth: exportCard.scrollWidth,                windowHeight: exportCard.scrollHeight            });
-            // ทำไฟล์ให้ด้านที่ยาวที่สุดเท่ากับ 7,680 px (ระดับ 8K)
-            const targetLongSide = 7680;            const ratio = sourceCanvas.width / sourceCanvas.height;            const outputWidth = ratio >= 1 ? targetLongSide : Math.max(1, Math.round(targetLongSide * ratio));            const outputHeight = ratio >= 1 ? Math.max(1, Math.round(targetLongSide / ratio)) : targetLongSide;
-            const outputCanvas = document.createElement('canvas');            outputCanvas.width = outputWidth;            outputCanvas.height = outputHeight;            const outputCtx = outputCanvas.getContext('2d', { alpha: false });            outputCtx.fillStyle = '#ffffff';            outputCtx.fillRect(0, 0, outputWidth, outputHeight);            outputCtx.imageSmoothingEnabled = true;            outputCtx.imageSmoothingQuality = 'high';            outputCtx.drawImage(sourceCanvas, 0, 0, outputWidth, outputHeight);
-            const blob = await canvasToBlob(outputCanvas, 'image/jpeg', .96);            lastGeneratedBlob = blob;
-            if(lastGeneratedObjectUrl) URL.revokeObjectURL(lastGeneratedObjectUrl);            lastGeneratedObjectUrl = URL.createObjectURL(blob);
-            const safeName = (job.handoverCustomer || job.customerName || 'ลูกค้า')                .replace(/[\\/:*?"<>|]+/g, '')                .replace(/\s+/g, '_');            lastGeneratedFileName = `ใบส่งมอบ_${safeName}_8K.jpg`;
-            document.getElementById('result-image').src = lastGeneratedObjectUrl;            const downloadBtn = document.getElementById('download-btn');            downloadBtn.href = lastGeneratedObjectUrl;            downloadBtn.download = lastGeneratedFileName;            document.getElementById('result-resolution').textContent = `JPG ${outputWidth.toLocaleString()} × ${outputHeight.toLocaleString()} px`;            document.getElementById('result-overlay').style.display = 'flex';            setHandoverStatus('✅ สร้างรูป JPG 8K เรียบร้อยแล้ว');        } catch(error) {            console.error(error);            setHandoverStatus('สร้างรูปไม่สำเร็จ: ' + (error.message || 'อุปกรณ์มีหน่วยความจำไม่พอ'), true);            alert('สร้าง JPG 8K ไม่สำเร็จบนอุปกรณ์นี้\n\nลองปิดแอปอื่น แล้วเปิดใหม่อีกครั้ง หรือใช้งานผ่าน Chrome รุ่นล่าสุด');        } finally {            stage?.remove();            document.body.classList.remove('ho-capturing');            setHandoverBusy(false);        }    }
-    async function shareGeneratedImage() {        if(!lastGeneratedBlob) return alert('ยังไม่มีรูปสำหรับแชร์ กรุณากดสร้าง JPG 8K ก่อน');        const file = new File([lastGeneratedBlob], lastGeneratedFileName, { type: 'image/jpeg' });
+
+            const renderScale = is8K ? 4 : Math.min(2.2, Math.max(1.8, window.devicePixelRatio || 1.8));
+            const sourceCanvas = await html2canvas(exportCard, {
+                scale: renderScale,
+                useCORS: true,
+                allowTaint: false,
+                backgroundColor: '#ffffff',
+                logging: false,
+                imageTimeout: is8K ? 15000 : 8000,
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: exportCard.scrollWidth,
+                windowHeight: exportCard.scrollHeight
+            });
+            const sourceLongSide = Math.max(sourceCanvas.width, sourceCanvas.height);
+            const targetLongSide = is8K ? 7680 : Math.min(3600, Math.max(2800, sourceLongSide));
+            const ratio = sourceCanvas.width / sourceCanvas.height;
+            const outputWidth = ratio >= 1 ? targetLongSide : Math.max(1, Math.round(targetLongSide * ratio));
+            const outputHeight = ratio >= 1 ? Math.max(1, Math.round(targetLongSide / ratio)) : targetLongSide;
+            const outputCanvas = document.createElement('canvas');
+            outputCanvas.width = outputWidth;
+            outputCanvas.height = outputHeight;
+            const outputCtx = outputCanvas.getContext('2d', { alpha: false });
+            outputCtx.fillStyle = '#ffffff';
+            outputCtx.fillRect(0, 0, outputWidth, outputHeight);
+            outputCtx.imageSmoothingEnabled = true;
+            outputCtx.imageSmoothingQuality = is8K ? 'high' : 'medium';
+            outputCtx.drawImage(sourceCanvas, 0, 0, outputWidth, outputHeight);
+            const blob = await canvasToBlob(outputCanvas, 'image/jpeg', is8K ? .96 : .90);
+            lastGeneratedBlob = blob;
+            if(lastGeneratedObjectUrl) URL.revokeObjectURL(lastGeneratedObjectUrl);
+            lastGeneratedObjectUrl = URL.createObjectURL(blob);
+            const safeName = (job.handoverCustomer || job.customerName || 'ลูกค้า')
+                .replace(/[\/:*?"<>|]+/g, '')
+                .replace(/\s+/g, '_');
+            lastGeneratedFileName = is8K ? `ใบส่งมอบ_${safeName}_8K.jpg` : `ใบส่งมอบ_${safeName}_พร้อมส่ง.jpg`;
+            document.getElementById('result-image').src = lastGeneratedObjectUrl;
+            const downloadBtn = document.getElementById('download-btn');
+            downloadBtn.href = lastGeneratedObjectUrl;
+            downloadBtn.download = lastGeneratedFileName;
+            document.getElementById('result-resolution').textContent = `${is8K ? 'JPG 8K' : 'JPG พร้อมส่ง'} ${outputWidth.toLocaleString()} × ${outputHeight.toLocaleString()} px`;
+            completed = true;
+            setHandoverStatus(is8K ? '✅ สร้างไฟล์ JPG 8K เรียบร้อยแล้ว' : '✅ สร้างรูปพร้อมส่งเรียบร้อยแล้ว');
+        } catch(error) {
+            console.error(error);
+            setHandoverStatus('สร้างรูปไม่สำเร็จ: ' + (error.message || 'อุปกรณ์มีหน่วยความจำไม่พอ'), true);
+            alert('สร้างรูปไม่สำเร็จบนอุปกรณ์นี้\n\nลองปิดแอปอื่น แล้วเปิดใหม่อีกครั้ง หรือใช้งานผ่าน Chrome รุ่นล่าสุด');
+        } finally {
+            stage?.remove();
+            document.body.classList.remove('ho-capturing');
+            resultOverlay?.classList.remove('is-building');
+            if(resultOverlay && !completed) resultOverlay.style.display = 'none';
+            setHandoverBusy(false);
+        }
+    }
+    async function shareGeneratedImage() {        if(!lastGeneratedBlob) return alert('ยังไม่มีรูปสำหรับแชร์ กรุณากดสร้างรูปพร้อมส่งก่อน');        const file = new File([lastGeneratedBlob], lastGeneratedFileName, { type: 'image/jpeg' });
         try {            if(navigator.share && (!navigator.canShare || navigator.canShare({ files: [file] }))) {                await navigator.share({                    title: 'ใบส่งมอบงานติดตั้ง EV Charger',                    text: 'ใบส่งมอบงานและรับประกันการติดตั้ง',                    files: [file]                });                return;            }        } catch(error) {            if(error?.name === 'AbortError') return;            console.warn('Share failed:', error);        }
         document.getElementById('download-btn').click();        alert('อุปกรณ์นี้ไม่รองรับปุ่มแชร์โดยตรง จึงดาวน์โหลดรูปให้แล้ว\nจากนั้นแนบรูปใน LINE หรือ Messenger ได้ทันที');    }
-    function closeResultOverlay() {        document.getElementById('result-overlay').style.display = 'none';    }
+    function closeResultOverlay() {        const overlay = document.getElementById('result-overlay');        overlay.classList.remove('is-building');        overlay.style.display = 'none';    }
+    function updateHandoverViewport() {
+        const overlay = document.getElementById('handoverOverlay');
+        if(!overlay || overlay.style.display !== 'block') return;
+        const viewport = window.visualViewport;
+        if(!viewport) return;
+        const keyboardHeight = Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop);
+        overlay.style.setProperty('--ho-keyboard-height', `${Math.round(keyboardHeight)}px`);
+        overlay.classList.toggle('keyboard-open', keyboardHeight > 110);
+    }
+    if(window.visualViewport) {
+        window.visualViewport.addEventListener('resize', updateHandoverViewport);
+        window.visualViewport.addEventListener('scroll', updateHandoverViewport);
+    }
+    document.addEventListener('focusin', (event) => {
+        const overlay = document.getElementById('handoverOverlay');
+        if(!overlay || overlay.style.display !== 'block' || !overlay.contains(event.target)) return;
+        if(!event.target.matches('input, textarea, select')) return;
+        setTimeout(() => {
+            updateHandoverViewport();
+            event.target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        }, 260);
+    });
+    document.addEventListener('focusout', (event) => {
+        const overlay = document.getElementById('handoverOverlay');
+        if(!overlay || !overlay.contains(event.target)) return;
+        setTimeout(updateHandoverViewport, 180);
+    });
+
     window.addEventListener('resize', () => {        const overlay = document.getElementById('handoverOverlay');        if(overlay?.style.display === 'block' && sigCanvas) {            const savedSignature = signatureHasInk ? sigCanvas.toDataURL('image/png') : '';            const shouldRemainLocked = signatureLocked;            clearTimeout(window.__hoResizeTimer);            window.__hoResizeTimer = setTimeout(() => resizeCanvas(savedSignature, shouldRemainLocked), 180);        }    });</script></body></html>
