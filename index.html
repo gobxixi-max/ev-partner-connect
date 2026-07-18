@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="th"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    <title>EV Connect</title>    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>    <style>        body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-bottom: 80px; overflow-x: hidden; }        .card { box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: none; margin-bottom: 20px; }        .bg-primary { background-color: #0d6efd !important; } .bg-success { background-color: #198754 !important; } .text-purple { color: #6f42c1 !important; }        .stat-box { padding: 15px; border-radius: 10px; color: white; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; transition: all 0.3s; }        .extra-section { background-color: #fff3cd; padding: 12px; border-radius: 8px; border: 1px solid #ffe69c; }        .smart-paste-section { background-color: #e0f0ff; border: 1px solid #b6d4fe; padding: 15px; border-radius: 8px; margin-bottom: 15px; }        .job-address-field {            padding: 12px;            border-radius: 13px;            border: 1px solid #bfdbfe;            background: linear-gradient(135deg, #eff6ff, #ffffff);        }        .job-address-field textarea {            min-height: 72px;            resize: vertical;            border-color: #93c5fd;            background: rgba(255,255,255,.96);        }        .job-address-field textarea.address-detected {            border: 2px solid #22c55e;            background: #f0fdf4;            box-shadow: 0 0 0 3px rgba(34,197,94,.10);        }        .job-address-helper {            margin-top: 5px;            color: #64748b;            font-size: .76rem;            line-height: 1.35;        }        .job-address-helper.detected { color: #15803d; font-weight: 700; }        .job-address-helper.warning { color: #b45309; font-weight: 700; }        .scrollable-table { max-height: 250px; overflow-y: auto; overflow-x: auto; border: 1px solid #dee2e6; }        .table td, .table th { vertical-align: middle; }        .sync-section { background-color: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; margin-bottom: 15px; }                /* ปฏิทิน */        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }        .calendar-header-day { font-size: 0.8rem; font-weight: bold; color: #0d6efd; padding: 6px 0; background: #e0f0ff; border-radius: 4px; }        .calendar-day { min-height: 95px; padding: 4px; background: #fff; border: 1px solid #dee2e6; border-radius: 6px; display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: all 0.2s ease-in-out; min-width: 0; }        .calendar-day:hover:not(.empty) { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); z-index: 1; }        .calendar-day.empty { background: transparent; border: none; box-shadow: none; }        .calendar-day.today { border: 2px solid #ff9800; background-image: linear-gradient(135deg, #fffdf5, #fff3e0); }        .calendar-day.pending-only { background-image: linear-gradient(135deg, #fff5f5, #ffe3e3); border-color: #ffc9c9; }        .calendar-day.completed-only { background-image: linear-gradient(135deg, #f6fff8, #d3f9d8); border-color: #b2f2bb; }        .calendar-day.mixed-jobs { background-image: linear-gradient(135deg, #fff8e1, #ffecb3); border-color: #ffe082; }        .cal-date-num { font-weight: bold; font-size: 1rem; color: #444; margin-bottom: 2px; text-align: left; line-height: 1; }        .calendar-day.today .cal-date-num { color: #e65100; font-size: 1.1rem; }        .cal-badges-container { margin-top: auto; padding-bottom: 2px; display: flex; flex-direction: column; gap: 2px; width: 100%; }        .cal-badge { font-size: 0.7rem; font-weight: bold; padding: 2px 0; border-radius: 4px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2; width: 100%; display: block; }        .cal-comm { color: #084298; background: #cfe2ff; border: 1px solid #9ec5fe; }        .cal-wait { background-color: #dc3545; color: white; border: 1px solid #dc3545; }        .cal-done { background-color: #198754; color: white; border: 1px solid #198754; }        .dot-indicator { width: 10px; height: 10px; border-radius: 50%; display: inline-block; border: 1px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.3); margin-right: 1px; margin-bottom: 1px;}        .dot-t1 { background-color: #0d6efd; } .dot-t2 { background-color: #ffc107; } .dot-t3 { background-color: #fd7e14; }                .page-view { display: none; animation: fadeIn 0.4s ease-in-out; } .page-view.active { display: block; }        @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }                #loginOverlay {
+<!DOCTYPE html><html lang="th"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    <title>EV Connect</title>    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-database-compat.js"></script>    <style>        body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-bottom: 80px; overflow-x: hidden; }        .card { box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: none; margin-bottom: 20px; }        .bg-primary { background-color: #0d6efd !important; } .bg-success { background-color: #198754 !important; } .text-purple { color: #6f42c1 !important; }        .stat-box { padding: 15px; border-radius: 10px; color: white; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; transition: all 0.3s; }        .extra-section { background-color: #fff3cd; padding: 12px; border-radius: 8px; border: 1px solid #ffe69c; }        .smart-paste-section { background-color: #e0f0ff; border: 1px solid #b6d4fe; padding: 15px; border-radius: 8px; margin-bottom: 15px; }        .job-address-field {            padding: 12px;            border-radius: 13px;            border: 1px solid #bfdbfe;            background: linear-gradient(135deg, #eff6ff, #ffffff);        }        .job-address-field textarea {            min-height: 72px;            resize: vertical;            border-color: #93c5fd;            background: rgba(255,255,255,.96);        }        .job-address-field textarea.address-detected {            border: 2px solid #22c55e;            background: #f0fdf4;            box-shadow: 0 0 0 3px rgba(34,197,94,.10);        }        .job-address-helper {            margin-top: 5px;            color: #64748b;            font-size: .76rem;            line-height: 1.35;        }        .job-address-helper.detected { color: #15803d; font-weight: 700; }        .job-address-helper.warning { color: #b45309; font-weight: 700; }        .scrollable-table { max-height: 250px; overflow-y: auto; overflow-x: auto; border: 1px solid #dee2e6; }        .table td, .table th { vertical-align: middle; }        .sync-section { background-color: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; margin-bottom: 15px; }                /* ปฏิทิน */        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }        .calendar-header-day { font-size: 0.8rem; font-weight: bold; color: #0d6efd; padding: 6px 0; background: #e0f0ff; border-radius: 4px; }        .calendar-day { min-height: 95px; padding: 4px; background: #fff; border: 1px solid #dee2e6; border-radius: 6px; display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: all 0.2s ease-in-out; min-width: 0; }        .calendar-day:hover:not(.empty) { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); z-index: 1; }        .calendar-day.empty { background: transparent; border: none; box-shadow: none; }        .calendar-day.today { border: 2px solid #ff9800; background-image: linear-gradient(135deg, #fffdf5, #fff3e0); }        .calendar-day.pending-only { background-image: linear-gradient(135deg, #fff5f5, #ffe3e3); border-color: #ffc9c9; }        .calendar-day.completed-only { background-image: linear-gradient(135deg, #f6fff8, #d3f9d8); border-color: #b2f2bb; }        .calendar-day.mixed-jobs { background-image: linear-gradient(135deg, #fff8e1, #ffecb3); border-color: #ffe082; }        .cal-date-num { font-weight: bold; font-size: 1rem; color: #444; margin-bottom: 2px; text-align: left; line-height: 1; }        .calendar-day.today .cal-date-num { color: #e65100; font-size: 1.1rem; }        .cal-badges-container { margin-top: auto; padding-bottom: 2px; display: flex; flex-direction: column; gap: 2px; width: 100%; }        .cal-badge { font-size: 0.7rem; font-weight: bold; padding: 2px 0; border-radius: 4px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2; width: 100%; display: block; }        .cal-comm { color: #084298; background: #cfe2ff; border: 1px solid #9ec5fe; }        .cal-wait { background-color: #dc3545; color: white; border: 1px solid #dc3545; }        .cal-done { background-color: #198754; color: white; border: 1px solid #198754; }        .dot-indicator { width: 10px; height: 10px; border-radius: 50%; display: inline-block; border: 1px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.3); margin-right: 1px; margin-bottom: 1px;}        .dot-t1 { background-color: #0d6efd; } .dot-t2 { background-color: #ffc107; } .dot-t3 { background-color: #fd7e14; }                .page-view { display: none; animation: fadeIn 0.4s ease-in-out; } .page-view.active { display: block; }        @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }                #loginOverlay {
             position: fixed;
             inset: 0;
             z-index: 9999;
@@ -336,7 +339,7 @@
                 <div class="login-icon">🔐</div>
                 <div class="login-head-copy">
                     <h1 class="login-title">เข้าสู่ระบบงานช่าง</h1>
-                    <p class="login-subtitle">แตะ PIN 6 หลัก ระบบจะเข้าให้อัตโนมัติ</p>
+                    <p class="login-subtitle">แตะ PIN 6 หลัก เพื่อเข้า Firebase อัตโนมัติ</p>
                 </div>
             </div>
             <div class="login-body">
@@ -372,12 +375,12 @@
                     <input type="password" id="loginPassword" class="form-control mb-2" placeholder="พิมพ์รหัสเดิม..." autocomplete="current-password">
                     <button type="button" class="btn btn-primary w-100 fw-bold" onclick="checkLogin()">เข้าสู่ระบบ</button>
                 </div>
-                <div class="login-security-note">หน้าล็อกอินปิดข้ามไม่ได้ เพื่อป้องกันข้อมูลลูกค้าและข้อมูลงาน</div>
+                <div class="login-security-note">ยืนยันตัวตนผ่าน Firebase • ข้อมูลลูกค้าไม่เปิดให้คนภายนอก</div>
             </div>
         </div>
     </div>
 </div>
-<div class="container mt-3 mt-md-4" id="appContent" style="display: none;">    <div id="techWarning" class="alert alert-warning text-center text-muted shadow-sm d-none mb-3 py-2" style="font-size: 0.8rem; border-radius: 8px;">        📌 <strong>ข้อมูลภายใน:</strong> กรุณาใช้เพื่อการปฏิบัติงานเท่านั้น ไม่ส่งต่อให้บุคคลภายนอก    </div>    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2 flex-wrap gap-2">        <h2 class="m-0 fw-bold text-danger" style="font-size: 1.25rem;">⚡ EV Connect</h2>        <div class="d-flex gap-2 align-items-center">            <span class="badge bg-dark d-none" id="techTeamBadge" style="font-size: 0.8rem;">ทีมช่าง</span>            <button id="toggleStatsBtn" class="btn btn-sm btn-outline-secondary rounded-pill fw-bold px-2 px-md-3 shadow-sm admin-only" onclick="toggleStats()">👁️ ซ่อนยอด</button>            <button id="cloudRefreshBtn" class="btn btn-sm btn-outline-primary rounded-pill fw-bold px-2 px-md-3 shadow-sm" onclick="refreshFromCloud({ silent: false })">↻ อัปเดต</button>            <button class="btn btn-sm btn-danger rounded-pill fw-bold px-2 px-md-3 shadow-sm" onclick="logout()">🚪 ออก</button>        </div>    </div>
+<div class="container mt-3 mt-md-4" id="appContent" style="display: none;">    <div id="techWarning" class="alert alert-warning text-center text-muted shadow-sm d-none mb-3 py-2" style="font-size: 0.8rem; border-radius: 8px;">        📌 <strong>ข้อมูลภายใน:</strong> กรุณาใช้เพื่อการปฏิบัติงานเท่านั้น ไม่ส่งต่อให้บุคคลภายนอก    </div>    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2 flex-wrap gap-2">        <h2 class="m-0 fw-bold text-danger" style="font-size: 1.25rem;">⚡ EV Connect</h2>        <div class="d-flex gap-2 align-items-center">            <span class="badge bg-dark d-none" id="techTeamBadge" style="font-size: 0.8rem;">ทีมช่าง</span><span class="badge bg-secondary" id="firebaseStatusBadge" style="font-size:0.72rem;">● กำลังเชื่อมต่อ</span>            <button id="toggleStatsBtn" class="btn btn-sm btn-outline-secondary rounded-pill fw-bold px-2 px-md-3 shadow-sm admin-only" onclick="toggleStats()">👁️ ซ่อนยอด</button>            <button id="cloudRefreshBtn" class="btn btn-sm btn-outline-primary rounded-pill fw-bold px-2 px-md-3 shadow-sm" onclick="refreshFromCloud({ silent: false })">↻ อัปเดต</button>            <button class="btn btn-sm btn-danger rounded-pill fw-bold px-2 px-md-3 shadow-sm" onclick="logout()">🚪 ออก</button>        </div>    </div>
     <div id="mainView" class="page-view active">        <!-- Dashboard Stats -->        <div class="row mb-3 g-2 admin-only" id="statsRow">            <div class="col-6 col-md-3 transition-all" id="boxCust"><div class="stat-box bg-info text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดเก็บลูกค้า (เดือนนี้)</h6><h3 id="totalCustomerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxPart"><div class="stat-box bg-warning text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดส่งช่าง (เดือนนี้)</h6><h3 id="totalPartnerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxComm"><div class="stat-box bg-primary shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ (เดือนนี้)</h6><h3 id="totalCommissionAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxCommDone"><div class="stat-box bg-success shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ (เสร็จสิ้น)</h6><h3 id="totalCommissionCompleted" class="fw-bold m-0">0&nbsp;฿</h3></div></div>        </div>
         <div class="row mb-4">            <div class="col-12">                <div class="card border-0" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">                    <div class="card-header bg-white border-bottom-0 d-flex justify-content-between align-items-center pt-3 pb-2 flex-wrap gap-2">                        <button class="btn btn-sm btn-light border" onclick="changeMonth(-1)">◀ ย้อน</button>                        <h5 class="m-0 fw-bold text-primary text-center flex-grow-1" id="calendarMonthYear" style="font-size: 1rem;">เดือน ปี</h5>                        <div>                            <button class="btn btn-sm btn-outline-primary fw-bold me-1 admin-only" onclick="openDetailView()">📄 สรุปแอดมิน</button>                            <button class="btn btn-sm btn-light border" onclick="changeMonth(1)">หน้า ▶</button>                        </div>                    </div>                    <div class="card-body pt-1 pb-3 px-2 px-md-3" id="calendarContainer">                        <div class="calendar-grid" id="calendarGrid"></div>                    </div>                </div>            </div>        </div>
         <!-- Add Job Form (มีคำนวณ) -->        <div class="row admin-only" id="addJobSection">            <div class="col-12">                <div class="card">                    <div class="card-header bg-dark text-white fw-bold" id="jobCardHeader">📝 เพิ่มงานใหม่ (ส่งช่าง)</div>                    <div class="card-body">                        <form id="jobForm">                            <input type="hidden" id="editJobId">                            <div class="smart-paste-section" id="smartPasteDiv">                                <h6 class="text-primary fw-bold">✨ ช่องทางลัด (วางแชท)</h6>                                <textarea id="smartPasteInput" class="form-control mb-2" rows="2" placeholder="วางข้อมูลแชทลูกค้าลงที่นี่..."></textarea>                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">                                    <small class="text-muted" style="font-size: 0.75rem;">ดึงชื่อ เบอร์ วันที่ ที่อยู่/จุดสังเกต และแมพอัตโนมัติ</small>                                    <button type="button" class="btn btn-sm btn-primary fw-bold px-3" onclick="processSmartPaste()" id="btnSmartPaste">🎯 ดึงข้อมูล</button>                                </div>                            </div>
@@ -401,7 +404,10 @@
                         <details class="ho-extra-fold">                            <summary>รายการอื่น — พิมพ์เองเมื่อจำเป็น</summary>                            <div class="ho-extra-fold-body">                                <div class="ho-extra-custom-row">                                    <input type="text" id="ho-custom-extra-name" placeholder="ชื่อรายการ เช่น ติดตั้งตู้กันน้ำ">                                    <input type="number" id="ho-custom-extra-price" min="0" step="1" inputmode="numeric" placeholder="ราคาเก็บลูกค้า">                                    <button type="button" class="ho-extra-add-btn" onclick="addHandoverCustomExtra()">＋ เพิ่มรายการนี้</button>                                </div>                                <div class="ho-custom-note">ใช้ช่องนี้เฉพาะรายการที่ไม่มีปุ่มสำเร็จรูป ระบบจะส่งให้แอดมินตรวจทุนภายหลัง</div>                            </div>                        </details>                    </div>
                     <div class="ho-extra-step-title" style="margin-bottom:5px;">รายการและราคาที่ลูกค้ารับทราบ</div>                    <div id="ho-site-extra-list" class="ho-site-extra-list"></div>                    <div class="ho-total-summary">                        <div class="ho-total-line" id="ho-base-total-row"><span>ยอดเดิมตามที่ตกลง</span><strong id="ho-base-customer-total">0 ฿</strong></div>                        <div class="ho-total-line" id="ho-site-total-row"><span>เพิ่มระหว่างติดตั้ง</span><strong id="ho-site-extra-total">0 ฿</strong></div>                        <div class="ho-total-line ho-total-grand"><span id="ho-grand-total-label">ยอดชำระรวม</span><strong id="ho-grand-customer-total">0 ฿</strong></div>                    </div>                </div>
                 <div class="ho-tech-box">                    <h3 class="ho-tech-title">🛠️ ผู้รับผิดชอบงาน (ติดต่อช่าง)</h3>                    <div class="ho-compact-grid ho-tech-inline">                        <div class="ho-input-group"><label>ชื่อทีมช่าง:</label><input type="text" id="ho-tech-name" placeholder="ชื่อทีมช่าง"></div>                        <div class="ho-input-group"><label>เบอร์โทรช่าง:</label><input type="tel" id="ho-tech-phone" placeholder="เบอร์โทร..."></div>                    </div>                </div>
-                <div class="ho-terms">                    <h3>📌 เงื่อนไขการรับประกัน</h3>                    <b>1. การรับประกัน:</b>รับประกันงานติดตั้ง 2 ปี (แก้ไขฟรีหากปัญหาเกิดจากการติดตั้ง) และรับประกันตัวอุปกรณ์ตามเงื่อนไขผู้ผลิต โดยทั่วไป 1 ปี (เคลมตัวใหม่ให้ทันทีในระยะประกัน)<br>                    <b>2. กรณีมีค่าบริการ:</b> หากตรวจสอบพบว่าปัญหาไม่ได้เกิดจากงานติดตั้ง หรืออุปกรณ์เสียหลังหมดประกันแล้ว จะมีค่าบริการและค่าอะไหล่เรียกเก็บตามจริง<br>                    <b>3. <span style="color:#e74c3c;">ข้อยกเว้น (สิ้นสุดประกันทันที):</span></b>                    <ul>                        <li>3.1 ความเสียหายจากอุบัติเหตุ หรือภัยธรรมชาติ (ไฟไหม้, ฟ้าผ่า, น้ำท่วม)</li>                        <li>3.2 มีการดัดแปลง รื้อถอน หรือต่อเติมระบบโดยช่างภายนอก</li>                        <li>3.3 อุปกรณ์ส่วนควบที่ผู้รับบริการจัดหามาเอง</li>			<li>3.4 การใช้งานผิดวิธี หรือนำวัตถุไวไฟเข้าใกล้อุปกรณ์จนเกิดความเสียหาย</li>                    </ul>                </div>
+                <div class="ho-terms">                    <h3>📌 เงื่อนไขการรับประกัน</h3>                    <div id="ho-warranty-dates" style="margin-bottom:6px;padding:7px 8px;border-radius:7px;background:#ecfdf5;border:1px solid #bbf7d0;color:#166534;font-weight:850;line-height:1.45;">
+                        🧰 ประกันอุปกรณ์ 1 ปี: <span id="ho-equipment-warranty-end">-</span><br>
+                        🛠️ ประกันงานติดตั้ง 2 ปี: <span id="ho-installation-warranty-end">-</span>
+                    </div>                    <b>1. การรับประกัน:</b>รับประกันงานติดตั้ง 2 ปี (แก้ไขฟรีหากปัญหาเกิดจากการติดตั้ง) และรับประกันตัวอุปกรณ์ตามเงื่อนไขผู้ผลิต โดยทั่วไป 1 ปี (เคลมตัวใหม่ให้ทันทีในระยะประกัน)<br>                    <b>2. กรณีมีค่าบริการ:</b> หากตรวจสอบพบว่าปัญหาไม่ได้เกิดจากงานติดตั้ง หรืออุปกรณ์เสียหลังหมดประกันแล้ว จะมีค่าบริการและค่าอะไหล่เรียกเก็บตามจริง<br>                    <b>3. <span style="color:#e74c3c;">ข้อยกเว้น (สิ้นสุดประกันทันที):</span></b>                    <ul>                        <li>3.1 ความเสียหายจากอุบัติเหตุ หรือภัยธรรมชาติ (ไฟไหม้, ฟ้าผ่า, น้ำท่วม)</li>                        <li>3.2 มีการดัดแปลง รื้อถอน หรือต่อเติมระบบโดยช่างภายนอก</li>                        <li>3.3 อุปกรณ์ส่วนควบที่ผู้รับบริการจัดหามาเอง</li>			<li>3.4 การใช้งานผิดวิธี หรือนำวัตถุไวไฟเข้าใกล้อุปกรณ์จนเกิดความเสียหาย</li>                    </ul>                </div>
                 <div style="margin-top:5px;">                    <label style="font-weight:bold; color:#2c3e50; font-size:1rem;">✍️ ลายมือชื่อผู้รับมอบงาน (ลูกค้าเซ็นตรงนี้)</label>                    <div class="ho-sig-box" id="hoSignatureBox">                        <canvas id="hoSignatureCanvas" class="ho-sig-canvas" aria-label="ช่องลายเซ็นลูกค้า"></canvas>                        <div class="ho-sig-lock-note hide-on-capture">🔒 บันทึกแล้ว • เลื่อนผ่านได้</div>                        <button type="button" class="ho-sig-clear hide-on-capture" onclick="requestClearSignature()">🗑️ ลบลายเซ็น</button>                    </div>                </div>            </div>        </div>        <div style="height: 110px;"></div>    </div>
     <!-- ปุ่มลอยค้างด้านล่าง เห็นเสมอ ไม่ต้องเลื่อนหา -->    <div class="ho-floating-actions hide-on-capture" id="hoActionBar">        <div class="ho-action-grid">            <button type="button" class="btn btn-info text-white shadow-sm" onclick="openHandoverSaveConfirm()">💾 บันทึกลายเซ็นแล้วออก</button>            <button type="button" class="btn btn-success shadow-sm" onclick="saveHandoverData(true, false)">📷 บันทึกและสร้าง JPG 8K</button>        </div>        <div id="ho-save-status" class="ho-save-status">ข้อมูลจะถูกเก็บไว้ในงานนี้ เปิดกลับมาทำต่อได้</div>    </div></div>
 <!-- ยืนยันอีกครั้งก่อนบันทึกลายเซ็นและออกจากใบส่งมอบ --><div id="handoverSaveConfirm" class="ho-confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="handoverConfirmTitle">    <div class="ho-confirm-box">        <div class="ho-confirm-head">            <div class="ho-confirm-icon">✍️</div>            <h3 id="handoverConfirmTitle">ตรวจสอบก่อนบันทึกและออก</h3>            <p>กรุณาตรวจสอบว่าลูกค้าเซ็นชื่อเรียบร้อยแล้ว จากนั้นกด “ตกลง” เพื่อบันทึกและกลับหน้ารายการงาน</p>        </div>        <div id="handoverNoSignatureWarning" class="ho-confirm-warning">⚠️ ระบบยังไม่พบลายเซ็นลูกค้า กรุณากลับไปให้ลูกค้าเซ็นก่อน</div>        <div id="handoverConfirmTotal" style="margin:14px 18px 0; padding:10px 12px; border-radius:12px; background:#ecfdf5; border:1px solid #bbf7d0; color:#166534; text-align:center; font-size:.9rem; font-weight:900;">ยอดที่ลูกค้าชำระรวม 0 ฿</div>        <div class="ho-confirm-actions">            <button type="button" class="btn btn-light border" onclick="closeHandoverSaveConfirm()">← กลับไปตรวจสอบ</button>            <button type="button" class="btn btn-success shadow-sm" onclick="confirmHandoverSaveAndExit()">ตกลง บันทึกและออก</button>        </div>    </div></div>
@@ -411,13 +417,46 @@
 <!-- ========================================== --><!-- SCRIPT การทำงานทั้งหมด (100% ครบทุกบรรทัด) --><!-- ========================================== --><script>    let currentUserRole = '';     let packages = JSON.parse(localStorage.getItem('ev_packages')) || [];    let extras = JSON.parse(localStorage.getItem('ev_extras')) || [];    let jobs = JSON.parse(localStorage.getItem('ev_jobs')) || [];    let fiberSettings = JSON.parse(localStorage.getItem('ev_fiber_settings')) || { custPrice: 300, team1: 300, team2: 300, team3: 280 };    let isStatsHidden = JSON.parse(localStorage.getItem('ev_hide_stats')) || false;    let calDate = new Date();
     // 💡 ตั้งค่าชื่อและเบอร์โทรช่างอัตโนมัติ (ช่างไม่ต้องพิมพ์เอง)
     const teamContactInfo = {        'team1': { name: 'ทีมช่างกราฟ', phone: '081-111-1111' },        'team2': { name: 'ทีมช่างเอ', phone: '082-222-2222' },        'team3': { name: 'ทีมช่างโบ้', phone: '083-333-3333' },        'team_old': { name: 'ทีมช่าง (เก่า)', phone: '-' }    };
-    const BIN_ID = '6e92de1a1bb81609d48e'; // รหัส npoint.io ของคุณ
-    let cloudSaveQueue = Promise.resolve();
+    const firebaseConfig = {
+        apiKey: "AIzaSyCZX8qqqlK4v0276r7XZXEwGT0-TheBERs",
+        authDomain: "ev-connect-th.firebaseapp.com",
+        databaseURL: "https://ev-connect-th-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "ev-connect-th",
+        storageBucket: "ev-connect-th.firebasestorage.app",
+        messagingSenderId: "556989908099",
+        appId: "1:556989908099:web:2ec727dd273d70202bc7b6",
+        measurementId: "G-HR08B9SYKC"
+    };
+    const firebaseApp = firebase.initializeApp(firebaseConfig);
+    const firebaseAuth = firebase.auth();
+    const firebaseDb = firebase.database();
+    const FIREBASE_ROOT = 'evPartner';
+    const ROLE_EMAILS = {
+        admin: 'admin@ev-connect-th.app',
+        team1: 'team1@ev-connect-th.app',
+        team2: 'team2@ev-connect-th.app',
+        team3: 'team3@ev-connect-th.app'
+    };
+    const EMAIL_ROLES = Object.fromEntries(Object.entries(ROLE_EMAILS).map(([role, email]) => [email, role]));
+    const PIN_HASH_ROLES = {
+        '06dc30c518d5c7ed4ed44ad653de60972eb502463809f733073354103444a281': 'admin',
+        '19e58efc7f71d3ec0bd46d451e84674f072ccc74c3128f4f017e6981d4e92543': 'team1',
+        '4cc8f4d609b717356701c57a03e737e5ac8fe885da8c7163d3de47e01849c635': 'team2',
+        'b1ed3f1ca1d1a6039912a3a667ee6459d6225ce26b9977708edab7852e80fc45': 'team3'
+    };
+    const TEAM_KEYS = ['team1', 'team2', 'team3', 'team_old'];
+    let cloudSaveQueue = Promise.resolve(true);
     let cloudSaveInProgress = false;
-    let cloudRefreshTimer = null;
     let cloudRefreshBusy = false;
-    let lastCloudRevisionId = '';
+    let firebaseListeners = [];
+    let firebaseAdminJobsRaw = {};
+    let firebaseTeamJobsRaw = { team1: {}, team2: {}, team3: {}, team_old: {} };
+    let firebaseBaselineJobs = new Map();
+    let firebaseSettingsBaseline = '';
+    let firebaseInitialLoadDone = false;
+    let firebaseAppInitialized = false;
     let deletedJobIds = JSON.parse(localStorage.getItem('ev_deleted_job_ids')) || {};
+
 
     const ADMIN_JOB_FIELDS = [
         'customerName', 'phone', 'installDate', 'installAddress', 'mapLink', 'team',
@@ -591,33 +630,151 @@
         return JSON.stringify(visible);
     }
 
-    function applyCloudData(cloudData, refreshViews = true) {
-        if (!cloudData || !Array.isArray(cloudData.jobs)) return false;
+    function normalizeList(value) {
+        if (Array.isArray(value)) return value.filter(Boolean);
+        if (value && typeof value === 'object') return Object.values(value).filter(Boolean);
+        return [];
+    }
 
-        const beforeFingerprint = getRoleJobsFingerprint(jobs);
-        deletedJobIds = mergeDeletedJobs(cloudData?._meta?.deletedJobs || {}, deletedJobIds);
-        jobs = mergeJobsWithCloudAuthority(cloudData.jobs || [], jobs || [], deletedJobIds, true);
-        jobs = cleanBadJobs(jobs).map(job => rebuildJobExtraTotals(normalizeJobTimestamps(job)));
-        packages = cloudData.packages || packages;
-        extras = cloudData.extras || extras;
-        fiberSettings = cloudData.fiberSettings || fiberSettings;
-        lastCloudRevisionId = cloudData?._meta?.revisionId || lastCloudRevisionId;
+    function pickFields(source, fields) {
+        const result = {};
+        fields.forEach((field) => {
+            if (Object.prototype.hasOwnProperty.call(source || {}, field)) result[field] = cloneData(source[field]);
+        });
+        return result;
+    }
 
-        packages = packages.map(p => {
-            if (p.partPrice3 === undefined) p.partPrice3 = p.partPrice1 || 0;
-            if (p.partnerPrice !== undefined) {
-                p.partPrice1 = p.partnerPrice;
-                p.partPrice2 = p.partnerPrice;
-                p.partPrice3 = p.partnerPrice;
-                delete p.partnerPrice;
+    const TEAM_PUBLIC_FIELDS = [
+        'customerName', 'phone', 'installDate', 'installAddress', 'mapLink', 'team',
+        'packageName', 'pkgCustomerPrice', 'handoverBaseExtraDetail',
+        'handoverBaseExtraCustomerPrice', 'createdAt', 'adminUpdatedAt'
+    ];
+    const TEAM_HANDOVER_FIELDS = [
+        ...HANDOVER_JOB_FIELDS,
+        'handoverUpdatedAt'
+    ];
+
+    function toTeamPublic(job) {
+        const publicData = pickFields(job, TEAM_PUBLIC_FIELDS);
+        publicData.id = Number(job.id);
+        publicData.team = resolveTeam(job);
+        publicData.isCompleted = Boolean(job.isCompleted);
+        publicData.statusUpdatedAt = job.statusUpdatedAt || '';
+        return publicData;
+    }
+
+    function toTeamHandover(job) {
+        const handover = pickFields(job, TEAM_HANDOVER_FIELDS);
+        handover.siteExtras = Array.isArray(job.siteExtras) ? cloneData(job.siteExtras) : [];
+        return handover;
+    }
+
+    function toTeamStatus(job) {
+        return {
+            isCompleted: Boolean(job.isCompleted),
+            statusUpdatedAt: job.statusUpdatedAt || ''
+        };
+    }
+
+    function flattenTeamRecord(team, id, record) {
+        const publicData = record?.public || {};
+        const handover = record?.handover || {};
+        const status = record?.status || {};
+        const job = {
+            ...cloneData(publicData),
+            ...cloneData(handover),
+            ...cloneData(status),
+            id: Number(publicData.id || id),
+            team: publicData.team || team,
+            pkgPartnerPrice: 0,
+            handoverBaseExtraPartnerPrice: 0
+        };
+        return rebuildJobExtraTotals(normalizeJobTimestamps(job));
+    }
+
+    function mergeAdminJobWithTeam(adminJob, teamRecord) {
+        const result = rebuildJobExtraTotals(normalizeJobTimestamps(cloneData(adminJob || {})));
+        if (!teamRecord) return result;
+        const handover = teamRecord.handover || {};
+        const status = teamRecord.status || {};
+        if (timestampValue(handover.handoverUpdatedAt) >= timestampValue(result.handoverUpdatedAt)) {
+            copyJobFields(result, handover, HANDOVER_JOB_FIELDS);
+            result.handoverUpdatedAt = handover.handoverUpdatedAt || result.handoverUpdatedAt || '';
+        }
+        if (timestampValue(status.statusUpdatedAt) >= timestampValue(result.statusUpdatedAt)) {
+            result.isCompleted = Boolean(status.isCompleted);
+            result.statusUpdatedAt = status.statusUpdatedAt || result.statusUpdatedAt || '';
+        }
+        result.updatedAt = [result.adminUpdatedAt, result.handoverUpdatedAt, result.statusUpdatedAt]
+            .sort((a, b) => timestampValue(b) - timestampValue(a))[0] || result.updatedAt || '';
+        return rebuildJobExtraTotals(result);
+    }
+
+    function buildTeamSettings(team) {
+        const ownFiber = team === 'team3' ? fiberSettings.team3 : (team === 'team2' ? fiberSettings.team2 : fiberSettings.team1);
+        return {
+            packages: packages.map((item) => {
+                const own = team === 'team3' ? item.partPrice3 : (team === 'team2' ? item.partPrice2 : item.partPrice1);
+                return { ...cloneData(item), partPrice1: own || 0, partPrice2: own || 0, partPrice3: own || 0 };
+            }),
+            extras: extras.map((item) => {
+                const own = team === 'team3' ? item.partPrice3 : (team === 'team2' ? item.partPrice2 : item.partPrice1);
+                return { ...cloneData(item), partPrice1: own || 0, partPrice2: own || 0, partPrice3: own || 0 };
+            }),
+            fiberSettings: {
+                custPrice: Number(fiberSettings.custPrice) || 0,
+                team1: Number(ownFiber) || 0,
+                team2: Number(ownFiber) || 0,
+                team3: Number(ownFiber) || 0
             }
-            return p;
-        });
-        extras = extras.map(e => {
-            if (e.partPrice3 === undefined) e.partPrice3 = e.partPrice1 || 0;
-            return e;
-        });
+        };
+    }
 
+    function settingsSnapshotForRole() {
+        return JSON.stringify({ packages, extras, fiberSettings });
+    }
+
+    function rebuildJobsFromFirebase(refreshViews = true) {
+        const before = getRoleJobsFingerprint(jobs);
+        let rebuilt = [];
+        if (currentUserRole === 'admin') {
+            Object.entries(firebaseAdminJobsRaw || {}).forEach(([id, rawJob]) => {
+                if (!rawJob) return;
+                const team = resolveTeam(rawJob);
+                const teamRecord = firebaseTeamJobsRaw?.[team]?.[String(id)] || null;
+                rebuilt.push(mergeAdminJobWithTeam({ ...rawJob, id: Number(rawJob.id || id) }, teamRecord));
+            });
+        } else {
+            const teamRecords = firebaseTeamJobsRaw?.[currentUserRole] || {};
+            rebuilt = Object.entries(teamRecords)
+                .filter(([, record]) => Boolean(record))
+                .map(([id, record]) => flattenTeamRecord(currentUserRole, id, record));
+        }
+
+        const handoverOpen = document.getElementById('handoverOverlay')?.style.display === 'block';
+        if (handoverOpen && handoverDirty) {
+            const activeId = Number(document.getElementById('ho-job-id')?.value);
+            const localActive = jobs.find(item => Number(item.id) === activeId);
+            if (localActive) {
+                rebuilt = rebuilt.map(item => Number(item.id) === activeId ? localActive : item);
+            }
+        }
+
+        jobs = cleanBadJobs(rebuilt).map(item => rebuildJobExtraTotals(normalizeJobTimestamps(item)));
+        firebaseBaselineJobs = new Map(jobs.map(item => [String(item.id), cloneData(item)]));
+        storeLocalSnapshot();
+        if (refreshViews) {
+            updateAllViews();
+        }
+        return before !== getRoleJobsFingerprint(jobs);
+    }
+
+    function applyFirebaseSettings(raw, refreshViews = true) {
+        if (!raw || typeof raw !== 'object') return;
+        packages = normalizeList(raw.packages).map(item => ({ ...item }));
+        extras = normalizeList(raw.extras).map(item => ({ ...item }));
+        fiberSettings = raw.fiberSettings || fiberSettings;
+        firebaseSettingsBaseline = settingsSnapshotForRole();
         storeLocalSnapshot();
         if (refreshViews) {
             renderPackages();
@@ -627,58 +784,131 @@
             updateExtraDropdown();
             updateAllViews();
         }
-        return beforeFingerprint !== getRoleJobsFingerprint(jobs);
     }
 
-    async function refreshFromCloud(options = {}) {
-        const { silent = true } = options;
-        if (!currentUserRole || cloudRefreshBusy || cloudSaveInProgress) return false;
-        if (document.hidden) return false;
-
-        // ถ้าช่างกำลังกรอกใบส่งมอบอยู่ ให้ไม่รบกวนหน้าที่กำลังทำงาน
-        const handoverOpen = document.getElementById('handoverOverlay')?.style.display === 'block';
-        if (handoverOpen && typeof handoverDirty !== 'undefined' && handoverDirty) return false;
-
-        cloudRefreshBusy = true;
-        const button = document.getElementById('cloudRefreshBtn');
-        if (button && !silent) {
-            button.disabled = true;
-            button.textContent = '⏳ กำลังอัปเดต';
-        }
-        try {
-            const cloudData = await fetchCloudData(5500);
-            const changed = applyCloudData(cloudData, true);
-            if (!silent) {
-                showSaveNotice(changed ? '✅ ดึงข้อมูลล่าสุดแล้ว' : '✅ ข้อมูลเป็นรายการล่าสุดอยู่แล้ว');
-            } else if (changed && currentUserRole !== 'admin') {
-                showSaveNotice('🔄 รายการงานอัปเดตจากแอดมินแล้ว');
-            }
-            return changed;
-        } catch (error) {
-            console.warn('Cloud refresh skipped:', error);
-            if (!silent) showSaveNotice('❌ ดึงข้อมูลล่าสุดไม่สำเร็จ กรุณาลองอีกครั้ง', false);
-            return false;
-        } finally {
-            cloudRefreshBusy = false;
-            if (button) {
-                button.disabled = false;
-                button.textContent = '↻ อัปเดต';
-            }
-        }
+    function setFirebaseStatus(text, type = 'secondary') {
+        const badge = document.getElementById('firebaseStatusBadge');
+        if (!badge) return;
+        badge.className = `badge bg-${type}`;
+        badge.style.fontSize = '0.72rem';
+        badge.textContent = text;
     }
 
-    function startCloudAutoRefresh() {
-        if (cloudRefreshTimer) clearInterval(cloudRefreshTimer);
-        const intervalMs = currentUserRole === 'admin' ? 12000 : 6000;
-        cloudRefreshTimer = setInterval(() => refreshFromCloud({ silent: true }), intervalMs);
+    function clearFirebaseListeners() {
+        firebaseListeners.forEach(({ ref, event, callback }) => ref.off(event, callback));
+        firebaseListeners = [];
+    }
 
-        if (!window.__evCloudRefreshEventsBound) {
-            window.__evCloudRefreshEventsBound = true;
-            window.addEventListener('focus', () => refreshFromCloud({ silent: true }));
-            document.addEventListener('visibilitychange', () => {
-                if (!document.hidden) refreshFromCloud({ silent: true });
+    function addFirebaseListener(ref, event, callback) {
+        ref.on(event, callback, (error) => {
+            console.error('Firebase listener error', error);
+            setFirebaseStatus('● เชื่อมต่อไม่ได้', 'danger');
+        });
+        firebaseListeners.push({ ref, event, callback });
+    }
+
+    async function loadInitialFirebaseData(allowMigration = true) {
+        const settingsPath = currentUserRole === 'admin'
+            ? `${FIREBASE_ROOT}/settingsAdmin`
+            : `${FIREBASE_ROOT}/teamSettings/${currentUserRole}`;
+        const settingsSnap = await firebaseDb.ref(settingsPath).once('value');
+        if (settingsSnap.exists()) applyFirebaseSettings(settingsSnap.val(), false);
+
+        if (currentUserRole === 'admin') {
+            const [adminSnap, ...teamSnaps] = await Promise.all([
+                firebaseDb.ref(`${FIREBASE_ROOT}/adminJobs`).once('value'),
+                ...TEAM_KEYS.map(team => firebaseDb.ref(`${FIREBASE_ROOT}/teamJobs/${team}`).once('value'))
+            ]);
+            firebaseAdminJobsRaw = adminSnap.val() || {};
+            TEAM_KEYS.forEach((team, index) => {
+                firebaseTeamJobsRaw[team] = teamSnaps[index].val() || {};
+            });
+
+            const hasCloudData = Object.keys(firebaseAdminJobsRaw).length > 0 || settingsSnap.exists();
+            const hasLocalData = jobs.length > 0 || packages.length > 0 || extras.length > 0;
+            if (allowMigration && !hasCloudData && hasLocalData) {
+                const confirmed = confirm('พบข้อมูลงานเดิมในเครื่องนี้\n\nต้องการย้ายงานเดิม แพ็กเกจ ใบส่งมอบ และลายเซ็นขึ้น Firebase ตอนนี้หรือไม่?');
+                if (confirmed) {
+                    await migrateLocalDataToFirebase();
+                    return await loadInitialFirebaseData(false);
+                }
+            }
+        } else {
+            const teamSnap = await firebaseDb.ref(`${FIREBASE_ROOT}/teamJobs/${currentUserRole}`).once('value');
+            firebaseTeamJobsRaw[currentUserRole] = teamSnap.val() || {};
+        }
+
+        rebuildJobsFromFirebase(false);
+        firebaseSettingsBaseline = settingsSnapshotForRole();
+        firebaseInitialLoadDone = true;
+    }
+
+    function attachFirebaseListeners() {
+        clearFirebaseListeners();
+        const connectedRef = firebaseDb.ref('.info/connected');
+        addFirebaseListener(connectedRef, 'value', (snap) => {
+            setFirebaseStatus(snap.val() === true ? '● เรียลไทม์แล้ว' : '● ออฟไลน์', snap.val() === true ? 'success' : 'warning');
+        });
+
+        const settingsPath = currentUserRole === 'admin'
+            ? `${FIREBASE_ROOT}/settingsAdmin`
+            : `${FIREBASE_ROOT}/teamSettings/${currentUserRole}`;
+        addFirebaseListener(firebaseDb.ref(settingsPath), 'value', (snap) => {
+            if (snap.exists()) applyFirebaseSettings(snap.val(), true);
+        });
+
+        if (currentUserRole === 'admin') {
+            addFirebaseListener(firebaseDb.ref(`${FIREBASE_ROOT}/adminJobs`), 'value', (snap) => {
+                firebaseAdminJobsRaw = snap.val() || {};
+                rebuildJobsFromFirebase(true);
+            });
+            TEAM_KEYS.forEach((team) => {
+                addFirebaseListener(firebaseDb.ref(`${FIREBASE_ROOT}/teamJobs/${team}`), 'value', (snap) => {
+                    firebaseTeamJobsRaw[team] = snap.val() || {};
+                    const changed = rebuildJobsFromFirebase(true);
+                    if (changed) showSaveNotice('🔄 ข้อมูลจากทีมช่างอัปเดตแล้ว');
+                });
+            });
+        } else {
+            addFirebaseListener(firebaseDb.ref(`${FIREBASE_ROOT}/teamJobs/${currentUserRole}`), 'value', (snap) => {
+                firebaseTeamJobsRaw[currentUserRole] = snap.val() || {};
+                const changed = rebuildJobsFromFirebase(true);
+                if (changed) showSaveNotice('🔄 แอดมินอัปเดตรายการงานแล้ว');
             });
         }
+    }
+
+    async function migrateLocalDataToFirebase() {
+        if (currentUserRole !== 'admin') throw new Error('เฉพาะแอดมินเท่านั้นที่ย้ายข้อมูลได้');
+        setFirebaseStatus('● กำลังย้ายข้อมูล', 'warning');
+        const updates = {};
+        updates[`${FIREBASE_ROOT}/settingsAdmin`] = { packages, extras, fiberSettings };
+        ['team1', 'team2', 'team3'].forEach((team) => {
+            updates[`${FIREBASE_ROOT}/teamSettings/${team}`] = buildTeamSettings(team);
+        });
+        jobs.forEach((job) => {
+            const id = String(job.id);
+            const team = resolveTeam(job);
+            updates[`${FIREBASE_ROOT}/adminJobs/${id}`] = cloneData(job);
+            updates[`${FIREBASE_ROOT}/teamJobs/${team}/${id}/public`] = toTeamPublic(job);
+            updates[`${FIREBASE_ROOT}/teamJobs/${team}/${id}/handover`] = toTeamHandover(job);
+            updates[`${FIREBASE_ROOT}/teamJobs/${team}/${id}/status`] = toTeamStatus(job);
+        });
+        await firebaseDb.ref().update(updates);
+        showSaveNotice(`✅ ย้ายข้อมูลเดิมขึ้น Firebase แล้ว ${jobs.length.toLocaleString()} งาน`);
+        setFirebaseStatus('● เรียลไทม์แล้ว', 'success');
+    }
+
+    function jobAdminFingerprint(job) {
+        return JSON.stringify(pickFields(job, [...ADMIN_JOB_FIELDS, 'id', 'createdAt', 'adminUpdatedAt']));
+    }
+
+    function jobHandoverFingerprint(job) {
+        return JSON.stringify({ ...toTeamHandover(job), siteExtras: Array.isArray(job.siteExtras) ? job.siteExtras : [] });
+    }
+
+    function jobStatusFingerprint(job) {
+        return JSON.stringify(toTeamStatus(job));
     }
 
     function storeLocalSnapshot() {
@@ -690,126 +920,122 @@
         localStorage.setItem('ev_deleted_job_ids', JSON.stringify(deletedJobIds));
     }
 
-    async function fetchWithTimeout(url, options = {}, timeoutMs = 7000) {
-        const controller = new AbortController();
-        const timer = setTimeout(() => controller.abort(), timeoutMs);
-        try {
-            return await fetch(url, { ...options, signal: controller.signal });
-        } finally {
-            clearTimeout(timer);
-        }
-    }
-
-    async function fetchCloudData(timeoutMs = 7000) {
-        const response = await fetchWithTimeout(
-            `https://api.npoint.io/${BIN_ID}?t=${Date.now()}`,
-            { cache: 'no-store' },
-            timeoutMs
-        );
-        if (!response.ok) throw new Error(`โหลด Cloud ไม่สำเร็จ (${response.status})`);
-        return await response.json();
-    }
-
     function saveData() {
-        const localSnapshot = {
-            packages: cloneData(packages),
-            extras: cloneData(extras),
-            jobs: cloneData(jobs),
-            fiberSettings: cloneData(fiberSettings),
-            deletedJobIds: cloneData(deletedJobIds)
-        };
-
-        // เก็บในเครื่องทันที เพื่อไม่ให้ข้อมูลที่เพิ่งแก้หายระหว่างรออินเทอร์เน็ต
+        const localJobs = cloneData(jobs);
+        const localPackages = cloneData(packages);
+        const localExtras = cloneData(extras);
+        const localFiber = cloneData(fiberSettings);
         storeLocalSnapshot();
 
         cloudSaveQueue = cloudSaveQueue
             .catch(() => false)
             .then(async () => {
+                if (!firebaseAuth.currentUser || !currentUserRole) return false;
                 cloudSaveInProgress = true;
+                setFirebaseStatus('● กำลังบันทึก', 'warning');
                 try {
-                    // ดึงข้อมูลล่าสุดเพื่อรวมเป็นรายงานก่อนบันทึก
-                    // หากโหลดไม่ทันภายในเวลาที่กำหนด ให้ใช้สำเนาในเครื่องแทน ไม่ปล่อยให้ปุ่มค้าง
-                    const cloudData = await fetchCloudData(3500).catch((error) => {
-                        console.warn('Cloud pre-load skipped:', error);
-                        return {};
-                    });
-                    const cloudDeleted = cloudData?._meta?.deletedJobs || {};
-                    const mergedDeleted = mergeDeletedJobs(cloudDeleted, localSnapshot.deletedJobIds);
-                    const mergedJobs = mergeJobsWithCloudAuthority(
-                        cloudData.jobs || [],
-                        localSnapshot.jobs,
-                        mergedDeleted,
-                        currentUserRole !== 'admin'
-                    );
+                    const updates = {};
+                    const currentMap = new Map(localJobs.map(job => [String(job.id), rebuildJobExtraTotals(normalizeJobTimestamps(job))]));
 
-                    const mergedPackages = currentUserRole === 'admin'
-                        ? localSnapshot.packages
-                        : (cloudData.packages || localSnapshot.packages);
-                    const mergedExtras = currentUserRole === 'admin'
-                        ? localSnapshot.extras
-                        : (cloudData.extras || localSnapshot.extras);
-                    const mergedFiberSettings = currentUserRole === 'admin'
-                        ? localSnapshot.fiberSettings
-                        : (cloudData.fiberSettings || localSnapshot.fiberSettings);
-
-                    const revisionId = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
-                    const payloadData = {
-                        packages: mergedPackages,
-                        extras: mergedExtras,
-                        jobs: mergedJobs,
-                        fiberSettings: mergedFiberSettings,
-                        _meta: {
-                            ...(cloudData._meta || {}),
-                            revisionId,
-                            savedAt: new Date().toISOString(),
-                            savedByRole: currentUserRole || 'unknown',
-                            deletedJobs: mergedDeleted
+                    if (currentUserRole === 'admin') {
+                        const nextSettings = JSON.stringify({ packages: localPackages, extras: localExtras, fiberSettings: localFiber });
+                        if (nextSettings !== firebaseSettingsBaseline) {
+                            updates[`${FIREBASE_ROOT}/settingsAdmin`] = { packages: localPackages, extras: localExtras, fiberSettings: localFiber };
+                            ['team1', 'team2', 'team3'].forEach((team) => {
+                                updates[`${FIREBASE_ROOT}/teamSettings/${team}`] = buildTeamSettings(team);
+                            });
                         }
-                    };
 
-                    // POST สำเร็จถือว่าบันทึกสำเร็จ ไม่อ่านกลับทันที เพราะ npoint อาจตอบข้อมูลเก่าจากแคชชั่วคราว
-                    const response = await fetchWithTimeout(
-                        `https://api.npoint.io/${BIN_ID}`,
-                        {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payloadData),
-                            cache: 'no-store'
-                        },
-                        7000
-                    );
-                    if (!response.ok) throw new Error(`Cloud ตอบกลับ ${response.status}`);
+                        currentMap.forEach((job, id) => {
+                            const previous = firebaseBaselineJobs.get(id);
+                            const team = resolveTeam(job);
+                            const oldTeam = previous ? resolveTeam(previous) : '';
+                            const isNew = !previous;
+                            const adminChanged = isNew || jobAdminFingerprint(job) !== jobAdminFingerprint(previous);
+                            const handoverChanged = isNew || jobHandoverFingerprint(job) !== jobHandoverFingerprint(previous);
+                            const statusChanged = isNew || jobStatusFingerprint(job) !== jobStatusFingerprint(previous);
+                            const teamChanged = Boolean(previous && oldTeam !== team);
 
-                    packages = mergedPackages;
-                    extras = mergedExtras;
-                    jobs = cleanBadJobs(mergedJobs);
-                    fiberSettings = mergedFiberSettings;
-                    deletedJobIds = mergedDeleted;
-                    storeLocalSnapshot();
-
-                    // ตรวจซ้ำภายหลังแบบเบื้องหลังเท่านั้น ไม่ค้างปุ่มและไม่แจ้งเตือนผิด
-                    setTimeout(async () => {
-                        try {
-                            const checked = await fetchCloudData(5000);
-                            if (checked?._meta?.revisionId !== revisionId) {
-                                console.warn('Cloud verification delayed; POST already accepted.');
+                            if (adminChanged || handoverChanged || statusChanged || teamChanged) {
+                                updates[`${FIREBASE_ROOT}/adminJobs/${id}`] = cloneData(job);
                             }
-                        } catch (error) {
-                            console.warn('Background Cloud verification skipped:', error);
-                        }
-                    }, 1800);
+                            if (teamChanged) updates[`${FIREBASE_ROOT}/teamJobs/${oldTeam}/${id}`] = null;
+                            if (adminChanged || teamChanged || isNew) updates[`${FIREBASE_ROOT}/teamJobs/${team}/${id}/public`] = toTeamPublic(job);
+                            if (handoverChanged || teamChanged || isNew) updates[`${FIREBASE_ROOT}/teamJobs/${team}/${id}/handover`] = toTeamHandover(job);
+                            if (statusChanged || teamChanged || isNew) updates[`${FIREBASE_ROOT}/teamJobs/${team}/${id}/status`] = toTeamStatus(job);
+                        });
 
+                        firebaseBaselineJobs.forEach((previous, id) => {
+                            if (currentMap.has(id)) return;
+                            updates[`${FIREBASE_ROOT}/adminJobs/${id}`] = null;
+                            TEAM_KEYS.forEach(team => updates[`${FIREBASE_ROOT}/teamJobs/${team}/${id}`] = null);
+                        });
+                    } else {
+                        currentMap.forEach((job, id) => {
+                            if (resolveTeam(job) !== currentUserRole) return;
+                            const previous = firebaseBaselineJobs.get(id);
+                            if (!previous || jobHandoverFingerprint(job) !== jobHandoverFingerprint(previous)) {
+                                updates[`${FIREBASE_ROOT}/teamJobs/${currentUserRole}/${id}/handover`] = toTeamHandover(job);
+                            }
+                        });
+                    }
+
+                    if (Object.keys(updates).length > 0) {
+                        await firebaseDb.ref().update(updates);
+                    }
+                    firebaseBaselineJobs = new Map(localJobs.map(job => [String(job.id), cloneData(job)]));
+                    firebaseSettingsBaseline = JSON.stringify({ packages: localPackages, extras: localExtras, fiberSettings: localFiber });
+                    setFirebaseStatus('● บันทึกแล้ว', 'success');
                     return true;
                 } catch (error) {
-                    console.error('Cloud Save Error', error);
+                    console.error('Firebase Save Error', error);
+                    setFirebaseStatus('● บันทึกไม่สำเร็จ', 'danger');
                     return false;
                 } finally {
                     cloudSaveInProgress = false;
                 }
             });
-
         return cloudSaveQueue;
     }
+
+    async function refreshFromCloud(options = {}) {
+        const { silent = true } = options;
+        if (!currentUserRole || cloudRefreshBusy) return false;
+        cloudRefreshBusy = true;
+        const button = document.getElementById('cloudRefreshBtn');
+        if (button && !silent) {
+            button.disabled = true;
+            button.textContent = '⏳ กำลังอัปเดต';
+        }
+        try {
+            const before = getRoleJobsFingerprint(jobs);
+            await loadInitialFirebaseData(false);
+            const changed = before !== getRoleJobsFingerprint(jobs);
+            renderPackages();
+            renderExtras();
+            renderFiberSettings();
+            updatePackageDropdown();
+            updateExtraDropdown();
+            updateAllViews();
+            if (!silent) showSaveNotice(changed ? '✅ ดึงข้อมูลล่าสุดแล้ว' : '✅ ข้อมูลเป็นรายการล่าสุดอยู่แล้ว');
+            return changed;
+        } catch (error) {
+            console.error('Firebase refresh error', error);
+            if (!silent) showSaveNotice('❌ ดึงข้อมูลล่าสุดไม่สำเร็จ', false);
+            return false;
+        } finally {
+            cloudRefreshBusy = false;
+            if (button) {
+                button.disabled = false;
+                button.textContent = '↻ อัปเดต';
+            }
+        }
+    }
+
+    function startCloudAutoRefresh() {
+        attachFirebaseListeners();
+    }
+
     function showSaveNotice(message, isSuccess = true) {
         let notice = document.getElementById('appSaveNotice');
         if (!notice) {
@@ -825,21 +1051,25 @@
         showSaveNotice.timer = setTimeout(() => { notice.style.opacity = '0'; }, 2600);
     }
 
-    // --- ระบบ Login & Init ---
+    // --- ระบบ Login & Init (Firebase Authentication + PIN) ---
     const LOGIN_PIN_LENGTH = 6;
     let loginPinValue = '';
     let isLoginPinVisible = true;
+    let loginBusy = false;
 
-    function getLoginRole(pwd) {
-        const loginCodes = {
-            '909090': 'admin',
-            'admin123': 'admin',
-            '223344': 'team1',
-            '222222': 'team2',
-            'tech2': 'team2',
-            '887766': 'team3'
-        };
-        return loginCodes[pwd] || '';
+    async function sha256(value) {
+        const data = new TextEncoder().encode(String(value));
+        const hash = await crypto.subtle.digest('SHA-256', data);
+        return Array.from(new Uint8Array(hash)).map(byte => byte.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function getLoginRole(pwd) {
+        if (!/^\d{6}$/.test(String(pwd || ''))) return '';
+        return PIN_HASH_ROLES[await sha256(pwd)] || '';
+    }
+
+    function roleFromFirebaseUser(user) {
+        return EMAIL_ROLES[String(user?.email || '').toLowerCase()] || '';
     }
 
     function renderLoginPin(message, isError) {
@@ -860,8 +1090,14 @@
         }
     }
 
+    function setLoginBusy(isBusy, message = '') {
+        loginBusy = Boolean(isBusy);
+        document.querySelectorAll('#pinKeypad button, .legacy-login-panel button').forEach(button => button.disabled = loginBusy);
+        if (message) renderLoginPin(message, false);
+    }
+
     function appendLoginDigit(digit) {
-        if (!/^\d$/.test(String(digit)) || loginPinValue.length >= LOGIN_PIN_LENGTH) return;
+        if (loginBusy || !/^\d$/.test(String(digit)) || loginPinValue.length >= LOGIN_PIN_LENGTH) return;
         loginPinValue += String(digit);
         renderLoginPin();
         if (navigator.vibrate) navigator.vibrate(12);
@@ -871,7 +1107,7 @@
     }
 
     function deleteLoginDigit() {
-        if (!loginPinValue.length) return;
+        if (loginBusy || !loginPinValue.length) return;
         loginPinValue = loginPinValue.slice(0, -1);
         renderLoginPin();
     }
@@ -888,7 +1124,7 @@
         renderLoginPin();
     }
 
-    function showLoginError() {
+    function showLoginError(message = 'รหัสไม่ถูกต้อง กรุณาลองใหม่') {
         const card = document.getElementById('loginCard');
         if (card) {
             card.classList.remove('shake');
@@ -896,21 +1132,37 @@
             card.classList.add('shake');
         }
         if (navigator.vibrate) navigator.vibrate([70, 45, 70]);
-        clearLoginPin('รหัสไม่ถูกต้อง กรุณาลองใหม่', true);
+        clearLoginPin(message, true);
         const legacy = document.getElementById('loginPassword');
-        if (legacy) {
-            legacy.value = '';
-            if (document.getElementById('legacyLoginPanel')?.classList.contains('open')) legacy.focus();
-        }
+        if (legacy) legacy.value = '';
     }
 
-    function checkLogin(passwordOverride) {
+    async function checkLogin(passwordOverride) {
+        if (loginBusy) return;
         const legacyInput = document.getElementById('loginPassword');
         const pwd = String(passwordOverride ?? legacyInput?.value ?? loginPinValue).trim();
-        const role = getLoginRole(pwd);
-        if (!role) return showLoginError();
-        sessionStorage.setItem('ev_role', role);
-        initApp();
+        setLoginBusy(true, 'กำลังตรวจสอบ PIN และเชื่อม Firebase...');
+        try {
+            const role = await getLoginRole(pwd);
+            if (!role) throw new Error('INVALID_PIN');
+            await firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+            await firebaseAuth.signInWithEmailAndPassword(ROLE_EMAILS[role], pwd);
+            const signedRole = roleFromFirebaseUser(firebaseAuth.currentUser);
+            if (!signedRole || signedRole !== role) {
+                await firebaseAuth.signOut();
+                throw new Error('ROLE_MISMATCH');
+            }
+            sessionStorage.setItem('ev_role', signedRole);
+            clearLoginPin('เข้าสู่ระบบสำเร็จ', false);
+        } catch (error) {
+            console.error('Firebase login error', error);
+            const message = error?.code === 'auth/too-many-requests'
+                ? 'กดรหัสผิดหลายครั้ง กรุณารอสักครู่แล้วลองใหม่'
+                : 'PIN ไม่ถูกต้อง หรือบัญชีทีมนี้ยังไม่ได้สร้างใน Firebase';
+            showLoginError(message);
+        } finally {
+            setLoginBusy(false);
+        }
     }
 
     function toggleLegacyLogin() {
@@ -937,25 +1189,44 @@
         });
     }
 
-    function logout() { if(confirm("แน่ใจหรือไม่ว่าต้องการออกจากระบบ?")) { sessionStorage.removeItem('ev_role'); location.reload(); } }    function resolveTeam(job) { if (job.team) return job.team; if (job.installDate && job.installDate.substring(0, 10) < '2026-06-18') return 'team_old'; return 'team1'; }        function updateAllViews() {         renderCalendar();         renderJobs();         if(currentUserRole === 'admin') renderDetailData();     }
-    async function initApp() {
-        currentUserRole = sessionStorage.getItem('ev_role');
-        if(!currentUserRole) return;
+    async function logout() {
+        if (!confirm('แน่ใจหรือไม่ว่าต้องการออกจากระบบ?')) return;
+        clearFirebaseListeners();
+        sessionStorage.removeItem('ev_role');
+        await firebaseAuth.signOut().catch(() => {});
+        location.reload();
+    }
 
-        // ดึงข้อมูล Cloud เป็นข้อมูลหลักก่อนเปิดหน้ารายการงาน
+    function resolveTeam(job) { if (job.team) return job.team; if (job.installDate && job.installDate.substring(0, 10) < '2026-06-18') return 'team_old'; return 'team1'; }
+    function updateAllViews() { renderCalendar(); renderJobs(); if(currentUserRole === 'admin') renderDetailData(); }
+
+    async function initApp() {
+        const user = firebaseAuth.currentUser;
+        const role = roleFromFirebaseUser(user);
+        if (!user || !role) return;
+        currentUserRole = role;
+        sessionStorage.setItem('ev_role', role);
+        if (firebaseAppInitialized) return;
+        firebaseAppInitialized = true;
+        setFirebaseStatus('● กำลังโหลดข้อมูล', 'warning');
+
         try {
-            const cloudData = await fetchCloudData();
-            applyCloudData(cloudData, false);
-        } catch (e) {
-            console.log('โหลด Cloud ไม่สำเร็จ ใช้ข้อมูลจากเครื่องแทน', e);
+            await loadInitialFirebaseData(true);
+        } catch (error) {
+            firebaseAppInitialized = false;
+            console.error('Firebase initial load failed', error);
+            showLoginError('เข้าสู่ระบบได้ แต่โหลดฐานข้อมูลไม่ได้ ตรวจ Rules หรืออินเทอร์เน็ต');
+            await firebaseAuth.signOut().catch(() => {});
+            return;
         }
 
         document.getElementById('loginOverlay').style.display = 'none';
         document.getElementById('appContent').style.display = 'block';
         if(currentUserRole !== 'admin') {
             const style = document.createElement('style');
+            style.id = 'technicianOnlyStyle';
             style.innerHTML = `.admin-only { display: none !important; }`;
-            document.head.appendChild(style);
+            if (!document.getElementById(style.id)) document.head.appendChild(style);
             document.getElementById('techWarning').classList.remove('d-none');
             const badge = document.getElementById('techTeamBadge');
             badge.classList.remove('d-none');
@@ -968,7 +1239,7 @@
                 badge.style.backgroundColor = '#fd7e14';
                 badge.style.color = 'white';
             } else if(currentUserRole === 'team2') {
-                badge.innerText = '🟡 ทีม 2';
+                badge.innerText = '🟡 ทีมช่างเอ';
                 badge.className = 'badge bg-warning text-dark';
             }
         }
@@ -982,11 +1253,21 @@
         updateAllViews();
         initSignaturePad();
         startCloudAutoRefresh();
+        setFirebaseStatus('● เรียลไทม์แล้ว', 'success');
     }
 
     window.onload = function() {
         setupLoginControls();
-        if(sessionStorage.getItem('ev_role')) initApp();
+        firebaseAuth.onAuthStateChanged((user) => {
+            if (user) {
+                initApp();
+            } else {
+                firebaseAppInitialized = false;
+                currentUserRole = '';
+                document.getElementById('loginOverlay').style.display = 'flex';
+                document.getElementById('appContent').style.display = 'none';
+            }
+        });
     };
     function cleanBadJobs(jobsArray) { return jobsArray.filter(j => !String(j.customerName || "").includes("<img") && !String(j.extraDetail || "").includes("<img")); }
     // --- ระบบ Sync ข้อมูล (กู้คืน) ---
@@ -1024,7 +1305,7 @@
         const sortedJobs = [...jobs].sort((a, b) => {            const timeA = (a.installDate||"") ? new Date(a.installDate).getTime() : 0;            const timeB = (b.installDate||"") ? new Date(b.installDate).getTime() : 0;            return timeB - timeA;         });
         sortedJobs.forEach(job => {            if(job.installDate) {                const jDate = new Date(job.installDate);                if(jDate.getFullYear() === tYear && jDate.getMonth() === tMonth) {                    const custPrice = (job.pkgCustomerPrice || 0) + (job.extraCustomerPrice || 0), partnerPrice = (job.pkgPartnerPrice || 0) + (job.extraPartnerPrice || 0), commission = custPrice - partnerPrice;                    sumCust += custPrice; sumPart += partnerPrice; sumComm += commission; jobCount++;                    const statusBadge = job.isCompleted ? '<span class="badge bg-white text-success border border-success">✅ เสร็จ</span>' : '<span class="badge bg-white text-primary border border-primary">⏳ รอ</span>';                    const headerBg = job.isCompleted ? 'bg-success' : 'bg-primary', cardBg = job.isCompleted ? 'bg-success-subtle bg-opacity-25' : 'bg-white';                    const borderCls = job.isCompleted ? 'border-success' : 'border-primary', nameCls = job.isCompleted ? 'text-muted text-decoration-line-through text-break' : 'text-dark text-break';                    const extraDisplay = job.extraDetail ? `<div class="text-danger mt-1 small text-break" style="font-size:0.75rem;">🛠️ <strong>เพิ่ม:</strong> ${escapeHandoverText(job.extraDetail)}</div>` : '';                    const addressDisplay = job.installAddress ? `<div class="text-secondary mt-1 small text-break" style="font-size:0.75rem;">🏠 <strong>จุดติดตั้ง:</strong> ${escapeHandoverText(job.installAddress)}</div>` : '';                                        const jobTeam = resolveTeam(job);                    let teamBadge = '';                    if(jobTeam === 'team3') teamBadge = '<span class="badge bg-white border me-1" style="color:#fd7e14; border-color:#fd7e14;">🟠 ช่างโบ้</span>';                    else if(jobTeam === 'team2') teamBadge = '<span class="badge bg-white text-warning border border-warning me-1">🟡 ทีม 2</span>';                    else if(jobTeam === 'team1') teamBadge = '<span class="badge bg-white text-primary border border-primary me-1">🔵 ช่างกราฟ</span>';                    else teamBadge = '<span class="badge bg-white text-secondary border border-secondary me-1">⚪ ช่างเก่า</span>';                                        container.innerHTML += `                        <div class="card mb-2 shadow-sm ${borderCls} overflow-hidden" style="border-width: 2px;">                            <div class="card-header ${headerBg} text-white d-flex justify-content-between align-items-center py-1 px-2">                                <span class="fw-bold" style="font-size:0.85rem;">📅 ${formatThaiDate(job.installDate)}</span> ${statusBadge}                            </div>                            <div class="card-body ${cardBg} p-2">                                <h6 class="fw-bold ${nameCls} mb-2 border-bottom pb-1">${teamBadge} ${job.customerName}</h6>                                <div class="bg-white p-1 border rounded mb-2 small shadow-sm" style="font-size:0.8rem;">                                    <div class="text-dark text-break">📦แพ็กเกจ <strong>แพ็ก:</strong> ${escapeHandoverText(job.packageName)}</div> ${addressDisplay} ${extraDisplay}                                </div>                                <div class="row text-center pt-1 border-top border-secondary-subtle">                                    <div class="col-4 border-end px-1"><div class="text-muted" style="font-size:0.65rem;">เก็บลูกค้า</div><div class="fw-bold text-danger" style="font-size:0.85rem;">${custPrice.toLocaleString()} ฿</div></div>                                    <div class="col-4 border-end px-1"><div class="text-muted" style="font-size:0.65rem;">ส่งช่าง(ทุน)</div><div class="fw-bold text-secondary" style="font-size:0.85rem;">${partnerPrice.toLocaleString()}</div></div>                                    <div class="col-4 px-1"><div class="text-muted" style="font-size:0.65rem;">คอมฯ</div><div class="fw-bold text-success" style="font-size:0.85rem;">${commission.toLocaleString()}</div></div>                                </div>                            </div>                        </div>`;                }            }        });        if(jobCount === 0) container.innerHTML = `<div class="text-center text-muted py-4"><h6>📭 ไม่มีงานในเดือนนี้</h6></div>`;        document.getElementById('detailCustSum').innerText = sumCust.toLocaleString() + ' ฿';        document.getElementById('detailPartSum').innerText = sumPart.toLocaleString() + ' ฿';        document.getElementById('detailCommSum').innerText = sumComm.toLocaleString() + ' ฿';    }
     // --- Admin Settings (Fiber, Package, Extra) ---
-    function renderFiberSettings() {        if(currentUserRole !== 'admin') return;        document.getElementById('setFiberCust').value = fiberSettings.custPrice;        document.getElementById('setFiberT1').value = fiberSettings.team1;        document.getElementById('setFiberT3').value = fiberSettings.team3;        document.getElementById('setFiberT2').value = fiberSettings.team2;        onTeamChange();    }    function saveFiberSettings() {        fiberSettings.custPrice = parseFloat(document.getElementById('setFiberCust').value) || 0;        fiberSettings.team1 = parseFloat(document.getElementById('setFiberT1').value) || 0;        fiberSettings.team3 = parseFloat(document.getElementById('setFiberT3').value) || 0;        fiberSettings.team2 = parseFloat(document.getElementById('setFiberT2').value) || 0;        localStorage.setItem('ev_fiber_settings', JSON.stringify(fiberSettings));        onTeamChange(); alert("บันทึกเรทสายไฟเบอร์เรียบร้อยแล้ว");    }    function onTeamChange() {        if(currentUserRole !== 'admin') return;        const team = document.getElementById('jobTeam').value;        const fiberLabel = document.getElementById('fiberLabel');        let unitCost = fiberSettings.team1;        if(team === 'team3') unitCost = fiberSettings.team3;        else if(team === 'team2') unitCost = fiberSettings.team2;        fiberLabel.innerHTML = `🔌 สายไฟเบอร์ 16 เกิน (ลูกค้า ${fiberSettings.custPrice} ฿ / ทุนช่าง ${unitCost} ฿)`;        calculateLiveSummary();    }
+    function renderFiberSettings() {        if(currentUserRole !== 'admin') return;        document.getElementById('setFiberCust').value = fiberSettings.custPrice;        document.getElementById('setFiberT1').value = fiberSettings.team1;        document.getElementById('setFiberT3').value = fiberSettings.team3;        document.getElementById('setFiberT2').value = fiberSettings.team2;        onTeamChange();    }    async function saveFiberSettings() {        fiberSettings.custPrice = parseFloat(document.getElementById('setFiberCust').value) || 0;        fiberSettings.team1 = parseFloat(document.getElementById('setFiberT1').value) || 0;        fiberSettings.team3 = parseFloat(document.getElementById('setFiberT3').value) || 0;        fiberSettings.team2 = parseFloat(document.getElementById('setFiberT2').value) || 0;        onTeamChange();        const ok = await saveData();        showSaveNotice(ok ? "✅ บันทึกเรทสายไฟขึ้น Firebase แล้ว" : "❌ บันทึกเรทสายไฟไม่สำเร็จ", ok);    }    function onTeamChange() {        if(currentUserRole !== 'admin') return;        const team = document.getElementById('jobTeam').value;        const fiberLabel = document.getElementById('fiberLabel');        let unitCost = fiberSettings.team1;        if(team === 'team3') unitCost = fiberSettings.team3;        else if(team === 'team2') unitCost = fiberSettings.team2;        fiberLabel.innerHTML = `🔌 สายไฟเบอร์ 16 เกิน (ลูกค้า ${fiberSettings.custPrice} ฿ / ทุนช่าง ${unitCost} ฿)`;        calculateLiveSummary();    }
     document.getElementById('packageForm').addEventListener('submit', function(e) {        e.preventDefault(); const id = document.getElementById('pkgId').value;        const name = document.getElementById('pkgName').value; const customerPrice = parseFloat(document.getElementById('pkgCustomerPrice').value);        const partPrice1 = parseFloat(document.getElementById('pkgPartPrice1').value); const partPrice2 = parseFloat(document.getElementById('pkgPartPrice2').value); const partPrice3 = parseFloat(document.getElementById('pkgPartPrice3').value);        if(id) { const index = packages.findIndex(p => p.id == id); packages[index] = { id: parseInt(id), name, customerPrice, partPrice1, partPrice2, partPrice3 }; document.getElementById('btnSavePkg').innerText = "บันทึกแพ็กเกจ"; document.getElementById('btnSavePkg').classList.replace('btn-warning', 'btn-secondary');        } else { packages.push({ id: Date.now(), name, customerPrice, partPrice1, partPrice2, partPrice3 }); }        e.target.reset(); document.getElementById('pkgId').value = ""; saveData(); renderPackages(); updatePackageDropdown(); calculateLiveSummary();    });    function editPackage(id) {        const pkg = packages.find(p => p.id === id);        if(pkg) {            document.getElementById('pkgId').value = pkg.id; document.getElementById('pkgName').value = pkg.name; document.getElementById('pkgCustomerPrice').value = pkg.customerPrice;            document.getElementById('pkgPartPrice1').value = pkg.partPrice1; document.getElementById('pkgPartPrice2').value = pkg.partPrice2; document.getElementById('pkgPartPrice3').value = pkg.partPrice3 || pkg.partPrice1;            document.getElementById('btnSavePkg').innerText = "บันทึกการแก้ไข"; document.getElementById('btnSavePkg').classList.replace('btn-secondary', 'btn-warning'); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });        }    }    function deletePackage(id) { packages = packages.filter(p => p.id !== id); saveData(); renderPackages(); updatePackageDropdown(); calculateLiveSummary(); }    function renderPackages() {        const tbody = document.getElementById('packageTableBody'); tbody.innerHTML = '';        packages.forEach(pkg => {            const comm1 = pkg.customerPrice - pkg.partPrice1; const comm2 = pkg.customerPrice - pkg.partPrice2; const comm3 = pkg.customerPrice - (pkg.partPrice3 || pkg.partPrice1);            tbody.innerHTML += `<tr><td class="align-middle text-break" style="font-size:12px; max-width:110px;">${pkg.name}</td>                <td class="small align-middle text-nowrap"><span class="text-primary fw-bold" style="font-size:0.75rem;">🔵 ${comm1.toLocaleString()}</span><br><span class="text-warning fw-bold" style="font-size:0.75rem;">🟡 ${comm2.toLocaleString()}</span><br><span class="fw-bold" style="font-size:0.75rem; color:#fd7e14;">🟠 ${comm3.toLocaleString()}</span></td>                <td class="text-nowrap align-middle text-center"><button onclick="editPackage(${pkg.id})" class="btn btn-sm btn-warning py-0 px-1">✏️</button> <button onclick="deletePackage(${pkg.id})" class="btn btn-sm btn-danger py-0 px-1">❌</button></td></tr>`;        });    }    function updatePackageDropdown() {        const select = document.getElementById('jobPackage'), currentValue = select.value; select.innerHTML = '<option value="">-- เลือกแพ็กเกจ --</option>';        packages.forEach(pkg => { select.innerHTML += `<option value="${pkg.id}">${pkg.name}</option>`; });        if(currentValue) { const found = packages.find(p => p.id == currentValue || p.name == currentValue); if(found) select.value = found.id; }    }
     document.getElementById('extraForm').addEventListener('submit', function(e) {        e.preventDefault(); const id = document.getElementById('extId').value; const name = document.getElementById('extName').value; const custPrice = parseFloat(document.getElementById('extCustPrice').value);        const partPrice1 = parseFloat(document.getElementById('extPartPrice1').value); const partPrice2 = parseFloat(document.getElementById('extPartPrice2').value); const partPrice3 = parseFloat(document.getElementById('extPartPrice3').value);        if(id) { const index = extras.findIndex(p => p.id == id); extras[index] = { id: parseInt(id), name, custPrice, partPrice1, partPrice2, partPrice3 }; document.getElementById('btnSaveExt').innerText = "บันทึกงานเสริม"; document.getElementById('btnSaveExt').classList.replace('btn-warning', 'btn-primary');        } else { extras.push({ id: Date.now(), name, custPrice, partPrice1, partPrice2, partPrice3 }); } e.target.reset(); document.getElementById('extId').value = ""; saveData(); renderExtras(); updateExtraDropdown();    });    function editExtra(id) {        const ext = extras.find(p => p.id === id);        if(ext) {            document.getElementById('extId').value = ext.id; document.getElementById('extName').value = ext.name; document.getElementById('extCustPrice').value = ext.custPrice; document.getElementById('extPartPrice1').value = ext.partPrice1;            document.getElementById('extPartPrice2').value = ext.partPrice2; document.getElementById('extPartPrice3').value = ext.partPrice3 || ext.partPrice1; document.getElementById('btnSaveExt').innerText = "บันทึกการแก้ไข"; document.getElementById('btnSaveExt').classList.replace('btn-primary', 'btn-warning');        }    }    function deleteExtra(id) { extras = extras.filter(p => p.id !== id); saveData(); renderExtras(); updateExtraDropdown(); }    function renderExtras() {        const tbody = document.getElementById('extraTableBody'); tbody.innerHTML = '';        extras.forEach(ext => {            tbody.innerHTML += `<tr><td class="align-middle text-start text-break" style="font-size:12px; max-width:120px;">${ext.name}</td>                <td class="text-primary align-middle fw-bold small text-nowrap">${ext.custPrice.toLocaleString()} ฿</td>                <td class="text-nowrap align-middle"><button onclick="editExtra(${ext.id})" class="btn btn-sm btn-warning py-0 px-1">✏️</button> <button onclick="deleteExtra(${ext.id})" class="btn btn-sm btn-danger py-0 px-1">❌</button></td></tr>`;        });    }    function updateExtraDropdown() {        const select = document.getElementById('jobExtraSelect'); select.innerHTML = '<option value="">-- เลือกรายการ --</option>'; extras.forEach(ext => { select.innerHTML += `<option value="${ext.id}">${ext.name}</option>`; });    }
     // --- Dynamic Calculation Logic (Add Jobs) ---
@@ -1151,7 +1432,7 @@
             if(!quickResult.finished) {
                 cloudSavePromise.then((success) => {
                     if(success) {
-                        showSaveNotice('✅ ส่งข้อมูลขึ้น Cloud สำเร็จแล้ว');
+                        showSaveNotice('✅ ส่งข้อมูลขึ้น Firebase สำเร็จแล้ว');
                     } else {
                         showSaveNotice('⚠️ ยังส่งให้เครื่องช่างไม่สำเร็จ กรุณากดบันทึกอีกครั้ง', false);
                     }
@@ -1196,7 +1477,7 @@
         sigCanvas.addEventListener('pointerdown', (event) => {            if(signatureLocked || !sigCtx) return;            isDrawing = true;            sigCanvas.setPointerCapture?.(event.pointerId);            const pos = getPos(event);            sigCtx.beginPath();            sigCtx.moveTo(pos.x, pos.y);            event.preventDefault();        });
         sigCanvas.addEventListener('pointermove', (event) => {            if(signatureLocked || !isDrawing || !sigCtx) return;            const pos = getPos(event);            sigCtx.lineTo(pos.x, pos.y);            sigCtx.stroke();            signatureHasInk = true;            handoverDirty = true;            setHandoverStatus('มีการแก้ไข กรุณากดบันทึกก่อนออก');            event.preventDefault();        });
         const stopDrawing = (event) => {            if(!isDrawing) return;            isDrawing = false;            sigCtx?.beginPath();            if(event?.pointerId !== undefined) sigCanvas.releasePointerCapture?.(event.pointerId);        };        sigCanvas.addEventListener('pointerup', stopDrawing);        sigCanvas.addEventListener('pointercancel', stopDrawing);        sigCanvas.addEventListener('pointerleave', stopDrawing);
-        handoverFieldIds.forEach((id) => {            const field = document.getElementById(id);            if(!field) return;            field.addEventListener('input', () => {                handoverDirty = true;                if(field.tagName === 'TEXTAREA') autoResizeTextarea(field);                setHandoverStatus('มีการแก้ไข กรุณากดบันทึกก่อนออก');            });        });    }
+        handoverFieldIds.forEach((id) => {            const field = document.getElementById(id);            if(!field) return;            field.addEventListener('input', () => {                handoverDirty = true;                if(field.tagName === 'TEXTAREA') autoResizeTextarea(field);                if(id === 'ho-date') updateHandoverWarrantyDates();                setHandoverStatus('มีการแก้ไข กรุณากดบันทึกก่อนออก');            });        });    }
     function clearSignature(markDirty = true) {        if(!sigCtx || !sigCanvas) return;        sigCtx.save();        sigCtx.setTransform(1, 0, 0, 1, 0, 0);        sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height);        sigCtx.restore();        sigCtx.beginPath();        signatureHasInk = false;        if(markDirty) {            handoverDirty = true;            setHandoverStatus('ลบลายเซ็นแล้ว กรุณาให้ลูกค้าเซ็นใหม่และกดบันทึก', true);        }    }
     function requestClearSignature() {        if(!signatureHasInk) {            setSignatureLocked(false);            setHandoverStatus('ยังไม่มีลายเซ็นให้ลบ สามารถให้ลูกค้าเซ็นได้เลย', true);            return;        }
         const confirmed = window.confirm(            'ยืนยันใช่ไหมว่าจะลบลายเซ็นลูกค้า?\n\nเมื่อลบแล้ว ต้องให้ลูกค้าเซ็นใหม่และกดบันทึกอีกครั้ง'        );        if(!confirmed) return;
@@ -1242,12 +1523,30 @@
     function addHandoverFiber() {        const metersInput = document.getElementById('ho-fiber-meters');        const meters = Math.max(0, numberValue(metersInput?.value));        const job = getHandoverJob();        if(!job) return;        if(meters <= 0) {            setHandoverStatus('⚠️ กรุณาเลือกจำนวนเมตรสายไฟที่เกิน', true);            return;        }        const teamKey = resolveTeam(job);        const partnerRate = teamKey === 'team3' ? fiberSettings.team3 : (teamKey === 'team2' ? fiberSettings.team2 : fiberSettings.team1);        const existingFiber = handoverSiteExtras.find(item => item.type === 'fiber');        if(existingFiber) {            existingFiber.meters = numberValue(existingFiber.meters) + meters;            existingFiber.name = `สายไฟเบอร์ 16 เกิน ${existingFiber.meters.toLocaleString('th-TH', { maximumFractionDigits: 2 })} เมตร`;            existingFiber.customerPrice = existingFiber.meters * numberValue(fiberSettings.custPrice);            existingFiber.partnerPrice = existingFiber.meters * numberValue(partnerRate);        } else {            handoverSiteExtras.push({                type: 'fiber',                meters,                name: `สายไฟเบอร์ 16 เกิน ${meters.toLocaleString('th-TH', { maximumFractionDigits: 2 })} เมตร`,                customerPrice: meters * numberValue(fiberSettings.custPrice),                partnerPrice: meters * numberValue(partnerRate)            });        }        setHandoverFiberMeters(0);        markHandoverExtraChanged('เพิ่มค่าสายไฟแล้ว ระบบคำนวณยอดรวมให้เรียบร้อย');    }
     function removeHandoverSiteExtra(index) {        if(index < 0 || index >= handoverSiteExtras.length) return;        handoverSiteExtras.splice(index, 1);        markHandoverExtraChanged('ลบรายการแล้ว ระบบคำนวณยอดรวมใหม่เรียบร้อย', false);    }
     function commitHandoverExtrasToJob(job) {        const sums = getSiteExtraSums();        job.handoverBaseExtraDetail = handoverBaseExtraDetail;        job.handoverBaseExtraCustomerPrice = handoverBaseExtraCustomerPrice;        job.handoverBaseExtraPartnerPrice = handoverBaseExtraPartnerPrice;        job.siteExtras = handoverSiteExtras.map(item => ({ ...item }));        job.extraDetail = getCombinedExtraDetail();        job.extraCustomerPrice = handoverBaseExtraCustomerPrice + sums.customer;        job.extraPartnerPrice = handoverBaseExtraPartnerPrice + sums.partner;    }
+    function addYearsToDateString(dateString, years) {
+        if (!dateString) return '';
+        const date = new Date(`${dateString}T00:00:00`);
+        if (Number.isNaN(date.getTime())) return '';
+        const originalMonth = date.getMonth();
+        date.setFullYear(date.getFullYear() + years);
+        if (date.getMonth() !== originalMonth) date.setDate(0);
+        return date.toISOString().slice(0, 10);
+    }
+    function updateHandoverWarrantyDates() {
+        const dateValue = document.getElementById('ho-date')?.value || '';
+        const equipmentEnd = addYearsToDateString(dateValue, 1);
+        const installationEnd = addYearsToDateString(dateValue, 2);
+        const equipmentEl = document.getElementById('ho-equipment-warranty-end');
+        const installationEl = document.getElementById('ho-installation-warranty-end');
+        if (equipmentEl) equipmentEl.textContent = equipmentEnd ? formatDateForExport(equipmentEnd) : '-';
+        if (installationEl) installationEl.textContent = installationEnd ? formatDateForExport(installationEnd) : '-';
+    }
     function openHandover(jobId) {        const job = jobs.find(j => j.id === jobId);        if(!job) return;        initSignaturePad();
         document.getElementById('ho-job-id').value = jobId;
         const existingSiteExtras = Array.isArray(job.siteExtras) ? job.siteExtras.map(item => ({            ...item,            customerPrice: numberValue(item.customerPrice),            partnerPrice: numberValue(item.partnerPrice)        })) : [];        const existingSiteSums = existingSiteExtras.reduce((sum, item) => {            sum.customer += numberValue(item.customerPrice);            sum.partner += numberValue(item.partnerPrice);            return sum;        }, { customer: 0, partner: 0 });
         handoverBaseExtraDetail = job.handoverBaseExtraDetail !== undefined            ? String(job.handoverBaseExtraDetail || '')            : String(job.extraDetail || '');        handoverBaseExtraCustomerPrice = job.handoverBaseExtraCustomerPrice !== undefined            ? numberValue(job.handoverBaseExtraCustomerPrice)            : Math.max(0, numberValue(job.extraCustomerPrice) - existingSiteSums.customer);        handoverBaseExtraPartnerPrice = job.handoverBaseExtraPartnerPrice !== undefined            ? numberValue(job.handoverBaseExtraPartnerPrice)            : Math.max(0, numberValue(job.extraPartnerPrice) - existingSiteSums.partner);        handoverSiteExtras = existingSiteExtras;        handoverCurrentPackageCustomerPrice = numberValue(job.pkgCustomerPrice);        handoverExtraEditorOpen = false;
         renderHandoverExtraOptions();        renderHandoverSiteExtras();        ['ho-custom-extra-name', 'ho-custom-extra-price'].forEach(id => {            const field = document.getElementById(id);            if(field) field.value = '';        });        setHandoverFiberMeters(0);
-        document.getElementById('ho-date').value = job.handoverDate !== undefined ? job.handoverDate : (job.installDate || '');        document.getElementById('ho-customer').value = job.handoverCustomer !== undefined ? job.handoverCustomer : (job.customerName || '');        document.getElementById('ho-phone').value = job.handoverPhone !== undefined ? job.handoverPhone : (job.phone || '');        document.getElementById('ho-address').value = job.handoverAddress !== undefined ? job.handoverAddress : (job.installAddress || '');
+        document.getElementById('ho-date').value = job.handoverDate !== undefined ? job.handoverDate : (job.installDate || '');        updateHandoverWarrantyDates();        document.getElementById('ho-customer').value = job.handoverCustomer !== undefined ? job.handoverCustomer : (job.customerName || '');        document.getElementById('ho-phone').value = job.handoverPhone !== undefined ? job.handoverPhone : (job.phone || '');        document.getElementById('ho-address').value = job.handoverAddress !== undefined ? job.handoverAddress : (job.installAddress || '');
         const defaultDetails = composeHandoverDetails();        document.getElementById('ho-details').value = job.handoverDetails || defaultDetails;
         const teamKey = resolveTeam(job);        const teamInfo = teamContactInfo[teamKey] || { name: 'ทีมช่าง', phone: '-' };        document.getElementById('ho-tech-name').value = job.handoverTechName || teamInfo.name;        document.getElementById('ho-tech-phone').value = job.handoverTechPhone || teamInfo.phone;
         const overlay = document.getElementById('handoverOverlay');        overlay.style.display = 'block';        overlay.scrollTop = 0;        document.body.style.overflow = 'hidden';
@@ -1261,10 +1560,10 @@
     async function confirmHandoverSaveAndExit() {        if(!signatureHasInk) {            closeHandoverSaveConfirm();            setHandoverStatus('⚠️ ยังไม่พบลายเซ็นลูกค้า กรุณาให้ลูกค้าเซ็นก่อนบันทึก', true);            return;        }
         closeHandoverSaveConfirm();        await saveHandoverData(false, true);    }
     async function saveHandoverData(generateImg = false, closeAfterSave = false) {        const job = persistHandoverData(false);        if(!job) return;
-        setHandoverBusy(true, 'กำลังบันทึกขึ้น Cloud กรุณาอย่าเพิ่งปิด...');
+        setHandoverBusy(true, 'กำลังบันทึกขึ้น Firebase กรุณาอย่าเพิ่งปิด...');
         const cloudSaved = await cloudSaveQueue;
         setHandoverBusy(false);
-        if(!cloudSaved) {            setHandoverStatus('❌ บันทึกในเครื่องแล้ว แต่ Cloud ยังไม่รับข้อมูล กรุณากดบันทึกอีกครั้ง', true);            alert('ข้อมูลยังไม่ขึ้น Cloud กรุณาอย่าเพิ่งออกจากใบส่งมอบ แล้วกดบันทึกอีกครั้ง');            return;        }
+        if(!cloudSaved) {            setHandoverStatus('❌ บันทึกในเครื่องแล้ว แต่ Firebase ยังไม่รับข้อมูล กรุณากดบันทึกอีกครั้ง', true);            alert('ข้อมูลยังไม่ขึ้น Firebase กรุณาอย่าเพิ่งออกจากใบส่งมอบ แล้วกดบันทึกอีกครั้ง');            return;        }
         if(generateImg) {            await generateHandoverImage();            return;        }
         if(closeAfterSave) {            closeHandover(false);        }    }
     function closeHandover(saveBeforeClose = false) {        closeHandoverSaveConfirm();        if(saveBeforeClose && handoverDirty) persistHandoverData(true);        document.getElementById('handoverOverlay').style.display = 'none';        document.body.style.overflow = '';        window.scrollTo({ top: window.scrollY, behavior: 'auto' });    }
@@ -1276,7 +1575,7 @@
     function canvasToBlob(canvas, type = 'image/jpeg', quality = .96) {        return new Promise((resolve, reject) => {            canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('สร้างไฟล์รูปไม่สำเร็จ')), type, quality);        });    }
     async function generateHandoverImage() {        const job = persistHandoverData(true);        if(!job) return;
         const cloudSaved = await cloudSaveQueue;
-        if(!cloudSaved) {            setHandoverStatus('❌ ยังส่งข้อมูลขึ้น Cloud ไม่สำเร็จ กรุณากดบันทึกอีกครั้ง', true);            return;        }
+        if(!cloudSaved) {            setHandoverStatus('❌ ยังส่งข้อมูลขึ้น Firebase ไม่สำเร็จ กรุณากดบันทึกอีกครั้ง', true);            return;        }
         setHandoverBusy(true, 'กำลังสร้าง JPG 8K กรุณาอย่าปิดหน้านี้...');        document.body.classList.add('ho-capturing');        let stage = null;
         try {            if(document.fonts?.ready) await document.fonts.ready;
             stage = document.createElement('div');            stage.className = 'ho-export-stage';            const liveWidth = Math.max(480, Math.round(document.getElementById('ho-document-card').getBoundingClientRect().width));            stage.style.width = liveWidth + 'px';            const exportCard = buildExportCard();            exportCard.style.width = liveWidth + 'px';            stage.appendChild(exportCard);            document.body.appendChild(stage);
