@@ -328,36 +328,267 @@
         @media (max-width: 576px) {            #handoverOverlay { padding: 68px 8px 126px; }            .ho-action-grid { grid-template-columns: 1fr; }            .ho-floating-actions { width: calc(100% - 12px); padding: 8px; }            .ho-action-grid button { min-height: 46px; font-size: .92rem; }        }    
         /* เวอร์ชันกะทัดรัด: ลดความยาวเอกสารโดยไม่ตัดเงื่อนไข */        .ho-card { padding: 14px 12px; }        .ho-header { padding-bottom: 7px; margin-bottom: 7px; }        .ho-header h2 { font-size: 1.16rem; line-height: 1.18; }        .ho-header p { margin-top: 1px; font-size: .68rem; line-height: 1.1; letter-spacing: .02em; }        .ho-content { gap: 7px; }        .ho-compact-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr); gap: 9px; align-items: end; }        .ho-input-group { min-width: 0; padding-bottom: 3px; }        .ho-input-group label { margin-bottom: 1px; font-size: .72rem; line-height: 1.15; }        .ho-input-group input, .ho-input-group textarea { font-size: .91rem; line-height: 1.2; }        .ho-phone-row { max-width: 54%; }        .ho-sync-main-btn { width: 100%; min-height: 38px; margin-top: -1px; border: 1px solid #93c5fd; border-radius: 8px; background: #eff6ff; color: #1d4ed8; font-size: .76rem; font-weight: 900; }        .ho-sync-main-btn:active { background: #dbeafe; transform: translateY(1px); }        .ho-tech-box { padding: 8px 9px; margin-top: 2px; }        .ho-tech-title { margin: 0 0 4px; color: #d35400; font-size: .78rem; line-height: 1.15; font-weight: 900; }        .ho-tech-inline { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: 10px; }        .ho-tech-inline .ho-input-group { border: none; padding: 0; }        .ho-onsite-extra { padding: 10px; border-radius: 11px; }        .ho-extra-heading { margin-bottom: 6px; }        .ho-extra-heading h3 { font-size: .9rem; }        .ho-extra-heading span { padding: 3px 7px; font-size: .59rem; }        .ho-extra-guide { margin-bottom: 7px; padding: 6px 8px; font-size: .68rem; line-height: 1.3; }        .ho-extra-toggle { min-height: 42px; margin-bottom: 7px; font-size: .85rem; }        .ho-total-summary { gap: 3px; margin-top: 7px; padding: 8px; }        .ho-total-line { font-size: .72rem; }        .ho-total-grand { padding-top: 5px; font-size: .83rem; }        .ho-total-grand strong { font-size: 1.06rem; }        .ho-terms { padding: 8px 9px; border-radius: 7px; font-size: .8rem; line-height: 1.28; }        .ho-terms h3 { margin: 0 0 5px; padding: 4px; font-size: .86rem; line-height: 1.15; }        .ho-terms ul { margin: 3px 0 0 15px; }        .ho-terms li { margin: 0; padding: 0; }        .ho-sig-box { height: 108px; }
         @media (max-width: 390px) {            .ho-card { padding: 12px 9px; }            .ho-compact-grid { gap: 6px; grid-template-columns: minmax(0, .92fr) minmax(0, 1.18fr); }            .ho-input-group label { font-size: .66rem; }            .ho-input-group input, .ho-input-group textarea { font-size: .83rem; }            .ho-phone-row { max-width: 62%; }            .ho-tech-inline { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 6px; }            .ho-tech-title { font-size: .72rem; }            .ho-terms { font-size: .75rem; line-height: 1.24; }            .ho-sig-box { height: 100px; }        }
-        /* แถบสถานะและปุ่มด้านบน: ไม่ให้ตัวอักษร/ปุ่มตกบรรทัด */
+        /* แถบสถานะและปุ่มด้านบน: กะทัดรัดและไม่ต้องเลื่อนซ้าย-ขวา */
         .app-topbar { min-width: 0; }
         .app-header-actions {
             min-width: 0;
             flex-wrap: nowrap !important;
             white-space: nowrap;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 2px 1px 5px;
-            scrollbar-width: thin;
-            -webkit-overflow-scrolling: touch;
+            overflow: visible;
+            padding: 1px 0;
+            gap: 4px !important;
         }
         .app-header-actions > * {
-            flex: 0 0 auto;
+            flex: 0 1 auto;
+            min-width: 0;
             white-space: nowrap !important;
         }
-        #firebaseStatusBadge { white-space: nowrap !important; }
-        #cloudRefreshBtn { min-width: 132px; white-space: nowrap !important; }
-        #appSaveNotice {
+        .app-header-actions .btn,
+        .app-header-actions .badge {
+            min-height: 30px;
+            padding: .27rem .42rem !important;
+            font-size: .68rem !important;
+            line-height: 1.1;
+            box-shadow: none !important;
+        }
+        #firebaseStatusBadge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 28px;
+            padding: .24rem .38rem !important;
+            border-radius: 999px;
+            font-size: .66rem !important;
+            font-weight: 850 !important;
+            letter-spacing: 0;
             white-space: nowrap !important;
-            overflow-x: auto !important;
-            overflow-y: hidden !important;
-            -webkit-overflow-scrolling: touch;
+            box-shadow: none;
+        }
+        #cloudRefreshBtn {
+            min-width: 0;
+            min-height: 30px;
+            padding: .27rem .40rem !important;
+            font-size: .66rem !important;
+            font-weight: 850 !important;
+            border-width: 1px;
+            background: #fff;
+            white-space: nowrap !important;
+        }
+        #appSaveNotice {
+            white-space: normal !important;
+            overflow: visible !important;
+            overflow-wrap: anywhere;
             scrollbar-width: none;
         }
         #appSaveNotice::-webkit-scrollbar { display: none; }
         @media (max-width: 576px) {
             .app-topbar { display: block !important; }
-            .app-header-actions { width: 100%; margin-top: 8px; }
+            .app-header-actions {
+                width: 100%;
+                margin-top: 6px;
+                flex-wrap: wrap !important;
+                justify-content: flex-end;
+                overflow: visible;
+            }
+            .app-header-actions .btn,
+            .app-header-actions .badge { font-size: .64rem !important; }
+            #firebaseStatusBadge,
+            #cloudRefreshBtn { font-size: .62rem !important; }
+            #techTeamBadge {
+                max-width: 88px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
+        @media (max-width: 390px) {
+            .app-header-actions { gap: 3px !important; }
+            .app-header-actions .btn,
+            .app-header-actions .badge {
+                min-height: 28px;
+                padding: .22rem .32rem !important;
+                font-size: .60rem !important;
+            }
+            #firebaseStatusBadge,
+            #cloudRefreshBtn { font-size: .59rem !important; }
+        }
+
+        /* ===== ปรับความชัดเจนรอบนี้ ===== */
+        #appSaveNotice {
+            width: min(560px, calc(100% - 20px)) !important;
+            max-width: min(560px, calc(100% - 20px)) !important;
+            white-space: normal !important;
+            overflow: visible !important;
+            overflow-wrap: anywhere;
+            line-height: 1.4 !important;
+            padding: 13px 16px !important;
+            border: 2px solid rgba(255,255,255,.78);
+            border-radius: 15px !important;
+            font-size: .9rem !important;
+            box-shadow: 0 14px 36px rgba(15,23,42,.32) !important;
+        }
+
+        /* การ์ดรายการงาน: ลดลายตา ใช้กรอบและเงาแบ่งส่วนให้ชัด */
+        .job-card {
+            border: 2px solid rgba(var(--job-accent-rgb), .34) !important;
+            border-top: 6px solid var(--job-accent) !important;
+            border-radius: 17px;
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(15,23,42,.16), 0 3px 8px rgba(15,23,42,.08) !important;
+        }
+        .job-card::before, .job-card-top::after { display: none !important; }
+        .job-card:hover { transform: none; box-shadow: 0 14px 32px rgba(15,23,42,.18), 0 4px 10px rgba(15,23,42,.09) !important; }
+        .job-card-top {
+            color: #172033;
+            background: #fff;
+            border-bottom: 1px solid rgba(var(--job-accent-rgb), .22);
+        }
+        .job-date-line .job-date-text { color: var(--job-accent); font-size: 1.08rem; font-weight: 950; }
+        .job-status-pill, .job-save-pill {
+            border-color: rgba(var(--job-accent-rgb), .28);
+            box-shadow: none;
+        }
+        .job-admin-strip { background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+        .job-card-body { gap: 1px; }
+        .job-customer-name { font-size: 1.17rem; color: #0f172a; }
+        .job-address-preview {
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            box-shadow: inset 4px 0 0 rgba(var(--job-accent-rgb), .55);
+            padding: 10px 11px 10px 15px;
+        }
+        .job-package-panel {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            box-shadow: none;
+        }
+        .job-package-panel::before { width: 5px; }
+        .job-money-box {
+            border-width: 2px;
+            box-shadow: 0 3px 9px rgba(15,23,42,.07);
+        }
+        .job-quick-actions .btn, .job-handover-btn, .job-admin-actions .btn { border-width: 2px; }
+        #statsRow .stat-box {
+            border: 2px solid rgba(255,255,255,.72);
+            border-radius: 14px;
+            box-shadow: 0 9px 20px rgba(15,23,42,.17) !important;
+        }
+
+        /* กล่องยืนยันลบงานแบบชัดเจน ไม่ใช้หน้าต่างสีขาวของเบราว์เซอร์ */
+        .delete-job-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000050;
+            padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom));
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            background: rgba(15,23,42,.82);
+            backdrop-filter: blur(7px);
+        }
+        .delete-job-dialog {
+            width: min(430px, 100%);
+            max-height: calc(100dvh - 24px);
+            overflow-y: auto;
+            border: 2px solid #fecaca;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 28px 80px rgba(0,0,0,.48);
+        }
+        .delete-job-dialog.shake { animation: deleteShake .3s ease; }
+        @keyframes deleteShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 50%{transform:translateX(7px)} 75%{transform:translateX(-3px)} }
+        .delete-job-head {
+            display: grid;
+            grid-template-columns: 58px minmax(0,1fr);
+            gap: 12px;
+            align-items: center;
+            padding: 17px;
+            color: #fff;
+            background: linear-gradient(135deg,#991b1b,#dc2626 62%,#ef4444);
+            border-bottom: 5px solid #facc15;
+        }
+        .delete-job-icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            color: #991b1b;
+            background: #fff;
+            border: 2px solid #fecaca;
+            font-size: 1.65rem;
+            box-shadow: 0 7px 18px rgba(0,0,0,.2);
+        }
+        .delete-job-step-label { color:#fef08a; font-size:.69rem; font-weight:950; letter-spacing:.04em; }
+        .delete-job-head h3 { margin:2px 0 2px; font-size:1.14rem; font-weight:950; }
+        .delete-job-head p { margin:0; color:#fee2e2; font-size:.78rem; font-weight:750; line-height:1.35; }
+        .delete-job-body { padding: 15px; }
+        .delete-job-target {
+            padding: 11px 12px;
+            border: 2px solid #fed7aa;
+            border-radius: 12px;
+            background: #fff7ed;
+        }
+        .delete-job-target span { display:block; color:#9a3412; font-size:.72rem; font-weight:850; }
+        .delete-job-target strong { display:block; margin-top:2px; color:#7f1d1d; font-size:1.02rem; overflow-wrap:anywhere; }
+        .delete-job-instruction { margin:12px 0 8px; text-align:center; }
+        .delete-job-instruction b { display:block; color:#111827; font-size:1rem; }
+        .delete-job-instruction small { color:#64748b; font-size:.75rem; }
+        .delete-pin-boxes { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:9px auto; max-width:280px; }
+        .delete-pin-box {
+            height:52px;
+            display:grid;
+            place-items:center;
+            border:2px solid #cbd5e1;
+            border-radius:10px;
+            color:#991b1b;
+            background:#f8fafc;
+            font-size:1.35rem;
+            font-weight:950;
+        }
+        .delete-pin-box.filled { border-color:#ef4444; background:#fff1f2; }
+        .delete-pin-error { min-height:22px; text-align:center; color:#b91c1c; font-size:.78rem; font-weight:900; }
+        .delete-keypad { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:7px; }
+        .delete-key {
+            min-height:47px;
+            border:1px solid #cbd5e1;
+            border-bottom-width:3px;
+            border-radius:10px;
+            color:#172033;
+            background:#fff;
+            font-size:1.1rem;
+            font-weight:950;
+        }
+        .delete-key:active { transform:translateY(2px); border-bottom-width:1px; background:#fee2e2; }
+        .delete-key.utility { color:#7f1d1d; background:#fff1f2; font-size:.78rem; }
+        .delete-job-actions { display:grid; grid-template-columns:1fr 1.25fr; gap:8px; margin-top:12px; }
+        .delete-job-actions button { min-height:48px; border-radius:11px; font-weight:950; }
+        .delete-job-confirm-card {
+            margin: 3px 0 12px;
+            padding: 15px;
+            text-align:center;
+            border: 3px solid #ef4444;
+            border-radius: 14px;
+            background: #fff1f2;
+        }
+        .delete-job-confirm-card .warn { font-size:2rem; }
+        .delete-job-confirm-card h4 { margin:5px 0; color:#991b1b; font-size:1.08rem; font-weight:950; }
+        .delete-job-confirm-card p { margin:0; color:#7f1d1d; font-size:.82rem; line-height:1.45; }
+        @media (max-height: 660px) {
+            .delete-job-head { padding:11px 13px; grid-template-columns:46px minmax(0,1fr); }
+            .delete-job-icon { width:46px; height:46px; font-size:1.3rem; }
+            .delete-job-body { padding:10px 12px; }
+            .delete-pin-box { height:42px; }
+            .delete-key { min-height:39px; }
+            .delete-job-actions button { min-height:42px; }
+        }
+        @media (max-width: 576px) {
+            .job-card { border-radius:15px; }
+            .job-money-grid { grid-template-columns:1fr; }
+            .job-money-box { display:flex; align-items:center; justify-content:space-between; padding:9px 11px; text-align:left; }
+            .job-money-value { margin-top:0; font-size:.9rem; }
+        }
+
     </style></head><body>
 <div id="loginOverlay">
     <div class="login-shell">
@@ -411,11 +642,11 @@
         </div>
     </div>
 </div>
-<div class="container mt-3 mt-md-4" id="appContent" style="display: none;">    <div id="techWarning" class="alert alert-warning text-center text-muted shadow-sm d-none mb-3 py-2" style="font-size: 0.8rem; border-radius: 8px;">        📌 <strong>ข้อมูลภายใน:</strong> กรุณาใช้เพื่อการปฏิบัติงานเท่านั้น ไม่ส่งต่อให้บุคคลภายนอก    </div>    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2 gap-2 app-topbar">        <h2 class="m-0 fw-bold text-danger" style="font-size: 1.25rem;">⚡ EV Connect</h2>        <div class="d-flex gap-2 align-items-center app-header-actions">            <span class="badge bg-dark d-none" id="techTeamBadge" style="font-size: 0.8rem;">ทีมช่าง</span><span class="badge bg-secondary" id="firebaseStatusBadge" style="font-size:0.72rem;">● กำลังเชื่อมต่อ</span>            <button id="toggleStatsBtn" class="btn btn-sm btn-outline-secondary rounded-pill fw-bold px-2 px-md-3 shadow-sm admin-only" onclick="toggleStats()">👁️ ซ่อนยอด</button>            <button id="cloudRefreshBtn" class="btn btn-sm btn-outline-primary rounded-pill fw-bold px-2 px-md-3 shadow-sm" onclick="refreshFromCloud({ silent: false })">↻ อัปเดต --:--:--</button>            <button class="btn btn-sm btn-danger rounded-pill fw-bold px-2 px-md-3 shadow-sm" onclick="logout()">🚪 ออก</button>        </div>    </div>
+<div class="container mt-3 mt-md-4" id="appContent" style="display: none;">    <div id="techWarning" class="alert alert-warning text-center text-muted shadow-sm d-none mb-3 py-2" style="font-size: 0.8rem; border-radius: 8px;">        📌 <strong>ข้อมูลภายใน:</strong> กรุณาใช้เพื่อการปฏิบัติงานเท่านั้น ไม่ส่งต่อให้บุคคลภายนอก    </div>    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2 gap-2 app-topbar">        <h2 class="m-0 fw-bold text-danger" style="font-size: 1.25rem;">⚡ EV Connect</h2>        <div class="d-flex gap-2 align-items-center app-header-actions">            <span class="badge bg-dark d-none" id="techTeamBadge" style="font-size: 0.8rem;">ทีมช่าง</span><span class="badge bg-secondary" id="firebaseStatusBadge">● กำลังเชื่อมต่อ</span>            <button id="toggleStatsBtn" class="btn btn-sm btn-outline-secondary rounded-pill fw-bold px-2 px-md-3 shadow-sm admin-only" onclick="toggleStats()">👁️ ซ่อนยอด</button>            <button id="cloudRefreshBtn" class="btn btn-sm btn-outline-primary rounded-pill fw-bold px-2 px-md-3 shadow-sm" onclick="refreshFromCloud({ silent: false })">↻ อัปเดต --:--:--</button>            <button class="btn btn-sm btn-danger rounded-pill fw-bold px-2 px-md-3 shadow-sm" onclick="logout()">🚪 ออก</button>        </div>    </div>
     <div id="mainView" class="page-view active">        <!-- Dashboard Stats -->        <div class="row mb-3 g-2 admin-only" id="statsRow">            <div class="col-6 col-md-3 transition-all" id="boxCust"><div class="stat-box bg-info text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดเก็บลูกค้า (เดือนนี้)</h6><h3 id="totalCustomerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxPart"><div class="stat-box bg-warning text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดส่งช่าง (เดือนนี้)</h6><h3 id="totalPartnerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxComm"><div class="stat-box bg-primary shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ (เดือนนี้)</h6><h3 id="totalCommissionAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxCommDone"><div class="stat-box bg-success shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ (เสร็จสิ้น)</h6><h3 id="totalCommissionCompleted" class="fw-bold m-0">0&nbsp;฿</h3></div></div>        </div>
         <div class="row mb-4">            <div class="col-12">                <div class="card border-0" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">                    <div class="card-header bg-white border-bottom-0 d-flex justify-content-between align-items-center pt-3 pb-2 flex-wrap gap-2">                        <button class="btn btn-sm btn-light border" onclick="changeMonth(-1)">◀ ย้อน</button>                        <h5 class="m-0 fw-bold text-primary text-center flex-grow-1" id="calendarMonthYear" style="font-size: 1rem;">เดือน ปี</h5>                        <div>                            <button class="btn btn-sm btn-outline-primary fw-bold me-1 admin-only" onclick="openDetailView()">📄 สรุปแอดมิน</button>                            <button class="btn btn-sm btn-light border" onclick="changeMonth(1)">หน้า ▶</button>                        </div>                    </div>                    <div class="card-body pt-1 pb-3 px-2 px-md-3" id="calendarContainer">                        <div class="calendar-grid" id="calendarGrid"></div>                    </div>                </div>            </div>        </div>
-        <!-- Add Job Form (มีคำนวณ) -->        <div class="row admin-only" id="addJobSection">            <div class="col-12">                <div class="card">                    <div class="card-header bg-dark text-white fw-bold" id="jobCardHeader">📝 เพิ่มงานใหม่ (ส่งช่าง)</div>                    <div class="card-body">                        <form id="jobForm">                            <input type="hidden" id="editJobId">                            <div class="smart-paste-section" id="smartPasteDiv">                                <h6 class="text-primary fw-bold">✨ ช่องทางลัด (วางแชท)</h6>                                <textarea id="smartPasteInput" class="form-control mb-2" rows="2" placeholder="วางข้อมูลแชทลูกค้าลงที่นี่..."></textarea>                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">                                    <small class="text-muted" style="font-size: 0.75rem;">ดึงชื่อ เบอร์ วันที่ ที่อยู่/จุดสังเกต และแมพอัตโนมัติ</small>                                    <button type="button" class="btn btn-sm btn-primary fw-bold px-3" onclick="processSmartPaste()" id="btnSmartPaste">🎯 ดึงข้อมูล</button>                                </div>                            </div>
-                            <div class="row">                                <div class="col-md-4 mb-2"><label class="fw-bold text-danger">📅 วันที่นัดติดตั้ง</label><input type="date" id="jobInstallDate" class="form-control" required></div>                                <div class="col-md-4 mb-2"><label class="fw-bold">📞 เบอร์โทรศัพท์</label><input type="text" id="jobPhone" class="form-control" required></div>                                <div class="col-md-4 mb-2"><label class="fw-bold">👤 ชื่อลูกค้า / โน้ตเวลา</label><input type="text" id="jobCustomerName" class="form-control" placeholder=""></div>                                <div class="col-md-12 mb-2">                                    <div class="job-address-field">                                        <label class="fw-bold text-primary mb-1">🏠 ที่อยู่ / จุดติดตั้ง</label>                                        <textarea id="jobInstallAddress" class="form-control" rows="2" required placeholder="เช่น บ้านเลขที่ 99 ต.บ้านใหม่ อ.บางปะอิน จ.อยุธยา หรือ บ้านฝั่งตรงข้ามโรงพยาบาลสัตว์ ประตูรั้วดำ"></textarea>                                        <div id="jobAddressHint" class="job-address-helper">วางข้อความแชทด้านบนแล้วกด “ดึงข้อมูล” ระบบจะพยายามแยกที่อยู่ให้ กรุณาตรวจแก้อีกครั้ง</div>                                    </div>                                </div>                                <div class="col-md-12 mb-2"><label>ลิงก์ Google Map <span class="text-muted small">(ใช้สำหรับนำทาง)</span></label><input type="url" id="jobMapLink" class="form-control" required></div>                                <div class="col-md-12 mb-2">                                    <label class="fw-bold text-primary">👷 เลือกทีมช่าง</label>                                    <select id="jobTeam" class="form-select border-primary fw-bold" required onchange="onTeamChange()">                                        <option value="team1">🔵 ทีมช่างกราฟ</option>                                        <option value="team3">🟠 ทีมช่างโบ้</option>                                        <option value="team2">🟡 ทีมช่างเอ</option>                                    </select>                                </div>                                <div class="col-md-12 mb-3">                                    <label>เลือกแพ็กเกจหลัก</label>                                    <select id="jobPackage" class="form-select" required onchange="calculateLiveSummary()">                                        <option value="">-- กรุณาเลือกแพ็กเกจ --</option>                                    </select>                                </div>                            </div>
+        <!-- Add Job Form (มีคำนวณ) -->        <div class="row admin-only" id="addJobSection">            <div class="col-12">                <div class="card">                    <div class="card-header bg-dark text-white fw-bold" id="jobCardHeader">📝 เพิ่มงานใหม่ (ส่งช่าง)</div>                    <div class="card-body">                        <form id="jobForm">                            <input type="hidden" id="editJobId">                            <div class="smart-paste-section" id="smartPasteDiv">                                <h6 class="text-primary fw-bold">✨ ช่องทางลัด (วางแชท)</h6>                                <textarea id="smartPasteInput" class="form-control mb-2" rows="2" placeholder="วางข้อมูลแชทลูกค้าลงที่นี่..."></textarea>                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">                                    <small class="text-muted" style="font-size: 0.75rem;">ดึงชื่อ เบอร์ วันที่ ที่อยู่ และแมพอัตโนมัติ</small>                                    <button type="button" class="btn btn-sm btn-primary fw-bold px-3" onclick="processSmartPaste()" id="btnSmartPaste">🎯 ดึงข้อมูล</button>                                </div>                            </div>
+                            <div class="row">                                <div class="col-md-4 mb-2"><label class="fw-bold text-danger">📅 วันที่นัดติดตั้ง</label><input type="date" id="jobInstallDate" class="form-control" required></div>                                <div class="col-md-4 mb-2"><label class="fw-bold">📞 เบอร์โทรศัพท์</label><input type="text" id="jobPhone" class="form-control" required></div>                                <div class="col-md-4 mb-2"><label class="fw-bold">👤 ชื่อลูกค้า / โน้ตเวลา</label><input type="text" id="jobCustomerName" class="form-control" placeholder=""></div>                                <div class="col-md-12 mb-2">                                    <div class="job-address-field">                                        <label class="fw-bold text-primary mb-1">🏠 ที่อยู่สำหรับออกใบส่งงานและใบรับประกัน</label>                                        <textarea id="jobInstallAddress" class="form-control" rows="2" required placeholder="กรอกที่อยู่ที่ต้องการให้แสดงในใบส่งงานและใบรับประกัน"></textarea>                                        <div id="jobAddressHint" class="job-address-helper">แอดมินตรวจและกรอกที่อยู่สำหรับเอกสารให้ครบก่อนบันทึกงาน</div>                                    </div>                                </div>                                <div class="col-md-12 mb-2"><label>ลิงก์ Google Map <span class="text-muted small">(ใช้สำหรับนำทาง)</span></label><input type="url" id="jobMapLink" class="form-control" required></div>                                <div class="col-md-12 mb-2">                                    <label class="fw-bold text-primary">👷 เลือกทีมช่าง</label>                                    <select id="jobTeam" class="form-select border-primary fw-bold" required onchange="onTeamChange()">                                        <option value="team1">🔵 ทีมช่างกราฟ</option>                                        <option value="team3">🟠 ทีมช่างโบ้</option>                                        <option value="team2">🟡 ทีมช่างเอ</option>                                    </select>                                </div>                                <div class="col-md-12 mb-3">                                    <label>เลือกแพ็กเกจหลัก</label>                                    <select id="jobPackage" class="form-select" required onchange="calculateLiveSummary()">                                        <option value="">-- กรุณาเลือกแพ็กเกจ --</option>                                    </select>                                </div>                            </div>
                             <div class="extra-section mb-3">                                <h6 class="text-warning-emphasis fw-bold mb-2" style="font-size: 0.9rem;">🛠️ งานเพิ่มเติม</h6>                                <div class="row g-2 mb-2 align-items-end p-2 bg-white rounded border border-info">                                    <div class="col-8 col-md-9">                                        <label id="fiberLabel" class="small text-info-emphasis fw-bold">🔌 สายไฟเบอร์ 16 เกิน</label>                                        <input type="number" id="fiberMeters" class="form-control form-control-sm" placeholder="ระบุจำนวนเมตร">                                    </div>                                    <div class="col-4 col-md-3"><button type="button" class="btn btn-sm btn-info text-white fw-bold w-100" onclick="addFiber()">➕ เพิ่มสาย</button></div>                                </div>                                <div class="d-flex flex-wrap gap-1 mb-3 bg-white p-2 rounded border border-warning">                                    <select id="jobExtraSelect" class="form-select form-select-sm flex-grow-1" onchange="calculateLiveSummary()"><option value="">-- เลือกรายการ --</option></select>                                    <button type="button" class="btn btn-sm btn-primary fw-bold" onclick="appendExtraJob()">➕ เพิ่ม</button>                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="clearExtraJob()">ล้าง</button>                                </div>                                <div class="row g-2">                                    <div class="col-md-12"><label class="small text-muted fw-bold">สรุปรายละเอียดงานเพิ่มเติม</label><input type="text" id="jobExtraDetail" class="form-control form-control-sm"></div>                                    <div class="col-6"><label class="small text-muted fw-bold">รวมทุนช่าง (เพิ่ม)</label><input type="number" id="jobExtraPartnerPrice" class="form-control form-control-sm" value="0" min="0" oninput="calculateLiveSummary()"></div>                                    <div class="col-6"><label class="small text-muted fw-bold">รวมเก็บลูกค้า (เพิ่ม)</label><input type="number" id="jobExtraCustomerPrice" class="form-control form-control-sm" value="0" min="0" oninput="calculateLiveSummary()"></div>                                </div>                            </div>
                             <div id="jobSummary" class="alert alert-info mt-2" style="display:none; font-size: 0.9rem;">                                <strong>สรุปยอดของงานนี้:</strong><br>                                - เก็บลูกค้าทั้งหมด: <span id="summaryCustPrice" class="fw-bold text-danger">0</span>&nbsp;฿ <br>                                - ส่งช่างทั้งหมด: <span id="summaryPartnerPrice">0</span>&nbsp;฿ <br>                                <hr class="my-1">                                - <strong>ค่าคอมฯ ของงานนี้: <span id="summaryCommission" class="text-success fs-6 fw-bold">0</span></strong>                            </div>
                             <div class="d-flex gap-2 mt-2">                                <button type="submit" class="btn btn-success flex-grow-1 fw-bold" id="btnSaveJob">บันทึกงานใหม่</button>                                <button type="button" class="btn btn-secondary fw-bold" id="btnCancelEdit" style="display:none;" onclick="cancelEditJob()">ยกเลิก</button>                            </div>                        </form>                    </div>                </div>            </div>        </div>
@@ -442,6 +673,64 @@
                 <div style="margin-top:5px;">                    <label style="font-weight:bold; color:#2c3e50; font-size:1rem;">✍️ ลายมือชื่อผู้รับมอบงาน (ลูกค้าเซ็นตรงนี้)</label>                    <div class="ho-sig-box" id="hoSignatureBox">                        <canvas id="hoSignatureCanvas" class="ho-sig-canvas" aria-label="ช่องลายเซ็นลูกค้า"></canvas>                        <div class="ho-sig-lock-note hide-on-capture">🔒 บันทึกแล้ว • เลื่อนผ่านได้</div>                        <button type="button" class="ho-sig-clear hide-on-capture" onclick="requestClearSignature()">🗑️ ลบลายเซ็น</button>                    </div>                </div>            </div>        </div>        <div style="height: 110px;"></div>    </div>
     <!-- ปุ่มลอยค้างด้านล่าง เห็นเสมอ ไม่ต้องเลื่อนหา -->    <div class="ho-floating-actions hide-on-capture" id="hoActionBar">        <div class="ho-action-grid">            <button type="button" class="btn btn-info text-white shadow-sm" onclick="openHandoverSaveConfirm()">💾 บันทึกลายเซ็นแล้วออก</button>            <button type="button" class="btn btn-success shadow-sm" onclick="saveHandoverData(true, false)">📷 บันทึกและสร้าง JPG 8K</button>        </div>        <div id="ho-save-status" class="ho-save-status">ข้อมูลจะถูกเก็บไว้ในงานนี้ เปิดกลับมาทำต่อได้</div>    </div></div>
 <!-- ยืนยันอีกครั้งก่อนบันทึกลายเซ็นและออกจากใบส่งมอบ --><div id="handoverSaveConfirm" class="ho-confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="handoverConfirmTitle">    <div class="ho-confirm-box">        <div class="ho-confirm-head">            <div class="ho-confirm-icon">✍️</div>            <h3 id="handoverConfirmTitle">ตรวจสอบก่อนบันทึกและออก</h3>            <p>กรุณาตรวจสอบว่าลูกค้าเซ็นชื่อเรียบร้อยแล้ว จากนั้นกด “ตกลง” เพื่อบันทึกและกลับหน้ารายการงาน</p>        </div>        <div id="handoverNoSignatureWarning" class="ho-confirm-warning">⚠️ ระบบยังไม่พบลายเซ็นลูกค้า กรุณากลับไปให้ลูกค้าเซ็นก่อน</div>        <div id="handoverConfirmTotal" style="margin:14px 18px 0; padding:10px 12px; border-radius:12px; background:#ecfdf5; border:1px solid #bbf7d0; color:#166534; text-align:center; font-size:.9rem; font-weight:900;">ยอดที่ลูกค้าชำระรวม 0 ฿</div>        <div class="ho-confirm-actions">            <button type="button" class="btn btn-light border" onclick="closeHandoverSaveConfirm()">← กลับไปตรวจสอบ</button>            <button type="button" class="btn btn-success shadow-sm" onclick="confirmHandoverSaveAndExit()">ตกลง บันทึกและออก</button>        </div>    </div></div>
+
+<!-- กล่องป้องกันการลบงาน: ต้องผ่าน PIN 4 หลักและยืนยันซ้ำ -->
+<div id="deleteJobOverlay" class="delete-job-overlay" role="dialog" aria-modal="true" aria-labelledby="deleteJobTitle">
+    <div id="deleteJobDialog" class="delete-job-dialog">
+        <div class="delete-job-head">
+            <div class="delete-job-icon">🗑️</div>
+            <div>
+                <div id="deleteJobStepLabel" class="delete-job-step-label">ขั้นตอน 1 จาก 2</div>
+                <h3 id="deleteJobTitle">ยืนยันสิทธิ์ก่อนลบงาน</h3>
+                <p>ระบบจะไม่ลบงานจนกว่าจะใส่รหัสถูกและยืนยันอีกครั้ง</p>
+            </div>
+        </div>
+        <div id="deletePinStep" class="delete-job-body">
+            <div class="delete-job-target">
+                <span>งานที่กำลังจะลบ</span>
+                <strong id="deleteJobCustomer">-</strong>
+            </div>
+            <div class="delete-job-instruction">
+                <b>กรอกรหัสลบงาน 4 หลัก</b>
+                <small>กดตัวเลขให้ครบ 4 ตัว แล้วปุ่มยืนยันจะใช้งานได้</small>
+            </div>
+            <div id="deletePinBoxes" class="delete-pin-boxes" aria-label="รหัสลบงาน 4 หลัก">
+                <div class="delete-pin-box"></div><div class="delete-pin-box"></div><div class="delete-pin-box"></div><div class="delete-pin-box"></div>
+            </div>
+            <div id="deletePinError" class="delete-pin-error"></div>
+            <div class="delete-keypad" aria-label="แป้นตัวเลขลบงาน">
+                <button type="button" class="delete-key" onclick="appendDeletePinDigit('1')">1</button>
+                <button type="button" class="delete-key" onclick="appendDeletePinDigit('2')">2</button>
+                <button type="button" class="delete-key" onclick="appendDeletePinDigit('3')">3</button>
+                <button type="button" class="delete-key" onclick="appendDeletePinDigit('4')">4</button>
+                <button type="button" class="delete-key" onclick="appendDeletePinDigit('5')">5</button>
+                <button type="button" class="delete-key" onclick="appendDeletePinDigit('6')">6</button>
+                <button type="button" class="delete-key" onclick="appendDeletePinDigit('7')">7</button>
+                <button type="button" class="delete-key" onclick="appendDeletePinDigit('8')">8</button>
+                <button type="button" class="delete-key" onclick="appendDeletePinDigit('9')">9</button>
+                <button type="button" class="delete-key utility" onclick="clearDeletePin()">ล้าง</button>
+                <button type="button" class="delete-key" onclick="appendDeletePinDigit('0')">0</button>
+                <button type="button" class="delete-key utility" onclick="removeDeletePinDigit()">⌫ ลบ</button>
+            </div>
+            <div class="delete-job-actions">
+                <button type="button" class="btn btn-light border" onclick="closeDeleteJobDialog()">ยกเลิก ไม่ลบ</button>
+                <button type="button" id="deletePinContinueBtn" class="btn btn-danger shadow-sm" onclick="verifyDeleteJobPin()" disabled>ตรวจรหัสและไปต่อ</button>
+            </div>
+        </div>
+        <div id="deleteConfirmStep" class="delete-job-body" style="display:none;">
+            <div class="delete-job-confirm-card">
+                <div class="warn">⚠️</div>
+                <h4>ยืนยันลบงานนี้จากทุกเครื่อง</h4>
+                <p>งานของ <strong id="deleteConfirmCustomer">-</strong> จะหายจากแอดมินและทีมช่าง กรุณาตรวจชื่ออีกครั้งก่อนกดปุ่มแดง</p>
+            </div>
+            <div class="delete-job-actions">
+                <button type="button" class="btn btn-light border" onclick="backToDeletePinStep()">← กลับไป</button>
+                <button type="button" id="deleteFinalBtn" class="btn btn-danger shadow" onclick="confirmDeleteJobPermanent()">🗑️ ลบงานนี้ถาวร</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- หน้าต่างแสดงรูป พร้อมดาวน์โหลด/แชร์เข้า LINE หรือ Messenger --><div id="result-overlay">    <h3 style="color:#f1c40f; text-align:center; margin-bottom:8px;">รูปใบส่งมอบพร้อมส่ง</h3>    <div id="result-resolution" style="color:#fff; font-size:.85rem; margin-bottom:12px;"></div>    <img id="result-image" src="" alt="ใบส่งมอบงาน">
     <button type="button" id="share-btn" class="btn btn-primary w-100 mb-2 fw-bold py-3 fs-5 shadow" style="max-width:320px; border-radius:10px;" onclick="shareGeneratedImage()">        📤 แชร์รูปไป LINE / Messenger    </button>    <a id="download-btn" href="#" class="btn btn-success w-100 mb-3 fw-bold py-3 fs-5 shadow" style="max-width:320px; border-radius:10px;">        💾 บันทึกรูป JPG ลงเครื่อง    </a>
     <button type="button" class="btn btn-outline-light rounded-pill px-5 py-2 fw-bold shadow" onclick="closeResultOverlay()">✕ ปิดรูป กลับไปแก้ไข</button></div>
@@ -491,6 +780,7 @@
     // รหัสป้องกันการเผลอลบงาน: 9090 (เก็บเป็นค่าแฮช ไม่เก็บตัวเลขตรง ๆ)
     const DELETE_JOB_PIN_HASH = 'c4876de490dcf38b74d6c0d4f120cf01126c3d6a3a49b93ec81caae38ea1497e';
     let lastFirebaseSyncAt = '';
+    let firebaseIsConnected = false;
 
 
     const ADMIN_JOB_FIELDS = [
@@ -827,7 +1117,7 @@
         const badge = document.getElementById('firebaseStatusBadge');
         if (!badge) return;
         badge.className = `badge bg-${type}`;
-        badge.style.fontSize = '0.72rem';
+        badge.style.fontSize = '';
         badge.style.whiteSpace = 'nowrap';
         badge.textContent = text;
     }
@@ -946,7 +1236,8 @@
         clearFirebaseListeners();
         const connectedRef = firebaseDb.ref('.info/connected');
         addFirebaseListener(connectedRef, 'value', (snap) => {
-            setFirebaseStatus(snap.val() === true ? '● เรียลไทม์' : '● ออฟไลน์', snap.val() === true ? 'success' : 'warning');
+            firebaseIsConnected = snap.val() === true;
+            setFirebaseStatus(firebaseIsConnected ? '● เรียลไทม์' : '● ออฟไลน์', firebaseIsConnected ? 'success' : 'warning');
         });
 
         const settingsPath = currentUserRole === 'admin'
@@ -1081,7 +1372,6 @@
             .then(async () => {
                 if (!firebaseAuth.currentUser || !currentUserRole) return false;
                 cloudSaveInProgress = true;
-                setFirebaseStatus('● กำลังบันทึก', 'warning');
                 try {
                     const updates = {};
                     const currentMap = new Map(localJobs.map(job => [String(job.id), rebuildJobExtraTotals(normalizeJobTimestamps(job))]));
@@ -1134,7 +1424,7 @@
                     }
                     firebaseBaselineJobs = new Map(localJobs.map(job => [String(job.id), cloneData(job)]));
                     firebaseSettingsBaseline = JSON.stringify({ packages: localPackages, extras: localExtras, fiberSettings: localFiber });
-                    setFirebaseStatus('● บันทึกแล้ว', 'success');
+                    setFirebaseStatus(firebaseIsConnected ? '● เรียลไทม์' : '● ออฟไลน์', firebaseIsConnected ? 'success' : 'warning');
                     markFirebaseUpdated();
                     return true;
                 } catch (error) {
@@ -1192,7 +1482,7 @@
         if (!notice) {
             notice = document.createElement('div');
             notice.id = 'appSaveNotice';
-            notice.style.cssText = 'position:fixed;left:50%;top:max(12px,env(safe-area-inset-top));transform:translateX(-50%);z-index:10000000;max-width:calc(100% - 12px);padding:11px 14px;border-radius:12px;color:#fff;font-size:.82rem;font-weight:900;text-align:center;white-space:nowrap;overflow-x:auto;overflow-y:hidden;box-shadow:0 8px 28px rgba(0,0,0,.28);transition:opacity .2s;';
+            notice.style.cssText = 'position:fixed;left:50%;top:max(12px,env(safe-area-inset-top));transform:translateX(-50%);z-index:10000000;width:min(560px,calc(100% - 20px));max-width:min(560px,calc(100% - 20px));padding:13px 16px;border-radius:15px;color:#fff;font-size:.9rem;font-weight:900;line-height:1.4;text-align:center;white-space:normal;overflow-wrap:anywhere;box-shadow:0 14px 36px rgba(15,23,42,.32);transition:opacity .2s;';
             document.body.appendChild(notice);
         }
         notice.textContent = message;
@@ -1443,7 +1733,7 @@
         const detectedAddress = extractSmartAddress(rawText);        if(detectedAddress) document.getElementById('jobInstallAddress').value = detectedAddress;        updateAddressDetectionUI(Boolean(detectedAddress));
         const detectedName = extractSmartCustomerName(rawText);        if(detectedName) {            document.getElementById('jobCustomerName').value = detectedName;        } else {            const simpleLeftover = normalizeSmartText(text)                .replace(/(?:ที่อยู่|สถานที่ติดตั้ง|จุดติดตั้ง|พิกัด|map|แพ็ก|จัดส่ง|รายละเอียด)\s*[:：\-]?/ig, ' ')                .replace(/\s+/g, ' ')                .trim();            if(simpleLeftover && !detectedAddress && !looksLikeThaiAddress(simpleLeftover) && simpleLeftover.length <= 80) {                document.getElementById('jobCustomerName').value = simpleLeftover;            }        }
         const btn = document.getElementById('btnSmartPaste');        btn.innerHTML = detectedAddress ? '✅ ดึงแล้ว ตรวจที่อยู่' : '⚠️ ดึงแล้ว ตรวจข้อมูล';        btn.classList.replace('btn-primary', detectedAddress ? 'btn-success' : 'btn-warning');        setTimeout(() => {            btn.innerHTML = '🎯 ดึงข้อมูล';            btn.classList.remove('btn-success', 'btn-warning');            btn.classList.add('btn-primary');        }, 2500);    }
-    document.getElementById('jobInstallAddress')?.addEventListener('input', function() {        const hasValue = Boolean(this.value.trim());        this.classList.toggle('address-detected', hasValue);        const hint = document.getElementById('jobAddressHint');        if(hint && hasValue) {            hint.className = 'job-address-helper detected';            hint.textContent = '✅ มีข้อมูลจุดติดตั้งแล้ว กรุณาตรวจให้ตรงกับข้อความลูกค้า';        }    });
+    document.getElementById('jobInstallAddress')?.addEventListener('input', function() {        const hasValue = Boolean(this.value.trim());        this.classList.toggle('address-detected', hasValue);        const hint = document.getElementById('jobAddressHint');        if(hint && hasValue) {            hint.className = 'job-address-helper detected';            hint.textContent = '✅ มีที่อยู่สำหรับออกเอกสารแล้ว';        }    });
     // --- Dashboard & Format ---
     function toggleStats() { isStatsHidden = !isStatsHidden; saveData(); updateStatsUI(); updateAllViews(); }    function updateStatsUI() {        const btn = document.getElementById('toggleStatsBtn'), boxCust = document.getElementById('boxCust'), boxPart = document.getElementById('boxPart'), boxComm = document.getElementById('boxComm'), boxCommDone = document.getElementById('boxCommDone');        if (isStatsHidden) {            btn.innerHTML = '🙈'; btn.classList.replace('btn-outline-secondary', 'btn-secondary'); btn.classList.add('text-white');            boxPart.classList.add('d-none'); boxCommDone.classList.add('d-none'); boxCust.className = 'col-6 transition-all'; boxComm.className = 'col-6 transition-all';        } else {            btn.innerHTML = '👁️ ซ่อนยอด'; btn.classList.replace('btn-secondary', 'btn-outline-secondary'); btn.classList.remove('text-white');            boxPart.classList.remove('d-none'); boxCommDone.classList.remove('d-none'); boxCust.className = 'col-6 col-md-3 transition-all'; boxComm.className = 'col-6 col-md-3 transition-all';        }    }    function formatCommission(amount) { return amount.toLocaleString() + '&nbsp;฿'; }    function formatThaiDate(dateString) { if(!dateString) return 'ไม่ระบุวัน'; const date = new Date(dateString); return isNaN(date.getTime()) ? dateString : date.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' }); }
     function calculateMonthlyStats() {        const tYear = calDate.getFullYear(), tMonth = calDate.getMonth(); let mCust = 0, mPartner = 0, mCommAll = 0, mCommCompleted = 0;        jobs.forEach(job => {            if(job.installDate) {                const jDate = new Date(job.installDate);                if(jDate.getFullYear() === tYear && jDate.getMonth() === tMonth) {                    const cPrice = (job.pkgCustomerPrice || 0) + (job.extraCustomerPrice || 0), pPrice = (job.pkgPartnerPrice || 0) + (job.extraPartnerPrice || 0), comm = cPrice - pPrice;                    mCust += cPrice; mPartner += pPrice; mCommAll += comm; if(job.isCompleted) mCommCompleted += comm;                }            }        });        document.getElementById('totalCustomerAll').innerHTML = mCust.toLocaleString() + '&nbsp;฿'; document.getElementById('totalPartnerAll').innerHTML = mPartner.toLocaleString() + '&nbsp;฿';        document.getElementById('totalCommissionAll').innerHTML = formatCommission(mCommAll); document.getElementById('totalCommissionCompleted').innerHTML = formatCommission(mCommCompleted);    }
@@ -1603,9 +1893,23 @@
     });
 
     function editJobData(id) {        const job = jobs.find(j => j.id === id);        if(job) {            document.getElementById('editJobId').value = job.id; document.getElementById('jobInstallDate').value = job.installDate || ""; document.getElementById('jobPhone').value = job.phone;            document.getElementById('jobCustomerName').value = job.customerName === "ไม่ระบุชื่อ" ? "" : job.customerName;            document.getElementById('jobInstallAddress').value = job.installAddress || job.handoverAddress || '';            updateAddressDetectionUI(Boolean(document.getElementById('jobInstallAddress').value.trim()));            document.getElementById('jobMapLink').value = job.mapLink;            const pkg = packages.find(p => p.name === job.packageName); document.getElementById('jobPackage').value = pkg ? pkg.id : ""; document.getElementById('jobTeam').value = job.team || "team1";            const siteExtras = Array.isArray(job.siteExtras) ? job.siteExtras : [];            const siteSums = siteExtras.reduce((sum, item) => {                sum.customer += Number(item.customerPrice) || 0;                sum.partner += Number(item.partnerPrice) || 0;                return sum;            }, { customer: 0, partner: 0 });            const baseDetail = job.handoverBaseExtraDetail !== undefined ? job.handoverBaseExtraDetail : (job.extraDetail || "");            const basePartner = job.handoverBaseExtraPartnerPrice !== undefined ? job.handoverBaseExtraPartnerPrice : Math.max(0, (Number(job.extraPartnerPrice) || 0) - siteSums.partner);            const baseCustomer = job.handoverBaseExtraCustomerPrice !== undefined ? job.handoverBaseExtraCustomerPrice : Math.max(0, (Number(job.extraCustomerPrice) || 0) - siteSums.customer);            document.getElementById('jobExtraSelect').value = ""; document.getElementById('jobExtraDetail').value = baseDetail || "";            document.getElementById('jobExtraPartnerPrice').value = basePartner || 0; document.getElementById('jobExtraCustomerPrice').value = baseCustomer || 0;            document.getElementById('jobCardHeader').innerHTML = "✏️ แก้ไขข้อมูลลูกค้า"; document.getElementById('jobCardHeader').className = 'card-header bg-warning text-dark fw-bold';            document.getElementById('smartPasteDiv').style.display = "none"; document.getElementById('btnSaveJob').innerHTML = "บันทึกการแก้ไข";            document.getElementById('btnSaveJob').className = 'btn btn-warning flex-grow-1 fw-bold'; document.getElementById('btnCancelEdit').style.display = "inline-block";            onTeamChange(); window.scrollTo({ top: 0, behavior: 'smooth' });        }    }
-    function cancelEditJob() {        document.getElementById('jobForm').reset(); document.getElementById('editJobId').value = ""; document.getElementById('jobExtraPartnerPrice').value = 0; document.getElementById('jobExtraCustomerPrice').value = 0;        document.getElementById('jobTeam').value = "team1"; document.getElementById('jobExtraSelect').value = ""; document.getElementById('jobSummary').style.display = 'none'; document.getElementById('smartPasteDiv').style.display = "block";        document.getElementById('jobCardHeader').innerHTML = "📝 เพิ่มงานใหม่ (ส่งช่าง)"; document.getElementById('jobCardHeader').className = 'card-header bg-dark text-white fw-bold';        document.getElementById('btnSaveJob').innerHTML = "บันทึกงานใหม่"; document.getElementById('btnSaveJob').className = 'btn btn-success flex-grow-1 fw-bold'; document.getElementById('btnCancelEdit').style.display = "none";        const addressField = document.getElementById('jobInstallAddress');        if(addressField) addressField.classList.remove('address-detected');        const addressHint = document.getElementById('jobAddressHint');        if(addressHint) { addressHint.className = 'job-address-helper'; addressHint.textContent = 'วางข้อความแชทด้านบนแล้วกด “ดึงข้อมูล” ระบบจะพยายามแยกที่อยู่ให้ กรุณาตรวจแก้อีกครั้ง'; }        onTeamChange();     }
+    function cancelEditJob() {        document.getElementById('jobForm').reset(); document.getElementById('editJobId').value = ""; document.getElementById('jobExtraPartnerPrice').value = 0; document.getElementById('jobExtraCustomerPrice').value = 0;        document.getElementById('jobTeam').value = "team1"; document.getElementById('jobExtraSelect').value = ""; document.getElementById('jobSummary').style.display = 'none'; document.getElementById('smartPasteDiv').style.display = "block";        document.getElementById('jobCardHeader').innerHTML = "📝 เพิ่มงานใหม่ (ส่งช่าง)"; document.getElementById('jobCardHeader').className = 'card-header bg-dark text-white fw-bold';        document.getElementById('btnSaveJob').innerHTML = "บันทึกงานใหม่"; document.getElementById('btnSaveJob').className = 'btn btn-success flex-grow-1 fw-bold'; document.getElementById('btnCancelEdit').style.display = "none";        const addressField = document.getElementById('jobInstallAddress');        if(addressField) addressField.classList.remove('address-detected');        const addressHint = document.getElementById('jobAddressHint');        if(addressHint) { addressHint.className = 'job-address-helper'; addressHint.textContent = 'แอดมินตรวจและกรอกที่อยู่สำหรับเอกสารให้ครบก่อนบันทึกงาน'; }        onTeamChange();     }
     function toggleJobStatus(id) {        if(currentUserRole !== 'admin') return;         const job = jobs.find(j => j.id === id);        if(job) {            if (!job.isCompleted) { if(confirm(`✅ ยืนยันการปิดจ๊อบงานนี้ใช่ไหมครับ?
-👤 ลูกค้า: ${job.customerName}`)) { job.isCompleted = true; job.statusUpdatedAt = new Date().toISOString(); job.updatedAt = job.statusUpdatedAt; saveData(); updateAllViews(); }            } else { job.isCompleted = false; job.statusUpdatedAt = new Date().toISOString(); job.updatedAt = job.statusUpdatedAt; saveData(); updateAllViews(); }        }    }    async function deleteJob(id) {
+👤 ลูกค้า: ${job.customerName}`)) { job.isCompleted = true; job.statusUpdatedAt = new Date().toISOString(); job.updatedAt = job.statusUpdatedAt; saveData(); updateAllViews(); }            } else { job.isCompleted = false; job.statusUpdatedAt = new Date().toISOString(); job.updatedAt = job.statusUpdatedAt; saveData(); updateAllViews(); }        }    }    let pendingDeleteJobId = null;
+    let deletePinValue = '';
+
+    function renderDeletePinBoxes() {
+        const boxes = document.querySelectorAll('#deletePinBoxes .delete-pin-box');
+        boxes.forEach((box, index) => {
+            const digit = deletePinValue[index] || '';
+            box.textContent = digit;
+            box.classList.toggle('filled', Boolean(digit));
+        });
+        const continueBtn = document.getElementById('deletePinContinueBtn');
+        if (continueBtn) continueBtn.disabled = deletePinValue.length !== 4;
+    }
+
+    function openDeleteJobDialog(id) {
         if (currentUserRole !== 'admin') {
             alert('เฉพาะแอดมินเท่านั้นที่ลบงานได้');
             return;
@@ -1615,34 +1919,131 @@
             alert('ไม่พบงานนี้ อาจถูกลบหรืออัปเดตไปแล้ว');
             return;
         }
-        const enteredPin = window.prompt(`ป้องกันการเผลอลบงาน\n\nลูกค้า: ${job.customerName || '-'}\nกรอกรหัสลบงาน 4 หลัก`);
-        if (enteredPin === null) return;
-        if (!/^\d{4}$/.test(enteredPin.trim())) {
-            alert('กรุณาใส่รหัสตัวเลขให้ครบ 4 หลัก');
-            return;
-        }
-        const enteredHash = await sha256(enteredPin.trim());
-        if (enteredHash !== DELETE_JOB_PIN_HASH) {
-            alert('รหัสลบงานไม่ถูกต้อง จึงยังไม่ได้ลบข้อมูล');
-            return;
-        }
-        const confirmed = window.confirm(`ยืนยันลบงานของ “${job.customerName || '-'}” ใช่หรือไม่?\n\nเมื่อลบแล้ว งานจะหายจากทุกเครื่อง`);
-        if (!confirmed) return;
+        pendingDeleteJobId = Number(id);
+        deletePinValue = '';
+        document.getElementById('deleteJobCustomer').textContent = job.customerName || '-';
+        document.getElementById('deleteConfirmCustomer').textContent = job.customerName || '-';
+        document.getElementById('deletePinError').textContent = '';
+        document.getElementById('deletePinStep').style.display = 'block';
+        document.getElementById('deleteConfirmStep').style.display = 'none';
+        document.getElementById('deleteJobStepLabel').textContent = 'ขั้นตอน 1 จาก 2';
+        document.getElementById('deleteJobTitle').textContent = 'ยืนยันสิทธิ์ก่อนลบงาน';
+        renderDeletePinBoxes();
+        document.getElementById('deleteJobOverlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
 
+    function closeDeleteJobDialog() {
+        const overlay = document.getElementById('deleteJobOverlay');
+        if (overlay) overlay.style.display = 'none';
+        pendingDeleteJobId = null;
+        deletePinValue = '';
+        document.body.style.overflow = '';
+    }
+
+    function appendDeletePinDigit(digit) {
+        if (!/^\d$/.test(String(digit)) || deletePinValue.length >= 4) return;
+        deletePinValue += String(digit);
+        document.getElementById('deletePinError').textContent = '';
+        renderDeletePinBoxes();
+    }
+
+    function removeDeletePinDigit() {
+        deletePinValue = deletePinValue.slice(0, -1);
+        document.getElementById('deletePinError').textContent = '';
+        renderDeletePinBoxes();
+    }
+
+    function clearDeletePin() {
+        deletePinValue = '';
+        document.getElementById('deletePinError').textContent = '';
+        renderDeletePinBoxes();
+    }
+
+    function shakeDeleteDialog() {
+        const dialog = document.getElementById('deleteJobDialog');
+        if (!dialog) return;
+        dialog.classList.remove('shake');
+        void dialog.offsetWidth;
+        dialog.classList.add('shake');
+    }
+
+    async function verifyDeleteJobPin() {
+        if (deletePinValue.length !== 4) {
+            document.getElementById('deletePinError').textContent = 'กรุณากดรหัสให้ครบ 4 หลักก่อน';
+            shakeDeleteDialog();
+            return;
+        }
+        const enteredHash = await sha256(deletePinValue);
+        if (enteredHash !== DELETE_JOB_PIN_HASH) {
+            document.getElementById('deletePinError').textContent = 'รหัสไม่ถูกต้อง งานยังไม่ถูกลบ';
+            deletePinValue = '';
+            renderDeletePinBoxes();
+            shakeDeleteDialog();
+            return;
+        }
+        document.getElementById('deletePinStep').style.display = 'none';
+        document.getElementById('deleteConfirmStep').style.display = 'block';
+        document.getElementById('deleteJobStepLabel').textContent = 'ขั้นตอน 2 จาก 2';
+        document.getElementById('deleteJobTitle').textContent = 'ตรวจชื่อและยืนยันครั้งสุดท้าย';
+    }
+
+    function backToDeletePinStep() {
+        deletePinValue = '';
+        document.getElementById('deletePinError').textContent = '';
+        document.getElementById('deleteConfirmStep').style.display = 'none';
+        document.getElementById('deletePinStep').style.display = 'block';
+        document.getElementById('deleteJobStepLabel').textContent = 'ขั้นตอน 1 จาก 2';
+        document.getElementById('deleteJobTitle').textContent = 'ยืนยันสิทธิ์ก่อนลบงาน';
+        renderDeletePinBoxes();
+    }
+
+    async function confirmDeleteJobPermanent() {
+        const id = pendingDeleteJobId;
+        const job = jobs.find(item => Number(item.id) === Number(id));
+        if (!job) {
+            closeDeleteJobDialog();
+            alert('ไม่พบงานนี้ อาจถูกลบหรืออัปเดตไปแล้ว');
+            return;
+        }
+        const button = document.getElementById('deleteFinalBtn');
+        if (button) {
+            button.disabled = true;
+            button.textContent = '⏳ กำลังลบจากทุกเครื่อง...';
+        }
         deletedJobIds[String(id)] = new Date().toISOString();
         jobs = jobs.filter(item => Number(item.id) !== Number(id));
         updateAllViews();
         const saved = await saveData();
+        if (button) {
+            button.disabled = false;
+            button.textContent = '🗑️ ลบงานนี้ถาวร';
+        }
+        closeDeleteJobDialog();
         if (saved) showSaveNotice(`🗑️ ลบงาน ${job.customerName || '-'} แล้ว • ${formatSyncClock()}`);
         else alert('ลบในหน้าจอแล้ว แต่ Firebase ยังบันทึกไม่สำเร็จ กรุณาตรวจอินเทอร์เน็ตและกดอัปเดต');
     }
+
+    function deleteJob(id) {
+        openDeleteJobDialog(id);
+    }
+
+    document.addEventListener('keydown', function(event) {
+        const overlay = document.getElementById('deleteJobOverlay');
+        if (!overlay || overlay.style.display !== 'flex') return;
+        if (document.getElementById('deleteConfirmStep')?.style.display !== 'none') return;
+        if (/^\d$/.test(event.key)) appendDeletePinDigit(event.key);
+        else if (event.key === 'Backspace' || event.key === 'Delete') removeDeletePinDigit();
+        else if (event.key === 'Enter' && deletePinValue.length === 4) verifyDeleteJobPin();
+        event.preventDefault();
+    });
     // --- Render Jobs UI ---
     function renderJobs() {        const container = document.getElementById('jobListContainer'); container.innerHTML = '';        const filterVal = document.getElementById('jobFilter').value;        let isAdmin = currentUserRole === 'admin';                const sortedJobs = [...jobs].sort((a, b) => {            const timeA = a.installDate ? new Date(a.installDate).getTime() : 0;            const timeB = b.installDate ? new Date(b.installDate).getTime() : 0;            if (filterVal === 'all') {                if (a.isCompleted !== b.isCompleted) return a.isCompleted ? 1 : -1;                return a.isCompleted ? (timeB - timeA) : (timeA - timeB);            }            if (filterVal === 'pending') return timeA - timeB;            return timeB - timeA;        });
         sortedJobs.forEach(job => {            const jobTeam = resolveTeam(job);            if (!isAdmin && jobTeam !== currentUserRole) return;            if ((filterVal === 'pending' && job.isCompleted) || (filterVal === 'completed' && !job.isCompleted)) return;                        const tCust = (job.pkgCustomerPrice || 0) + (job.extraCustomerPrice || 0);            const tPart = (job.pkgPartnerPrice || 0) + (job.extraPartnerPrice || 0);            const tComm = tCust - tPart;            const siteExtraItems = Array.isArray(job.siteExtras) ? job.siteExtras : [];            const adminSiteExtraHTML = isAdmin && siteExtraItems.length > 0 ? `                <div class="job-site-extra-admin">                    <div class="job-site-extra-admin-title">🧾 รายการที่ช่างเพิ่มระหว่างติดตั้ง</div>                    ${siteExtraItems.map(item => {                        const customerPrice = Number(item.customerPrice) || 0;                        const partnerPrice = Number(item.partnerPrice) || 0;                        const costText = item.type === 'custom' && partnerPrice === 0                            ? '<span class="job-site-extra-admin-cost job-site-extra-admin-pending">ทุนยังไม่ระบุ — แอดมินควรตรวจสอบ</span>'                            : `<span class="job-site-extra-admin-cost">ทุนช่าง ${partnerPrice.toLocaleString()} ฿</span>`;                        return `<div class="job-site-extra-admin-row">                            <div class="job-site-extra-admin-name">${escapeHandoverText(item.name || '-')}</div>                            <div class="job-site-extra-admin-money">+${customerPrice.toLocaleString()} ฿${costText}</div>                        </div>`;                    }).join('')}                </div>` : '';                        let teamBadge = '';            let teamThemeClass = 'job-team-old';            if(jobTeam === 'team3') {                teamBadge = '<span class="job-team-chip">🟠 ช่างโบ้</span>';                teamThemeClass = 'job-team3';            }            else if(jobTeam === 'team2') {                teamBadge = '<span class="job-team-chip">🟡 ทีม 2</span>';                teamThemeClass = 'job-team2';            }            else if(jobTeam === 'team1') {                teamBadge = '<span class="job-team-chip">🔵 ช่างกราฟ</span>';                teamThemeClass = 'job-team1';            }                        const completionClass = job.isCompleted ? 'job-completed' : 'job-pending';                        // แสดงสถานะว่าเซฟลายเซ็นไว้หรือยัง
             const saveStatusHtml = job.signature ? `<span class="job-save-pill">💾 บันทึกเอกสารแล้ว</span>` : '';                        let adminActionHeaderHTML = isAdmin ? `                <div class="job-admin-strip d-flex align-items-center justify-content-between flex-wrap gap-2">                    <button onclick="toggleJobStatus(${job.id})" class="btn btn-sm ${job.isCompleted ? 'btn-success' : 'btn-outline-dark'} fw-bold rounded-pill px-3">                        ${job.isCompleted ? '✅ ปิดงานแล้ว (กดเพื่อเปิดใหม่)' : '⏳ รอตรวจงาน (กดเพื่อปิดงาน)'}                    </button>                    <div>${teamBadge}</div>                </div>` : '';
             let moneyDisplayHTML = isAdmin ? `                <div class="job-money-grid">                    <div class="job-money-box job-money-partner"><div class="job-money-label">ช่าง(ทุน)</div><div class="job-money-value">${tPart.toLocaleString()}</div></div>                    <div class="job-money-box job-money-customer"><div class="job-money-label">เก็บลูกค้า</div><div class="job-money-value">${tCust.toLocaleString()} ฿</div></div>                    <div class="job-money-box job-money-commission"><div class="job-money-label">คอมฯ</div><div class="job-money-value">${formatCommission(tComm)}</div></div>                </div>            ` : `                <div class="job-cash-collect">                    <div class="job-cash-label">💵 ยอดที่ต้องเก็บเงินลูกค้าหน้างาน</div>                    <div class="job-cash-value">${tCust.toLocaleString()} ฿</div>                </div>`;
             let actionButtonsHTML = isAdmin ? `                <div class="job-admin-actions">                    <button onclick="editJobData(${job.id})" class="btn btn-sm btn-warning px-3 py-1 fw-bold">✏️ แก้ไขข้อมูล</button>                    <button onclick="deleteJob(${job.id})" class="btn btn-sm btn-outline-danger px-3 py-1 fw-bold" title="ต้องใส่รหัสลบงาน 4 หลัก">🔐 ลบงาน</button>                </div>` : '';
-            container.innerHTML += `                <div class="col-12 col-md-6 job-card-container">                    <div class="card h-100 job-card ${teamThemeClass} ${completionClass}">                        <div class="job-card-top d-flex justify-content-between align-items-center gap-2">                            <div class="job-date-line">                                <span class="job-date-text">📅 ${formatThaiDate(job.installDate)}</span>                            </div>                            <div class="job-header-badges">                                ${saveStatusHtml}                                ${job.isCompleted ? '<span class="job-status-pill">✅ เสร็จสิ้น</span>' : '<span class="job-status-pill">⏳ รอดำเนินการ</span>'}                            </div>                        </div>                        ${adminActionHeaderHTML}                        <div class="card-body job-card-body d-flex flex-column">                            <h4 class="job-customer-name">👤 ${escapeHandoverText(job.customerName)}</h4>                            ${job.installAddress ? `<div class="job-address-preview">🏠 ${escapeHandoverText(job.installAddress)}</div>` : '<div class="job-address-preview text-warning">⚠️ ยังไม่มีข้อมูลจุดติดตั้ง</div>'}                            <div class="job-quick-actions">                                <a href="tel:${job.phone}" class="btn job-phone-btn" style="font-size: 0.95rem;">📞 ${job.phone}</a>                                <a href="${job.mapLink}" target="_blank" class="btn job-map-btn" style="font-size: 0.95rem;">📍 แผนที่</a>                            </div>                                                        <div class="job-package-panel">                                <div class="job-package-main">📦แพ็จเกจ: ${job.packageName}</div>                                ${job.extraDetail ? `<div class="job-extra-line">🛠️ เพิ่มเติม: ${job.extraDetail}</div>` : ''}                                ${adminSiteExtraHTML}                            </div>                                                        ${moneyDisplayHTML}                                                        <button onclick="openHandover(${job.id})" class="btn w-100 fw-bold py-2 fs-6 mb-1 job-handover-btn">                                📝 ออกใบส่งมอบให้ลูกค้าเซ็น                            </button>                                                        ${actionButtonsHTML}                        </div>                    </div>                </div>`;        });                if(container.innerHTML === '') container.innerHTML = `<div class="col-12 text-center text-muted py-5"><h5 class="fw-bold">📭 ไม่มีรายการงาน</h5></div>`;    }
+            container.innerHTML += `                <div class="col-12 col-md-6 job-card-container">                    <div class="card h-100 job-card ${teamThemeClass} ${completionClass}">                        <div class="job-card-top d-flex justify-content-between align-items-center gap-2">                            <div class="job-date-line">                                <span class="job-date-text">📅 ${formatThaiDate(job.installDate)}</span>                            </div>                            <div class="job-header-badges">                                ${saveStatusHtml}                                ${job.isCompleted ? '<span class="job-status-pill">✅ เสร็จสิ้น</span>' : '<span class="job-status-pill">⏳ รอดำเนินการ</span>'}                            </div>                        </div>                        ${adminActionHeaderHTML}                        <div class="card-body job-card-body d-flex flex-column">                            <h4 class="job-customer-name">👤 ${escapeHandoverText(job.customerName)}</h4>                            ${job.installAddress ? `<div class="job-address-preview">🏠 ${escapeHandoverText(job.installAddress)}</div>` : '<div class="job-address-preview text-warning">⚠️ ยังไม่มีที่อยู่สำหรับออกเอกสาร</div>'}                            <div class="job-quick-actions">                                <a href="tel:${job.phone}" class="btn job-phone-btn" style="font-size: 0.95rem;">📞 ${job.phone}</a>                                <a href="${job.mapLink}" target="_blank" class="btn job-map-btn" style="font-size: 0.95rem;">📍 แผนที่</a>                            </div>                                                        <div class="job-package-panel">                                <div class="job-package-main">📦แพ็จเกจ: ${job.packageName}</div>                                ${job.extraDetail ? `<div class="job-extra-line">🛠️ เพิ่มเติม: ${job.extraDetail}</div>` : ''}                                ${adminSiteExtraHTML}                            </div>                                                        ${moneyDisplayHTML}                                                        <button onclick="openHandover(${job.id})" class="btn w-100 fw-bold py-2 fs-6 mb-1 job-handover-btn">                                📝 ออกใบส่งมอบให้ลูกค้าเซ็น                            </button>                                                        ${actionButtonsHTML}                        </div>                    </div>                </div>`;        });                if(container.innerHTML === '') container.innerHTML = `<div class="col-12 text-center text-muted py-5"><h5 class="fw-bold">📭 ไม่มีรายการงาน</h5></div>`;    }
     // ==========================================
     // ระบบใบส่งมอบงานและลายเซ็น: บันทึกกลับมาแก้ต่อ + JPG 8K
     // ==========================================
