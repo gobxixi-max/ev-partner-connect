@@ -694,9 +694,15 @@
         .app-header-actions { display:flex !important; align-items:center; justify-content:flex-end; gap:6px !important; min-width:0; flex-wrap:wrap !important; }
         #techTeamBadge { display:inline-flex; align-items:center; justify-content:center; min-height:34px !important; line-height:1 !important; text-align:center; vertical-align:middle; }
         #techTeamBadge:not(.d-none) { margin-right:auto; }
-        .job-card-top { display:grid !important; grid-template-columns:minmax(0,1fr) auto; align-items:center !important; }
-        .job-date-line, .job-date-line .job-date-text { min-width:0; white-space:nowrap !important; }
-        .job-date-line .job-date-text { display:block; overflow:hidden; text-overflow:ellipsis; }
+        /* คงรูปแบบการ์ดเดิมไว้ แก้เฉพาะไม่ให้ป้ายเซ็นแล้วดันวันที่ตกบรรทัด */
+        .job-card-top { display:flex !important; justify-content:space-between !important; align-items:center !important; }
+        .job-date-line { flex:1 1 auto; min-width:0; }
+        .job-date-line .job-date-text { display:block; min-width:0; white-space:nowrap !important; overflow:hidden; text-overflow:ellipsis; }
+        .job-header-badges { flex:0 0 auto; }
+        @media (max-width:576px) {
+            .job-header-badges { flex-direction:column; align-items:flex-end; flex-wrap:nowrap !important; gap:3px !important; }
+            .job-status-pill, .job-save-pill { font-size:.61rem !important; padding:4px 6px !important; }
+        }
         .ho-floating-close { z-index:100006 !important; pointer-events:auto !important; }
         .ho-confirm-warning { color:#92400e !important; background:#fffbeb !important; border-color:#fcd34d !important; }
         #handoverOverlay { --ho-keyboard-height:0px; overscroll-behavior:contain; }
@@ -2074,8 +2080,24 @@
 
     function editJobData(id) {        const job = jobs.find(j => j.id === id);        if(job) {            document.getElementById('editJobId').value = job.id; document.getElementById('jobInstallDate').value = job.installDate || ""; document.getElementById('jobPhone').value = job.phone;            document.getElementById('jobCustomerName').value = job.customerName === "ไม่ระบุชื่อ" ? "" : job.customerName;            document.getElementById('jobInstallAddress').value = job.installAddress || job.handoverAddress || '';            updateAddressDetectionUI(Boolean(document.getElementById('jobInstallAddress').value.trim()));            document.getElementById('jobMapLink').value = job.mapLink;            const pkg = packages.find(p => p.name === job.packageName); document.getElementById('jobPackage').value = pkg ? pkg.id : ""; document.getElementById('jobTeam').value = job.team || "team1";            const siteExtras = Array.isArray(job.siteExtras) ? job.siteExtras : [];            const siteSums = siteExtras.reduce((sum, item) => {                sum.customer += Number(item.customerPrice) || 0;                sum.partner += Number(item.partnerPrice) || 0;                return sum;            }, { customer: 0, partner: 0 });            const baseDetail = job.handoverBaseExtraDetail !== undefined ? job.handoverBaseExtraDetail : (job.extraDetail || "");            const basePartner = job.handoverBaseExtraPartnerPrice !== undefined ? job.handoverBaseExtraPartnerPrice : Math.max(0, (Number(job.extraPartnerPrice) || 0) - siteSums.partner);            const baseCustomer = job.handoverBaseExtraCustomerPrice !== undefined ? job.handoverBaseExtraCustomerPrice : Math.max(0, (Number(job.extraCustomerPrice) || 0) - siteSums.customer);            document.getElementById('jobExtraSelect').value = ""; document.getElementById('jobExtraDetail').value = baseDetail || "";            document.getElementById('jobExtraPartnerPrice').value = basePartner || 0; document.getElementById('jobExtraCustomerPrice').value = baseCustomer || 0;            document.getElementById('jobCardHeader').innerHTML = "✏️ แก้ไขข้อมูลลูกค้า"; document.getElementById('jobCardHeader').className = 'card-header bg-warning text-dark fw-bold';            document.getElementById('smartPasteDiv').style.display = "none"; document.getElementById('btnSaveJob').innerHTML = "บันทึกการแก้ไข";            document.getElementById('btnSaveJob').className = 'btn btn-warning flex-grow-1 fw-bold'; document.getElementById('btnCancelEdit').style.display = "inline-block";            onTeamChange(); window.scrollTo({ top: 0, behavior: 'smooth' });        }    }
     function cancelEditJob() {        document.getElementById('jobForm').reset(); document.getElementById('editJobId').value = ""; document.getElementById('jobExtraPartnerPrice').value = 0; document.getElementById('jobExtraCustomerPrice').value = 0;        document.getElementById('jobTeam').value = "team1"; document.getElementById('jobExtraSelect').value = ""; document.getElementById('jobSummary').style.display = 'none'; document.getElementById('smartPasteDiv').style.display = "block";        document.getElementById('jobCardHeader').innerHTML = "📝 เพิ่มงานใหม่ (ส่งช่าง)"; document.getElementById('jobCardHeader').className = 'card-header bg-dark text-white fw-bold';        document.getElementById('btnSaveJob').innerHTML = "บันทึกงานใหม่"; document.getElementById('btnSaveJob').className = 'btn btn-success flex-grow-1 fw-bold'; document.getElementById('btnCancelEdit').style.display = "none";        const addressField = document.getElementById('jobInstallAddress');        if(addressField) addressField.classList.remove('address-detected');        const addressHint = document.getElementById('jobAddressHint');        if(addressHint) { addressHint.className = 'job-address-helper'; addressHint.textContent = 'แอดมินตรวจและกรอกที่อยู่สำหรับเอกสารให้ครบก่อนบันทึกงาน'; }        onTeamChange();     }
-    function toggleJobStatus(id) {        if(currentUserRole !== 'admin') return;         const job = jobs.find(j => j.id === id);        if(job) {            if (!job.isCompleted) { if(confirm(`✅ ยืนยันการปิดจ๊อบงานนี้ใช่ไหมครับ?
-👤 ลูกค้า: ${job.customerName}`)) { job.isCompleted = true; job.statusUpdatedAt = new Date().toISOString(); job.updatedAt = job.statusUpdatedAt; saveData(); updateAllViews(); }            } else { job.isCompleted = false; job.statusUpdatedAt = new Date().toISOString(); job.updatedAt = job.statusUpdatedAt; saveData(); updateAllViews(); }        }    }    let pendingDeleteJobId = null;
+    function toggleJobStatus(id) {
+        if (currentUserRole !== 'admin') return;
+        const job = jobs.find(j => Number(j.id) === Number(id));
+        if (!job) return;
+        if (!job.isCompleted) {
+            if (confirm(`✅ ยืนยันการปิดจ๊อบงานนี้ใช่ไหมครับ?
+👤 ลูกค้า: ${job.customerName || '-'}`)) {
+                job.isCompleted = true;
+                job.statusUpdatedAt = new Date().toISOString();
+                job.updatedAt = job.statusUpdatedAt;
+                saveData();
+                updateAllViews();
+            }
+            return;
+        }
+        openReopenJobDialog(id);
+    }    let pendingDeleteJobId = null;
+    let protectedJobAction = 'delete';
     let deletePinValue = '';
 
     function renderDeletePinBoxes() {
@@ -2089,9 +2111,45 @@
         if (continueBtn) continueBtn.disabled = deletePinValue.length !== 4;
     }
 
-    function openDeleteJobDialog(id) {
+    function configureProtectedJobDialog(job, step = 1) {
+        const reopening = protectedJobAction === 'reopen';
+        const icon = document.querySelector('#deleteJobDialog .delete-job-icon');
+        const targetLabel = document.querySelector('#deletePinStep .delete-job-target span');
+        const instructionTitle = document.querySelector('#deletePinStep .delete-job-instruction b');
+        const instructionNote = document.querySelector('#deletePinStep .delete-job-instruction small');
+        const confirmTitle = document.querySelector('#deleteConfirmStep .delete-job-confirm-card h4');
+        const confirmText = document.querySelector('#deleteConfirmStep .delete-job-confirm-card p');
+        const cancelBtn = document.querySelector('#deletePinStep .delete-job-actions .btn-light');
+        const finalBtn = document.getElementById('deleteFinalBtn');
+
+        if (icon) icon.textContent = reopening ? '↩️' : '🗑️';
+        if (targetLabel) targetLabel.textContent = reopening ? 'งานที่กำลังจะเปิดอีกครั้ง' : 'งานที่กำลังจะลบ';
+        if (instructionTitle) instructionTitle.textContent = reopening ? 'กรอกรหัสยืนยัน 4 หลัก' : 'กรอกรหัสลบงาน 4 หลัก';
+        if (instructionNote) instructionNote.textContent = reopening
+            ? 'ป้องกันการเผลอกดเปิดงานที่ปิดแล้ว กดรหัสให้ครบ 4 ตัว'
+            : 'กดตัวเลขให้ครบ 4 ตัว แล้วปุ่มยืนยันจะใช้งานได้';
+        if (cancelBtn) cancelBtn.textContent = reopening ? 'ยกเลิก ไม่เปิดงาน' : 'ยกเลิก ไม่ลบ';
+
+        document.getElementById('deleteJobStepLabel').textContent = `ขั้นตอน ${step} จาก 2`;
+        document.getElementById('deleteJobTitle').textContent = step === 1
+            ? (reopening ? 'ยืนยันสิทธิ์ก่อนเปิดงานใหม่' : 'ยืนยันสิทธิ์ก่อนลบงาน')
+            : (reopening ? 'ตรวจชื่อก่อนเปิดงานอีกครั้ง' : 'ตรวจชื่อและยืนยันครั้งสุดท้าย');
+
+        if (confirmTitle) confirmTitle.textContent = reopening
+            ? 'ยืนยันเปิดงานนี้กลับเป็นงานรอดำเนินการ'
+            : 'ยืนยันลบงานนี้จากทุกเครื่อง';
+        if (confirmText) confirmText.textContent = reopening
+            ? `งานของ ${job.customerName || '-'} จะย้ายออกจากรายการงานเสร็จแล้ว และกลับไปอยู่ในงานรอดำเนินการ`
+            : `งานของ ${job.customerName || '-'} จะหายจากแอดมินและทีมช่าง กรุณาตรวจชื่ออีกครั้งก่อนกดปุ่มแดง`;
+        if (finalBtn) {
+            finalBtn.className = reopening ? 'btn btn-warning shadow fw-bold' : 'btn btn-danger shadow';
+            finalBtn.textContent = reopening ? '↩️ เปิดงานนี้อีกครั้ง' : '🗑️ ลบงานนี้ถาวร';
+        }
+    }
+
+    function openProtectedJobDialog(id, action) {
         if (currentUserRole !== 'admin') {
-            alert('เฉพาะแอดมินเท่านั้นที่ลบงานได้');
+            alert('เฉพาะแอดมินเท่านั้นที่ทำรายการนี้ได้');
             return;
         }
         const job = jobs.find(item => Number(item.id) === Number(id));
@@ -2099,6 +2157,7 @@
             alert('ไม่พบงานนี้ อาจถูกลบหรืออัปเดตไปแล้ว');
             return;
         }
+        protectedJobAction = action === 'reopen' ? 'reopen' : 'delete';
         pendingDeleteJobId = Number(id);
         deletePinValue = '';
         document.getElementById('deleteJobCustomer').textContent = job.customerName || '-';
@@ -2106,17 +2165,25 @@
         document.getElementById('deletePinError').textContent = '';
         document.getElementById('deletePinStep').style.display = 'block';
         document.getElementById('deleteConfirmStep').style.display = 'none';
-        document.getElementById('deleteJobStepLabel').textContent = 'ขั้นตอน 1 จาก 2';
-        document.getElementById('deleteJobTitle').textContent = 'ยืนยันสิทธิ์ก่อนลบงาน';
+        configureProtectedJobDialog(job, 1);
         renderDeletePinBoxes();
         document.getElementById('deleteJobOverlay').style.display = 'flex';
         document.body.style.overflow = 'hidden';
+    }
+
+    function openDeleteJobDialog(id) {
+        openProtectedJobDialog(id, 'delete');
+    }
+
+    function openReopenJobDialog(id) {
+        openProtectedJobDialog(id, 'reopen');
     }
 
     function closeDeleteJobDialog() {
         const overlay = document.getElementById('deleteJobOverlay');
         if (overlay) overlay.style.display = 'none';
         pendingDeleteJobId = null;
+        protectedJobAction = 'delete';
         deletePinValue = '';
         document.body.style.overflow = '';
     }
@@ -2156,30 +2223,39 @@
         }
         const enteredHash = await sha256(deletePinValue);
         if (enteredHash !== DELETE_JOB_PIN_HASH) {
-            document.getElementById('deletePinError').textContent = 'รหัสไม่ถูกต้อง งานยังไม่ถูกลบ';
+            document.getElementById('deletePinError').textContent = protectedJobAction === 'reopen'
+                ? 'รหัสไม่ถูกต้อง งานยังคงปิดอยู่เหมือนเดิม'
+                : 'รหัสไม่ถูกต้อง งานยังไม่ถูกลบ';
             deletePinValue = '';
             renderDeletePinBoxes();
             shakeDeleteDialog();
             return;
         }
+        const job = jobs.find(item => Number(item.id) === Number(pendingDeleteJobId));
+        if (!job) {
+            closeDeleteJobDialog();
+            alert('ไม่พบงานนี้ อาจถูกลบหรืออัปเดตไปแล้ว');
+            return;
+        }
         document.getElementById('deletePinStep').style.display = 'none';
         document.getElementById('deleteConfirmStep').style.display = 'block';
-        document.getElementById('deleteJobStepLabel').textContent = 'ขั้นตอน 2 จาก 2';
-        document.getElementById('deleteJobTitle').textContent = 'ตรวจชื่อและยืนยันครั้งสุดท้าย';
+        configureProtectedJobDialog(job, 2);
     }
 
     function backToDeletePinStep() {
+        const job = jobs.find(item => Number(item.id) === Number(pendingDeleteJobId));
+        if (!job) return closeDeleteJobDialog();
         deletePinValue = '';
         document.getElementById('deletePinError').textContent = '';
         document.getElementById('deleteConfirmStep').style.display = 'none';
         document.getElementById('deletePinStep').style.display = 'block';
-        document.getElementById('deleteJobStepLabel').textContent = 'ขั้นตอน 1 จาก 2';
-        document.getElementById('deleteJobTitle').textContent = 'ยืนยันสิทธิ์ก่อนลบงาน';
+        configureProtectedJobDialog(job, 1);
         renderDeletePinBoxes();
     }
 
     async function confirmDeleteJobPermanent() {
         const id = pendingDeleteJobId;
+        const action = protectedJobAction;
         const job = jobs.find(item => Number(item.id) === Number(id));
         if (!job) {
             closeDeleteJobDialog();
@@ -2189,16 +2265,27 @@
         const button = document.getElementById('deleteFinalBtn');
         if (button) {
             button.disabled = true;
-            button.textContent = '⏳ กำลังลบจากทุกเครื่อง...';
+            button.textContent = action === 'reopen' ? '⏳ กำลังเปิดงาน...' : '⏳ กำลังลบจากทุกเครื่อง...';
         }
+
+        if (action === 'reopen') {
+            job.isCompleted = false;
+            job.statusUpdatedAt = new Date().toISOString();
+            job.updatedAt = job.statusUpdatedAt;
+            updateAllViews();
+            const saved = await saveData();
+            if (button) button.disabled = false;
+            closeDeleteJobDialog();
+            if (saved) showSaveNotice(`↩️ เปิดงาน ${job.customerName || '-'} กลับเป็นงานรอดำเนินการแล้ว • ${formatSyncClock()}`);
+            else alert('เปิดงานในหน้าจอแล้ว แต่ Firebase ยังบันทึกไม่สำเร็จ กรุณาตรวจอินเทอร์เน็ตและกดอัปเดต');
+            return;
+        }
+
         deletedJobIds[String(id)] = new Date().toISOString();
         jobs = jobs.filter(item => Number(item.id) !== Number(id));
         updateAllViews();
         const saved = await saveData();
-        if (button) {
-            button.disabled = false;
-            button.textContent = '🗑️ ลบงานนี้ถาวร';
-        }
+        if (button) button.disabled = false;
         closeDeleteJobDialog();
         if (saved) showSaveNotice(`🗑️ ลบงาน ${job.customerName || '-'} แล้ว • ${formatSyncClock()}`);
         else alert('ลบในหน้าจอแล้ว แต่ Firebase ยังบันทึกไม่สำเร็จ กรุณาตรวจอินเทอร์เน็ตและกดอัปเดต');
@@ -2220,7 +2307,7 @@
     // --- Render Jobs UI ---
     function renderJobs() {        const container = document.getElementById('jobListContainer'); container.innerHTML = '';        const filterVal = document.getElementById('jobFilter').value;        let isAdmin = currentUserRole === 'admin';                const sortedJobs = [...jobs].sort((a, b) => {            const timeA = a.installDate ? new Date(a.installDate).getTime() : 0;            const timeB = b.installDate ? new Date(b.installDate).getTime() : 0;            if (filterVal === 'all') {                if (a.isCompleted !== b.isCompleted) return a.isCompleted ? 1 : -1;                return a.isCompleted ? (timeB - timeA) : (timeA - timeB);            }            if (filterVal === 'pending') return timeA - timeB;            return timeB - timeA;        });
         sortedJobs.forEach(job => {            const jobTeam = resolveTeam(job);            if (!isAdmin && jobTeam !== currentUserRole) return;            if ((filterVal === 'pending' && job.isCompleted) || (filterVal === 'completed' && !job.isCompleted)) return;                        const tCust = (job.pkgCustomerPrice || 0) + (job.extraCustomerPrice || 0);            const tPart = (job.pkgPartnerPrice || 0) + (job.extraPartnerPrice || 0);            const tComm = tCust - tPart;            const siteExtraItems = Array.isArray(job.siteExtras) ? job.siteExtras : [];            const adminSiteExtraHTML = isAdmin && siteExtraItems.length > 0 ? `                <div class="job-site-extra-admin">                    <div class="job-site-extra-admin-title">🧾 รายการที่ช่างเพิ่มระหว่างติดตั้ง</div>                    ${siteExtraItems.map(item => {                        const customerPrice = Number(item.customerPrice) || 0;                        const partnerPrice = Number(item.partnerPrice) || 0;                        const costText = item.type === 'custom' && partnerPrice === 0                            ? '<span class="job-site-extra-admin-cost job-site-extra-admin-pending">ทุนยังไม่ระบุ — แอดมินควรตรวจสอบ</span>'                            : `<span class="job-site-extra-admin-cost">ทุนช่าง ${partnerPrice.toLocaleString()} ฿</span>`;                        return `<div class="job-site-extra-admin-row">                            <div class="job-site-extra-admin-name">${escapeHandoverText(item.name || '-')}</div>                            <div class="job-site-extra-admin-money">+${customerPrice.toLocaleString()} ฿${costText}</div>                        </div>`;                    }).join('')}                </div>` : '';                        let teamBadge = '';            let teamThemeClass = 'job-team-old';            if(jobTeam === 'team3') {                teamBadge = '<span class="job-team-chip">🟠 ทีมช่างโบ้</span>';                teamThemeClass = 'job-team3';            }            else if(jobTeam === 'team2') {                teamBadge = '<span class="job-team-chip">🟡 ทีมช่างเอ</span>';                teamThemeClass = 'job-team2';            }            else if(jobTeam === 'team1') {                teamBadge = '<span class="job-team-chip">🔵 ทีมช่างกราฟ</span>';                teamThemeClass = 'job-team1';            }                        const completionClass = job.isCompleted ? 'job-completed' : 'job-pending';                        // แสดงสถานะว่าเซฟลายเซ็นไว้หรือยัง
-            const saveStatusHtml = job.signature ? `<span class="job-save-pill">✅ เซ็นแล้ว</span>` : '';                        let adminActionHeaderHTML = isAdmin ? `                <div class="job-admin-strip d-flex align-items-center justify-content-between flex-wrap gap-2">                    <button onclick="toggleJobStatus(${job.id})" class="btn btn-sm ${job.isCompleted ? 'btn-success' : 'btn-outline-dark'} fw-bold rounded-pill px-3">                        ${job.isCompleted ? '✅ ปิดงานแล้ว (กดเพื่อเปิดใหม่)' : '⏳ รอตรวจงาน (กดเพื่อปิดงาน)'}                    </button>                    <div>${teamBadge}</div>                </div>` : '';
+            const saveStatusHtml = job.signature ? `<span class="job-save-pill">✅ เซ็นแล้ว</span>` : '';                        let adminActionHeaderHTML = isAdmin ? `                <div class="job-admin-strip d-flex align-items-center justify-content-between flex-wrap gap-2">                    <button onclick="toggleJobStatus(${job.id})" class="btn btn-sm ${job.isCompleted ? 'btn-success' : 'btn-outline-dark'} fw-bold rounded-pill px-3">                        ${job.isCompleted ? '🔐 ปิดงานแล้ว (ใส่รหัสเพื่อเปิดใหม่)' : '⏳ รอตรวจงาน (กดเพื่อปิดงาน)'}                    </button>                    <div>${teamBadge}</div>                </div>` : '';
             let moneyDisplayHTML = isAdmin ? `                <div class="job-money-grid">                    <div class="job-money-box job-money-partner"><div class="job-money-label">ช่าง(ทุน)</div><div class="job-money-value">${tPart.toLocaleString()}</div></div>                    <div class="job-money-box job-money-customer"><div class="job-money-label">เก็บลูกค้า</div><div class="job-money-value">${tCust.toLocaleString()} ฿</div></div>                    <div class="job-money-box job-money-commission"><div class="job-money-label">คอมฯ</div><div class="job-money-value">${formatCommission(tComm)}</div></div>                </div>            ` : `                <div class="job-cash-collect">                    <div class="job-cash-label">💵 ยอดที่ต้องเก็บเงินลูกค้าหน้างาน</div>                    <div class="job-cash-value">${tCust.toLocaleString()} ฿</div>                </div>`;
             let actionButtonsHTML = isAdmin ? `                <div class="job-admin-actions">                    <button onclick="editJobData(${job.id})" class="btn btn-sm btn-warning px-3 py-1 fw-bold">✏️ แก้ไขข้อมูล</button>                    <button onclick="deleteJob(${job.id})" class="btn btn-sm btn-outline-danger px-3 py-1 fw-bold" title="ต้องใส่รหัสลบงาน 4 หลัก">🔐 ลบงาน</button>                </div>` : '';
             container.innerHTML += `                <div class="col-12 col-md-6 job-card-container">                    <div class="card h-100 job-card ${teamThemeClass} ${completionClass}">                        <div class="job-card-top d-flex justify-content-between align-items-center gap-2">                            <div class="job-date-line">                                <span class="job-date-text">📅 ${formatThaiDate(job.installDate)}</span>                            </div>                            <div class="job-header-badges">                                ${saveStatusHtml}                                ${job.isCompleted ? '<span class="job-status-pill">✅ เสร็จสิ้น</span>' : '<span class="job-status-pill">⏳ รอดำเนินการ</span>'}                            </div>                        </div>                        ${adminActionHeaderHTML}                        <div class="card-body job-card-body d-flex flex-column">                            <h4 class="job-customer-name">👤 ${escapeHandoverText(job.customerName)}</h4>                            ${job.installAddress ? `<div class="job-address-preview">🏠 ${escapeHandoverText(job.installAddress)}</div>` : '<div class="job-address-preview text-warning">⚠️ ยังไม่มีที่อยู่สำหรับออกเอกสาร</div>'}                            <div class="job-quick-actions">                                <a href="tel:${job.phone}" class="btn job-phone-btn" style="font-size: 0.95rem;">📞 ${job.phone}</a>                                <a href="${job.mapLink}" target="_blank" class="btn job-map-btn" style="font-size: 0.95rem;">📍 แผนที่</a>                            </div>                                                        <div class="job-package-panel">                                <div class="job-package-main">📦แพ็จเกจ: ${job.packageName}</div>                                ${job.extraDetail ? `<div class="job-extra-line">🛠️ เพิ่มเติม: ${job.extraDetail}</div>` : ''}                                ${adminSiteExtraHTML}                            </div>                                                        ${moneyDisplayHTML}                                                        <button onclick="openHandover(${job.id})" class="btn w-100 fw-bold py-2 fs-6 mb-1 job-handover-btn">                                📝 ออกใบส่งมอบให้ลูกค้าเซ็น                            </button>                                                        ${actionButtonsHTML}                        </div>                    </div>                </div>`;        });                if(container.innerHTML === '') container.innerHTML = `<div class="col-12 text-center text-muted py-5"><h5 class="fw-bold">📭 ไม่มีรายการงาน</h5></div>`;    }
