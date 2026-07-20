@@ -2670,7 +2670,7 @@
         if(!viewport) return;
         const keyboardHeight = Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop);
         overlay.style.setProperty('--ho-keyboard-height', `${Math.round(keyboardHeight)}px`);
-        overlay.classList.toggle('keyboard-open', keyboardHeight > 110);
+        overlay.classList.toggle('keyboard-open', keyboardHeight > 110); 
     }
     if(window.visualViewport) {
         window.visualViewport.addEventListener('resize', updateHandoverViewport);
