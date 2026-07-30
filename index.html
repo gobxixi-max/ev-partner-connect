@@ -1190,6 +1190,28 @@
         .commission-share-note { display:block; margin-top:7px; padding:8px 10px; border-radius:10px; color:#1e3a8a; background:#eff6ff; border:1px solid #bfdbfe; font-size:.71rem; line-height:1.42; font-weight:850; }
         .commission-slip-upload-btn { color:#fff !important; background:linear-gradient(135deg,#7c3aed,#a855f7) !important; border:0 !important; }
         .commission-slip-view-btn { width:100%; min-height:40px; margin-top:8px; border:1px solid #c4b5fd; border-radius:10px; color:#6d28d9; background:#f5f3ff; font-size:.75rem; font-weight:950; }
+        .commission-slip-tools { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:8px; }
+        .commission-slip-tools .commission-slip-view-btn { margin-top:0; }
+        .commission-slip-delete-btn { width:100%; min-height:40px; border:1px solid #fecaca; border-radius:10px; color:#b91c1c; background:#fff1f2; font-size:.75rem; font-weight:950; }
+        .commission-slip-delete-btn:active { transform:translateY(1px); background:#fee2e2; }
+        .job-payment-pill {
+            display:inline-flex;
+            align-items:center;
+            gap:4px;
+            border:1px solid rgba(255,255,255,.82);
+            background:#ecfdf5;
+            color:#047857;
+            border-radius:999px;
+            padding:5px 9px;
+            font-size:.72rem;
+            line-height:1;
+            font-weight:950;
+            box-shadow:0 3px 9px rgba(4,120,87,.18);
+            white-space:nowrap;
+        }
+        .job-card.job-paid-awaiting-review { border-color:#10b981 !important; border-top-color:#10b981 !important; box-shadow:0 12px 28px rgba(16,185,129,.18),0 3px 8px rgba(15,23,42,.08) !important; }
+        .job-card.job-paid-awaiting-review .job-admin-strip { background:linear-gradient(90deg,#d1fae5,#ffffff); border-bottom-color:#a7f3d0; }
+
         .commission-slip-overlay { display:none; position:fixed; inset:0; z-index:100005; padding:16px; align-items:center; justify-content:center; background:rgba(15,23,42,.78); backdrop-filter:blur(6px); }
         .commission-slip-overlay.open { display:flex; }
         .commission-slip-dialog { width:min(470px,100%); max-height:92vh; overflow:auto; border-radius:20px; border:1px solid rgba(255,255,255,.78); background:#fff; box-shadow:0 26px 76px rgba(0,0,0,.42); }
@@ -1229,6 +1251,7 @@
             .commission-selection-actions { grid-template-columns:1fr; }
             .commission-batch-actions { grid-template-columns:1fr; }
             .commission-review-top { flex-direction:column; }
+            .commission-slip-tools { grid-template-columns:1fr; }
         }
 
 </style></head><body>
@@ -1440,7 +1463,7 @@
     <!-- ปุ่มลอยค้างด้านล่าง เห็นเสมอ ไม่ต้องเลื่อนหา -->    <div class="ho-floating-actions hide-on-capture" id="hoActionBar">        <div class="ho-action-grid">            <button type="button" class="btn btn-info text-white shadow-sm" onclick="openHandoverSaveConfirm()">💾 บันทึกแล้วออก</button>            <button type="button" class="btn btn-success shadow-sm" onclick="saveHandoverData(true, false)">📷 สร้างรูปพร้อมส่ง</button>        </div>        <button type="button" class="ho-8k-secondary" onclick="saveHandoverData('8k', false)">สร้างไฟล์ 8K คมชัดพิเศษ <small>(ใช้เวลานานกว่า)</small></button>        <div id="ho-save-status" class="ho-save-status">ข้อมูลจะถูกเก็บไว้ในงานนี้ เปิดกลับมาทำต่อได้</div>    </div></div>
 <!-- ยืนยันอีกครั้งก่อนบันทึกลายเซ็นและออกจากใบส่งมอบ --><div id="handoverSaveConfirm" class="ho-confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="handoverConfirmTitle">    <div class="ho-confirm-box">        <div class="ho-confirm-head">            <div class="ho-confirm-icon">✍️</div>            <h3 id="handoverConfirmTitle">ตรวจสอบก่อนบันทึกและออก</h3>            <p>ตรวจข้อมูลก่อนบันทึก หากยังไม่มีลายเซ็น ระบบจะเก็บเป็นฉบับร่างและกลับหน้ารายการงานได้</p>        </div>        <div id="handoverNoSignatureWarning" class="ho-confirm-warning">⚠️ ยังไม่มีลายเซ็น ระบบจะบันทึกเป็นฉบับร่าง คุณกลับมาให้ลูกค้าเซ็นภายหลังได้</div>        <div id="handoverConfirmTotal" style="margin:14px 18px 0; padding:10px 12px; border-radius:12px; background:#ecfdf5; border:1px solid #bbf7d0; color:#166534; text-align:center; font-size:.9rem; font-weight:900;">ยอดที่ลูกค้าชำระรวม 0 ฿</div>        <div class="ho-confirm-actions">            <button type="button" class="btn btn-light border" onclick="closeHandoverSaveConfirm()">← กลับไปตรวจสอบ</button>            <button type="button" class="btn btn-success shadow-sm" id="handoverConfirmSaveBtn" onclick="confirmHandoverSaveAndExit()">บันทึกและออก</button>        </div>    </div></div>
 
-<!-- กล่องป้องกันการลบงาน: ต้องผ่าน PIN 4 หลักและยืนยันซ้ำ -->
+<!-- กล่องยืนยันรายการสำคัญ: ลบงาน เปิดงาน และลบสลิป ต้องผ่าน PIN 4 หลักและยืนยันซ้ำ -->
 <div id="deleteJobOverlay" class="delete-job-overlay" role="dialog" aria-modal="true" aria-labelledby="deleteJobTitle">
     <div id="deleteJobDialog" class="delete-job-dialog">
         <div class="delete-job-head">
@@ -3092,6 +3115,13 @@
 
     function configureProtectedJobDialog(job, step = 1) {
         const reopening = protectedJobAction === 'reopen';
+        const deletingSlip = protectedJobAction === 'deleteSlip';
+        const batchId = deletingSlip ? String(job.commissionBatchId || `single-${job.id}`) : '';
+        const batchJobs = deletingSlip ? getCommissionBatchJobs(batchId) : [];
+        const batchCount = Math.max(1, batchJobs.length);
+        const targetText = deletingSlip
+            ? `สลิป ${batchCount} งาน • ${getCommissionTeamName(resolveTeam(job))}`
+            : (job.customerName || '-');
         const icon = document.querySelector('#deleteJobDialog .delete-job-icon');
         const targetLabel = document.querySelector('#deletePinStep .delete-job-target span');
         const instructionTitle = document.querySelector('#deletePinStep .delete-job-instruction b');
@@ -3100,29 +3130,47 @@
         const confirmText = document.querySelector('#deleteConfirmStep .delete-job-confirm-card p');
         const cancelBtn = document.querySelector('#deletePinStep .delete-job-actions .btn-light');
         const finalBtn = document.getElementById('deleteFinalBtn');
+        const targetMain = document.getElementById('deleteJobCustomer');
+        const targetConfirm = document.getElementById('deleteConfirmCustomer');
 
-        if (icon) icon.textContent = reopening ? '↩️' : '🗑️';
-        if (targetLabel) targetLabel.textContent = reopening ? 'งานที่กำลังจะเปิดอีกครั้ง' : 'งานที่กำลังจะลบ';
-        if (instructionTitle) instructionTitle.textContent = reopening ? 'กรอกรหัสยืนยัน 4 หลัก' : 'กรอกรหัสลบงาน 4 หลัก';
-        if (instructionNote) instructionNote.textContent = reopening
-            ? 'ป้องกันการเผลอกดเปิดงานที่ปิดแล้ว กดรหัสให้ครบ 4 ตัว'
-            : 'กดตัวเลขให้ครบ 4 ตัว แล้วปุ่มยืนยันจะใช้งานได้';
-        if (cancelBtn) cancelBtn.textContent = reopening ? 'ยกเลิก ไม่เปิดงาน' : 'ยกเลิก ไม่ลบ';
+        if (targetMain) targetMain.textContent = targetText;
+        if (targetConfirm) targetConfirm.textContent = targetText;
+        if (icon) icon.textContent = deletingSlip ? '🧾' : (reopening ? '↩️' : '🗑️');
+        if (targetLabel) targetLabel.textContent = deletingSlip
+            ? 'หลักฐานรับเงินที่กำลังจะลบ'
+            : (reopening ? 'งานที่กำลังจะเปิดอีกครั้ง' : 'งานที่กำลังจะลบ');
+        if (instructionTitle) instructionTitle.textContent = deletingSlip
+            ? 'กรอกรหัสยืนยันลบสลิป 4 หลัก'
+            : (reopening ? 'กรอกรหัสยืนยัน 4 หลัก' : 'กรอกรหัสลบงาน 4 หลัก');
+        if (instructionNote) instructionNote.textContent = deletingSlip
+            ? 'ใช้รหัสเดียวกับปุ่มเปิด–ปิดงาน เมื่อลบแล้วรายการจะกลับไปรอรับเงิน'
+            : (reopening
+                ? 'ป้องกันการเผลอกดเปิดงานที่ปิดแล้ว กดรหัสให้ครบ 4 ตัว'
+                : 'กดตัวเลขให้ครบ 4 ตัว แล้วปุ่มยืนยันจะใช้งานได้');
+        if (cancelBtn) cancelBtn.textContent = deletingSlip
+            ? 'ยกเลิก เก็บสลิปไว้'
+            : (reopening ? 'ยกเลิก ไม่เปิดงาน' : 'ยกเลิก ไม่ลบ');
 
         document.getElementById('deleteJobStepLabel').textContent = `ขั้นตอน ${step} จาก 2`;
         document.getElementById('deleteJobTitle').textContent = step === 1
-            ? (reopening ? 'ยืนยันสิทธิ์ก่อนเปิดงานใหม่' : 'ยืนยันสิทธิ์ก่อนลบงาน')
-            : (reopening ? 'ตรวจชื่อก่อนเปิดงานอีกครั้ง' : 'ตรวจชื่อและยืนยันครั้งสุดท้าย');
+            ? (deletingSlip ? 'ยืนยันสิทธิ์ก่อนลบสลิป' : (reopening ? 'ยืนยันสิทธิ์ก่อนเปิดงานใหม่' : 'ยืนยันสิทธิ์ก่อนลบงาน'))
+            : (deletingSlip ? 'ตรวจรายการก่อนลบสลิป' : (reopening ? 'ตรวจชื่อก่อนเปิดงานอีกครั้ง' : 'ตรวจชื่อและยืนยันครั้งสุดท้าย'));
 
-        if (confirmTitle) confirmTitle.textContent = reopening
-            ? 'ยืนยันเปิดงานนี้กลับเป็นงานรอดำเนินการ'
-            : 'ยืนยันลบงานนี้จากทุกเครื่อง';
-        if (confirmText) confirmText.textContent = reopening
-            ? `งานของ ${job.customerName || '-'} จะย้ายออกจากรายการงานเสร็จแล้ว และกลับไปอยู่ในงานรอดำเนินการ`
-            : `งานของ ${job.customerName || '-'} จะหายจากแอดมินและทีมช่าง กรุณาตรวจชื่ออีกครั้งก่อนกดปุ่มแดง`;
+        if (confirmTitle) confirmTitle.textContent = deletingSlip
+            ? 'ยืนยันลบสลิปและกลับไปรอรับเงิน'
+            : (reopening ? 'ยืนยันเปิดงานนี้กลับเป็นงานรอดำเนินการ' : 'ยืนยันลบงานนี้จากทุกเครื่อง');
+        if (confirmText) confirmText.textContent = deletingSlip
+            ? `สลิปของชุดนี้จะถูกลบ สถานะรับเงินจะถูกยกเลิก และ ${batchCount} งานจะกลับไปอยู่หน้า “รอรับเงิน” หากเคยกดตรวจภาพปิดงาน ระบบจะเปิดงานนั้นกลับให้อัตโนมัติ`
+            : (reopening
+                ? `งานของ ${job.customerName || '-'} จะย้ายออกจากรายการงานเสร็จแล้ว และกลับไปอยู่ในงานรอดำเนินการ`
+                : `งานของ ${job.customerName || '-'} จะหายจากแอดมินและทีมช่าง กรุณาตรวจชื่ออีกครั้งก่อนกดปุ่มแดง`);
         if (finalBtn) {
-            finalBtn.className = reopening ? 'btn btn-warning shadow fw-bold' : 'btn btn-danger shadow';
-            finalBtn.textContent = reopening ? '↩️ เปิดงานนี้อีกครั้ง' : '🗑️ ลบงานนี้ถาวร';
+            finalBtn.className = deletingSlip
+                ? 'btn btn-danger shadow fw-bold'
+                : (reopening ? 'btn btn-warning shadow fw-bold' : 'btn btn-danger shadow');
+            finalBtn.textContent = deletingSlip
+                ? '🧾 ลบสลิป • เปิดรับเงินใหม่'
+                : (reopening ? '↩️ เปิดงานนี้อีกครั้ง' : '🗑️ ลบงานนี้ถาวร');
         }
     }
 
@@ -3136,7 +3184,7 @@
             alert('ไม่พบงานนี้ อาจถูกลบหรืออัปเดตไปแล้ว');
             return;
         }
-        protectedJobAction = action === 'reopen' ? 'reopen' : 'delete';
+        protectedJobAction = action === 'reopen' ? 'reopen' : (action === 'deleteSlip' ? 'deleteSlip' : 'delete');
         pendingDeleteJobId = Number(id);
         deletePinValue = '';
         document.getElementById('deleteJobCustomer').textContent = job.customerName || '-';
@@ -3156,6 +3204,11 @@
 
     function openReopenJobDialog(id) {
         openProtectedJobDialog(id, 'reopen');
+    }
+
+    function openDeleteCommissionSlipDialog(id) {
+        closeCommissionSlipModal();
+        openProtectedJobDialog(id, 'deleteSlip');
     }
 
     function closeDeleteJobDialog() {
@@ -3204,7 +3257,9 @@
         if (enteredHash !== DELETE_JOB_PIN_HASH) {
             document.getElementById('deletePinError').textContent = protectedJobAction === 'reopen'
                 ? 'รหัสไม่ถูกต้อง งานยังคงปิดอยู่เหมือนเดิม'
-                : 'รหัสไม่ถูกต้อง งานยังไม่ถูกลบ';
+                : (protectedJobAction === 'deleteSlip'
+                    ? 'รหัสไม่ถูกต้อง สลิปและสถานะรับเงินยังอยู่เหมือนเดิม'
+                    : 'รหัสไม่ถูกต้อง งานยังไม่ถูกลบ');
             deletePinValue = '';
             renderDeletePinBoxes();
             shakeDeleteDialog();
@@ -3244,7 +3299,45 @@
         const button = document.getElementById('deleteFinalBtn');
         if (button) {
             button.disabled = true;
-            button.textContent = action === 'reopen' ? '⏳ กำลังเปิดงาน...' : '⏳ กำลังลบจากทุกเครื่อง...';
+            button.textContent = action === 'reopen'
+                ? '⏳ กำลังเปิดงาน...'
+                : (action === 'deleteSlip' ? '⏳ กำลังลบสลิปและเปิดรับเงินใหม่...' : '⏳ กำลังลบจากทุกเครื่อง...');
+        }
+
+        if (action === 'deleteSlip') {
+            const batchId = String(job.commissionBatchId || `single-${job.id}`);
+            const batchJobs = getCommissionBatchJobs(batchId);
+            const targetJobs = batchJobs.length ? batchJobs : [job];
+            const now = new Date().toISOString();
+            let reopenedCount = 0;
+            targetJobs.forEach((item) => {
+                const wasClosedByReview = Boolean(item.workReviewedAt);
+                item.commissionPaidAt = '';
+                item.commissionNotifiedAt = '';
+                item.commissionBatchId = '';
+                item.commissionSlipDataUrl = '';
+                item.commissionSlipFileName = '';
+                item.commissionSlipUploadedAt = '';
+                item.workReviewedAt = '';
+                if (wasClosedByReview) {
+                    item.isCompleted = false;
+                    item.statusUpdatedAt = now;
+                    reopenedCount += 1;
+                }
+                item.adminUpdatedAt = now;
+                item.updatedAt = now;
+            });
+            const view = document.getElementById('commissionViewSelect');
+            if (view) view.value = 'unnotified';
+            resetCommissionSelection();
+            updateAllViews();
+            const saved = await saveData();
+            if (button) button.disabled = false;
+            closeDeleteJobDialog();
+            const reopenedText = reopenedCount ? ` • เปิดงานกลับ ${reopenedCount} งาน` : '';
+            if (saved) showSaveNotice(`🧾 ลบสลิปแล้ว • กลับไปรอรับเงิน ${targetJobs.length} งาน${reopenedText} • ${formatSyncClock()}`);
+            else alert('ลบสลิปในหน้าจอแล้ว แต่ Firebase ยังบันทึกไม่สำเร็จ กรุณาตรวจอินเทอร์เน็ตและกดอัปเดต');
+            return;
         }
 
         if (action === 'reopen') {
@@ -3457,9 +3550,12 @@
                         ${reviewed
                             ? `<div class="commission-review-done">ตรวจภาพผลงานและปิดงานแล้วเมื่อ ${formatCommissionDateTime(job.workReviewedAt)}</div>`
                             : `<button type="button" class="commission-review-btn" onclick="markCommissionWorkReviewed(${Number(job.id)})">📷 ตรวจภาพแล้ว • ปิดงานนี้</button>`}
-                        ${getCommissionBatchSlip(job.commissionBatchId || `single-${job.id}`)
-                            ? `<button type="button" class="commission-slip-view-btn" onclick="openCommissionSlipViewer('${escapeHandoverText(job.commissionBatchId || `single-${job.id}`)}')">🧾 ดูสลิปที่บันทึกไว้</button>`
-                            : ''}
+                        <div class="commission-slip-tools">
+                            ${getCommissionBatchSlip(job.commissionBatchId || `single-${job.id}`)
+                                ? `<button type="button" class="commission-slip-view-btn" onclick="openCommissionSlipViewer('${escapeHandoverText(job.commissionBatchId || `single-${job.id}`)}')">🧾 ดูสลิปที่บันทึกไว้</button>`
+                                : ''}
+                            <button type="button" class="commission-slip-delete-btn" onclick="openDeleteCommissionSlipDialog(${Number(job.id)})">🔐 ลบสลิป • เปิดรับเงินใหม่</button>
+                        </div>
                     </div>`;
                 }).join('');
             }
@@ -3814,11 +3910,15 @@ ${message}`);
 
     // --- Render Jobs UI ---
     function renderJobs() {        const container = document.getElementById('jobListContainer'); container.innerHTML = '';        const filterVal = document.getElementById('jobFilter').value;        let isAdmin = currentUserRole === 'admin';                const sortedJobs = [...jobs].sort((a, b) => {            const timeA = a.installDate ? new Date(a.installDate).getTime() : 0;            const timeB = b.installDate ? new Date(b.installDate).getTime() : 0;            if (filterVal === 'all') {                if (a.isCompleted !== b.isCompleted) return a.isCompleted ? 1 : -1;                return a.isCompleted ? (timeB - timeA) : (timeA - timeB);            }            if (filterVal === 'pending') return timeA - timeB;            return timeB - timeA;        });
-        sortedJobs.forEach(job => {            const jobTeam = resolveTeam(job);            if (!isAdmin && jobTeam !== currentUserRole) return;            if ((filterVal === 'pending' && job.isCompleted) || (filterVal === 'completed' && !job.isCompleted)) return;                        const money = getJobMoneyTotals(job);            const tCust = money.customer;            const tPart = money.partner;            const tComm = money.commission;            const siteExtraItems = Array.isArray(job.siteExtras) ? job.siteExtras : [];            const adminSiteExtraHTML = isAdmin && siteExtraItems.length > 0 ? `                <div class="job-site-extra-admin">                    <div class="job-site-extra-admin-title">🧾 รายการที่ช่างเพิ่มระหว่างติดตั้ง</div>                    ${siteExtraItems.map(item => {                        const customerPrice = Number(item.customerPrice) || 0;                        const partnerPrice = Number(item.partnerPrice) || 0;                        const extraCommission = customerPrice - partnerPrice;                        const costText = item.type === 'custom' && partnerPrice === 0                            ? `<span class="job-site-extra-admin-cost job-site-extra-admin-pending">ทุนยังไม่ระบุ • คอมเพิ่มชั่วคราว ${extraCommission.toLocaleString()} ฿</span>`                            : `<span class="job-site-extra-admin-cost">ทุนช่าง ${partnerPrice.toLocaleString()} ฿ • คอมเพิ่ม ${extraCommission.toLocaleString()} ฿</span>`;                        return `<div class="job-site-extra-admin-row">                            <div class="job-site-extra-admin-name">${escapeHandoverText(item.name || '-')}</div>                            <div class="job-site-extra-admin-money">+${customerPrice.toLocaleString()} ฿${costText}</div>                        </div>`;                    }).join('')}                </div>` : '';                        let teamBadge = '';            let teamThemeClass = 'job-team-old';            if(jobTeam === 'team3') {                teamBadge = '<span class="job-team-chip">🟠 ทีมช่างโบ้</span>';                teamThemeClass = 'job-team3';            }            else if(jobTeam === 'team2') {                teamBadge = '<span class="job-team-chip">🟡 ทีมช่างเอ</span>';                teamThemeClass = 'job-team2';            }            else if(jobTeam === 'team1') {                teamBadge = '<span class="job-team-chip">🔵 ทีมช่างกราฟ</span>';                teamThemeClass = 'job-team1';            }                        const completionClass = job.isCompleted ? 'job-completed' : 'job-pending';                        // แสดงสถานะว่าเซฟลายเซ็นไว้หรือยัง
-            const saveStatusHtml = job.signature ? `<span class="job-save-pill">✅ เซ็นแล้ว</span>` : '';                        let adminActionHeaderHTML = isAdmin ? `                <div class="job-admin-strip d-flex align-items-center justify-content-between flex-wrap gap-2">                    <button onclick="toggleJobStatus(${job.id})" class="btn btn-sm ${job.isCompleted ? 'btn-success' : 'btn-outline-dark'} fw-bold rounded-pill px-3">                        ${job.isCompleted ? '🔐 ปิดงานแล้ว' : '⏳ รอตรวจงาน'}                    </button>                    <div>${teamBadge}</div>                </div>` : '';
+        sortedJobs.forEach(job => {            const jobTeam = resolveTeam(job);            if (!isAdmin && jobTeam !== currentUserRole) return;            if ((filterVal === 'pending' && job.isCompleted) || (filterVal === 'completed' && !job.isCompleted)) return;                        const money = getJobMoneyTotals(job);            const tCust = money.customer;            const tPart = money.partner;            const tComm = money.commission;            const siteExtraItems = Array.isArray(job.siteExtras) ? job.siteExtras : [];            const adminSiteExtraHTML = isAdmin && siteExtraItems.length > 0 ? `                <div class="job-site-extra-admin">                    <div class="job-site-extra-admin-title">🧾 รายการที่ช่างเพิ่มระหว่างติดตั้ง</div>                    ${siteExtraItems.map(item => {                        const customerPrice = Number(item.customerPrice) || 0;                        const partnerPrice = Number(item.partnerPrice) || 0;                        const extraCommission = customerPrice - partnerPrice;                        const costText = item.type === 'custom' && partnerPrice === 0                            ? `<span class="job-site-extra-admin-cost job-site-extra-admin-pending">ทุนยังไม่ระบุ • คอมเพิ่มชั่วคราว ${extraCommission.toLocaleString()} ฿</span>`                            : `<span class="job-site-extra-admin-cost">ทุนช่าง ${partnerPrice.toLocaleString()} ฿ • คอมเพิ่ม ${extraCommission.toLocaleString()} ฿</span>`;                        return `<div class="job-site-extra-admin-row">                            <div class="job-site-extra-admin-name">${escapeHandoverText(item.name || '-')}</div>                            <div class="job-site-extra-admin-money">+${customerPrice.toLocaleString()} ฿${costText}</div>                        </div>`;                    }).join('')}                </div>` : '';                        let teamBadge = '';            let teamThemeClass = 'job-team-old';            if(jobTeam === 'team3') {                teamBadge = '<span class="job-team-chip">🟠 ทีมช่างโบ้</span>';                teamThemeClass = 'job-team3';            }            else if(jobTeam === 'team2') {                teamBadge = '<span class="job-team-chip">🟡 ทีมช่างเอ</span>';                teamThemeClass = 'job-team2';            }            else if(jobTeam === 'team1') {                teamBadge = '<span class="job-team-chip">🔵 ทีมช่างกราฟ</span>';                teamThemeClass = 'job-team1';            }                        const completionClass = job.isCompleted ? 'job-completed' : 'job-pending';
+            const paymentAwaitingReview = isAdmin && Boolean(job.commissionPaidAt) && !job.workReviewedAt;
+            const paymentAwaitingClass = paymentAwaitingReview ? 'job-paid-awaiting-review' : '';
+            // แสดงสถานะว่าเซฟลายเซ็นไว้หรือยัง
+            const saveStatusHtml = job.signature ? `<span class="job-save-pill">✅ เซ็นแล้ว</span>` : '';
+            const paymentStatusHtml = paymentAwaitingReview ? `<span class="job-payment-pill">💵 รับเงินแล้ว • รอตรวจภาพ</span>` : '';                        let adminActionHeaderHTML = isAdmin ? `                <div class="job-admin-strip d-flex align-items-center justify-content-between flex-wrap gap-2">                    <button onclick="toggleJobStatus(${job.id})" class="btn btn-sm ${job.isCompleted ? 'btn-success' : 'btn-outline-dark'} fw-bold rounded-pill px-3">                        ${job.isCompleted ? '🔐 ปิดงานแล้ว' : '⏳ รอตรวจงาน'}                    </button>                    <div>${teamBadge}</div>                </div>` : '';
             let moneyDisplayHTML = isAdmin ? `                <div class="job-money-grid">                    <div class="job-money-box job-money-partner"><div class="job-money-label">ช่าง(ทุน)</div><div class="job-money-value">${tPart.toLocaleString()}</div></div>                    <div class="job-money-box job-money-customer"><div class="job-money-label">เก็บลูกค้า</div><div class="job-money-value">${tCust.toLocaleString()} ฿</div></div>                    <div class="job-money-box job-money-commission"><div class="job-money-label">คอมฯ</div><div class="job-money-value">${formatCommission(tComm)}</div></div>                </div>            ` : `                <div class="job-cash-collect">                    <div class="job-cash-label">💵 ยอดที่ต้องเก็บเงินลูกค้าหน้างาน</div>                    <div class="job-cash-value">${tCust.toLocaleString()} ฿</div>                </div>`;
             let actionButtonsHTML = isAdmin ? `                <div class="job-admin-actions">                    <button onclick="editJobData(${job.id})" class="btn btn-sm btn-warning px-3 py-1 fw-bold">✏️ แก้ไขข้อมูล</button>                    <button onclick="deleteJob(${job.id})" class="btn btn-sm btn-outline-danger px-3 py-1 fw-bold" title="ต้องใส่รหัสลบงาน 4 หลัก">🔐 ลบงาน</button>                </div>` : '';
-            container.innerHTML += `                <div class="col-12 col-md-6 job-card-container">                    <div class="card h-100 job-card ${teamThemeClass} ${completionClass}">                        <div class="job-card-top d-flex justify-content-between align-items-center gap-2">                            <div class="job-date-line">                                <span class="job-date-text">📅 ${formatThaiDate(job.installDate)}</span>                            </div>                            <div class="job-header-badges">                                ${saveStatusHtml}                                ${job.isCompleted ? '<span class="job-status-pill">✅ เสร็จสิ้น</span>' : '<span class="job-status-pill">⏳ รอดำเนินการ</span>'}                            </div>                        </div>                        ${adminActionHeaderHTML}                        <div class="card-body job-card-body d-flex flex-column">                            <h4 class="job-customer-name">${job.visitPeriod ? `<span class="job-period-tag">${escapeHandoverText(job.visitPeriod)}</span>` : ''}👤 ${escapeHandoverText(job.customerName)}</h4>                            ${job.installAddress ? `<div class="job-address-preview">🏠 ${escapeHandoverText(job.installAddress)}</div>` : '<div class="job-address-preview text-warning">⚠️ ยังไม่มีที่อยู่สำหรับออกเอกสาร</div>'}                            <div class="job-quick-actions">                                <a href="tel:${job.phone}" class="btn job-phone-btn" style="font-size: 0.95rem;">📞 ${job.phone}</a>                                <a href="${job.mapLink}" target="_blank" class="btn job-map-btn" style="font-size: 0.95rem;">📍 แผนที่</a>                            </div>                                                        <div class="job-package-panel">                                <div class="job-package-main">📦แพ็จเกจ: ${job.packageName}</div>                                ${job.extraDetail ? `<div class="job-extra-line">🛠️ เพิ่มเติม: ${job.extraDetail}</div>` : ''}                                ${adminSiteExtraHTML}                            </div>                                                        ${moneyDisplayHTML}                                                        <button onclick="openHandover(${job.id})" class="btn w-100 fw-bold py-2 fs-6 mb-1 job-handover-btn">                                📝 ออกใบส่งมอบให้ลูกค้าเซ็น                            </button>                                                        ${actionButtonsHTML}                        </div>                    </div>                </div>`;        });                if(container.innerHTML === '') container.innerHTML = `<div class="col-12 text-center text-muted py-5"><h5 class="fw-bold">📭 ไม่มีรายการงาน</h5></div>`;    }
+            container.innerHTML += `                <div class="col-12 col-md-6 job-card-container">                    <div class="card h-100 job-card ${teamThemeClass} ${completionClass} ${paymentAwaitingClass}">                        <div class="job-card-top d-flex justify-content-between align-items-center gap-2">                            <div class="job-date-line">                                <span class="job-date-text">📅 ${formatThaiDate(job.installDate)}</span>                            </div>                            <div class="job-header-badges">                                ${paymentStatusHtml}                                ${saveStatusHtml}                                ${job.isCompleted ? '<span class="job-status-pill">✅ เสร็จสิ้น</span>' : '<span class="job-status-pill">⏳ รอดำเนินการ</span>'}                            </div>                        </div>                        ${adminActionHeaderHTML}                        <div class="card-body job-card-body d-flex flex-column">                            <h4 class="job-customer-name">${job.visitPeriod ? `<span class="job-period-tag">${escapeHandoverText(job.visitPeriod)}</span>` : ''}👤 ${escapeHandoverText(job.customerName)}</h4>                            ${job.installAddress ? `<div class="job-address-preview">🏠 ${escapeHandoverText(job.installAddress)}</div>` : '<div class="job-address-preview text-warning">⚠️ ยังไม่มีที่อยู่สำหรับออกเอกสาร</div>'}                            <div class="job-quick-actions">                                <a href="tel:${job.phone}" class="btn job-phone-btn" style="font-size: 0.95rem;">📞 ${job.phone}</a>                                <a href="${job.mapLink}" target="_blank" class="btn job-map-btn" style="font-size: 0.95rem;">📍 แผนที่</a>                            </div>                                                        <div class="job-package-panel">                                <div class="job-package-main">📦แพ็จเกจ: ${job.packageName}</div>                                ${job.extraDetail ? `<div class="job-extra-line">🛠️ เพิ่มเติม: ${job.extraDetail}</div>` : ''}                                ${adminSiteExtraHTML}                            </div>                                                        ${moneyDisplayHTML}                                                        <button onclick="openHandover(${job.id})" class="btn w-100 fw-bold py-2 fs-6 mb-1 job-handover-btn">                                📝 ออกใบส่งมอบให้ลูกค้าเซ็น                            </button>                                                        ${actionButtonsHTML}                        </div>                    </div>                </div>`;        });                if(container.innerHTML === '') container.innerHTML = `<div class="col-12 text-center text-muted py-5"><h5 class="fw-bold">📭 ไม่มีรายการงาน</h5></div>`;    }
     // ==========================================
     // ระบบใบส่งมอบงานและลายเซ็น: บันทึกกลับมาแก้ต่อ + รูปพร้อมส่ง
     // ==========================================
