@@ -981,6 +981,256 @@
             .job-extra-chip { width:100%; border-radius:12px; }
             .job-period-tag { margin-right:6px; padding:5px 10px; font-size:.92rem; }
         }
+
+
+        /* ========================================== */
+        /* ศูนย์สรุปค่าคอมฝั่งแอดมิน — ใช้ LINE เป็นหลัก */
+        /* ========================================== */
+        .commission-entry-row {
+            display:flex;
+            justify-content:flex-end;
+            margin:-3px 0 10px;
+        }
+        .commission-entry-btn {
+            min-height:40px;
+            padding:8px 15px;
+            border:1px solid #93c5fd;
+            border-radius:999px;
+            color:#1e3a8a;
+            background:linear-gradient(135deg,#eff6ff,#dbeafe);
+            font-size:.8rem;
+            font-weight:950;
+            box-shadow:0 5px 13px rgba(37,99,235,.14);
+        }
+        .commission-entry-btn:active { transform:translateY(1px); background:#bfdbfe; }
+        .commission-page-top {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            margin-bottom:12px;
+        }
+        .commission-page-title { min-width:0; }
+        .commission-page-title h5 { margin:0; color:#1e3a8a; font-size:1.08rem; font-weight:950; }
+        .commission-page-title small { display:block; margin-top:3px; color:#64748b; font-size:.72rem; font-weight:750; line-height:1.35; }
+        .commission-hub-card {
+            border:2px solid #bfdbfe !important;
+            border-radius:20px;
+            overflow:hidden;
+            background:#fff;
+            box-shadow:0 16px 36px rgba(30,64,175,.15) !important;
+        }
+        .commission-hub-head {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:10px;
+            padding:15px 16px;
+            color:#fff;
+            background:
+                radial-gradient(circle at 94% 5%,rgba(255,255,255,.22),transparent 31%),
+                linear-gradient(135deg,#172554,#1d4ed8 58%,#0284c7);
+            border-bottom:4px solid #f59e0b;
+        }
+        .commission-hub-head h5 { margin:0; font-size:1.03rem; font-weight:950; }
+        .commission-hub-head small { display:block; margin-top:3px; color:#dbeafe; font-size:.72rem; font-weight:750; }
+        .commission-scroll-note {
+            flex:0 0 auto;
+            padding:5px 9px;
+            border:1px solid rgba(255,255,255,.45);
+            border-radius:999px;
+            color:#fff;
+            background:rgba(255,255,255,.13);
+            font-size:.66rem;
+            font-weight:900;
+            white-space:nowrap;
+        }
+        .commission-toolbar {
+            display:grid;
+            grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+            gap:9px;
+            padding:12px;
+            background:linear-gradient(135deg,#eff6ff,#f8fafc 68%,#fff7ed);
+            border-bottom:1px solid #bfdbfe;
+        }
+        .commission-toolbar label { display:block; margin-bottom:4px; color:#334155; font-size:.72rem; font-weight:950; }
+        .commission-toolbar select { min-height:44px; border-radius:11px; border-width:2px; font-weight:900; }
+        .commission-summary-strip {
+            display:grid;
+            grid-template-columns:repeat(2,minmax(0,1fr));
+            gap:7px;
+            padding:10px 12px;
+            background:#fff;
+            border-bottom:1px solid #e2e8f0;
+        }
+        .commission-mini-stat { padding:9px 5px; border:1px solid #e2e8f0; border-radius:12px; text-align:center; background:#f8fafc; }
+        .commission-mini-stat.unnotified { border-color:#bfdbfe; background:#eff6ff; }
+        .commission-mini-stat.waiting { border-color:#fed7aa; background:#fff7ed; }
+        .commission-mini-stat.paid { border-color:#bbf7d0; background:#f0fdf4; }
+        .commission-mini-stat span { display:block; color:#64748b; font-size:.64rem; font-weight:900; }
+        .commission-mini-stat strong { display:block; margin-top:3px; color:#0f172a; font-size:.94rem; font-weight:950; }
+        .commission-mini-stat.unnotified strong { color:#1d4ed8; }
+        .commission-mini-stat.waiting strong { color:#c2410c; }
+        .commission-mini-stat.paid strong { color:#15803d; }
+        .commission-list-shell {
+            position:relative;
+            background:#eaf1f8;
+        }
+        .commission-hub-list {
+            display:grid;
+            gap:9px;
+            max-height:min(56vh,560px);
+            min-height:190px;
+            overflow-y:auto;
+            overscroll-behavior:contain;
+            padding:12px;
+            background:linear-gradient(180deg,#f8fafc,#eef4f9);
+            scrollbar-width:thin;
+            scrollbar-color:#94a3b8 #e2e8f0;
+        }
+        .commission-hub-list::-webkit-scrollbar { width:8px; }
+        .commission-hub-list::-webkit-scrollbar-track { background:#e2e8f0; border-radius:99px; }
+        .commission-hub-list::-webkit-scrollbar-thumb { background:#94a3b8; border-radius:99px; }
+        .commission-empty { padding:30px 12px; text-align:center; color:#64748b; font-weight:850; }
+        .commission-job-row {
+            display:grid;
+            grid-template-columns:auto auto minmax(0,1fr) auto;
+            gap:10px;
+            align-items:center;
+            padding:11px;
+            border:1px solid #bfdbfe;
+            border-left:5px solid #3b82f6;
+            border-radius:14px;
+            background:#fff;
+            box-shadow:0 4px 12px rgba(15,23,42,.07);
+            cursor:pointer;
+        }
+        .commission-job-row:hover { border-color:#60a5fa; box-shadow:0 7px 17px rgba(37,99,235,.12); }
+        .commission-job-row:has(input:checked) { background:#eff6ff; border-color:#2563eb; }
+        .commission-job-row input[type="checkbox"] { width:23px; height:23px; accent-color:#2563eb; }
+        .commission-date-badge {
+            min-width:88px;
+            padding:7px 8px;
+            border:1px solid #bfdbfe;
+            border-radius:11px;
+            text-align:center;
+            background:#eff6ff;
+        }
+        .commission-date-badge strong { display:block; color:#1e3a8a; font-size:.9rem; line-height:1.15; font-weight:950; }
+        .commission-date-badge span { display:block; margin-top:2px; color:#475569; font-size:.67rem; line-height:1.2; font-weight:850; }
+        .commission-job-main { min-width:0; }
+        .commission-job-name { color:#172033; font-size:.94rem; font-weight:950; line-height:1.3; overflow-wrap:anywhere; }
+        .commission-job-sub { margin-top:4px; color:#526075; font-size:.75rem; line-height:1.42; overflow-wrap:anywhere; }
+        .commission-work-pill {
+            display:inline-flex;
+            margin-top:5px;
+            padding:3px 7px;
+            border-radius:999px;
+            color:#075985;
+            background:#e0f2fe;
+            border:1px solid #bae6fd;
+            font-size:.64rem;
+            font-weight:900;
+        }
+        .commission-job-amount {
+            min-width:92px;
+            padding:7px 9px;
+            border:1px solid #bbf7d0;
+            border-radius:11px;
+            text-align:center;
+            color:#15803d;
+            background:#f0fdf4;
+            font-size:.94rem;
+            font-weight:950;
+            white-space:nowrap;
+        }
+        .commission-selection-bar {
+            position:sticky;
+            bottom:0;
+            z-index:8;
+            display:grid;
+            grid-template-columns:auto minmax(0,1fr);
+            gap:9px;
+            align-items:center;
+            padding:11px 12px;
+            border-top:2px solid #93c5fd;
+            background:rgba(255,255,255,.98);
+            box-shadow:0 -7px 18px rgba(15,23,42,.12);
+            backdrop-filter:blur(9px);
+        }
+        .commission-selection-actions { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+        .commission-selection-text { color:#334155; font-size:.78rem; font-weight:900; }
+        .commission-selection-text strong { color:#15803d; font-size:.96rem; }
+        .commission-copy-btn { min-height:45px; border:0; border-radius:11px; color:#fff; background:linear-gradient(135deg,#1d4ed8,#0284c7); font-weight:950; box-shadow:0 5px 12px rgba(37,99,235,.22); }
+        .commission-copy-btn:disabled { opacity:.5; box-shadow:none; }
+        .commission-confirm-sent-btn { min-height:45px; border:0; border-radius:11px; color:#fff; background:linear-gradient(135deg,#ea580c,#f59e0b); font-weight:950; box-shadow:0 5px 12px rgba(234,88,12,.22); }
+        .commission-copy-hint { display:none; margin-top:6px; padding:7px 9px; border-radius:9px; color:#9a3412; background:#fff7ed; border:1px solid #fed7aa; font-size:.7rem; line-height:1.35; font-weight:850; }
+        .commission-select-all-btn { min-height:40px; border-radius:10px; font-size:.74rem; font-weight:950; }
+        .commission-batch-card { overflow:hidden; border:2px solid #fdba74; border-radius:15px; background:#fff; box-shadow:0 5px 14px rgba(194,65,12,.09); }
+        .commission-batch-head { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:10px 11px; background:linear-gradient(135deg,#fff7ed,#ffedd5); color:#9a3412; font-size:.77rem; font-weight:950; }
+        .commission-batch-status { padding:4px 7px; border-radius:999px; color:#fff; background:#ea580c; font-size:.64rem; font-weight:950; white-space:nowrap; }
+        .commission-batch-body { display:grid; gap:7px; padding:10px 11px; }
+        .commission-batch-line { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; align-items:center; padding:7px 8px; border:1px solid #ffedd5; border-radius:9px; color:#475569; background:#fffaf5; font-size:.77rem; }
+        .commission-batch-line small { display:block; margin-top:2px; color:#64748b; font-size:.66rem; font-weight:750; }
+        .commission-batch-line strong { color:#15803d; white-space:nowrap; }
+        .commission-batch-total { display:flex; justify-content:space-between; gap:8px; margin-top:2px; padding-top:8px; border-top:1px dashed #fb923c; color:#9a3412; font-size:.9rem; font-weight:950; }
+        .commission-batch-actions { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; padding:0 10px 10px; }
+        .commission-batch-actions button { min-height:43px; border-radius:10px; font-size:.76rem; font-weight:950; }
+        .commission-review-card { padding:11px; border:2px solid #fcd34d; border-radius:14px; background:#fffbeb; box-shadow:0 4px 12px rgba(180,83,9,.08); }
+        .commission-review-card.is-reviewed { border-color:#86efac; background:#f0fdf4; }
+        .commission-review-top { display:flex; justify-content:space-between; gap:8px; align-items:flex-start; }
+        .commission-review-status { padding:4px 8px; border-radius:999px; background:#f59e0b; color:#fff; font-size:.66rem; font-weight:950; white-space:nowrap; }
+        .commission-review-card.is-reviewed .commission-review-status { background:#16a34a; }
+        .commission-review-btn { width:100%; min-height:43px; margin-top:9px; border:0; border-radius:10px; color:#fff; background:linear-gradient(135deg,#16a34a,#059669); font-weight:950; box-shadow:0 4px 11px rgba(22,163,74,.2); }
+        .commission-review-done { margin-top:8px; padding:7px 9px; border-radius:9px; color:#166534; background:#dcfce7; border:1px solid #bbf7d0; font-size:.74rem; font-weight:900; }
+        .commission-share-btn { min-height:45px; border:0; border-radius:11px; color:#fff; background:linear-gradient(135deg,#06c755,#00a844); font-weight:950; box-shadow:0 5px 12px rgba(6,199,85,.24); }
+        .commission-share-btn:disabled { opacity:.5; box-shadow:none; }
+        .commission-payment-btn { min-height:45px; border:0; border-radius:11px; color:#fff; background:linear-gradient(135deg,#2563eb,#0284c7); font-weight:950; box-shadow:0 5px 12px rgba(37,99,235,.22); }
+        .commission-payment-btn:disabled { opacity:.5; box-shadow:none; }
+        .commission-confirm-sent-btn { background:linear-gradient(135deg,#2563eb,#0284c7); }
+        .commission-share-note { display:block; margin-top:7px; padding:8px 10px; border-radius:10px; color:#1e3a8a; background:#eff6ff; border:1px solid #bfdbfe; font-size:.71rem; line-height:1.42; font-weight:850; }
+        .commission-slip-upload-btn { color:#fff !important; background:linear-gradient(135deg,#7c3aed,#a855f7) !important; border:0 !important; }
+        .commission-slip-view-btn { width:100%; min-height:40px; margin-top:8px; border:1px solid #c4b5fd; border-radius:10px; color:#6d28d9; background:#f5f3ff; font-size:.75rem; font-weight:950; }
+        .commission-slip-overlay { display:none; position:fixed; inset:0; z-index:100005; padding:16px; align-items:center; justify-content:center; background:rgba(15,23,42,.78); backdrop-filter:blur(6px); }
+        .commission-slip-overlay.open { display:flex; }
+        .commission-slip-dialog { width:min(470px,100%); max-height:92vh; overflow:auto; border-radius:20px; border:1px solid rgba(255,255,255,.78); background:#fff; box-shadow:0 26px 76px rgba(0,0,0,.42); }
+        .commission-slip-head { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:15px 16px 12px; color:#fff; background:linear-gradient(135deg,#4c1d95,#7c3aed 62%,#9333ea); border-bottom:4px solid #facc15; }
+        .commission-slip-head h5 { margin:0; font-size:1rem; font-weight:950; }
+        .commission-slip-head small { display:block; margin-top:3px; color:#ede9fe; font-size:.7rem; font-weight:750; }
+        .commission-slip-close { width:38px; height:38px; border:1px solid rgba(255,255,255,.6); border-radius:50%; color:#fff; background:rgba(255,255,255,.14); font-size:1.05rem; font-weight:950; }
+        .commission-slip-body { padding:13px; }
+        .commission-slip-summary { display:grid; grid-template-columns:1fr auto; gap:8px; padding:10px 11px; border:1px solid #ddd6fe; border-radius:12px; background:#faf5ff; color:#4c1d95; font-size:.78rem; font-weight:850; }
+        .commission-slip-summary strong { color:#15803d; font-size:1.02rem; white-space:nowrap; }
+        .commission-slip-preview-wrap { margin-top:10px; padding:8px; border:1px solid #e2e8f0; border-radius:13px; background:#f8fafc; text-align:center; }
+        .commission-slip-preview { display:block; max-width:100%; max-height:52vh; margin:0 auto; border-radius:9px; object-fit:contain; background:#fff; }
+        .commission-slip-file-note { margin-top:7px; color:#64748b; font-size:.68rem; line-height:1.35; font-weight:750; overflow-wrap:anywhere; }
+        .commission-slip-warning { margin-top:10px; padding:8px 10px; border-radius:10px; color:#92400e; background:#fffbeb; border:1px solid #fde68a; font-size:.72rem; line-height:1.42; font-weight:850; }
+        .commission-slip-actions { display:grid; grid-template-columns:.8fr 1.2fr; gap:8px; margin-top:11px; }
+        .commission-slip-actions button { min-height:47px; border-radius:11px; font-weight:950; }
+        .commission-slip-view-only .commission-slip-confirm { display:none; }
+        .commission-slip-view-only .commission-slip-warning { display:none; }
+        @media (max-width:576px) {
+            .commission-entry-row { justify-content:stretch; }
+            .commission-entry-btn { width:100%; }
+            .commission-page-top { align-items:flex-start; }
+            .commission-hub-head { align-items:flex-start; }
+            .commission-scroll-note { display:none; }
+            .commission-toolbar { grid-template-columns:1fr; }
+            .commission-summary-strip { gap:5px; padding:8px; }
+            .commission-mini-stat { padding:8px 3px; }
+            .commission-mini-stat strong { font-size:.86rem; }
+            .commission-hub-list { max-height:54vh; padding:9px; }
+            .commission-job-row { grid-template-columns:auto minmax(0,1fr) auto; gap:8px; padding:10px 9px; }
+            .commission-date-badge { grid-column:2; grid-row:1; min-width:0; width:max-content; text-align:left; padding:5px 8px; }
+            .commission-date-badge strong,.commission-date-badge span { display:inline; }
+            .commission-date-badge span::before { content:' • '; }
+            .commission-job-main { grid-column:2 / 4; }
+            .commission-job-amount { grid-column:2 / 4; justify-self:start; min-width:0; }
+            .commission-selection-bar { grid-template-columns:1fr; }
+            .commission-selection-actions { grid-template-columns:1fr; }
+            .commission-batch-actions { grid-template-columns:1fr; }
+            .commission-review-top { flex-direction:column; }
+        }
+
 </style></head><body>
 <div id="loginOverlay">
     <div class="login-shell">
@@ -1035,8 +1285,13 @@
     </div>
 </div>
 <div class="container mt-3 mt-md-4" id="appContent" style="display: none;">    <div id="techWarning" class="alert alert-warning text-center text-muted shadow-sm d-none mb-3 py-2" style="font-size: 0.8rem; border-radius: 8px;">        📌 <strong>ข้อมูลภายใน:</strong> กรุณาใช้เพื่อการปฏิบัติงานเท่านั้น ไม่ส่งต่อให้บุคคลภายนอก    </div>    <div class="app-topbar mb-3 border-bottom pb-2">        <div class="app-brand-row">            <h2 class="app-brand-title m-0 fw-bold text-danger">⚡ EV Connect</h2>            <button id="appLogoutBtn" type="button" class="btn btn-sm btn-danger rounded-pill fw-bold app-logout-btn" onclick="logout()">🚪 ออก</button>        </div>        <div class="app-header-actions">            <span class="badge bg-dark d-none" id="techTeamBadge">ทีมช่าง</span>            <button id="toggleStatsBtn" class="btn btn-sm btn-outline-secondary rounded-pill fw-bold admin-only" onclick="toggleStats()">👁️ ซ่อนยอด</button>            <button id="cloudRefreshBtn" class="btn btn-sm btn-outline-primary rounded-pill fw-bold" onclick="refreshFromCloud({ silent: false })"><span class="refresh-label">↻ อัปเดต</span><span class="refresh-time">--:--:--</span></button>            <span class="badge bg-secondary" id="firebaseStatusBadge">● กำลังเชื่อมต่อ</span>        </div>    </div>
-    <div id="mainView" class="page-view active">        <!-- Dashboard Stats -->        <div class="row mb-3 g-2 admin-only" id="statsRow">            <div class="col-6 col-md-3 transition-all" id="boxCust"><div class="stat-box bg-info text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดเก็บลูกค้า (เดือนนี้)</h6><h3 id="totalCustomerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxPart"><div class="stat-box bg-warning text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดส่งช่าง (เดือนนี้)</h6><h3 id="totalPartnerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxComm"><div class="stat-box bg-primary shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ (เดือนนี้)</h6><h3 id="totalCommissionAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxCommDone"><div class="stat-box bg-success shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ (เสร็จสิ้น)</h6><h3 id="totalCommissionCompleted" class="fw-bold m-0">0&nbsp;฿</h3></div></div>        </div>
+    <div id="mainView" class="page-view active">        <!-- Dashboard Stats -->        <div class="row mb-3 g-2 admin-only" id="statsRow">            <div class="col-6 col-md-3 transition-all" id="boxCust"><div class="stat-box bg-info text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดเก็บลูกค้า (เดือนนี้)</h6><h3 id="totalCustomerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxPart"><div class="stat-box bg-warning text-dark shadow-sm"><h6 class="fw-bold mb-2">ยอดส่งช่าง (เดือนนี้)</h6><h3 id="totalPartnerAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxComm"><div class="stat-box bg-primary shadow-sm"><h6 class="fw-bold mb-2">ค่าคอมฯ ตามงาน</h6><h3 id="totalCommissionAll" class="fw-bold m-0">0&nbsp;฿</h3></div></div>            <div class="col-6 col-md-3 transition-all" id="boxCommDone"><div class="stat-box bg-success shadow-sm"><h6 class="fw-bold mb-2">งานเดือนนี้ รับเงินแล้ว</h6><h3 id="totalCommissionCompleted" class="fw-bold m-0">0&nbsp;฿</h3></div></div>        </div>
+        <div class="commission-entry-row admin-only">
+            <button type="button" class="commission-entry-btn" onclick="openCommissionView()">💰 สรุปค่าคอมส่ง LINE</button>
+        </div>
         <div class="row mb-4">            <div class="col-12">                <div class="card border-0" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">                    <div class="card-header bg-white border-bottom-0 d-flex justify-content-between align-items-center pt-3 pb-2 flex-wrap gap-2">                        <button class="btn btn-sm btn-light border" onclick="changeMonth(-1)">◀ ย้อน</button>                        <h5 class="m-0 fw-bold text-primary text-center flex-grow-1" id="calendarMonthYear" style="font-size: 1rem;">เดือน ปี</h5>                        <div>                            <button class="btn btn-sm btn-outline-primary fw-bold me-1 admin-only" onclick="openDetailView()">📄 สรุปแอดมิน</button>                            <button class="btn btn-sm btn-light border" onclick="changeMonth(1)">หน้า ▶</button>                        </div>                    </div>                    <div class="card-body pt-1 pb-3 px-2 px-md-3" id="calendarContainer">                        <div class="calendar-grid" id="calendarGrid"></div>                    </div>                </div>            </div>        </div>
+
+
         <!-- Add Job Form (มีคำนวณ) -->        <div class="row admin-only" id="addJobSection">            <div class="col-12">                <div class="card">                    <div class="card-header bg-dark text-white fw-bold" id="jobCardHeader">📝 เพิ่มงานใหม่ (ส่งช่าง)</div>                    <div class="card-body">                        <form id="jobForm">                            <input type="hidden" id="editJobId">                            <div class="smart-paste-section" id="smartPasteDiv">                                <h6 class="text-primary fw-bold">✨ ช่องทางลัด (วางแชท)</h6>                                <textarea id="smartPasteInput" class="form-control mb-2" rows="2" placeholder="วางข้อมูลแชทลูกค้าลงที่นี่..."></textarea>                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">                                    <small class="text-muted" style="font-size: 0.75rem;">ดึงชื่อ เบอร์ วันที่ ที่อยู่ และแมพอัตโนมัติ</small>                                    <button type="button" class="btn btn-sm btn-primary fw-bold px-3" onclick="processSmartPaste()" id="btnSmartPaste">🎯 ดึงข้อมูล</button>                                </div>                            </div>
                             <div class="row">                                <div class="col-md-4 mb-2"><div class="job-date-period-row"><div class="job-field-stack"><label class="fw-bold text-danger" for="jobInstallDate">📅 วันที่นัดติดตั้ง</label><input type="date" id="jobInstallDate" class="form-control" required></div><div class="job-field-stack"><label class="fw-bold text-danger" for="jobVisitPeriod">🕘 ช่วงเวลา</label><select id="jobVisitPeriod" class="form-select" aria-label="เลือกช่วงเวลาเข้าติดตั้ง"><option value="">ไม่ระบุ</option><option value="เช้า">ช่วงเช้า</option><option value="บ่าย">ช่วงบ่าย</option></select></div></div></div>                                <div class="col-md-4 mb-2"><label class="fw-bold">📞 เบอร์โทรศัพท์</label><input type="text" id="jobPhone" class="form-control" required></div>                                <div class="col-md-4 mb-2"><label class="fw-bold">👤 ชื่อลูกค้า</label><input type="text" id="jobCustomerName" class="form-control" placeholder=""></div>                                <div class="col-md-12 mb-2">                                    <div class="job-address-field">                                        <label class="fw-bold text-primary mb-1">🏠 ที่อยู่สำหรับออกใบส่งงานและใบรับประกัน</label>                                        <textarea id="jobInstallAddress" class="form-control" rows="2" required placeholder="กรอกที่อยู่ที่ต้องการให้แสดงในใบส่งงานและใบรับประกัน"></textarea>                                        <div id="jobAddressHint" class="job-address-helper">แอดมินตรวจและกรอกที่อยู่สำหรับเอกสารให้ครบก่อนบันทึกงาน</div>                                    </div>                                </div>                                <div class="col-md-12 mb-2"><label>ลิงก์ Google Map <span class="text-muted small">(ใช้สำหรับนำทาง)</span></label><input type="url" id="jobMapLink" class="form-control" required></div>                                <div class="col-md-12 mb-2">                                    <label class="fw-bold text-primary">👷 เลือกทีมช่าง</label>                                    <select id="jobTeam" class="form-select border-primary fw-bold" required onchange="onTeamChange(true)">                                        <option value="team1">🔵 ทีมช่างกราฟ</option>                                        <option value="team3">🟠 ทีมช่างโบ้</option>                                        <option value="team2">🟡 ทีมช่างเอ</option>                                    </select>                                </div>                                <div class="col-md-12 mb-3">                                    <label>เลือกแพ็กเกจหลัก</label>                                    <select id="jobPackage" class="form-select" required onchange="calculateLiveSummary()">                                        <option value="">-- กรุณาเลือกแพ็กเกจ --</option>                                    </select>                                </div>                            </div>
                             <div class="extra-section mb-3">
@@ -1070,12 +1325,84 @@
         <!-- Job List -->        <div class="d-flex justify-content-between align-items-center mb-2 px-1">            <h4 class="fw-bold text-dark m-0" id="jobListTitle">📋 รายการงาน</h4>            <select id="jobFilter" class="form-select form-select-sm w-auto fw-bold shadow-sm" style="border-radius: 20px;" onchange="renderJobs()">                <option value="pending">⏳ ยังไม่เสร็จ</option>                <option value="all">📋 ทั้งหมด</option>                <option value="completed">✅ เสร็จแล้ว</option>            </select>        </div>        <div id="jobListContainer" class="row g-3"></div>                <!-- Admin Setup Settings -->        <div class="card mb-4 sync-section admin-only" id="syncSection">            <div class="card-body p-3">                <h5 class="fw-bold text-danger mb-2" style="font-size: 1rem;">🚨 กู้คืนข้อมูลด่วน</h5>                <textarea id="syncDataBox" class="form-control font-monospace mb-3 border-danger" rows="3" placeholder="👇 วางรหัสข้อมูลทั้งหมด ลงในช่องนี้..."></textarea>                <div class="row g-2">                    <div class="col-6"><button class="btn btn-sm btn-outline-primary w-100 fw-bold py-2" onclick="exportDataToBox()">📋 1. สร้างรหัส</button></div>                    <div class="col-6"><button class="btn btn-sm btn-success w-100 fw-bold py-2" onclick="importDataFromBox()">📥 2. กดนำเข้า</button></div>                </div>                <div id="syncMessage" class="text-center mt-2 fw-bold" style="display:none; font-size: 0.9rem;"></div>            </div>        </div>
         <div class="card mb-4 border-info shadow-sm admin-only" id="setupFiberSection">            <div class="card-header bg-info text-dark fw-bold">⚙️ ตั้งค่าเรทราคาสายไฟเบอร์ (ต่อเมตร)</div>            <div class="card-body p-2 p-md-3">                <div class="row g-2 mb-2">                    <div class="col-6 col-md-3"><label class="small text-danger fw-bold">ลูกค้าจ่าย (฿)</label><input type="number" id="setFiberCust" class="form-control form-control-sm border-danger" required></div>                    <div class="col-6 col-md-3"><label class="small text-primary fw-bold">ทุน(ช่างกราฟ)</label><input type="number" id="setFiberT1" class="form-control form-control-sm" required></div>                    <div class="col-6 col-md-3"><label class="small text-purple fw-bold">ทุน(ช่างโบ้)</label><input type="number" id="setFiberT3" class="form-control form-control-sm" required></div>                    <div class="col-6 col-md-3"><label class="small text-warning-emphasis fw-bold">ทุน(ทีม 2)</label><input type="number" id="setFiberT2" class="form-control form-control-sm" required></div>                </div>                <button type="button" class="btn btn-sm btn-primary w-100 fw-bold" onclick="saveFiberSettings()">💾 บันทึกเรทสายไฟเบอร์</button>            </div>        </div>
         <div class="card mb-4 border-info shadow-sm admin-only" id="setupExtraSection">            <div class="card-header bg-info text-dark fw-bold">⚙️ ตั้งค่างานเพิ่มเติม (แยก 3 ทีม)</div>            <div class="card-body p-2 p-md-3">                <div class="row">                    <div class="col-md-5 mb-3">                        <form id="extraForm" class="bg-light p-2 rounded border">                            <input type="hidden" id="extId">                            <div class="mb-2"><label class="small fw-bold">ชื่อรายการ</label><input type="text" id="extName" class="form-control form-control-sm" required></div>                            <div class="mb-2"><label class="small text-danger fw-bold">ราคาลูกค้า (เก็บรวม)</label><input type="number" id="extCustPrice" class="form-control form-control-sm" required></div>                            <div class="row g-1 mb-3">                                <div class="col-4"><label class="small text-primary fw-bold" style="font-size: 0.7rem;">ทุน(ช่างกราฟ)</label><input type="number" id="extPartPrice1" class="form-control form-control-sm px-1" required></div>                                <div class="col-4"><label class="small text-purple fw-bold" style="font-size: 0.7rem;">ทุน(ช่างโบ้)</label><input type="number" id="extPartPrice3" class="form-control form-control-sm px-1" required></div>                                <div class="col-4"><label class="small text-warning-emphasis fw-bold" style="font-size: 0.7rem;">ทุน(ทีม 2)</label><input type="number" id="extPartPrice2" class="form-control form-control-sm px-1" required></div>                            </div>                            <button type="submit" class="btn btn-sm btn-primary w-100 fw-bold" id="btnSaveExt">บันทึกงานเสริม</button>                        </form>                    </div>                    <div class="col-md-7">                        <div class="scrollable-table">                            <table class="table table-sm table-bordered mb-0 bg-white text-center">                                <thead class="table-light" style="position: sticky; top: 0; z-index: 1;"><tr><th class="text-start">รายการ</th><th>เก็บลูกค้า</th><th>จัดการ</th></tr></thead>                                <tbody id="extraTableBody"></tbody>                            </table>                        </div>                    </div>                </div>            </div>        </div>
-        <div class="card mb-5 border-secondary shadow-sm admin-only" id="setupPkgSection">            <div class="card-header bg-secondary text-white fw-bold">⚙️ ตั้งค่าแพ็กเกจหลัก (แยก 3 ทีม)</div>            <div class="card-body p-2 p-md-3">                <div class="row">                    <div class="col-md-5 mb-3">                        <form id="packageForm" class="bg-light p-2 rounded border">                            <input type="hidden" id="pkgId">                            <div class="mb-2"><label class="small fw-bold">ชื่อแพ็กเกจหลัก</label><input type="text" id="pkgName" class="form-control form-control-sm" required></div>                            <div class="mb-2"><label class="small text-danger fw-bold">ราคาลูกค้า (เก็บรวม)</label><input type="number" id="pkgCustomerPrice" class="form-control form-control-sm" required></div>                            <div class="row g-1 mb-3">                                <div class="col-4"><label class="small text-primary fw-bold" style="font-size: 0.7rem;">ทุน(ช่างกราฟ)</label><input type="number" id="pkgPartPrice1" class="form-control form-control-sm px-1" required></div>                                <div class="col-4"><label class="small text-purple fw-bold" style="font-size: 0.7rem;">ทุน(ช่างโบ้)</label><input type="number" id="pkgPartPrice3" class="form-control form-control-sm px-1" required></div>                                <div class="col-4"><label class="small text-warning-emphasis fw-bold" style="font-size: 0.7rem;">ทุน(ทีม 2)</label><input type="number" id="pkgPartPrice2" class="form-control form-control-sm px-1" required></div>                            </div>                            <button type="submit" class="btn btn-sm btn-secondary w-100 fw-bold" id="btnSavePkg">บันทึกแพ็กเกจ</button>                        </form>                    </div>                    <div class="col-md-7">                        <div class="scrollable-table">                            <table class="table table-sm table-bordered mb-0 bg-white">                                <thead class="table-light" style="position: sticky; top: 0; z-index: 1;"><tr><th>แพ็กเกจ</th><th>คอมฯ 3 ทีม</th><th class="text-center">จัดการ</th></tr></thead>                                <tbody id="packageTableBody"></tbody>                            </table>                        </div>                    </div>                </div>            </div>        </div>    </div>        <!-- สรุปของแอดมิน -->    <div id="detailView" class="page-view admin-only">        <div class="d-flex align-items-center mb-3">            <button class="btn btn-sm btn-secondary me-2 shadow-sm rounded-pill px-3" onclick="closeDetailView()">◀ กลับ</button>            <h5 class="m-0 fw-bold text-primary" id="detailMonthTitle">รายละเอียด</h5>        </div>        <div class="row mb-4 g-2">            <div class="col-4"><div class="card h-100 text-dark shadow-sm border-primary" style="background: #e0f0ff;"><div class="card-body p-2 text-center"><div class="small fw-bold text-primary mb-1" style="font-size: 0.7rem;">เก็บลูกค้า</div><h6 class="fw-bold m-0" id="detailCustSum">0 ฿</h6></div></div></div>            <div class="col-4"><div class="card h-100 text-dark shadow-sm border-warning" style="background: #fff3cd;"><div class="card-body p-2 text-center"><div class="small fw-bold text-warning-emphasis mb-1" style="font-size: 0.7rem;">ส่งช่าง</div><h6 class="fw-bold m-0" id="detailPartSum">0 ฿</h6></div></div></div>            <div class="col-4"><div class="card h-100 text-white shadow-sm border-success bg-success"><div class="card-body p-2 text-center"><div class="small fw-bold mb-1" style="font-size: 0.7rem;">ค่าคอมฯ</div><h6 class="fw-bold m-0" id="detailCommSum">0 ฿</h6></div></div></div>        </div>        <div class="card border-0 shadow-sm">            <div class="card-header bg-dark text-white fw-bold">📑 รายการงาน</div>            <div class="card-body bg-light p-2"><div id="detailListContainer"></div></div>        </div>    </div></div>
+        <div class="card mb-5 border-secondary shadow-sm admin-only" id="setupPkgSection">            <div class="card-header bg-secondary text-white fw-bold">⚙️ ตั้งค่าแพ็กเกจหลัก (แยก 3 ทีม)</div>            <div class="card-body p-2 p-md-3">                <div class="row">                    <div class="col-md-5 mb-3">                        <form id="packageForm" class="bg-light p-2 rounded border">                            <input type="hidden" id="pkgId">                            <div class="mb-2"><label class="small fw-bold">ชื่อแพ็กเกจหลัก</label><input type="text" id="pkgName" class="form-control form-control-sm" required></div>                            <div class="mb-2"><label class="small text-danger fw-bold">ราคาลูกค้า (เก็บรวม)</label><input type="number" id="pkgCustomerPrice" class="form-control form-control-sm" required></div>                            <div class="row g-1 mb-3">                                <div class="col-4"><label class="small text-primary fw-bold" style="font-size: 0.7rem;">ทุน(ช่างกราฟ)</label><input type="number" id="pkgPartPrice1" class="form-control form-control-sm px-1" required></div>                                <div class="col-4"><label class="small text-purple fw-bold" style="font-size: 0.7rem;">ทุน(ช่างโบ้)</label><input type="number" id="pkgPartPrice3" class="form-control form-control-sm px-1" required></div>                                <div class="col-4"><label class="small text-warning-emphasis fw-bold" style="font-size: 0.7rem;">ทุน(ทีม 2)</label><input type="number" id="pkgPartPrice2" class="form-control form-control-sm px-1" required></div>                            </div>                            <button type="submit" class="btn btn-sm btn-secondary w-100 fw-bold" id="btnSavePkg">บันทึกแพ็กเกจ</button>                        </form>                    </div>                    <div class="col-md-7">                        <div class="scrollable-table">                            <table class="table table-sm table-bordered mb-0 bg-white">                                <thead class="table-light" style="position: sticky; top: 0; z-index: 1;"><tr><th>แพ็กเกจ</th><th>คอมฯ 3 ทีม</th><th class="text-center">จัดการ</th></tr></thead>                                <tbody id="packageTableBody"></tbody>                            </table>                        </div>                    </div>                </div>            </div>        </div>    </div>        <!-- สรุปของแอดมิน -->    <div id="detailView" class="page-view admin-only">        <div class="d-flex align-items-center mb-3">            <button class="btn btn-sm btn-secondary me-2 shadow-sm rounded-pill px-3" onclick="closeDetailView()">◀ กลับ</button>            <h5 class="m-0 fw-bold text-primary" id="detailMonthTitle">รายละเอียด</h5>        </div>        <div class="row mb-4 g-2">            <div class="col-4"><div class="card h-100 text-dark shadow-sm border-primary" style="background: #e0f0ff;"><div class="card-body p-2 text-center"><div class="small fw-bold text-primary mb-1" style="font-size: 0.7rem;">เก็บลูกค้า</div><h6 class="fw-bold m-0" id="detailCustSum">0 ฿</h6></div></div></div>            <div class="col-4"><div class="card h-100 text-dark shadow-sm border-warning" style="background: #fff3cd;"><div class="card-body p-2 text-center"><div class="small fw-bold text-warning-emphasis mb-1" style="font-size: 0.7rem;">ส่งช่าง</div><h6 class="fw-bold m-0" id="detailPartSum">0 ฿</h6></div></div></div>            <div class="col-4"><div class="card h-100 text-white shadow-sm border-success bg-success"><div class="card-body p-2 text-center"><div class="small fw-bold mb-1" style="font-size: 0.7rem;">ค่าคอมฯ</div><h6 class="fw-bold m-0" id="detailCommSum">0 ฿</h6></div></div></div>        </div>        <div class="card border-0 shadow-sm">            <div class="card-header bg-dark text-white fw-bold">📑 รายการงาน</div>            <div class="card-body bg-light p-2"><div id="detailListContainer"></div></div>        </div>    </div>
+    <!-- หน้าสรุปค่าคอมแยก: ไม่กินพื้นที่หน้าหลัก -->
+    <div id="commissionView" class="page-view admin-only">
+        <div class="commission-page-top">
+            <button type="button" class="btn btn-sm btn-secondary rounded-pill px-3 fw-bold" onclick="closeCommissionView()">◀ กลับหน้าหลัก</button>
+            <div class="commission-page-title">
+                <h5>💰 สรุปค่าคอมส่ง LINE</h5>
+                <small>เลือกทีละทีม • กดแชร์ แล้วตรวจใน LINE ก่อนยืนยันว่าได้ส่งจริง</small>
+            </div>
+        </div>
+        <div class="card commission-hub-card mb-4" id="commissionHubCard">
+            <div class="commission-hub-head">
+                <div>
+                    <h5>📋 ศูนย์สรุปยอดโอน</h5>
+                    <small>ค่าคอมจะคำนวณใหม่จากแพ็กเกจและงานเพิ่มหน้างานทุกครั้ง</small>
+                </div>
+                <span class="commission-scroll-note">↕ รายการด้านล่างเลื่อนได้</span>
+            </div>
+            <div class="commission-toolbar">
+                <div>
+                    <label for="commissionTeamSelect">เลือกทีมช่าง</label>
+                    <select id="commissionTeamSelect" class="form-select border-primary" onchange="resetCommissionSelection(); renderCommissionHub();">
+                        <option value="team1">🔵 ทีมช่างกราฟ</option>
+                        <option value="team3">🟠 ทีมช่างโบ้</option>
+                        <option value="team2">🟡 ทีมช่างเอ</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="commissionViewSelect">ดูรายการ</label>
+                    <select id="commissionViewSelect" class="form-select border-primary" onchange="resetCommissionSelection(); renderCommissionHub();">
+                        <option value="unnotified">🔵 รอรับเงิน</option>
+                        <option value="paid">🟢 รับเงินแล้ว • รอตรวจภาพ</option>
+                    </select>
+                </div>
+            </div>
+            <div class="commission-summary-strip">
+                <div class="commission-mini-stat unnotified"><span>รอรับเงิน</span><strong id="commissionUnnotifiedTotal">0 ฿</strong></div>
+                <div class="commission-mini-stat paid"><span>รับเงินแล้ว</span><strong id="commissionPaidTotal">0 ฿</strong></div>
+            </div>
+            <div class="commission-list-shell">
+                <div id="commissionHubList" class="commission-hub-list"></div>
+                <div id="commissionSelectionBar" class="commission-selection-bar">
+                    <button type="button" class="btn btn-outline-primary commission-select-all-btn" onclick="toggleSelectAllCommissionJobs()">☑️ เลือกทั้งหมดที่เห็น</button>
+                    <div>
+                        <div id="commissionSelectionText" class="commission-selection-text">เลือกงานที่ต้องการรวมยอด</div>
+                        <div class="commission-selection-actions mt-1">
+                            <button type="button" id="commissionCopyButton" class="commission-share-btn" onclick="shareSelectedCommissionSummary()">📤 แชร์ข้อความ</button>
+                            <button type="button" id="commissionPaymentButton" class="commission-payment-btn" onclick="openSelectedCommissionPayment()">💵 เงินเข้าแล้ว</button>
+                        </div>
+                        <div id="commissionCopyHint" class="commission-share-note">แชร์ข้อความแล้วรายการจะยังอยู่ที่เดิม เมื่อเห็นเงินเข้าแล้วค่อยเลือกงานชุดเดิมและกด “เงินเข้าแล้ว”</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="file" id="commissionSlipInput" accept="image/*" style="display:none;" onchange="handleCommissionSlipFile(event)">
+    <div id="commissionSlipOverlay" class="commission-slip-overlay" role="dialog" aria-modal="true" aria-labelledby="commissionSlipTitle">
+        <div id="commissionSlipDialog" class="commission-slip-dialog">
+            <div class="commission-slip-head">
+                <div><h5 id="commissionSlipTitle">💵 ยืนยันเงินเข้า</h5><small id="commissionSlipSubtitle">แนบรูปสลิปแล้วกดบันทึกได้เลย ไม่ต้องกรอกวันที่หรือเวลา</small></div>
+                <button type="button" class="commission-slip-close" onclick="closeCommissionSlipModal()" aria-label="ปิด">✕</button>
+            </div>
+            <div class="commission-slip-body">
+                <div class="commission-slip-summary"><span id="commissionSlipSummaryText">-</span><strong id="commissionSlipExpectedAmount">0 ฿</strong></div>
+                <div class="commission-slip-preview-wrap"><img id="commissionSlipPreview" class="commission-slip-preview" alt="รูปสลิป"><div id="commissionSlipFileNote" class="commission-slip-file-note"></div></div>
+                <div class="commission-slip-warning">ตรวจยอดบนสลิปให้ตรงกับยอดด้านบนแล้วกดบันทึกได้เลย ระบบเก็บเวลาที่แนบหลักฐานอัตโนมัติ ซึ่งไม่ใช่เวลาทำรายการที่พิมพ์อยู่บนสลิป</div>
+                <div class="commission-slip-actions">
+                    <button type="button" class="btn btn-light border" onclick="closeCommissionSlipModal()">กลับ</button>
+                    <button type="button" id="commissionSlipConfirmButton" class="btn btn-success commission-slip-confirm" onclick="confirmCommissionSlipPayment()">✅ บันทึกสลิป • เงินเข้าแล้ว</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <!-- ========================================== --><!-- ส่วนของใบส่งมอบงาน: ปุ่มไม่หาย บันทึกลายเซ็น และสร้างรูปพร้อมส่ง --><!-- ========================================== --><div id="handoverOverlay">    <!-- ปุ่มกากบาทลอยค้าง กดแล้วบันทึกข้อมูลล่าสุดก่อนกลับหน้าหลัก -->    <button type="button" class="ho-floating-close hide-on-capture" onclick="closeHandover(true)" aria-label="ปิดและกลับหน้าหลัก">✕</button>
     <div class="ho-container">        <!-- ตัวเอกสาร -->        <div class="ho-card" id="ho-document-card">            <div class="ho-header">                <h2>ใบส่งมอบงานและรับประกันการติดตั้ง</h2>                <p>EV Charger Installation &amp; Handover</p>            </div>            <div class="ho-content">                <input type="hidden" id="ho-job-id">                <div class="ho-compact-grid ho-date-customer-row">                    <div class="ho-input-group"><label>วันที่ติดตั้งเสร็จสิ้น:</label><input type="date" id="ho-date"></div>                    <div class="ho-input-group"><label>ชื่อลูกค้า:</label><input type="text" id="ho-customer" placeholder="ระบุชื่อลูกค้า..."></div>                </div>                <div class="ho-input-group ho-phone-row"><label>เบอร์โทรลูกค้า:</label><input type="tel" id="ho-phone" placeholder="08X-XXX-XXXX"></div>                <div class="ho-input-group"><label>สถานที่ติดตั้ง:</label><textarea id="ho-address" rows="1" placeholder="ระบบดึงจากข้อมูลแอดมินอัตโนมัติ แก้ไขได้หากหน้างานไม่ตรง"></textarea></div>                <button type="button" class="ho-sync-main-btn hide-on-capture" onclick="syncHandoverFromMainJob()">↻ ใช้ชื่อ เบอร์ และที่อยู่ล่าสุดจากรายการงาน</button>
                 <div class="ho-input-group" style="margin-top: 5px;">                    <label>รายละเอียดงานติดตั้ง <span style="font-size:0.75rem; color:#e74c3c; font-weight:normal;">*เฉพาะรายการที่ระบุ*</span></label>                    <textarea id="ho-details" rows="2" placeholder="รายการแพ็กเกจ..."></textarea>                </div>
                 <div class="ho-onsite-extra" id="ho-onsite-extra-section">                    <div class="ho-extra-heading">                        <h3>🧾 สรุปยอดชำระ</h3>                        <span>ให้ลูกค้าตรวจก่อนเซ็น</span>                    </div>
-                    <div class="ho-extra-guide hide-on-capture">                        ระบบแสดงราคาแพ็กเกจและทุกรายการที่คิดเงินลูกค้า หากมีสายไฟเกินหรืองานเพิ่ม ค่อยกดปุ่มด้านล่าง                    </div>ึ
+                    <div class="ho-extra-guide hide-on-capture">                        ระบบแสดงราคาแพ็กเกจและทุกรายการที่คิดเงินลูกค้า หากมีสายไฟเกินหรืองานเพิ่ม ค่อยกดปุ่มด้านล่าง                    </div>
                     <button type="button" id="ho-extra-toggle" class="ho-extra-toggle hide-on-capture" onclick="toggleHandoverExtraEditor()">                        ＋ เพิ่มสายไฟเกิน / เพิ่มรายการ                    </button>
                     <div id="ho-extra-editor" class="ho-extra-editor hide-on-capture">                        <div class="ho-extra-step-title">เลือกเฉพาะรายการที่ลูกค้าตกลง แล้วระบบจะรวมยอดให้อัตโนมัติ</div>
                         <div class="ho-fiber-fast-box">                            <div class="ho-fiber-fast-head">                                <div class="ho-fiber-fast-title">🔌 สายไฟเบอร์ 16 เกินแพ็กเกจ</div>                                <div class="ho-fiber-popular">ใช้บ่อยที่สุด</div>                            </div>                            <div class="ho-fiber-stepper">                                <button type="button" class="ho-fiber-step-btn" onclick="adjustHandoverFiberMeters(-1)" aria-label="ลดหนึ่งเมตร">−</button>                                <div class="ho-fiber-meter-wrap">                                    <input type="number" id="ho-fiber-meters" min="0" step="1" inputmode="numeric" value="0" oninput="updateHandoverFiberPreview()">                                    <span>เมตร</span>                                </div>                                <button type="button" class="ho-fiber-step-btn" onclick="adjustHandoverFiberMeters(1)" aria-label="เพิ่มหนึ่งเมตร">＋</button>                            </div>                            <div class="ho-fiber-quick">                                <button type="button" onclick="adjustHandoverFiberMeters(5)">＋5 เมตร</button>                                <button type="button" onclick="adjustHandoverFiberMeters(10)">＋10 เมตร</button>                                <button type="button" onclick="setHandoverFiberMeters(0)">ล้าง</button>                            </div>                            <div id="ho-fiber-rate" class="ho-fiber-rate"></div>                            <button type="button" id="ho-fiber-add-button" class="ho-fiber-add-btn" onclick="addHandoverFiber()">เลือกจำนวนเมตรก่อน</button>                        </div>
@@ -1225,7 +1552,9 @@
     const ADMIN_JOB_FIELDS = [
         'customerName', 'phone', 'installDate', 'visitPeriod', 'installAddress', 'mapLink', 'team',
         'packageName', 'pkgPartnerPrice', 'pkgCustomerPrice',
-        'handoverBaseExtraDetail', 'handoverBaseExtraCustomerPrice', 'handoverBaseExtraPartnerPrice', 'baseExtraItems'
+        'handoverBaseExtraDetail', 'handoverBaseExtraCustomerPrice', 'handoverBaseExtraPartnerPrice', 'baseExtraItems',
+        'commissionBatchId', 'commissionNotifiedAt', 'commissionPaidAt', 'workReviewedAt',
+        'commissionSlipDataUrl', 'commissionSlipFileName', 'commissionSlipUploadedAt'
     ];
     const HANDOVER_JOB_FIELDS = [
         'handoverDate', 'handoverCustomer', 'handoverPhone', 'handoverAddress',
@@ -1410,7 +1739,8 @@
                 job.packageName || '', Number(job.pkgCustomerPrice) || 0,
                 Number(job.extraCustomerPrice) || 0, Boolean(job.isCompleted),
                 Boolean(job.signature), job.handoverCustomer || '', job.handoverPhone || '',
-                job.handoverDetails || '', JSON.stringify(Array.isArray(job.siteExtras) ? job.siteExtras : [])
+                job.handoverDetails || '', JSON.stringify(Array.isArray(job.siteExtras) ? job.siteExtras : []),
+                job.commissionBatchId || '', job.commissionNotifiedAt || '', job.commissionPaidAt || '', job.workReviewedAt || '', job.commissionSlipFileName || '', job.commissionSlipUploadedAt || ''
             ])
             .sort((a, b) => a[0].localeCompare(b[0]));
         return JSON.stringify(visible);
@@ -2149,7 +2479,7 @@
     }
 
     function resolveTeam(job) { if (job.team) return job.team; if (job.installDate && job.installDate.substring(0, 10) < '2026-06-18') return 'team_old'; return 'team1'; }
-    function updateAllViews() { renderCalendar(); renderJobs(); if(currentUserRole === 'admin') renderDetailData(); }
+    function updateAllViews() { renderCalendar(); renderJobs(); if(currentUserRole === 'admin') { renderDetailData(); renderCommissionHub(); } }
 
     async function initApp() {
         const user = firebaseAuth.currentUser;
@@ -2273,15 +2603,36 @@
     document.getElementById('jobInstallAddress')?.addEventListener('input', function() {        const hasValue = Boolean(this.value.trim());        this.classList.toggle('address-detected', hasValue);        const hint = document.getElementById('jobAddressHint');        if(hint && hasValue) {            hint.className = 'job-address-helper detected';            hint.textContent = '✅ มีที่อยู่สำหรับออกเอกสารแล้ว';        }    });
     // --- Dashboard & Format ---
     function toggleStats() { isStatsHidden = !isStatsHidden; saveData(); updateStatsUI(); updateAllViews(); }    function updateStatsUI() {        const btn = document.getElementById('toggleStatsBtn'), boxCust = document.getElementById('boxCust'), boxPart = document.getElementById('boxPart'), boxComm = document.getElementById('boxComm'), boxCommDone = document.getElementById('boxCommDone');        if (isStatsHidden) {            btn.innerHTML = '🙈'; btn.classList.replace('btn-outline-secondary', 'btn-secondary'); btn.classList.add('text-white');            boxPart.classList.add('d-none'); boxCommDone.classList.add('d-none'); boxCust.className = 'col-6 transition-all'; boxComm.className = 'col-6 transition-all';        } else {            btn.innerHTML = '👁️ ซ่อนยอด'; btn.classList.replace('btn-secondary', 'btn-outline-secondary'); btn.classList.remove('text-white');            boxPart.classList.remove('d-none'); boxCommDone.classList.remove('d-none'); boxCust.className = 'col-6 col-md-3 transition-all'; boxComm.className = 'col-6 col-md-3 transition-all';        }    }    function formatCommission(amount) { return amount.toLocaleString() + '&nbsp;฿'; }    function formatThaiDate(dateString) { if(!dateString) return 'ไม่ระบุวัน'; const date = new Date(dateString); return isNaN(date.getTime()) ? dateString : date.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' }); }
-    function calculateMonthlyStats() {        const tYear = calDate.getFullYear(), tMonth = calDate.getMonth(); let mCust = 0, mPartner = 0, mCommAll = 0, mCommCompleted = 0;        jobs.forEach(job => {            if(job.installDate) {                const jDate = new Date(job.installDate);                if(jDate.getFullYear() === tYear && jDate.getMonth() === tMonth) {                    const cPrice = (job.pkgCustomerPrice || 0) + (job.extraCustomerPrice || 0), pPrice = (job.pkgPartnerPrice || 0) + (job.extraPartnerPrice || 0), comm = cPrice - pPrice;                    mCust += cPrice; mPartner += pPrice; mCommAll += comm; if(job.isCompleted) mCommCompleted += comm;                }            }        });        document.getElementById('totalCustomerAll').innerHTML = mCust.toLocaleString() + '&nbsp;฿'; document.getElementById('totalPartnerAll').innerHTML = mPartner.toLocaleString() + '&nbsp;฿';        document.getElementById('totalCommissionAll').innerHTML = formatCommission(mCommAll); document.getElementById('totalCommissionCompleted').innerHTML = formatCommission(mCommCompleted);    }
+    function calculateMonthlyStats() {        const tYear = calDate.getFullYear(), tMonth = calDate.getMonth(); let mCust = 0, mPartner = 0, mCommAll = 0, mCommPaid = 0;        jobs.forEach(job => {            const money = getJobMoneyTotals(job), cPrice = money.customer, pPrice = money.partner, comm = money.commission;            if(job.installDate) {                const jDate = new Date(job.installDate);                if(jDate.getFullYear() === tYear && jDate.getMonth() === tMonth) {                    mCust += cPrice; mPartner += pPrice; mCommAll += comm;                    // กล่องสีเขียวหมายถึงงานของเดือนที่เลือกซึ่งยืนยันว่าเงินเข้าแล้ว
+                    // ไม่ใช้เวลาที่แนบสลิปเป็นวันที่รับเงินจริง เพื่อไม่ให้เข้าใจผิดเมื่อแนบย้อนหลัง
+                    if(job.commissionPaidAt) mCommPaid += comm;
+                }            }        });        document.getElementById('totalCustomerAll').innerHTML = mCust.toLocaleString() + '&nbsp;฿'; document.getElementById('totalPartnerAll').innerHTML = mPartner.toLocaleString() + '&nbsp;฿';        document.getElementById('totalCommissionAll').innerHTML = formatCommission(mCommAll); document.getElementById('totalCommissionCompleted').innerHTML = formatCommission(mCommPaid);    }
     // --- Admin Calendar & Data View ---
     function renderCalendar() {        const year = calDate.getFullYear(), month = calDate.getMonth();        const monthNames = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];        document.getElementById('calendarMonthYear').innerText = `${monthNames[month]} ${year + 543}`;                let isAdmin = currentUserRole === 'admin';        const pendingTeam1 = {}, pendingTeam2 = {}, pendingTeam3 = {}, pendingOld = {};         const completedTeam1 = {}, completedTeam2 = {}, completedTeam3 = {}, completedOld = {};         const commCounts = {}; 
-        jobs.forEach(job => {            if(job.installDate) {                const d = job.installDate.substring(0, 10);                const commission = ((job.pkgCustomerPrice || 0) + (job.extraCustomerPrice || 0)) - ((job.pkgPartnerPrice || 0) + (job.extraPartnerPrice || 0));                commCounts[d] = (commCounts[d] || 0) + commission;                                const team = resolveTeam(job);                 if(job.isCompleted) {                    if(team === 'team3') completedTeam3[d] = (completedTeam3[d] || 0) + 1;                    else if(team === 'team2') completedTeam2[d] = (completedTeam2[d] || 0) + 1;                    else if(team === 'team1') completedTeam1[d] = (completedTeam1[d] || 0) + 1;                    else completedOld[d] = (completedOld[d] || 0) + 1;                } else {                    if(team === 'team3') pendingTeam3[d] = (pendingTeam3[d] || 0) + 1;                    else if(team === 'team2') pendingTeam2[d] = (pendingTeam2[d] || 0) + 1;                    else if(team === 'team1') pendingTeam1[d] = (pendingTeam1[d] || 0) + 1;                    else pendingOld[d] = (pendingOld[d] || 0) + 1;                }            }        });
+        jobs.forEach(job => {            if(job.installDate) {                const d = job.installDate.substring(0, 10);                const commission = getJobCommission(job);                commCounts[d] = (commCounts[d] || 0) + commission;                                const team = resolveTeam(job);                 if(job.isCompleted) {                    if(team === 'team3') completedTeam3[d] = (completedTeam3[d] || 0) + 1;                    else if(team === 'team2') completedTeam2[d] = (completedTeam2[d] || 0) + 1;                    else if(team === 'team1') completedTeam1[d] = (completedTeam1[d] || 0) + 1;                    else completedOld[d] = (completedOld[d] || 0) + 1;                } else {                    if(team === 'team3') pendingTeam3[d] = (pendingTeam3[d] || 0) + 1;                    else if(team === 'team2') pendingTeam2[d] = (pendingTeam2[d] || 0) + 1;                    else if(team === 'team1') pendingTeam1[d] = (pendingTeam1[d] || 0) + 1;                    else pendingOld[d] = (pendingOld[d] || 0) + 1;                }            }        });
         const firstDay = new Date(year, month, 1).getDay(), daysInMonth = new Date(year, month + 1, 0).getDate();        let html = '';        ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'].forEach(d => html += `<div class="calendar-header-day">${d}</div>`);        for(let i=0; i<firstDay; i++) html += `<div class="calendar-day empty"></div>`;                const today = new Date();        for(let d=1; d<=daysInMonth; d++) {            const isToday = (d === today.getDate() && month === today.getMonth() && year === today.getFullYear());            const dateStr = `${year}-${String(month+1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;                        let t1Count = (pendingTeam1[dateStr] || 0) + (completedTeam1[dateStr] || 0);            let t2Count = (pendingTeam2[dateStr] || 0) + (completedTeam2[dateStr] || 0);            let t3Count = (pendingTeam3[dateStr] || 0) + (completedTeam3[dateStr] || 0);                        if (currentUserRole !== 'admin') {                if (currentUserRole !== 'team1') t1Count = 0;                if (currentUserRole !== 'team2') t2Count = 0;                if (currentUserRole !== 'team3') t3Count = 0;            }
             const totalPending = (currentUserRole === 'admin') ? ((pendingTeam1[dateStr]||0) + (pendingTeam2[dateStr]||0) + (pendingTeam3[dateStr]||0) + (pendingOld[dateStr]||0)) : ((eval(`pendingTeam${currentUserRole.replace('team','')}[dateStr]`)||0));            const totalCompleted = (currentUserRole === 'admin') ? ((completedTeam1[dateStr]||0) + (completedTeam2[dateStr]||0) + (completedTeam3[dateStr]||0) + (completedOld[dateStr]||0)) : ((eval(`completedTeam${currentUserRole.replace('team','')}[dateStr]`)||0));            const totalComm = commCounts[dateStr] || 0;                        let cellContent = `<div class="d-flex justify-content-between align-items-start"><div class="cal-date-num">${d}</div><div class="d-flex flex-wrap justify-content-end align-content-start mt-1 pe-1" style="max-width: 40px;">`;            for(let i=0; i<t1Count; i++) cellContent += `<div class="dot-indicator dot-t1"></div>`;            for(let i=0; i<t2Count; i++) cellContent += `<div class="dot-indicator dot-t2"></div>`;            for(let i=0; i<t3Count; i++) cellContent += `<div class="dot-indicator dot-t3"></div>`;            cellContent += `</div></div>`;                        if (totalPending > 0 || totalCompleted > 0) {                cellContent += `<div class="cal-badges-container">`;                if (!isStatsHidden && totalComm > 0 && isAdmin) cellContent += `<div class="cal-badge cal-comm">+${totalComm.toLocaleString()}</div>`;                if (totalPending > 0) cellContent += `<div class="cal-badge cal-wait">รอ ${totalPending}</div>`;                if (totalCompleted > 0) cellContent += `<div class="cal-badge cal-done">เสร็จ ${totalCompleted}</div>`;                cellContent += `</div>`;            }                        let cls = 'calendar-day'; if(isToday) cls += ' today';            if(totalPending > 0 && totalCompleted === 0) cls += ' pending-only';            else if(totalCompleted > 0 && totalPending === 0) cls += ' completed-only';            else if(totalPending > 0 && totalCompleted > 0) cls += ' mixed-jobs';            html += `<div class="${cls}">${cellContent}</div>`;        }        document.getElementById('calendarGrid').innerHTML = html; calculateMonthlyStats();    }    function changeMonth(dir) { calDate.setMonth(calDate.getMonth() + dir); updateAllViews(); }
-    function openDetailView() { document.getElementById('mainView').classList.remove('active'); document.getElementById('detailView').classList.add('active'); window.scrollTo(0, 0); updateAllViews(); }    function closeDetailView() { document.getElementById('detailView').classList.remove('active'); document.getElementById('mainView').classList.add('active'); window.scrollTo(0, 0); }        function renderDetailData() {        if(currentUserRole !== 'admin') return;        const monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];        const tYear = calDate.getFullYear(), tMonth = calDate.getMonth();        document.getElementById('detailMonthTitle').innerText = `สรุปเดือน ${monthNames[tMonth]} ${tYear + 543}`;        const container = document.getElementById('detailListContainer'); container.innerHTML = '';        let sumCust = 0, sumPart = 0, sumComm = 0, jobCount = 0;
+    function showAppPage(pageId) {
+        ['mainView', 'detailView', 'commissionView'].forEach((id) => {
+            document.getElementById(id)?.classList.toggle('active', id === pageId);
+        });
+        window.scrollTo(0, 0);
+    }
+    function openDetailView() { showAppPage('detailView'); updateAllViews(); }
+    function closeDetailView() { showAppPage('mainView'); }
+    function openCommissionView() {
+        if(currentUserRole !== 'admin') return;
+        resetCommissionSelection();
+        renderCommissionHub();
+        showAppPage('commissionView');
+    }
+    function closeCommissionView() {
+        resetCommissionSelection();
+        showAppPage('mainView');
+    }
+    function renderDetailData() {        if(currentUserRole !== 'admin') return;        const monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];        const tYear = calDate.getFullYear(), tMonth = calDate.getMonth();        document.getElementById('detailMonthTitle').innerText = `สรุปเดือน ${monthNames[tMonth]} ${tYear + 543}`;        const container = document.getElementById('detailListContainer'); container.innerHTML = '';        let sumCust = 0, sumPart = 0, sumComm = 0, jobCount = 0;
         const sortedJobs = [...jobs].sort((a, b) => {            const timeA = (a.installDate||"") ? new Date(a.installDate).getTime() : 0;            const timeB = (b.installDate||"") ? new Date(b.installDate).getTime() : 0;            return timeB - timeA;         });
-        sortedJobs.forEach(job => {            if(job.installDate) {                const jDate = new Date(job.installDate);                if(jDate.getFullYear() === tYear && jDate.getMonth() === tMonth) {                    const custPrice = (job.pkgCustomerPrice || 0) + (job.extraCustomerPrice || 0), partnerPrice = (job.pkgPartnerPrice || 0) + (job.extraPartnerPrice || 0), commission = custPrice - partnerPrice;                    sumCust += custPrice; sumPart += partnerPrice; sumComm += commission; jobCount++;                    const statusBadge = job.isCompleted ? '<span class="badge bg-white text-success border border-success">✅ เสร็จ</span>' : '<span class="badge bg-white text-primary border border-primary">⏳ รอ</span>';                    const headerBg = job.isCompleted ? 'bg-success' : 'bg-primary', cardBg = job.isCompleted ? 'bg-success-subtle bg-opacity-25' : 'bg-white';                    const borderCls = job.isCompleted ? 'border-success' : 'border-primary', nameCls = job.isCompleted ? 'text-muted text-decoration-line-through text-break' : 'text-dark text-break';                    const extraDisplay = job.extraDetail ? `<div class="text-danger mt-1 small text-break" style="font-size:0.75rem;">🛠️ <strong>เพิ่ม:</strong> ${escapeHandoverText(job.extraDetail)}</div>` : '';                    const addressDisplay = job.installAddress ? `<div class="text-secondary mt-1 small text-break" style="font-size:0.75rem;">🏠 <strong>จุดติดตั้ง:</strong> ${escapeHandoverText(job.installAddress)}</div>` : '';                                        const jobTeam = resolveTeam(job);                    let teamBadge = '';                    if(jobTeam === 'team3') teamBadge = '<span class="badge bg-white border me-1" style="color:#fd7e14; border-color:#fd7e14;">🟠 ช่างโบ้</span>';                    else if(jobTeam === 'team2') teamBadge = '<span class="badge bg-white text-warning border border-warning me-1">🟡 ทีม 2</span>';                    else if(jobTeam === 'team1') teamBadge = '<span class="badge bg-white text-primary border border-primary me-1">🔵 ช่างกราฟ</span>';                    else teamBadge = '<span class="badge bg-white text-secondary border border-secondary me-1">⚪ ช่างเก่า</span>';                                        container.innerHTML += `                        <div class="card mb-2 shadow-sm ${borderCls} overflow-hidden" style="border-width: 2px;">                            <div class="card-header ${headerBg} text-white d-flex justify-content-between align-items-center py-1 px-2">                                <span class="fw-bold" style="font-size:0.85rem;">📅 ${formatThaiDate(job.installDate)}</span> ${statusBadge}                            </div>                            <div class="card-body ${cardBg} p-2">                                <h6 class="fw-bold ${nameCls} mb-2 border-bottom pb-1">${teamBadge} ${job.customerName}</h6>                                <div class="bg-white p-1 border rounded mb-2 small shadow-sm" style="font-size:0.8rem;">                                    <div class="text-dark text-break">📦แพ็กเกจ <strong>แพ็ก:</strong> ${escapeHandoverText(job.packageName)}</div> ${addressDisplay} ${extraDisplay}                                </div>                                <div class="row text-center pt-1 border-top border-secondary-subtle">                                    <div class="col-4 border-end px-1"><div class="text-muted" style="font-size:0.65rem;">เก็บลูกค้า</div><div class="fw-bold text-danger" style="font-size:0.85rem;">${custPrice.toLocaleString()} ฿</div></div>                                    <div class="col-4 border-end px-1"><div class="text-muted" style="font-size:0.65rem;">ส่งช่าง(ทุน)</div><div class="fw-bold text-secondary" style="font-size:0.85rem;">${partnerPrice.toLocaleString()}</div></div>                                    <div class="col-4 px-1"><div class="text-muted" style="font-size:0.65rem;">คอมฯ</div><div class="fw-bold text-success" style="font-size:0.85rem;">${commission.toLocaleString()}</div></div>                                </div>                            </div>                        </div>`;                }            }        });        if(jobCount === 0) container.innerHTML = `<div class="text-center text-muted py-4"><h6>📭 ไม่มีงานในเดือนนี้</h6></div>`;        document.getElementById('detailCustSum').innerText = sumCust.toLocaleString() + ' ฿';        document.getElementById('detailPartSum').innerText = sumPart.toLocaleString() + ' ฿';        document.getElementById('detailCommSum').innerText = sumComm.toLocaleString() + ' ฿';    }
+        sortedJobs.forEach(job => {            if(job.installDate) {                const jDate = new Date(job.installDate);                if(jDate.getFullYear() === tYear && jDate.getMonth() === tMonth) {                    const money = getJobMoneyTotals(job), custPrice = money.customer, partnerPrice = money.partner, commission = money.commission;                    sumCust += custPrice; sumPart += partnerPrice; sumComm += commission; jobCount++;                    const statusBadge = job.isCompleted ? '<span class="badge bg-white text-success border border-success">✅ เสร็จ</span>' : '<span class="badge bg-white text-primary border border-primary">⏳ รอ</span>';                    const headerBg = job.isCompleted ? 'bg-success' : 'bg-primary', cardBg = job.isCompleted ? 'bg-success-subtle bg-opacity-25' : 'bg-white';                    const borderCls = job.isCompleted ? 'border-success' : 'border-primary', nameCls = job.isCompleted ? 'text-muted text-decoration-line-through text-break' : 'text-dark text-break';                    const extraDisplay = job.extraDetail ? `<div class="text-danger mt-1 small text-break" style="font-size:0.75rem;">🛠️ <strong>เพิ่ม:</strong> ${escapeHandoverText(job.extraDetail)}</div>` : '';                    const addressDisplay = job.installAddress ? `<div class="text-secondary mt-1 small text-break" style="font-size:0.75rem;">🏠 <strong>จุดติดตั้ง:</strong> ${escapeHandoverText(job.installAddress)}</div>` : '';                                        const jobTeam = resolveTeam(job);                    let teamBadge = '';                    if(jobTeam === 'team3') teamBadge = '<span class="badge bg-white border me-1" style="color:#fd7e14; border-color:#fd7e14;">🟠 ช่างโบ้</span>';                    else if(jobTeam === 'team2') teamBadge = '<span class="badge bg-white text-warning border border-warning me-1">🟡 ทีม 2</span>';                    else if(jobTeam === 'team1') teamBadge = '<span class="badge bg-white text-primary border border-primary me-1">🔵 ช่างกราฟ</span>';                    else teamBadge = '<span class="badge bg-white text-secondary border border-secondary me-1">⚪ ช่างเก่า</span>';                                        container.innerHTML += `                        <div class="card mb-2 shadow-sm ${borderCls} overflow-hidden" style="border-width: 2px;">                            <div class="card-header ${headerBg} text-white d-flex justify-content-between align-items-center py-1 px-2">                                <span class="fw-bold" style="font-size:0.85rem;">📅 ${formatThaiDate(job.installDate)}</span> ${statusBadge}                            </div>                            <div class="card-body ${cardBg} p-2">                                <h6 class="fw-bold ${nameCls} mb-2 border-bottom pb-1">${teamBadge} ${job.customerName}</h6>                                <div class="bg-white p-1 border rounded mb-2 small shadow-sm" style="font-size:0.8rem;">                                    <div class="text-dark text-break">📦แพ็กเกจ <strong>แพ็ก:</strong> ${escapeHandoverText(job.packageName)}</div> ${addressDisplay} ${extraDisplay}                                </div>                                <div class="row text-center pt-1 border-top border-secondary-subtle">                                    <div class="col-4 border-end px-1"><div class="text-muted" style="font-size:0.65rem;">เก็บลูกค้า</div><div class="fw-bold text-danger" style="font-size:0.85rem;">${custPrice.toLocaleString()} ฿</div></div>                                    <div class="col-4 border-end px-1"><div class="text-muted" style="font-size:0.65rem;">ส่งช่าง(ทุน)</div><div class="fw-bold text-secondary" style="font-size:0.85rem;">${partnerPrice.toLocaleString()}</div></div>                                    <div class="col-4 px-1"><div class="text-muted" style="font-size:0.65rem;">คอมฯ</div><div class="fw-bold text-success" style="font-size:0.85rem;">${commission.toLocaleString()}</div></div>                                </div>                            </div>                        </div>`;                }            }        });        if(jobCount === 0) container.innerHTML = `<div class="text-center text-muted py-4"><h6>📭 ไม่มีงานในเดือนนี้</h6></div>`;        document.getElementById('detailCustSum').innerText = sumCust.toLocaleString() + ' ฿';        document.getElementById('detailPartSum').innerText = sumPart.toLocaleString() + ' ฿';        document.getElementById('detailCommSum').innerText = sumComm.toLocaleString() + ' ฿';    }
     // --- Admin Settings (Fiber, Package, Extra) ---
     function renderFiberSettings() {        if(currentUserRole !== 'admin') return;        document.getElementById('setFiberCust').value = fiberSettings.custPrice;        document.getElementById('setFiberT1').value = fiberSettings.team1;        document.getElementById('setFiberT3').value = fiberSettings.team3;        document.getElementById('setFiberT2').value = fiberSettings.team2;        onTeamChange();    }    async function saveFiberSettings() {        fiberSettings.custPrice = parseFloat(document.getElementById('setFiberCust').value) || 0;        fiberSettings.team1 = parseFloat(document.getElementById('setFiberT1').value) || 0;        fiberSettings.team3 = parseFloat(document.getElementById('setFiberT3').value) || 0;        fiberSettings.team2 = parseFloat(document.getElementById('setFiberT2').value) || 0;        onTeamChange();        const ok = await saveData();        showSaveNotice(ok ? "✅ บันทึกเรทสายไฟขึ้น Firebase แล้ว" : "❌ บันทึกเรทสายไฟไม่สำเร็จ", ok);    }    function onTeamChange(repriceExtras = false) {        if(currentUserRole !== 'admin') return;        const team = document.getElementById('jobTeam').value;        const fiberLabel = document.getElementById('fiberLabel');        let unitCost = fiberSettings.team1;        if(team === 'team3') unitCost = fiberSettings.team3;        else if(team === 'team2') unitCost = fiberSettings.team2;        fiberLabel.innerHTML = `🔌 สายไฟเบอร์ 16 เกิน (ลูกค้า ${fiberSettings.custPrice} ฿ / ทุนช่าง ${unitCost} ฿)`;        if(repriceExtras) repriceJobBaseExtraItemsForTeam();        calculateLiveSummary();    }
     document.getElementById('packageForm').addEventListener('submit', function(e) {        e.preventDefault(); const id = document.getElementById('pkgId').value;        const name = document.getElementById('pkgName').value; const customerPrice = parseFloat(document.getElementById('pkgCustomerPrice').value);        const partPrice1 = parseFloat(document.getElementById('pkgPartPrice1').value); const partPrice2 = parseFloat(document.getElementById('pkgPartPrice2').value); const partPrice3 = parseFloat(document.getElementById('pkgPartPrice3').value);        if(id) { const index = packages.findIndex(p => p.id == id); packages[index] = { id: parseInt(id), name, customerPrice, partPrice1, partPrice2, partPrice3 }; document.getElementById('btnSavePkg').innerText = "บันทึกแพ็กเกจ"; document.getElementById('btnSavePkg').classList.replace('btn-warning', 'btn-secondary');        } else { packages.push({ id: Date.now(), name, customerPrice, partPrice1, partPrice2, partPrice3 }); }        e.target.reset(); document.getElementById('pkgId').value = ""; saveData(); renderPackages(); updatePackageDropdown(); calculateLiveSummary();    });    function editPackage(id) {        const pkg = packages.find(p => p.id === id);        if(pkg) {            document.getElementById('pkgId').value = pkg.id; document.getElementById('pkgName').value = pkg.name; document.getElementById('pkgCustomerPrice').value = pkg.customerPrice;            document.getElementById('pkgPartPrice1').value = pkg.partPrice1; document.getElementById('pkgPartPrice2').value = pkg.partPrice2; document.getElementById('pkgPartPrice3').value = pkg.partPrice3 || pkg.partPrice1;            document.getElementById('btnSavePkg').innerText = "บันทึกการแก้ไข"; document.getElementById('btnSavePkg').classList.replace('btn-secondary', 'btn-warning'); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });        }    }    function deletePackage(id) { packages = packages.filter(p => p.id !== id); saveData(); renderPackages(); updatePackageDropdown(); calculateLiveSummary(); }    function renderPackages() {        const tbody = document.getElementById('packageTableBody'); tbody.innerHTML = '';        packages.forEach(pkg => {            const comm1 = pkg.customerPrice - pkg.partPrice1; const comm2 = pkg.customerPrice - pkg.partPrice2; const comm3 = pkg.customerPrice - (pkg.partPrice3 || pkg.partPrice1);            tbody.innerHTML += `<tr><td class="align-middle text-break" style="font-size:12px; max-width:110px;">${pkg.name}</td>                <td class="small align-middle text-nowrap"><span class="text-primary fw-bold" style="font-size:0.75rem;">🔵 ${comm1.toLocaleString()}</span><br><span class="text-warning fw-bold" style="font-size:0.75rem;">🟡 ${comm2.toLocaleString()}</span><br><span class="fw-bold" style="font-size:0.75rem; color:#fd7e14;">🟠 ${comm3.toLocaleString()}</span></td>                <td class="text-nowrap align-middle text-center"><button onclick="editPackage(${pkg.id})" class="btn btn-sm btn-warning py-0 px-1">✏️</button> <button onclick="deletePackage(${pkg.id})" class="btn btn-sm btn-danger py-0 px-1">❌</button></td></tr>`;        });    }    function updatePackageDropdown() {        const select = document.getElementById('jobPackage'), currentValue = select.value; select.innerHTML = '<option value="">-- เลือกแพ็กเกจ --</option>';        packages.forEach(pkg => { select.innerHTML += `<option value="${pkg.id}">${pkg.name}</option>`; });        if(currentValue) { const found = packages.find(p => p.id == currentValue || p.name == currentValue); if(found) select.value = found.id; }    }
@@ -2714,7 +3065,9 @@
             if (confirm(`✅ ยืนยันการปิดจ๊อบงานนี้ใช่ไหมครับ?
 👤 ลูกค้า: ${job.customerName || '-'}`)) {
                 job.isCompleted = true;
+                job.workReviewedAt = job.workReviewedAt || new Date().toISOString();
                 job.statusUpdatedAt = new Date().toISOString();
+                job.adminUpdatedAt = job.statusUpdatedAt;
                 job.updatedAt = job.statusUpdatedAt;
                 saveData();
                 updateAllViews();
@@ -2896,6 +3249,7 @@
 
         if (action === 'reopen') {
             job.isCompleted = false;
+            job.workReviewedAt = '';
             job.statusUpdatedAt = new Date().toISOString();
             job.updatedAt = job.statusUpdatedAt;
             updateAllViews();
@@ -2930,9 +3284,537 @@
         else if (event.key === 'Enter' && deletePinValue.length === 4) verifyDeleteJobPin();
         event.preventDefault();
     });
+
+    // ==========================================
+    // ศูนย์สรุปค่าคอมฝั่งแอดมิน
+    // ช่างไม่ต้องกดอะไรในเว็บ: แชร์ข้อความแล้วรายการคงอยู่เดิม เงินเข้าค่อยแนบสลิปและยืนยันครั้งเดียว
+    // ==========================================
+    let selectedCommissionJobIds = new Set();
+    let commissionShareReady = false;
+    let commissionSharedSelectionKey = '';
+    let pendingCommissionSlipBatchId = '';
+    let pendingCommissionSlipJobIds = [];
+    let pendingCommissionSlipDataUrl = '';
+    let pendingCommissionSlipFileName = '';
+
+    function getCommissionTeamName(team) {
+        if(team === 'team3') return 'ทีมช่างโบ้';
+        if(team === 'team2') return 'ทีมช่างเอ';
+        return 'ทีมช่างกราฟ';
+    }
+
+    function getJobMoneyTotals(job) {
+        // คำนวณจากข้อมูลล่าสุดทุกครั้ง โดยเฉพาะรายการที่ช่างเพิ่มหน้างาน
+        const current = rebuildJobExtraTotals(job || {});
+        const customer = (Number(current.pkgCustomerPrice) || 0) + (Number(current.extraCustomerPrice) || 0);
+        const partner = (Number(current.pkgPartnerPrice) || 0) + (Number(current.extraPartnerPrice) || 0);
+        return { customer, partner, commission: customer - partner, current };
+    }
+
+    function getJobCommission(job) {
+        return getJobMoneyTotals(job).commission;
+    }
+
+    function formatCommissionDateTime(value) {
+        if(!value) return '-';
+        const date = new Date(value);
+        if(isNaN(date.getTime())) return '-';
+        return date.toLocaleString('th-TH', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+    }
+
+    function formatCommissionCardDate(dateString, period = '') {
+        if(!dateString) return { main:'ไม่ระบุวันที่', sub:period || '' };
+        const date = new Date(`${dateString}T00:00:00`);
+        if(isNaN(date.getTime())) return { main:String(dateString), sub:period || '' };
+        const main = date.toLocaleDateString('th-TH', { day:'numeric', month:'short' });
+        const year = date.toLocaleDateString('th-TH', { year:'numeric' });
+        const cleanPeriod = String(period || '').trim();
+        return { main, sub:[year, cleanPeriod].filter(Boolean).join(' • ') };
+    }
+
+    function resetCommissionShareReady() {
+        commissionShareReady = false;
+        commissionSharedSelectionKey = '';
+    }
+
+    function resetCommissionSelection() {
+        selectedCommissionJobIds = new Set();
+        resetCommissionShareReady();
+    }
+
+    function commissionJobsForSelectedTeam() {
+        const team = document.getElementById('commissionTeamSelect')?.value || 'team1';
+        return jobs.filter(job => resolveTeam(job) === team);
+    }
+
+    function updateCommissionSummaryStrip() {
+        const teamJobs = commissionJobsForSelectedTeam();
+        const unpaid = teamJobs.filter(job => !job.commissionPaidAt).reduce((sum, job) => sum + getJobCommission(job), 0);
+        const paid = teamJobs.filter(job => job.commissionPaidAt).reduce((sum, job) => sum + getJobCommission(job), 0);
+        const unpaidEl = document.getElementById('commissionUnnotifiedTotal');
+        const paidEl = document.getElementById('commissionPaidTotal');
+        if(unpaidEl) unpaidEl.textContent = `${unpaid.toLocaleString()} ฿`;
+        if(paidEl) paidEl.textContent = `${paid.toLocaleString()} ฿`;
+    }
+
+    function getVisibleCommissionCheckboxes() {
+        return [...document.querySelectorAll('#commissionHubList .commission-job-checkbox')];
+    }
+
+    function getCommissionSelectionKey(selected = null) {
+        const list = selected || jobs.filter(job => selectedCommissionJobIds.has(Number(job.id)));
+        return list.map(job => Number(job.id)).sort((a,b) => a-b).join(',');
+    }
+
+    function syncCommissionSelectionFromDom() {
+        const previousKey = getCommissionSelectionKey();
+        selectedCommissionJobIds = new Set(getVisibleCommissionCheckboxes().filter(box => box.checked).map(box => Number(box.value)));
+        const nextKey = getCommissionSelectionKey();
+        if(previousKey !== nextKey) resetCommissionShareReady();
+        updateCommissionSelectionBar();
+    }
+
+    function updateCommissionSelectionBar() {
+        const bar = document.getElementById('commissionSelectionBar');
+        const textEl = document.getElementById('commissionSelectionText');
+        const shareBtn = document.getElementById('commissionCopyButton');
+        const paymentBtn = document.getElementById('commissionPaymentButton');
+        const view = document.getElementById('commissionViewSelect')?.value || 'unnotified';
+        if(!bar) return;
+        bar.style.display = view === 'unnotified' ? 'grid' : 'none';
+        if(view !== 'unnotified') return;
+        const selected = jobs.filter(job => selectedCommissionJobIds.has(Number(job.id)) && !job.commissionPaidAt);
+        const total = selected.reduce((sum, job) => sum + getJobCommission(job), 0);
+        if(textEl) textEl.innerHTML = selected.length
+            ? `เลือก ${selected.length.toLocaleString()} งาน • รวม <strong>${total.toLocaleString()} ฿</strong>`
+            : 'เลือกงานที่ต้องการรวมยอด';
+        if(shareBtn) shareBtn.disabled = selected.length === 0;
+        if(paymentBtn) paymentBtn.disabled = selected.length === 0;
+    }
+
+    function toggleSelectAllCommissionJobs() {
+        const boxes = getVisibleCommissionCheckboxes();
+        const shouldCheck = boxes.some(box => !box.checked);
+        boxes.forEach(box => { box.checked = shouldCheck; });
+        syncCommissionSelectionFromDom();
+    }
+
+    function getCommissionWorkStatus(job) {
+        if(job.workReviewedAt) return '✅ ตรวจภาพแล้ว';
+        if(job.isCompleted) return '🔒 ช่างปิดงานแล้ว';
+        if(job.signature) return '✍️ มีลายเซ็นแล้ว';
+        return '⏳ รอดำเนินงาน';
+    }
+
+    function renderCommissionHub() {
+        if(currentUserRole !== 'admin') return;
+        const container = document.getElementById('commissionHubList');
+        if(!container) return;
+        const team = document.getElementById('commissionTeamSelect')?.value || 'team1';
+        const view = document.getElementById('commissionViewSelect')?.value || 'unnotified';
+        const teamJobs = jobs.filter(job => resolveTeam(job) === team).sort((a,b) => String(b.installDate || '').localeCompare(String(a.installDate || '')));
+        updateCommissionSummaryStrip();
+        container.innerHTML = '';
+
+        if(view === 'unnotified') {
+            const rows = teamJobs.filter(job => !job.commissionPaidAt);
+            if(rows.length === 0) {
+                container.innerHTML = '<div class="commission-empty">✅ ไม่มีงานค้างรับเงินของทีมนี้</div>';
+            } else {
+                container.innerHTML = rows.map(job => {
+                    const checked = selectedCommissionJobIds.has(Number(job.id)) ? 'checked' : '';
+                    const detail = cleanCommissionDetailText(job) || 'ไม่ระบุรายการ';
+                    const date = formatCommissionCardDate(job.installDate, job.visitPeriod);
+                    return `<label class="commission-job-row">
+                        <input type="checkbox" class="commission-job-checkbox" value="${Number(job.id)}" ${checked} onchange="syncCommissionSelectionFromDom()">
+                        <div class="commission-date-badge"><strong>📅 ${escapeHandoverText(date.main)}</strong><span>${escapeHandoverText(date.sub)}</span></div>
+                        <div class="commission-job-main">
+                            <div class="commission-job-name">👤 ${escapeHandoverText(job.customerName || '-')}</div>
+                            <div class="commission-job-sub">🛠️ ${escapeHandoverText(detail)}</div>
+                            <span class="commission-work-pill">${getCommissionWorkStatus(job)}</span>
+                        </div>
+                        <div class="commission-job-amount">${getJobCommission(job).toLocaleString()} ฿</div>
+                    </label>`;
+                }).join('');
+            }
+        } else {
+            const paidJobs = teamJobs.filter(job => job.commissionPaidAt).sort((a,b) => String(b.commissionPaidAt || '').localeCompare(String(a.commissionPaidAt || '')));
+            if(paidJobs.length === 0) {
+                container.innerHTML = '<div class="commission-empty">ยังไม่มีรายการที่แนบสลิปรับเงินของทีมนี้</div>';
+            } else {
+                container.innerHTML = paidJobs.map(job => {
+                    // แยกสถานะตรวจภาพออกจาก isCompleted เพื่อไม่ให้ขึ้นว่าตรวจแล้วโดยอัตโนมัติ
+                    const reviewed = Boolean(job.workReviewedAt);
+                    const date = formatCommissionCardDate(job.installDate, job.visitPeriod);
+                    return `<div class="commission-review-card ${reviewed ? 'is-reviewed' : ''}">
+                        <div class="commission-review-top">
+                            <div class="commission-job-main">
+                                <div class="commission-job-name">👤 ${escapeHandoverText(job.customerName || '-')}</div>
+                                <div class="commission-job-sub">📅 ติดตั้ง ${escapeHandoverText(date.main)} ${escapeHandoverText(date.sub)}<br>🧾 แนบหลักฐาน ${formatCommissionDateTime(job.commissionSlipUploadedAt || job.commissionPaidAt)} • ค่าคอม ${getJobCommission(job).toLocaleString()} ฿</div>
+                            </div>
+                            <span class="commission-review-status">${reviewed ? '✅ ตรวจภาพแล้ว' : '📷 รอตรวจภาพ'}</span>
+                        </div>
+                        ${reviewed
+                            ? `<div class="commission-review-done">ตรวจภาพผลงานและปิดงานแล้วเมื่อ ${formatCommissionDateTime(job.workReviewedAt)}</div>`
+                            : `<button type="button" class="commission-review-btn" onclick="markCommissionWorkReviewed(${Number(job.id)})">📷 ตรวจภาพแล้ว • ปิดงานนี้</button>`}
+                        ${getCommissionBatchSlip(job.commissionBatchId || `single-${job.id}`)
+                            ? `<button type="button" class="commission-slip-view-btn" onclick="openCommissionSlipViewer('${escapeHandoverText(job.commissionBatchId || `single-${job.id}`)}')">🧾 ดูสลิปที่บันทึกไว้</button>`
+                            : ''}
+                    </div>`;
+                }).join('');
+            }
+        }
+        updateCommissionSelectionBar();
+    }
+
+    function formatCommissionMessageDate(dateString) {
+        if(!dateString) return 'ไม่ระบุวันที่';
+        const date = new Date(`${dateString}T00:00:00`);
+        if(isNaN(date.getTime())) return String(dateString);
+        return date.toLocaleDateString('th-TH', { day:'numeric', month:'long', year:'numeric' });
+    }
+
+    function cleanCommissionDetailText(job) {
+        const totals = getJobMoneyTotals(job);
+        const current = totals.current;
+        const amount = totals.commission;
+        const amountTexts = [amount.toLocaleString('th-TH'), amount.toLocaleString(), String(amount)]
+            .filter((value, index, list) => list.indexOf(value) === index)
+            .map(value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+        let detail = [current.packageName, current.extraDetail].filter(Boolean).join(' + ').replace(/\s+/g, ' ').trim();
+        amountTexts.forEach((value) => {
+            detail = detail.replace(new RegExp(`(?:ค่าคอม(?:มิชชั่น)?|คอมฯ?|รวม)?\\s*${value}\\s*(?:บาท|฿)`, 'gi'), ' ');
+        });
+        const parts = detail
+            .replace(/\s*\+\s*\+/g, ' + ')
+            .replace(/^\s*[+|—–-]+\s*|\s*[+|—–-]+\s*$/g, '')
+            .split(/\s*\+\s*/)
+            .map(item => item.replace(/\s+/g, ' ').trim())
+            .filter(Boolean);
+        return [...new Set(parts.map(item => item.toLowerCase()))]
+            .map(key => parts.find(item => item.toLowerCase() === key))
+            .join(' + ')
+            .trim();
+    }
+
+    function buildCommissionMessage(batchJobs) {
+        if(!batchJobs.length) return '';
+        const sorted = [...batchJobs].sort((a,b) => {
+            const dateCompare = String(a.installDate || '').localeCompare(String(b.installDate || ''));
+            return dateCompare || String(a.customerName || '').localeCompare(String(b.customerName || ''), 'th');
+        });
+        const teamName = getCommissionTeamName(resolveTeam(sorted[0]));
+        const lines = [`💰 สรุปยอดโอน ${teamName}`, ''];
+        const isSingle = sorted.length === 1;
+        sorted.forEach((job, index) => {
+            const date = formatCommissionMessageDate(job.installDate);
+            const rawPeriod = String(job.visitPeriod || '').trim();
+            const period = rawPeriod ? ` • ${rawPeriod.startsWith('ช่วง') ? rawPeriod : `ช่วง${rawPeriod}`}` : '';
+            const customer = String(job.customerName || '-').trim();
+            const amount = getJobCommission(job).toLocaleString();
+            const detail = cleanCommissionDetailText(job);
+            if(!isSingle) lines.push(`🔹 งานที่ ${index + 1}`);
+            lines.push(`📅 วันที่ติดตั้ง: ${date}${period}`);
+            lines.push(`👤 ลูกค้า: ${customer}`);
+            if(detail) lines.push(`🛠️ รายการ: ${detail}`);
+            lines.push(`💵 ${isSingle ? 'ยอดโอน' : 'ค่าคอมงานนี้'}: ${amount} บาท`);
+            if(!isSingle && index < sorted.length - 1) lines.push('', '────────────', '');
+        });
+        if(!isSingle) {
+            const total = sorted.reduce((sum, job) => sum + getJobCommission(job), 0);
+            lines.push('', `✅ ยอดโอนรวม: ${total.toLocaleString()} บาท`);
+        }
+        lines.push('', 'โอนแล้วส่งสลิปไว้ในแชตนี้ได้เลยนะคะ ขอบคุณค่ะ');
+        return lines.join('\n');
+    }
+
+    async function copyPlainText(value) {
+        try {
+            if(navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(value);
+                return true;
+            }
+        } catch(error) { console.warn('Clipboard API failed', error); }
+        const field = document.createElement('textarea');
+        field.value = value;
+        field.setAttribute('readonly','');
+        field.style.position = 'fixed';
+        field.style.left = '-9999px';
+        document.body.appendChild(field);
+        field.select();
+        let ok = false;
+        try { ok = document.execCommand('copy'); } catch(error) { console.warn('Fallback copy failed', error); }
+        field.remove();
+        return ok;
+    }
+
+    async function shareCommissionText(message, title = 'สรุปยอดโอน') {
+        if(navigator.share && window.isSecureContext) {
+            try {
+                await navigator.share({ title, text: message });
+                return { ok:true, method:'share' };
+            } catch(error) {
+                if(error?.name === 'AbortError') return { ok:false, cancelled:true, method:'share' };
+                console.warn('Native share failed', error);
+            }
+        }
+        const copied = await copyPlainText(message);
+        return { ok:copied, method:'copy' };
+    }
+
+    async function shareSelectedCommissionSummary() {
+        if(currentUserRole !== 'admin') return;
+        const selected = jobs.filter(job => selectedCommissionJobIds.has(Number(job.id)) && !job.commissionPaidAt);
+        if(selected.length === 0) return showSaveNotice('⚠️ กรุณาเลือกงานก่อน', false);
+        const team = resolveTeam(selected[0]);
+        if(selected.some(job => resolveTeam(job) !== team)) return showSaveNotice('⚠️ เลือกได้ครั้งละหนึ่งทีมเท่านั้น', false);
+        const message = buildCommissionMessage(selected);
+        const result = await shareCommissionText(message, `สรุปยอดโอน ${getCommissionTeamName(team)}`);
+        if(result.cancelled) return showSaveNotice('ยกเลิกการแชร์ • รายการยังอยู่ที่เดิม', false);
+        if(!result.ok) return alert(`แชร์และคัดลอกอัตโนมัติไม่สำเร็จ
+
+${message}`);
+        showSaveNotice(
+            result.method === 'share'
+                ? '📤 เปิดหน้าต่างแชร์แล้ว • รายการยังอยู่ที่เดิมจนกว่าจะกดเงินเข้าแล้ว'
+                : '📋 คัดลอกข้อความให้แล้ว • รายการยังอยู่ที่เดิมจนกว่าจะกดเงินเข้าแล้ว',
+            true
+        );
+    }
+
+
+    async function shareCommissionBatch(batchId) {
+        const batchJobs = jobs.filter(job => String(job.commissionBatchId || `single-${job.id}`) === String(batchId));
+        if(!batchJobs.length) return;
+        const result = await shareCommissionText(buildCommissionMessage(batchJobs), `สรุปยอดโอน ${getCommissionTeamName(resolveTeam(batchJobs[0]))}`);
+        if(result.cancelled) return showSaveNotice('ยกเลิกการแชร์ • สถานะเดิมไม่เปลี่ยน', false);
+        showSaveNotice(
+            result.ok
+                ? (result.method === 'share' ? '📤 เปิดแชร์ชุดนี้ให้อีกครั้งแล้ว' : '📋 คัดลอกข้อความชุดนี้ให้แล้ว')
+                : '❌ แชร์ข้อความไม่สำเร็จ',
+            result.ok
+        );
+    }
+
+    async function cancelCommissionBatch(batchId) {
+        if(currentUserRole !== 'admin') return;
+        const batchJobs = jobs.filter(job => String(job.commissionBatchId || `single-${job.id}`) === String(batchId) && !job.commissionPaidAt);
+        if(!batchJobs.length) return;
+        const ok = window.confirm(`นำ ${batchJobs.length} งานกลับไปหน้าเตรียมส่งใช่ไหม?\n\nใช้กรณียังไม่ได้ส่งจริง ส่งผิดห้อง หรืออยากจัดชุดใหม่`);
+        if(!ok) return;
+        const now = new Date().toISOString();
+        batchJobs.forEach(job => {
+            job.commissionBatchId = '';
+            job.commissionNotifiedAt = '';
+            job.commissionSlipDataUrl = '';
+            job.commissionSlipFileName = '';
+            job.commissionSlipUploadedAt = '';
+            job.adminUpdatedAt = now;
+            job.updatedAt = now;
+        });
+        const view = document.getElementById('commissionViewSelect');
+        if(view) view.value = 'unnotified';
+        resetCommissionSelection();
+        updateAllViews();
+        const saved = await saveData();
+        showSaveNotice(saved ? `↩️ นำ ${batchJobs.length} งานกลับไปหน้าเตรียมส่งแล้ว` : '↩️ แก้ในหน้าจอแล้ว แต่ Firebase ยังซิงก์ไม่สำเร็จ', saved);
+    }
+
+    function openSelectedCommissionPayment() {
+        if(currentUserRole !== 'admin') return;
+        const selected = jobs.filter(job => selectedCommissionJobIds.has(Number(job.id)) && !job.commissionPaidAt);
+        if(!selected.length) return showSaveNotice('⚠️ เลือกงานที่ได้รับเงินก่อน', false);
+        const team = resolveTeam(selected[0]);
+        if(selected.some(job => resolveTeam(job) !== team)) return showSaveNotice('⚠️ เลือกได้ครั้งละหนึ่งทีมเท่านั้น', false);
+        pendingCommissionSlipBatchId = 'selected';
+        pendingCommissionSlipJobIds = selected.map(job => Number(job.id));
+        pendingCommissionSlipDataUrl = '';
+        pendingCommissionSlipFileName = '';
+        const input = document.getElementById('commissionSlipInput');
+        if(!input) return;
+        input.value = '';
+        input.click();
+    }
+
+    function getCommissionSlipTargetJobs(batchId = pendingCommissionSlipBatchId) {
+        if(String(batchId) === 'selected' && pendingCommissionSlipJobIds.length) {
+            const idSet = new Set(pendingCommissionSlipJobIds.map(Number));
+            return jobs.filter(job => idSet.has(Number(job.id)));
+        }
+        return getCommissionBatchJobs(batchId);
+    }
+
+    function getCommissionBatchJobs(batchId) {
+        return jobs.filter(job => String(job.commissionBatchId || `single-${job.id}`) === String(batchId));
+    }
+
+    function getCommissionBatchSlip(batchId) {
+        return getCommissionBatchJobs(batchId).find(job => Boolean(job.commissionSlipDataUrl)) || null;
+    }
+
+    function getCommissionBatchExpectedTotal(batchId) {
+        return getCommissionBatchJobs(batchId).reduce((sum, job) => sum + getJobCommission(job), 0);
+    }
+
+    function openCommissionSlipUpload(batchId) {
+        if(currentUserRole !== 'admin') return;
+        const batchJobs = getCommissionBatchJobs(batchId).filter(job => !job.commissionPaidAt);
+        if(!batchJobs.length) return showSaveNotice('รายการนี้รับเงินแล้วหรือไม่พบชุดงาน', false);
+        pendingCommissionSlipBatchId = String(batchId);
+        pendingCommissionSlipJobIds = [];
+        pendingCommissionSlipDataUrl = '';
+        pendingCommissionSlipFileName = '';
+        const input = document.getElementById('commissionSlipInput');
+        if(!input) return;
+        input.value = '';
+        input.click();
+    }
+
+    async function readFileAsDataUrl(file) {
+        return await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(String(reader.result || ''));
+            reader.onerror = () => reject(reader.error || new Error('อ่านไฟล์ไม่สำเร็จ'));
+            reader.readAsDataURL(file);
+        });
+    }
+
+    async function compressCommissionSlip(file) {
+        const source = await readFileAsDataUrl(file);
+        const image = await new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.onerror = () => reject(new Error('เปิดรูปสลิปไม่สำเร็จ'));
+            img.src = source;
+        });
+        const maxSide = 1100;
+        const scale = Math.min(1, maxSide / Math.max(image.naturalWidth || 1, image.naturalHeight || 1));
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.max(1, Math.round((image.naturalWidth || 1) * scale));
+        canvas.height = Math.max(1, Math.round((image.naturalHeight || 1) * scale));
+        const ctx = canvas.getContext('2d', { alpha:false });
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(image,0,0,canvas.width,canvas.height);
+        let quality = .72;
+        let dataUrl = canvas.toDataURL('image/jpeg', quality);
+        while(dataUrl.length > 650000 && quality > .38) {
+            quality -= .08;
+            dataUrl = canvas.toDataURL('image/jpeg', quality);
+        }
+        if(dataUrl.length > 900000) throw new Error('รูปยังมีขนาดใหญ่เกินไป กรุณาครอปเฉพาะตัวสลิปแล้วลองใหม่');
+        return dataUrl;
+    }
+
+    async function handleCommissionSlipFile(event) {
+        const file = event?.target?.files?.[0];
+        if(!file || (!pendingCommissionSlipBatchId && !pendingCommissionSlipJobIds.length)) return;
+        if(!String(file.type || '').startsWith('image/')) return alert('กรุณาเลือกรูปภาพสลิปเท่านั้น');
+        try {
+            showSaveNotice('⏳ กำลังย่อรูปสลิปเพื่อบันทึก...', true);
+            pendingCommissionSlipDataUrl = await compressCommissionSlip(file);
+            pendingCommissionSlipFileName = file.name || 'slip.jpg';
+            showCommissionSlipModal(pendingCommissionSlipBatchId, pendingCommissionSlipDataUrl, pendingCommissionSlipFileName, false);
+        } catch(error) {
+            console.error(error);
+            pendingCommissionSlipDataUrl = '';
+            pendingCommissionSlipFileName = '';
+            alert(error.message || 'เตรียมรูปสลิปไม่สำเร็จ');
+        }
+    }
+
+    function showCommissionSlipModal(batchId, dataUrl, fileName = '', viewOnly = false) {
+        const batchJobs = getCommissionSlipTargetJobs(batchId);
+        if(!batchJobs.length || !dataUrl) return;
+        const total = batchJobs.reduce((sum, job) => sum + getJobCommission(job), 0);
+        const dialog = document.getElementById('commissionSlipDialog');
+        const overlay = document.getElementById('commissionSlipOverlay');
+        if(dialog) dialog.classList.toggle('commission-slip-view-only', viewOnly);
+        const title = document.getElementById('commissionSlipTitle');
+        const subtitle = document.getElementById('commissionSlipSubtitle');
+        const summary = document.getElementById('commissionSlipSummaryText');
+        const amount = document.getElementById('commissionSlipExpectedAmount');
+        const preview = document.getElementById('commissionSlipPreview');
+        const note = document.getElementById('commissionSlipFileNote');
+        if(title) title.textContent = viewOnly ? '🧾 สลิปที่บันทึกไว้' : '💵 ยืนยันเงินเข้า';
+        if(subtitle) subtitle.textContent = viewOnly ? 'ดูหลักฐานที่ผูกกับชุดงานนี้' : 'แนบรูปแล้วกดบันทึกได้เลย ไม่ต้องกรอกวันที่หรือเวลา';
+        if(summary) summary.textContent = `${getCommissionTeamName(resolveTeam(batchJobs[0]))} • ${batchJobs.length} งาน`;
+        if(amount) amount.textContent = `${total.toLocaleString()} ฿`;
+        if(preview) preview.src = dataUrl;
+        if(note) note.textContent = `${fileName || 'รูปสลิป'}${viewOnly && batchJobs[0]?.commissionSlipUploadedAt ? ` • แนบหลักฐาน ${formatCommissionDateTime(batchJobs[0].commissionSlipUploadedAt)}` : ''}`;
+        if(overlay) overlay.classList.add('open');
+    }
+
+    function closeCommissionSlipModal() {
+        const overlay = document.getElementById('commissionSlipOverlay');
+        if(overlay) overlay.classList.remove('open');
+        const preview = document.getElementById('commissionSlipPreview');
+        if(preview) preview.removeAttribute('src');
+        pendingCommissionSlipBatchId = '';
+        pendingCommissionSlipJobIds = [];
+        pendingCommissionSlipDataUrl = '';
+        pendingCommissionSlipFileName = '';
+    }
+
+    function openCommissionSlipViewer(batchId) {
+        const slipJob = getCommissionBatchSlip(batchId);
+        if(!slipJob) return showSaveNotice('ไม่พบรูปสลิปของชุดนี้', false);
+        pendingCommissionSlipJobIds = [];
+        pendingCommissionSlipBatchId = String(batchId);
+        showCommissionSlipModal(batchId, slipJob.commissionSlipDataUrl, slipJob.commissionSlipFileName || 'slip.jpg', true);
+    }
+
+    async function confirmCommissionSlipPayment() {
+        if(currentUserRole !== 'admin') return;
+        const sourceBatchId = pendingCommissionSlipBatchId;
+        const dataUrl = pendingCommissionSlipDataUrl;
+        const fileName = pendingCommissionSlipFileName;
+        if((!sourceBatchId && !pendingCommissionSlipJobIds.length) || !dataUrl) return;
+        const batchJobs = getCommissionSlipTargetJobs(sourceBatchId).filter(job => !job.commissionPaidAt);
+        if(!batchJobs.length) return closeCommissionSlipModal();
+        const now = new Date().toISOString();
+        const team = resolveTeam(batchJobs[0]);
+        const finalBatchId = sourceBatchId === 'selected' || !sourceBatchId
+            ? `${team}-${Date.now()}-${Math.random().toString(36).slice(2,6)}`
+            : sourceBatchId;
+        batchJobs.forEach((job, index) => {
+            job.commissionBatchId = finalBatchId;
+            // ใช้เวลานี้เป็นเวลาที่แอดมินกดยืนยันสถานะเท่านั้น ไม่ใช่เวลาทำรายการบนสลิป
+            job.commissionPaidAt = now;
+            // เก็บรูปเพียงหนึ่งครั้งในงานแรกของชุด เพื่อลดขนาดข้อมูล Firebase
+            job.commissionSlipDataUrl = index === 0 ? dataUrl : '';
+            job.commissionSlipFileName = index === 0 ? fileName : '';
+            job.commissionSlipUploadedAt = index === 0 ? now : '';
+            job.adminUpdatedAt = now;
+            job.updatedAt = now;
+        });
+        closeCommissionSlipModal();
+        resetCommissionSelection();
+        const view = document.getElementById('commissionViewSelect');
+        if(view) view.value = 'paid';
+        updateAllViews();
+        const saved = await saveData();
+        showSaveNotice(saved ? `✅ บันทึกสลิปและยืนยันเงินเข้าแล้ว ${batchJobs.length} งาน` : '✅ บันทึกในหน้าจอแล้ว แต่ Firebase ยังซิงก์ไม่สำเร็จ', saved);
+    }
+
+    async function markCommissionWorkReviewed(jobId) {
+        if(currentUserRole !== 'admin') return;
+        const job = jobs.find(item => Number(item.id) === Number(jobId));
+        if(!job) return;
+        const now = new Date().toISOString();
+        job.workReviewedAt = now;
+        job.isCompleted = true;
+        job.statusUpdatedAt = now;
+        job.adminUpdatedAt = now;
+        job.updatedAt = now;
+        updateAllViews();
+        const saved = await saveData();
+        showSaveNotice(saved ? `✅ ตรวจภาพและปิดงาน ${job.customerName || '-'} แล้ว` : '✅ ปิดงานในหน้าจอแล้ว แต่ Firebase ยังซิงก์ไม่สำเร็จ', saved);
+    }
+
     // --- Render Jobs UI ---
     function renderJobs() {        const container = document.getElementById('jobListContainer'); container.innerHTML = '';        const filterVal = document.getElementById('jobFilter').value;        let isAdmin = currentUserRole === 'admin';                const sortedJobs = [...jobs].sort((a, b) => {            const timeA = a.installDate ? new Date(a.installDate).getTime() : 0;            const timeB = b.installDate ? new Date(b.installDate).getTime() : 0;            if (filterVal === 'all') {                if (a.isCompleted !== b.isCompleted) return a.isCompleted ? 1 : -1;                return a.isCompleted ? (timeB - timeA) : (timeA - timeB);            }            if (filterVal === 'pending') return timeA - timeB;            return timeB - timeA;        });
-        sortedJobs.forEach(job => {            const jobTeam = resolveTeam(job);            if (!isAdmin && jobTeam !== currentUserRole) return;            if ((filterVal === 'pending' && job.isCompleted) || (filterVal === 'completed' && !job.isCompleted)) return;                        const tCust = (job.pkgCustomerPrice || 0) + (job.extraCustomerPrice || 0);            const tPart = (job.pkgPartnerPrice || 0) + (job.extraPartnerPrice || 0);            const tComm = tCust - tPart;            const siteExtraItems = Array.isArray(job.siteExtras) ? job.siteExtras : [];            const adminSiteExtraHTML = isAdmin && siteExtraItems.length > 0 ? `                <div class="job-site-extra-admin">                    <div class="job-site-extra-admin-title">🧾 รายการที่ช่างเพิ่มระหว่างติดตั้ง</div>                    ${siteExtraItems.map(item => {                        const customerPrice = Number(item.customerPrice) || 0;                        const partnerPrice = Number(item.partnerPrice) || 0;                        const costText = item.type === 'custom' && partnerPrice === 0                            ? '<span class="job-site-extra-admin-cost job-site-extra-admin-pending">ทุนยังไม่ระบุ — แอดมินควรตรวจสอบ</span>'                            : `<span class="job-site-extra-admin-cost">ทุนช่าง ${partnerPrice.toLocaleString()} ฿</span>`;                        return `<div class="job-site-extra-admin-row">                            <div class="job-site-extra-admin-name">${escapeHandoverText(item.name || '-')}</div>                            <div class="job-site-extra-admin-money">+${customerPrice.toLocaleString()} ฿${costText}</div>                        </div>`;                    }).join('')}                </div>` : '';                        let teamBadge = '';            let teamThemeClass = 'job-team-old';            if(jobTeam === 'team3') {                teamBadge = '<span class="job-team-chip">🟠 ทีมช่างโบ้</span>';                teamThemeClass = 'job-team3';            }            else if(jobTeam === 'team2') {                teamBadge = '<span class="job-team-chip">🟡 ทีมช่างเอ</span>';                teamThemeClass = 'job-team2';            }            else if(jobTeam === 'team1') {                teamBadge = '<span class="job-team-chip">🔵 ทีมช่างกราฟ</span>';                teamThemeClass = 'job-team1';            }                        const completionClass = job.isCompleted ? 'job-completed' : 'job-pending';                        // แสดงสถานะว่าเซฟลายเซ็นไว้หรือยัง
+        sortedJobs.forEach(job => {            const jobTeam = resolveTeam(job);            if (!isAdmin && jobTeam !== currentUserRole) return;            if ((filterVal === 'pending' && job.isCompleted) || (filterVal === 'completed' && !job.isCompleted)) return;                        const money = getJobMoneyTotals(job);            const tCust = money.customer;            const tPart = money.partner;            const tComm = money.commission;            const siteExtraItems = Array.isArray(job.siteExtras) ? job.siteExtras : [];            const adminSiteExtraHTML = isAdmin && siteExtraItems.length > 0 ? `                <div class="job-site-extra-admin">                    <div class="job-site-extra-admin-title">🧾 รายการที่ช่างเพิ่มระหว่างติดตั้ง</div>                    ${siteExtraItems.map(item => {                        const customerPrice = Number(item.customerPrice) || 0;                        const partnerPrice = Number(item.partnerPrice) || 0;                        const extraCommission = customerPrice - partnerPrice;                        const costText = item.type === 'custom' && partnerPrice === 0                            ? `<span class="job-site-extra-admin-cost job-site-extra-admin-pending">ทุนยังไม่ระบุ • คอมเพิ่มชั่วคราว ${extraCommission.toLocaleString()} ฿</span>`                            : `<span class="job-site-extra-admin-cost">ทุนช่าง ${partnerPrice.toLocaleString()} ฿ • คอมเพิ่ม ${extraCommission.toLocaleString()} ฿</span>`;                        return `<div class="job-site-extra-admin-row">                            <div class="job-site-extra-admin-name">${escapeHandoverText(item.name || '-')}</div>                            <div class="job-site-extra-admin-money">+${customerPrice.toLocaleString()} ฿${costText}</div>                        </div>`;                    }).join('')}                </div>` : '';                        let teamBadge = '';            let teamThemeClass = 'job-team-old';            if(jobTeam === 'team3') {                teamBadge = '<span class="job-team-chip">🟠 ทีมช่างโบ้</span>';                teamThemeClass = 'job-team3';            }            else if(jobTeam === 'team2') {                teamBadge = '<span class="job-team-chip">🟡 ทีมช่างเอ</span>';                teamThemeClass = 'job-team2';            }            else if(jobTeam === 'team1') {                teamBadge = '<span class="job-team-chip">🔵 ทีมช่างกราฟ</span>';                teamThemeClass = 'job-team1';            }                        const completionClass = job.isCompleted ? 'job-completed' : 'job-pending';                        // แสดงสถานะว่าเซฟลายเซ็นไว้หรือยัง
             const saveStatusHtml = job.signature ? `<span class="job-save-pill">✅ เซ็นแล้ว</span>` : '';                        let adminActionHeaderHTML = isAdmin ? `                <div class="job-admin-strip d-flex align-items-center justify-content-between flex-wrap gap-2">                    <button onclick="toggleJobStatus(${job.id})" class="btn btn-sm ${job.isCompleted ? 'btn-success' : 'btn-outline-dark'} fw-bold rounded-pill px-3">                        ${job.isCompleted ? '🔐 ปิดงานแล้ว' : '⏳ รอตรวจงาน'}                    </button>                    <div>${teamBadge}</div>                </div>` : '';
             let moneyDisplayHTML = isAdmin ? `                <div class="job-money-grid">                    <div class="job-money-box job-money-partner"><div class="job-money-label">ช่าง(ทุน)</div><div class="job-money-value">${tPart.toLocaleString()}</div></div>                    <div class="job-money-box job-money-customer"><div class="job-money-label">เก็บลูกค้า</div><div class="job-money-value">${tCust.toLocaleString()} ฿</div></div>                    <div class="job-money-box job-money-commission"><div class="job-money-label">คอมฯ</div><div class="job-money-value">${formatCommission(tComm)}</div></div>                </div>            ` : `                <div class="job-cash-collect">                    <div class="job-cash-label">💵 ยอดที่ต้องเก็บเงินลูกค้าหน้างาน</div>                    <div class="job-cash-value">${tCust.toLocaleString()} ฿</div>                </div>`;
             let actionButtonsHTML = isAdmin ? `                <div class="job-admin-actions">                    <button onclick="editJobData(${job.id})" class="btn btn-sm btn-warning px-3 py-1 fw-bold">✏️ แก้ไขข้อมูล</button>                    <button onclick="deleteJob(${job.id})" class="btn btn-sm btn-outline-danger px-3 py-1 fw-bold" title="ต้องใส่รหัสลบงาน 4 หลัก">🔐 ลบงาน</button>                </div>` : '';
@@ -2997,7 +3879,7 @@
     function updateHandoverFiberPreview() {        const input = document.getElementById('ho-fiber-meters');        const button = document.getElementById('ho-fiber-add-button');        if(!button) return;        const meters = Math.max(0, numberValue(input?.value));        const total = meters * numberValue(fiberSettings.custPrice);        button.textContent = meters > 0            ? `＋ เพิ่มสายไฟ ${meters.toLocaleString('th-TH')} เมตร — ${formatMoneyPlain(total)}`            : 'เลือกจำนวนเมตรก่อน';        button.disabled = meters <= 0;    }
     function addHandoverFiber() {        const metersInput = document.getElementById('ho-fiber-meters');        const meters = Math.max(0, numberValue(metersInput?.value));        const job = getHandoverJob();        if(!job) return;        if(meters <= 0) {            setHandoverStatus('⚠️ กรุณาเลือกจำนวนเมตรสายไฟที่เกิน', true);            return;        }        const teamKey = resolveTeam(job);        const partnerRate = teamKey === 'team3' ? fiberSettings.team3 : (teamKey === 'team2' ? fiberSettings.team2 : fiberSettings.team1);        const existingFiber = handoverSiteExtras.find(item => item.type === 'fiber');        if(existingFiber) {            existingFiber.meters = numberValue(existingFiber.meters) + meters;            existingFiber.name = `สายไฟเบอร์ 16 เกิน ${existingFiber.meters.toLocaleString('th-TH', { maximumFractionDigits: 2 })} เมตร`;            existingFiber.customerPrice = existingFiber.meters * numberValue(fiberSettings.custPrice);            existingFiber.partnerPrice = existingFiber.meters * numberValue(partnerRate);        } else {            handoverSiteExtras.push({                type: 'fiber',                meters,                name: `สายไฟเบอร์ 16 เกิน ${meters.toLocaleString('th-TH', { maximumFractionDigits: 2 })} เมตร`,                customerPrice: meters * numberValue(fiberSettings.custPrice),                partnerPrice: meters * numberValue(partnerRate)            });        }        setHandoverFiberMeters(0);        markHandoverExtraChanged('เพิ่มค่าสายไฟแล้ว ระบบคำนวณยอดรวมให้เรียบร้อย');    }
     function removeHandoverSiteExtra(index) {        if(index < 0 || index >= handoverSiteExtras.length) return;        handoverSiteExtras.splice(index, 1);        markHandoverExtraChanged('ลบรายการแล้ว ระบบคำนวณยอดรวมใหม่เรียบร้อย', false);    }
-    function commitHandoverExtrasToJob(job) {        const sums = getSiteExtraSums();        job.handoverBaseExtraDetail = handoverBaseExtraDetail;        job.handoverBaseExtraCustomerPrice = handoverBaseExtraCustomerPrice;        job.handoverBaseExtraPartnerPrice = handoverBaseExtraPartnerPrice;        job.siteExtras = handoverSiteExtras.map(item => ({ ...item }));        job.extraDetail = getCombinedExtraDetail();        job.extraCustomerPrice = handoverBaseExtraCustomerPrice + sums.customer;        job.extraPartnerPrice = handoverBaseExtraPartnerPrice + sums.partner;    }
+    function commitHandoverExtrasToJob(job) {        const sums = getSiteExtraSums();        job.handoverBaseExtraDetail = handoverBaseExtraDetail;        job.handoverBaseExtraCustomerPrice = handoverBaseExtraCustomerPrice;        job.handoverBaseExtraPartnerPrice = handoverBaseExtraPartnerPrice;        job.siteExtras = handoverSiteExtras.map(item => ({ ...item, customerPrice: numberValue(item.customerPrice), partnerPrice: numberValue(item.partnerPrice) }));        job.extraDetail = getCombinedExtraDetail();        job.extraCustomerPrice = handoverBaseExtraCustomerPrice + sums.customer;        job.extraPartnerPrice = handoverBaseExtraPartnerPrice + sums.partner;        const recalculated = rebuildJobExtraTotals(job);        Object.assign(job, recalculated);    }
     function addYearsToDateString(dateString, years) {
         if (!dateString) return '';
         const date = new Date(`${dateString}T00:00:00`);
