@@ -1405,9 +1405,6 @@
             outline: none;
         }
         .calendar-day.commission-clickable:active { transform: translateY(1px); }
-        .cal-commission-wait { color:#7c2d12; background:#ffedd5; border:1px solid #fdba74; }
-        .cal-commission-paid { color:#166534; background:#dcfce7; border:1px solid #86efac; }
-        .cal-calendar-hint { font-size:.55rem; color:#1d4ed8; font-weight:900; line-height:1; white-space:nowrap; }
 
         .commission-date-filter-bar {
             display:none;
@@ -1496,7 +1493,6 @@
         .calendar-commission-team-meta { display:block; margin-top:3px; color:#64748b; font-size:.7rem; font-weight:800; }
         .calendar-commission-team-arrow { color:#2563eb; font-size:1.15rem; font-weight:950; }
         @media (max-width:576px) {
-            .cal-calendar-hint { display:none; }
             .commission-date-filter-bar { margin:8px 8px 0; padding:8px; }
             .commission-date-filter-bar strong { font-size:.82rem; }
             .commission-date-filter-clear { padding:5px 8px; font-size:.66rem; }
@@ -2919,7 +2915,7 @@
         const isAdmin = currentUserRole === 'admin';
         const pendingTeam1 = {}, pendingTeam2 = {}, pendingTeam3 = {}, pendingOld = {};
         const completedTeam1 = {}, completedTeam2 = {}, completedTeam3 = {}, completedOld = {};
-        const commCounts = {}, commissionWaitingCounts = {}, commissionPaidCounts = {}, supportedJobCounts = {};
+        const commCounts = {}, commissionPaidCounts = {}, supportedJobCounts = {};
 
         jobs.forEach(job => {
             if(!job.installDate) return;
@@ -2931,7 +2927,6 @@
             if(supportedTeam) {
                 supportedJobCounts[dateKey] = (supportedJobCounts[dateKey] || 0) + 1;
                 if(job.commissionPaidAt) commissionPaidCounts[dateKey] = (commissionPaidCounts[dateKey] || 0) + 1;
-                else commissionWaitingCounts[dateKey] = (commissionWaitingCounts[dateKey] || 0) + 1;
             }
             if(job.isCompleted) {
                 if(team === 'team3') completedTeam3[dateKey] = (completedTeam3[dateKey] || 0) + 1;
@@ -2982,10 +2977,10 @@
             }
 
             const totalComm = commCounts[dateStr] || 0;
-            const commissionWaiting = commissionWaitingCounts[dateStr] || 0;
             const commissionPaid = commissionPaidCounts[dateStr] || 0;
             const hasCommissionJobs = isAdmin && (supportedJobCounts[dateStr] || 0) > 0;
-            let cellContent = `<div class="d-flex justify-content-between align-items-start"><div><div class="cal-date-num">${day}</div>${hasCommissionJobs ? '<div class="cal-calendar-hint">แตะดูค่าคอม</div>' : ''}</div><div class="d-flex flex-wrap justify-content-end align-content-start mt-1 pe-1" style="max-width:40px;">`;
+            const paidCheck = isAdmin && commissionPaid > 0 ? ' ✅' : '';
+            let cellContent = `<div class="d-flex justify-content-between align-items-start"><div class="cal-date-num">${day}${paidCheck}</div><div class="d-flex flex-wrap justify-content-end align-content-start mt-1 pe-1" style="max-width:40px;">`;
             for(let i = 0; i < t1Count; i++) cellContent += '<div class="dot-indicator dot-t1"></div>';
             for(let i = 0; i < t2Count; i++) cellContent += '<div class="dot-indicator dot-t2"></div>';
             for(let i = 0; i < t3Count; i++) cellContent += '<div class="dot-indicator dot-t3"></div>';
@@ -2996,8 +2991,7 @@
                 if(!isStatsHidden && totalComm > 0 && isAdmin) cellContent += `<div class="cal-badge cal-comm">+${totalComm.toLocaleString()}</div>`;
                 if(totalPending > 0) cellContent += `<div class="cal-badge cal-wait">รอ ${totalPending}</div>`;
                 if(totalCompleted > 0) cellContent += `<div class="cal-badge cal-done">ปิดงาน ${totalCompleted}</div>`;
-                if(isAdmin && commissionWaiting > 0) cellContent += `<div class="cal-badge cal-commission-wait" title="ค่าคอมยังไม่โอน ${commissionWaiting} งาน" aria-label="ค่าคอมยังไม่โอน ${commissionWaiting} งาน">⏳ ${commissionWaiting}</div>`;
-                if(isAdmin && commissionPaid > 0) cellContent += `<div class="cal-badge cal-commission-paid">เสร็จ ${commissionPaid} ✅</div>`;
+
                 cellContent += '</div>';
             }
 
