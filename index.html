@@ -886,15 +886,16 @@
             font-weight:750;
         }
         .job-extra-chip {
-            display:inline-grid;
+            display:grid;
             grid-template-columns:minmax(0,1fr) auto;
-            grid-template-areas:'name remove' 'money remove';
-            column-gap:7px;
+            grid-template-areas:'name remove' 'prices prices';
+            gap:7px 9px;
             align-items:center;
+            width:100%;
             max-width:100%;
-            padding:7px 7px 7px 10px;
+            padding:9px;
             border:1px solid #fdba74;
-            border-radius:999px;
+            border-radius:12px;
             background:#fff7ed;
             box-shadow:0 2px 5px rgba(124,45,18,.08);
         }
@@ -902,22 +903,50 @@
             grid-area:name;
             min-width:0;
             color:#7c2d12;
-            font-size:.8rem;
-            line-height:1.2;
+            font-size:.82rem;
+            line-height:1.25;
             font-weight:900;
             overflow-wrap:anywhere;
         }
-        .job-extra-chip-money {
-            grid-area:money;
+        .job-extra-chip-prices {
+            grid-area:prices;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:7px;
+        }
+        .job-extra-price-field { min-width:0; }
+        .job-extra-price-field label {
+            display:block;
+            margin-bottom:3px;
             color:#64748b;
             font-size:.64rem;
-            line-height:1.2;
-            font-weight:800;
+            line-height:1.15;
+            font-weight:850;
+        }
+        .job-extra-price-field input {
+            width:100%;
+            min-width:0;
+            min-height:39px;
+            padding:6px 8px;
+            border:1px solid #cbd5e1;
+            border-radius:9px;
+            color:#172033;
+            background:#fff;
+            font-size:.88rem;
+            font-weight:900;
+            text-align:right;
+            outline:none;
+        }
+        .job-extra-price-field.customer input { color:#dc2626; border-color:#fecaca; }
+        .job-extra-price-field.partner input { color:#475569; }
+        .job-extra-price-field input:focus {
+            border-color:#2563eb;
+            box-shadow:0 0 0 3px rgba(37,99,235,.14);
         }
         .job-extra-chip-remove {
             grid-area:remove;
-            width:29px;
-            height:29px;
+            width:31px;
+            height:31px;
             padding:0;
             border:0;
             border-radius:50%;
@@ -979,6 +1008,8 @@
             .job-date-period-row .form-control,
             .job-date-period-row .form-select { padding-left:.42rem; padding-right:.32rem; font-size:.8rem; }
             .job-extra-chip { width:100%; border-radius:12px; }
+            .job-extra-chip-prices { grid-template-columns:1fr 1fr; gap:5px; }
+            .job-extra-price-field input { min-height:38px; padding:5px 6px; font-size:.82rem; }
             .job-period-tag { margin-right:6px; padding:5px 10px; font-size:.92rem; }
         }
 
@@ -1333,7 +1364,7 @@
                                     <select id="jobExtraSelect" class="form-select form-select-sm flex-grow-1"><option value="">-- เลือกรายการ --</option></select>
                                     <button type="button" class="btn btn-sm btn-primary fw-bold" onclick="appendExtraJob()">➕ เพิ่ม</button>
                                 </div>
-                                <div class="small text-muted fw-bold mb-1">รายการที่เลือก — กด × เพื่อลบพร้อมยอดเงินและค่าคอม</div>
+                                <div class="small text-muted fw-bold mb-1">รายการที่เลือก — แตะช่องยอดเพื่อแก้ไขได้ทันที หรือกด × เพื่อลบ</div>
                                 <div id="jobExtraChipList" class="job-extra-chip-list"><div class="job-extra-empty">ยังไม่มีงานเพิ่มเติม</div></div>
                                 <input type="hidden" id="jobExtraDetail" value="">
                                 <input type="hidden" id="jobExtraPartnerPrice" value="0">
@@ -2707,8 +2738,17 @@
         list.innerHTML = jobBaseExtraItems.map((item, index) => `
             <div class="job-extra-chip">
                 <span class="job-extra-chip-name">${escapeHandoverText(item.name || '-')}</span>
-                <span class="job-extra-chip-money">ลูกค้า +${(Number(item.customerPrice) || 0).toLocaleString()} ฿ • ทุน +${(Number(item.partnerPrice) || 0).toLocaleString()} ฿</span>
                 <button type="button" class="job-extra-chip-remove" onclick="removeJobBaseExtraItem(${index})" aria-label="ลบ ${escapeHandoverText(item.name || 'รายการ')}">×</button>
+                <div class="job-extra-chip-prices">
+                    <div class="job-extra-price-field customer">
+                        <label for="job-extra-customer-${index}">เก็บลูกค้าเพิ่ม (บาท)</label>
+                        <input type="number" id="job-extra-customer-${index}" min="0" step="1" inputmode="decimal" value="${Number(item.customerPrice) || 0}" oninput="updateJobBaseExtraItemPrice(${index}, 'customerPrice', this.value)">
+                    </div>
+                    <div class="job-extra-price-field partner">
+                        <label for="job-extra-partner-${index}">ทุนช่างเพิ่ม (บาท)</label>
+                        <input type="number" id="job-extra-partner-${index}" min="0" step="1" inputmode="decimal" value="${Number(item.partnerPrice) || 0}" oninput="updateJobBaseExtraItemPrice(${index}, 'partnerPrice', this.value)">
+                    </div>
+                </div>
             </div>
         `).join('');
         syncJobBaseExtraItemsToForm();
@@ -2727,6 +2767,13 @@
             partnerPrice: Number(item.partnerPrice) || 0
         });
         renderJobBaseExtraItems();
+        calculateLiveSummary();
+    }
+
+    function updateJobBaseExtraItemPrice(index, field, value) {
+        if(index < 0 || index >= jobBaseExtraItems.length) return;
+        if(field !== 'customerPrice' && field !== 'partnerPrice') return;
+        jobBaseExtraItems[index][field] = Math.max(0, Number(value) || 0);
         calculateLiveSummary();
     }
 
