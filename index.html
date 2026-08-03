@@ -311,7 +311,22 @@
         /* ========================================== */        /* การ์ดรายการงานแบบ Modern Color Scan */        /* เน้นแยกทีม/สถานะ/ข้อมูลสำคัญให้อ่านเร็วขึ้น โดยไม่เปลี่ยนข้อความเดิม */        /* ========================================== */        #jobListContainer { align-items: stretch; }        .job-card-container { margin-bottom: 6px; }        .job-card {            --job-accent: #0d6efd;            --job-accent-rgb: 13, 110, 253;            position: relative;            border-radius: 20px;            border: 1px solid rgba(var(--job-accent-rgb), .22) !important;            overflow: hidden;            background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);            box-shadow: 0 9px 24px rgba(24, 39, 75, .10), 0 2px 6px rgba(24, 39, 75, .06) !important;            transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;            isolation: isolate;        }        .job-card::before {            content: '';            position: absolute;            inset: 0 auto 0 0;            width: 6px;            background: linear-gradient(180deg, var(--job-accent), rgba(var(--job-accent-rgb), .48));            z-index: 3;        }        .job-card:hover {            transform: translateY(-3px);            border-color: rgba(var(--job-accent-rgb), .42) !important;            box-shadow: 0 16px 34px rgba(24, 39, 75, .15), 0 4px 10px rgba(24, 39, 75, .08) !important;        }        .job-team1 { --job-accent: #2563eb; --job-accent-rgb: 37, 99, 235; }        .job-team2 { --job-accent: #e5a100; --job-accent-rgb: 229, 161, 0; }        .job-team3 { --job-accent: #f97316; --job-accent-rgb: 249, 115, 22; }        .job-team-old { --job-accent: #64748b; --job-accent-rgb: 100, 116, 139; }        .job-completed { --job-accent: #16a34a; --job-accent-rgb: 22, 163, 74; opacity: .96; }
         .job-card-top {            position: relative;            padding: 12px 14px 12px 18px;            color: #fff;            background:                radial-gradient(circle at 92% 10%, rgba(255,255,255,.24), transparent 34%),                linear-gradient(125deg, var(--job-accent), rgba(var(--job-accent-rgb), .78));        }        .job-card-top::after {            content: '';            position: absolute;            right: -30px;            bottom: -44px;            width: 110px;            height: 110px;            border: 18px solid rgba(255,255,255,.10);            border-radius: 50%;            pointer-events: none;        }        .job-date-line { position: relative; z-index: 1; display: flex; align-items: center; gap: 7px; min-width: 0; }        .job-date-line .job-date-text { font-size: 1.06rem; font-weight: 800; letter-spacing: .1px; }        .job-header-badges { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 5px; }        .job-status-pill, .job-save-pill {            border: 1px solid rgba(255,255,255,.68);            background: rgba(255,255,255,.92);            border-radius: 999px;            padding: 5px 9px;            font-size: .72rem;            line-height: 1;            font-weight: 800;            box-shadow: 0 3px 9px rgba(15, 23, 42, .12);            white-space: nowrap;        }        .job-status-pill { color: #1f2937; }        .job-completed .job-status-pill { color: #15803d; }        .job-save-pill { color: #075985; background: #e0f2fe; border-color: #bae6fd; }
         .job-admin-strip {            padding: 8px 12px 8px 18px;            background: linear-gradient(90deg, rgba(var(--job-accent-rgb), .12), rgba(255,255,255,.96));            border-bottom: 1px solid rgba(var(--job-accent-rgb), .16);        }        .job-admin-strip .btn { min-height: 34px; }        .job-team-chip {            display: inline-flex;            align-items: center;            border-radius: 999px;            padding: 5px 10px;            color: var(--job-accent);            background: #fff;            border: 1px solid rgba(var(--job-accent-rgb), .35);            font-size: .76rem;            font-weight: 800;            box-shadow: 0 2px 7px rgba(15,23,42,.07);            white-space: nowrap;        }
-        .job-card-body { padding: 14px 14px 14px 18px; }        .job-customer-name {            margin: 0;            color: #172033;            font-size: 1.12rem;            font-weight: 850;            line-height: 1.35;            overflow-wrap: anywhere;        }        .job-address-preview {            margin-top: 8px;            padding: 8px 10px;            border-radius: 11px;            color: #334155;            background: #f8fafc;            border: 1px solid #e2e8f0;            font-size: .82rem;            line-height: 1.35;            overflow-wrap: anywhere;            display: -webkit-box;            -webkit-line-clamp: 2;            -webkit-box-orient: vertical;            overflow: hidden;        }        .job-quick-actions {            display: grid;            grid-template-columns: minmax(0, 1.4fr) minmax(112px, .6fr);            gap: 8px;            margin: 11px 0;        }        .job-quick-actions .btn {            min-height: 42px;            display: flex;            align-items: center;            justify-content: center;            border-radius: 12px;            font-weight: 800;            box-shadow: none !important;        }        .job-phone-btn { color: #1d4ed8; background: #eff6ff; border: 1px solid #bfdbfe; }        .job-phone-btn:hover { color: #fff; background: #2563eb; border-color: #2563eb; }        .job-map-btn { color: #be123c; background: #fff1f2; border: 1px solid #fecdd3; }        .job-map-btn:hover { color: #fff; background: #e11d48; border-color: #e11d48; }
+        .job-card-body { padding: 14px 14px 14px 18px; }        .job-customer-name {            margin: 0;            color: #172033;            font-size: 1.12rem;            font-weight: 850;            line-height: 1.35;            overflow-wrap: anywhere;        }        .job-address-preview {            margin-top: 8px;            padding: 8px 10px;            border-radius: 11px;            color: #334155;            background: #f8fafc;            border: 1px solid #e2e8f0;            font-size: .82rem;            line-height: 1.35;            overflow-wrap: anywhere;            display: -webkit-box;            -webkit-line-clamp: 2;            -webkit-box-orient: vertical;            overflow: hidden;        }        .job-quick-actions {            display: grid;            grid-template-columns: minmax(0, 1.4fr) minmax(112px, .6fr);            gap: 8px;            margin: 11px 0;        }        .job-quick-actions .btn {            min-height: 42px;            display: flex;            align-items: center;            justify-content: center;            border-radius: 12px;            font-weight: 800;            box-shadow: none !important;        }        .job-phone-btn {
+            color:#1d4ed8;
+            background:#eff6ff;
+            border:1px solid #bfdbfe;
+            touch-action:manipulation;
+            user-select:none;
+            -webkit-user-select:none;
+            -webkit-touch-callout:none;
+        }
+        .job-phone-btn:hover { color:#fff; background:#2563eb; border-color:#2563eb; }
+        .job-phone-btn.is-pressing {
+            color:#fff;
+            background:#1d4ed8;
+            border-color:#1d4ed8;
+            transform:scale(.985);
+        }        .job-map-btn { color: #be123c; background: #fff1f2; border: 1px solid #fecdd3; }        .job-map-btn:hover { color: #fff; background: #e11d48; border-color: #e11d48; }
         .job-package-panel {            position: relative;            margin-bottom: 11px;            padding: 11px 12px 11px 14px;            border-radius: 14px;            color: #1f2937;            background: linear-gradient(135deg, rgba(var(--job-accent-rgb), .12), rgba(255,255,255,.96) 64%);            border: 1px solid rgba(var(--job-accent-rgb), .20);        }        .job-package-panel::before {            content: '';            position: absolute;            left: 0;            top: 10px;            bottom: 10px;            width: 4px;            border-radius: 0 4px 4px 0;            background: var(--job-accent);        }        .job-package-main { font-size: 1rem; font-weight: 850; line-height: 1.35; overflow-wrap: anywhere; }        .job-extra-line { margin-top: 7px; padding-top: 7px; border-top: 1px dashed rgba(var(--job-accent-rgb), .30); color: #c2410c; font-size: .93rem; font-weight: 800; overflow-wrap: anywhere; }        .job-site-extra-admin { margin-top: 8px; padding: 8px; border-radius: 10px; background: rgba(255,255,255,.92); border: 1px solid rgba(var(--job-accent-rgb), .22); }        .job-site-extra-admin-title { margin-bottom: 5px; color: #334155; font-size: .76rem; font-weight: 950; }        .job-site-extra-admin-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 7px; padding: 5px 0; border-top: 1px dashed #e2e8f0; font-size: .75rem; }        .job-site-extra-admin-row:first-of-type { border-top: 0; }        .job-site-extra-admin-name { color:#334155; font-weight:800; overflow-wrap:anywhere; }        .job-site-extra-admin-money { text-align:right; white-space:nowrap; color:#dc2626; font-weight:900; }        .job-site-extra-admin-cost { display:block; color:#64748b; font-size:.66rem; font-weight:750; }        .job-site-extra-admin-pending { color:#b45309; }
         .job-money-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 7px; margin: 2px 0 11px; }        .job-money-box {            min-width: 0;            padding: 8px 5px;            text-align: center;            border-radius: 12px;            border: 1px solid transparent;        }        .job-money-label { color: #64748b; font-size: .65rem; font-weight: 750; line-height: 1.2; }        .job-money-value { margin-top: 3px; font-size: .86rem; font-weight: 900; line-height: 1.2; overflow-wrap: anywhere; }        .job-money-partner { background: #f8fafc; border-color: #e2e8f0; }        .job-money-partner .job-money-value { color: #475569; }        .job-money-customer { background: #fff1f2; border-color: #fecdd3; }        .job-money-customer .job-money-value { color: #dc2626; }        .job-money-commission { background: #ecfdf5; border-color: #bbf7d0; }        .job-money-commission .job-money-value { color: #15803d; }
         .job-cash-collect {            margin-bottom: 11px;            padding: 12px;            text-align: center;            border-radius: 15px;            background: linear-gradient(135deg, #fff7ed, #fff1f2);            border: 1px solid #fed7aa;            box-shadow: inset 0 1px 0 rgba(255,255,255,.9);        }        .job-cash-collect .job-cash-label { color: #7c2d12; font-size: .84rem; font-weight: 800; }        .job-cash-collect .job-cash-value { margin-top: 2px; color: #dc2626; font-size: 1.72rem; font-weight: 950; line-height: 1.15; }
@@ -866,10 +881,18 @@
         .job-date-period-row .form-select { min-width:0; }
 
         /* งานเพิ่มเติมแบบป้าย: ลบชื่อ ยอดลูกค้า และทุนช่างพร้อมกัน */
+        .job-extra-section-title {
+            font-size:1.08rem;
+            line-height:1.25;
+        }
+        .job-extra-helper {
+            font-size:.88rem;
+            line-height:1.35;
+        }
         .job-extra-chip-list {
             display:flex;
             flex-wrap:wrap;
-            gap:7px;
+            gap:8px;
             min-height:48px;
             padding:9px;
             margin-bottom:9px;
@@ -879,21 +902,21 @@
         }
         .job-extra-empty {
             width:100%;
-            padding:5px 2px;
+            padding:7px 2px;
             color:#94a3b8;
             text-align:center;
-            font-size:.76rem;
-            font-weight:750;
+            font-size:.88rem;
+            font-weight:800;
         }
         .job-extra-chip {
             display:grid;
             grid-template-columns:minmax(0,1fr) auto;
             grid-template-areas:'name remove' 'prices prices';
-            gap:7px 9px;
+            gap:8px 9px;
             align-items:center;
             width:100%;
             max-width:100%;
-            padding:9px;
+            padding:10px;
             border:1px solid #fdba74;
             border-radius:12px;
             background:#fff7ed;
@@ -903,56 +926,64 @@
             grid-area:name;
             min-width:0;
             color:#7c2d12;
-            font-size:.82rem;
-            line-height:1.25;
-            font-weight:900;
+            font-size:1rem;
+            line-height:1.3;
+            font-weight:950;
             overflow-wrap:anywhere;
         }
         .job-extra-chip-prices {
             grid-area:prices;
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:7px;
+            display:flex;
+            flex-wrap:wrap;
+            gap:8px;
+            align-items:flex-end;
         }
-        .job-extra-price-field { min-width:0; }
+        .job-extra-price-field {
+            flex:0 1 132px;
+            width:132px;
+            max-width:calc(50% - 4px);
+            min-width:105px;
+        }
         .job-extra-price-field label {
             display:block;
-            margin-bottom:3px;
-            color:#64748b;
-            font-size:.64rem;
+            margin-bottom:4px;
+            color:#475569;
+            font-size:.82rem;
             line-height:1.15;
-            font-weight:850;
+            font-weight:950;
         }
         .job-extra-price-field input {
             width:100%;
             min-width:0;
-            min-height:39px;
+            min-height:42px;
             padding:6px 8px;
             border:1px solid #cbd5e1;
             border-radius:9px;
             color:#172033;
             background:#fff;
-            font-size:.88rem;
-            font-weight:900;
-            text-align:right;
+            font-size:1rem;
+            line-height:1.1;
+            font-weight:950;
+            text-align:center;
             outline:none;
+            font-variant-numeric:tabular-nums;
         }
-        .job-extra-price-field.customer input { color:#dc2626; border-color:#fecaca; }
-        .job-extra-price-field.partner input { color:#475569; }
+        .job-extra-price-field.customer input { color:#dc2626; border-color:#fca5a5; }
+        .job-extra-price-field.partner input { color:#334155; }
         .job-extra-price-field input:focus {
             border-color:#2563eb;
             box-shadow:0 0 0 3px rgba(37,99,235,.14);
         }
         .job-extra-chip-remove {
             grid-area:remove;
-            width:31px;
-            height:31px;
+            width:34px;
+            height:34px;
             padding:0;
             border:0;
             border-radius:50%;
             color:#fff;
             background:#dc2626;
-            font-size:1rem;
+            font-size:1.08rem;
             line-height:1;
             font-weight:950;
             box-shadow:0 2px 5px rgba(220,38,38,.24);
@@ -964,7 +995,7 @@
             gap:7px;
         }
         .job-extra-form-total {
-            padding:8px 9px;
+            padding:9px;
             border-radius:10px;
             border:1px solid #e2e8f0;
             background:#fff;
@@ -972,17 +1003,30 @@
         .job-extra-form-total span {
             display:block;
             color:#64748b;
-            font-size:.67rem;
-            font-weight:800;
+            font-size:.78rem;
+            font-weight:900;
         }
         .job-extra-form-total strong {
             display:block;
             margin-top:2px;
-            font-size:.95rem;
+            font-size:1.03rem;
             font-weight:950;
         }
         .job-extra-form-total.partner strong { color:#475569; }
         .job-extra-form-total.customer strong { color:#dc2626; }
+        @media (max-width:390px) {
+            .job-extra-chip { width:100%; border-radius:12px; padding:9px; }
+            .job-extra-chip-name { font-size:.95rem; }
+            .job-extra-chip-prices { gap:6px; }
+            .job-extra-price-field {
+                flex:0 1 122px;
+                width:122px;
+                max-width:calc(50% - 3px);
+                min-width:0;
+            }
+            .job-extra-price-field label { font-size:.76rem; }
+            .job-extra-price-field input { min-height:41px; padding:5px 6px; font-size:.96rem; }
+        }
 
         /* ป้ายเช้า/บ่ายหน้า customer ให้เด่นและอ่านเห็นทันที */
         .job-period-tag {
@@ -1008,8 +1052,8 @@
             .job-date-period-row .form-control,
             .job-date-period-row .form-select { padding-left:.42rem; padding-right:.32rem; font-size:.8rem; }
             .job-extra-chip { width:100%; border-radius:12px; }
-            .job-extra-chip-prices { grid-template-columns:1fr 1fr; gap:5px; }
-            .job-extra-price-field input { min-height:38px; padding:5px 6px; font-size:.82rem; }
+            .job-extra-chip-prices { display:flex; gap:6px; }
+            .job-extra-price-field input { min-height:41px; padding:5px 6px; font-size:.96rem; }
             .job-period-tag { margin-right:6px; padding:5px 10px; font-size:.92rem; }
         }
 
@@ -1347,24 +1391,17 @@
 
 
         <!-- Add Job Form (มีคำนวณ) -->        <div class="row admin-only" id="addJobSection">            <div class="col-12">                <div class="card">                    <div class="card-header bg-dark text-white fw-bold" id="jobCardHeader">📝 เพิ่มงานใหม่ (ส่งช่าง)</div>                    <div class="card-body">                        <form id="jobForm">                            <input type="hidden" id="editJobId">                            <div class="smart-paste-section" id="smartPasteDiv">                                <h6 class="text-primary fw-bold">✨ ช่องทางลัด (วางแชท)</h6>                                <textarea id="smartPasteInput" class="form-control mb-2" rows="2" placeholder="วางข้อมูลแชทลูกค้าลงที่นี่..."></textarea>                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">                                    <small class="text-muted" style="font-size: 0.75rem;">ดึงชื่อ เบอร์ วันที่ ที่อยู่ และแมพอัตโนมัติ</small>                                    <button type="button" class="btn btn-sm btn-primary fw-bold px-3" onclick="processSmartPaste()" id="btnSmartPaste">🎯 ดึงข้อมูล</button>                                </div>                            </div>
-                            <div class="row">                                <div class="col-md-4 mb-2"><div class="job-date-period-row"><div class="job-field-stack"><label class="fw-bold text-danger" for="jobInstallDate">📅 วันที่นัดติดตั้ง</label><input type="date" id="jobInstallDate" class="form-control" required></div><div class="job-field-stack"><label class="fw-bold text-danger" for="jobVisitPeriod">🕘 ช่วงเวลา</label><select id="jobVisitPeriod" class="form-select" aria-label="เลือกช่วงเวลาเข้าติดตั้ง"><option value="">ไม่ระบุ</option><option value="เช้า">ช่วงเช้า</option><option value="บ่าย">ช่วงบ่าย</option></select></div></div></div>                                <div class="col-md-4 mb-2"><label class="fw-bold">📞 เบอร์โทรศัพท์</label><input type="text" id="jobPhone" class="form-control" required></div>                                <div class="col-md-4 mb-2"><label class="fw-bold">👤 ชื่อลูกค้า</label><input type="text" id="jobCustomerName" class="form-control" placeholder=""></div>                                <div class="col-md-12 mb-2">                                    <div class="job-address-field">                                        <label class="fw-bold text-primary mb-1">🏠 ที่อยู่สำหรับออกใบส่งงานและใบรับประกัน</label>                                        <textarea id="jobInstallAddress" class="form-control" rows="2" required placeholder="กรอกที่อยู่ที่ต้องการให้แสดงในใบส่งงานและใบรับประกัน"></textarea>                                        <div id="jobAddressHint" class="job-address-helper">แอดมินตรวจและกรอกที่อยู่สำหรับเอกสารให้ครบก่อนบันทึกงาน</div>                                    </div>                                </div>                                <div class="col-md-12 mb-2"><label>ลิงก์ Google Map <span class="text-muted small">(ใช้สำหรับนำทาง)</span></label><input type="url" id="jobMapLink" class="form-control" required></div>                                <div class="col-md-12 mb-2">                                    <label class="fw-bold text-primary">👷 เลือกทีมช่าง</label>                                    <select id="jobTeam" class="form-select border-primary fw-bold" required onchange="onTeamChange(true)">                                        <option value="team1">🔵 ทีมช่างกราฟ</option>                                        <option value="team3">🟠 ทีมช่างโบ้</option>                                        <option value="team2">🟡 ทีมช่างเอ</option>                                    </select>                                </div>                                <div class="col-md-12 mb-3">                                    <label>เลือกแพ็กเกจหลัก</label>                                    <select id="jobPackage" class="form-select" required onchange="calculateLiveSummary()">                                        <option value="">-- กรุณาเลือกแพ็กเกจ --</option>                                    </select>                                </div>                            </div>
+                            <div class="row">                                <div class="col-md-4 mb-2"><div class="job-date-period-row"><div class="job-field-stack"><label class="fw-bold text-danger" for="jobInstallDate">📅 วันที่นัดติดตั้ง</label><input type="date" id="jobInstallDate" class="form-control" required></div><div class="job-field-stack"><label class="fw-bold text-danger" for="jobVisitPeriod">🕘 ช่วงเวลา</label><select id="jobVisitPeriod" class="form-select" aria-label="เลือกช่วงเวลาเข้าติดตั้ง"><option value="">ไม่ระบุ</option><option value="เช้า">ช่วงเช้า</option><option value="บ่าย">ช่วงบ่าย</option></select></div></div></div>                                <div class="col-md-4 mb-2"><label class="fw-bold">📞 เบอร์โทรศัพท์</label><input type="text" id="jobPhone" class="form-control" required></div>                                <div class="col-md-4 mb-2"><label class="fw-bold">👤 ชื่อลูกค้า</label><input type="text" id="jobCustomerName" class="form-control" placeholder=""></div>                                <div class="col-md-12 mb-2">                                    <div class="job-address-field">                                        <label class="fw-bold text-primary mb-1">🏠 ที่อยู่สำหรับออกใบส่งงานและใบรับประกัน</label>                                        <textarea id="jobInstallAddress" class="form-control" rows="2" required placeholder="กรอกที่อยู่ที่ต้องการให้แสดงในใบส่งงานและใบรับประกัน"></textarea>                                        <div id="jobAddressHint" class="job-address-helper">แอดมินตรวจและกรอกที่อยู่สำหรับเอกสารให้ครบก่อนบันทึกงาน</div>                                    </div>                                </div>                                <div class="col-md-12 mb-2"><label>ลิงก์ Google Map <span class="text-muted small">(ใช้สำหรับนำทาง)</span></label><input type="url" id="jobMapLink" class="form-control" required></div>                                <div class="col-md-12 mb-2">                                    <label class="fw-bold text-primary">👷 เลือกทีมช่าง</label>                                    <select id="jobTeam" class="form-select border-primary fw-bold" required onchange="onTeamChange(true)">                                        <option value="team1">🔵 ทีมช่างกราฟ</option>                                        <option value="team3">🟠 ทีมช่างโบ้</option>                                        <option value="team2">🟡 ทีมช่างเอ</option>                                    </select>                                </div>                                <div class="col-md-12 mb-3">                                    <label>เลือกแพ็กเกจหลัก <span class="text-muted small">(ไม่เลือกก็ได้)</span></label>                                    <select id="jobPackage" class="form-select" onchange="calculateLiveSummary()">                                        <option value="">-- ไม่เลือกแพ็กเกจ --</option>                                    </select>                                </div>                            </div>
                             <div class="extra-section mb-3">
                                 <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
-                                    <h6 class="text-warning-emphasis fw-bold m-0" style="font-size: 0.9rem;">🛠️ งานเพิ่มเติม</h6>
+                                    <h6 class="text-warning-emphasis fw-bold m-0 job-extra-section-title">🛠️ งานเพิ่มเติม</h6>
                                     <button type="button" class="btn btn-sm btn-outline-danger fw-bold" onclick="clearExtraJob()">ล้างทั้งหมด</button>
-                                </div>
-                                <div class="row g-2 mb-2 align-items-end p-2 bg-white rounded border border-info">
-                                    <div class="col-8 col-md-9">
-                                        <label id="fiberLabel" class="small text-info-emphasis fw-bold">🔌 สายไฟเบอร์ 16 เกิน</label>
-                                        <input type="number" id="fiberMeters" class="form-control form-control-sm" placeholder="ระบุจำนวนเมตร">
-                                    </div>
-                                    <div class="col-4 col-md-3"><button type="button" class="btn btn-sm btn-info text-white fw-bold w-100" onclick="addFiber()">➕ เพิ่มสาย</button></div>
                                 </div>
                                 <div class="d-flex flex-wrap gap-1 mb-2 bg-white p-2 rounded border border-warning">
                                     <select id="jobExtraSelect" class="form-select form-select-sm flex-grow-1"><option value="">-- เลือกรายการ --</option></select>
                                     <button type="button" class="btn btn-sm btn-primary fw-bold" onclick="appendExtraJob()">➕ เพิ่ม</button>
                                 </div>
-                                <div class="small text-muted fw-bold mb-1">รายการที่เลือก — แตะช่องยอดเพื่อแก้ไขได้ทันที หรือกด × เพื่อลบ</div>
+                                <div class="text-muted fw-bold mb-2 job-extra-helper">รายการที่เลือก — แตะตัวเลขเพื่อแก้ยอด หรือกด × เพื่อลบ</div>
                                 <div id="jobExtraChipList" class="job-extra-chip-list"><div class="job-extra-empty">ยังไม่มีงานเพิ่มเติม</div></div>
                                 <input type="hidden" id="jobExtraDetail" value="">
                                 <input type="hidden" id="jobExtraPartnerPrice" value="0">
@@ -2686,10 +2723,10 @@
     }
     function renderDetailData() {        if(currentUserRole !== 'admin') return;        const monthNames = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];        const tYear = calDate.getFullYear(), tMonth = calDate.getMonth();        document.getElementById('detailMonthTitle').innerText = `สรุปเดือน ${monthNames[tMonth]} ${tYear + 543}`;        const container = document.getElementById('detailListContainer'); container.innerHTML = '';        let sumCust = 0, sumPart = 0, sumComm = 0, jobCount = 0;
         const sortedJobs = [...jobs].sort((a, b) => {            const timeA = (a.installDate||"") ? new Date(a.installDate).getTime() : 0;            const timeB = (b.installDate||"") ? new Date(b.installDate).getTime() : 0;            return timeB - timeA;         });
-        sortedJobs.forEach(job => {            if(job.installDate) {                const jDate = new Date(job.installDate);                if(jDate.getFullYear() === tYear && jDate.getMonth() === tMonth) {                    const money = getJobMoneyTotals(job), custPrice = money.customer, partnerPrice = money.partner, commission = money.commission;                    sumCust += custPrice; sumPart += partnerPrice; sumComm += commission; jobCount++;                    const statusBadge = job.isCompleted ? '<span class="badge bg-white text-success border border-success">✅ เสร็จ</span>' : '<span class="badge bg-white text-primary border border-primary">⏳ รอ</span>';                    const headerBg = job.isCompleted ? 'bg-success' : 'bg-primary', cardBg = job.isCompleted ? 'bg-success-subtle bg-opacity-25' : 'bg-white';                    const borderCls = job.isCompleted ? 'border-success' : 'border-primary', nameCls = job.isCompleted ? 'text-muted text-decoration-line-through text-break' : 'text-dark text-break';                    const extraDisplay = job.extraDetail ? `<div class="text-danger mt-1 small text-break" style="font-size:0.75rem;">🛠️ <strong>เพิ่ม:</strong> ${escapeHandoverText(job.extraDetail)}</div>` : '';                    const addressDisplay = job.installAddress ? `<div class="text-secondary mt-1 small text-break" style="font-size:0.75rem;">🏠 <strong>จุดติดตั้ง:</strong> ${escapeHandoverText(job.installAddress)}</div>` : '';                                        const jobTeam = resolveTeam(job);                    let teamBadge = '';                    if(jobTeam === 'team3') teamBadge = '<span class="badge bg-white border me-1" style="color:#fd7e14; border-color:#fd7e14;">🟠 ช่างโบ้</span>';                    else if(jobTeam === 'team2') teamBadge = '<span class="badge bg-white text-warning border border-warning me-1">🟡 ทีม 2</span>';                    else if(jobTeam === 'team1') teamBadge = '<span class="badge bg-white text-primary border border-primary me-1">🔵 ช่างกราฟ</span>';                    else teamBadge = '<span class="badge bg-white text-secondary border border-secondary me-1">⚪ ช่างเก่า</span>';                                        container.innerHTML += `                        <div class="card mb-2 shadow-sm ${borderCls} overflow-hidden" style="border-width: 2px;">                            <div class="card-header ${headerBg} text-white d-flex justify-content-between align-items-center py-1 px-2">                                <span class="fw-bold" style="font-size:0.85rem;">📅 ${formatThaiDate(job.installDate)}</span> ${statusBadge}                            </div>                            <div class="card-body ${cardBg} p-2">                                <h6 class="fw-bold ${nameCls} mb-2 border-bottom pb-1">${teamBadge} ${job.customerName}</h6>                                <div class="bg-white p-1 border rounded mb-2 small shadow-sm" style="font-size:0.8rem;">                                    <div class="text-dark text-break">📦แพ็กเกจ <strong>แพ็ก:</strong> ${escapeHandoverText(job.packageName)}</div> ${addressDisplay} ${extraDisplay}                                </div>                                <div class="row text-center pt-1 border-top border-secondary-subtle">                                    <div class="col-4 border-end px-1"><div class="text-muted" style="font-size:0.65rem;">เก็บลูกค้า</div><div class="fw-bold text-danger" style="font-size:0.85rem;">${custPrice.toLocaleString()} ฿</div></div>                                    <div class="col-4 border-end px-1"><div class="text-muted" style="font-size:0.65rem;">ส่งช่าง(ทุน)</div><div class="fw-bold text-secondary" style="font-size:0.85rem;">${partnerPrice.toLocaleString()}</div></div>                                    <div class="col-4 px-1"><div class="text-muted" style="font-size:0.65rem;">คอมฯ</div><div class="fw-bold text-success" style="font-size:0.85rem;">${commission.toLocaleString()}</div></div>                                </div>                            </div>                        </div>`;                }            }        });        if(jobCount === 0) container.innerHTML = `<div class="text-center text-muted py-4"><h6>📭 ไม่มีงานในเดือนนี้</h6></div>`;        document.getElementById('detailCustSum').innerText = sumCust.toLocaleString() + ' ฿';        document.getElementById('detailPartSum').innerText = sumPart.toLocaleString() + ' ฿';        document.getElementById('detailCommSum').innerText = sumComm.toLocaleString() + ' ฿';    }
+        sortedJobs.forEach(job => {            if(job.installDate) {                const jDate = new Date(job.installDate);                if(jDate.getFullYear() === tYear && jDate.getMonth() === tMonth) {                    const money = getJobMoneyTotals(job), custPrice = money.customer, partnerPrice = money.partner, commission = money.commission;                    sumCust += custPrice; sumPart += partnerPrice; sumComm += commission; jobCount++;                    const statusBadge = job.isCompleted ? '<span class="badge bg-white text-success border border-success">✅ เสร็จ</span>' : '<span class="badge bg-white text-primary border border-primary">⏳ รอ</span>';                    const headerBg = job.isCompleted ? 'bg-success' : 'bg-primary', cardBg = job.isCompleted ? 'bg-success-subtle bg-opacity-25' : 'bg-white';                    const borderCls = job.isCompleted ? 'border-success' : 'border-primary', nameCls = job.isCompleted ? 'text-muted text-decoration-line-through text-break' : 'text-dark text-break';                    const extraDisplay = job.extraDetail ? `<div class="text-danger mt-1 small text-break" style="font-size:0.75rem;">🛠️ <strong>เพิ่ม:</strong> ${escapeHandoverText(job.extraDetail)}</div>` : '';                    const addressDisplay = job.installAddress ? `<div class="text-secondary mt-1 small text-break" style="font-size:0.75rem;">🏠 <strong>จุดติดตั้ง:</strong> ${escapeHandoverText(job.installAddress)}</div>` : '';                                        const jobTeam = resolveTeam(job);                    let teamBadge = '';                    if(jobTeam === 'team3') teamBadge = '<span class="badge bg-white border me-1" style="color:#fd7e14; border-color:#fd7e14;">🟠 ช่างโบ้</span>';                    else if(jobTeam === 'team2') teamBadge = '<span class="badge bg-white text-warning border border-warning me-1">🟡 ทีม 2</span>';                    else if(jobTeam === 'team1') teamBadge = '<span class="badge bg-white text-primary border border-primary me-1">🔵 ช่างกราฟ</span>';                    else teamBadge = '<span class="badge bg-white text-secondary border border-secondary me-1">⚪ ช่างเก่า</span>';                                        container.innerHTML += `                        <div class="card mb-2 shadow-sm ${borderCls} overflow-hidden" style="border-width: 2px;">                            <div class="card-header ${headerBg} text-white d-flex justify-content-between align-items-center py-1 px-2">                                <span class="fw-bold" style="font-size:0.85rem;">📅 ${formatThaiDate(job.installDate)}</span> ${statusBadge}                            </div>                            <div class="card-body ${cardBg} p-2">                                <h6 class="fw-bold ${nameCls} mb-2 border-bottom pb-1">${teamBadge} ${job.customerName}</h6>                                <div class="bg-white p-1 border rounded mb-2 small shadow-sm" style="font-size:0.8rem;">                                    <div class="text-dark text-break">📦 <strong>แพ็กเกจ:</strong> ${escapeHandoverText(job.packageName || 'ไม่ได้เลือกแพ็กเกจ')}</div> ${addressDisplay} ${extraDisplay}                                </div>                                <div class="row text-center pt-1 border-top border-secondary-subtle">                                    <div class="col-4 border-end px-1"><div class="text-muted" style="font-size:0.65rem;">เก็บลูกค้า</div><div class="fw-bold text-danger" style="font-size:0.85rem;">${custPrice.toLocaleString()} ฿</div></div>                                    <div class="col-4 border-end px-1"><div class="text-muted" style="font-size:0.65rem;">ส่งช่าง(ทุน)</div><div class="fw-bold text-secondary" style="font-size:0.85rem;">${partnerPrice.toLocaleString()}</div></div>                                    <div class="col-4 px-1"><div class="text-muted" style="font-size:0.65rem;">คอมฯ</div><div class="fw-bold text-success" style="font-size:0.85rem;">${commission.toLocaleString()}</div></div>                                </div>                            </div>                        </div>`;                }            }        });        if(jobCount === 0) container.innerHTML = `<div class="text-center text-muted py-4"><h6>📭 ไม่มีงานในเดือนนี้</h6></div>`;        document.getElementById('detailCustSum').innerText = sumCust.toLocaleString() + ' ฿';        document.getElementById('detailPartSum').innerText = sumPart.toLocaleString() + ' ฿';        document.getElementById('detailCommSum').innerText = sumComm.toLocaleString() + ' ฿';    }
     // --- Admin Settings (Fiber, Package, Extra) ---
-    function renderFiberSettings() {        if(currentUserRole !== 'admin') return;        document.getElementById('setFiberCust').value = fiberSettings.custPrice;        document.getElementById('setFiberT1').value = fiberSettings.team1;        document.getElementById('setFiberT3').value = fiberSettings.team3;        document.getElementById('setFiberT2').value = fiberSettings.team2;        onTeamChange();    }    async function saveFiberSettings() {        fiberSettings.custPrice = parseFloat(document.getElementById('setFiberCust').value) || 0;        fiberSettings.team1 = parseFloat(document.getElementById('setFiberT1').value) || 0;        fiberSettings.team3 = parseFloat(document.getElementById('setFiberT3').value) || 0;        fiberSettings.team2 = parseFloat(document.getElementById('setFiberT2').value) || 0;        onTeamChange();        const ok = await saveData();        showSaveNotice(ok ? "✅ บันทึกเรทสายไฟขึ้น Firebase แล้ว" : "❌ บันทึกเรทสายไฟไม่สำเร็จ", ok);    }    function onTeamChange(repriceExtras = false) {        if(currentUserRole !== 'admin') return;        const team = document.getElementById('jobTeam').value;        const fiberLabel = document.getElementById('fiberLabel');        let unitCost = fiberSettings.team1;        if(team === 'team3') unitCost = fiberSettings.team3;        else if(team === 'team2') unitCost = fiberSettings.team2;        fiberLabel.innerHTML = `🔌 สายไฟเบอร์ 16 เกิน (ลูกค้า ${fiberSettings.custPrice} ฿ / ทุนช่าง ${unitCost} ฿)`;        if(repriceExtras) repriceJobBaseExtraItemsForTeam();        calculateLiveSummary();    }
-    document.getElementById('packageForm').addEventListener('submit', function(e) {        e.preventDefault(); const id = document.getElementById('pkgId').value;        const name = document.getElementById('pkgName').value; const customerPrice = parseFloat(document.getElementById('pkgCustomerPrice').value);        const partPrice1 = parseFloat(document.getElementById('pkgPartPrice1').value); const partPrice2 = parseFloat(document.getElementById('pkgPartPrice2').value); const partPrice3 = parseFloat(document.getElementById('pkgPartPrice3').value);        if(id) { const index = packages.findIndex(p => p.id == id); packages[index] = { id: parseInt(id), name, customerPrice, partPrice1, partPrice2, partPrice3 }; document.getElementById('btnSavePkg').innerText = "บันทึกแพ็กเกจ"; document.getElementById('btnSavePkg').classList.replace('btn-warning', 'btn-secondary');        } else { packages.push({ id: Date.now(), name, customerPrice, partPrice1, partPrice2, partPrice3 }); }        e.target.reset(); document.getElementById('pkgId').value = ""; saveData(); renderPackages(); updatePackageDropdown(); calculateLiveSummary();    });    function editPackage(id) {        const pkg = packages.find(p => p.id === id);        if(pkg) {            document.getElementById('pkgId').value = pkg.id; document.getElementById('pkgName').value = pkg.name; document.getElementById('pkgCustomerPrice').value = pkg.customerPrice;            document.getElementById('pkgPartPrice1').value = pkg.partPrice1; document.getElementById('pkgPartPrice2').value = pkg.partPrice2; document.getElementById('pkgPartPrice3').value = pkg.partPrice3 || pkg.partPrice1;            document.getElementById('btnSavePkg').innerText = "บันทึกการแก้ไข"; document.getElementById('btnSavePkg').classList.replace('btn-secondary', 'btn-warning'); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });        }    }    function deletePackage(id) { packages = packages.filter(p => p.id !== id); saveData(); renderPackages(); updatePackageDropdown(); calculateLiveSummary(); }    function renderPackages() {        const tbody = document.getElementById('packageTableBody'); tbody.innerHTML = '';        packages.forEach(pkg => {            const comm1 = pkg.customerPrice - pkg.partPrice1; const comm2 = pkg.customerPrice - pkg.partPrice2; const comm3 = pkg.customerPrice - (pkg.partPrice3 || pkg.partPrice1);            tbody.innerHTML += `<tr><td class="align-middle text-break" style="font-size:12px; max-width:110px;">${pkg.name}</td>                <td class="small align-middle text-nowrap"><span class="text-primary fw-bold" style="font-size:0.75rem;">🔵 ${comm1.toLocaleString()}</span><br><span class="text-warning fw-bold" style="font-size:0.75rem;">🟡 ${comm2.toLocaleString()}</span><br><span class="fw-bold" style="font-size:0.75rem; color:#fd7e14;">🟠 ${comm3.toLocaleString()}</span></td>                <td class="text-nowrap align-middle text-center"><button onclick="editPackage(${pkg.id})" class="btn btn-sm btn-warning py-0 px-1">✏️</button> <button onclick="deletePackage(${pkg.id})" class="btn btn-sm btn-danger py-0 px-1">❌</button></td></tr>`;        });    }    function updatePackageDropdown() {        const select = document.getElementById('jobPackage'), currentValue = select.value; select.innerHTML = '<option value="">-- เลือกแพ็กเกจ --</option>';        packages.forEach(pkg => { select.innerHTML += `<option value="${pkg.id}">${pkg.name}</option>`; });        if(currentValue) { const found = packages.find(p => p.id == currentValue || p.name == currentValue); if(found) select.value = found.id; }    }
+    function renderFiberSettings() {        if(currentUserRole !== 'admin') return;        document.getElementById('setFiberCust').value = fiberSettings.custPrice;        document.getElementById('setFiberT1').value = fiberSettings.team1;        document.getElementById('setFiberT3').value = fiberSettings.team3;        document.getElementById('setFiberT2').value = fiberSettings.team2;        onTeamChange();    }    async function saveFiberSettings() {        fiberSettings.custPrice = parseFloat(document.getElementById('setFiberCust').value) || 0;        fiberSettings.team1 = parseFloat(document.getElementById('setFiberT1').value) || 0;        fiberSettings.team3 = parseFloat(document.getElementById('setFiberT3').value) || 0;        fiberSettings.team2 = parseFloat(document.getElementById('setFiberT2').value) || 0;        onTeamChange();        const ok = await saveData();        showSaveNotice(ok ? "✅ บันทึกเรทสายไฟขึ้น Firebase แล้ว" : "❌ บันทึกเรทสายไฟไม่สำเร็จ", ok);    }    function onTeamChange(repriceExtras = false) {        if(currentUserRole !== 'admin') return;        if(repriceExtras) repriceJobBaseExtraItemsForTeam();        calculateLiveSummary();    }
+    document.getElementById('packageForm').addEventListener('submit', function(e) {        e.preventDefault(); const id = document.getElementById('pkgId').value;        const name = document.getElementById('pkgName').value; const customerPrice = parseFloat(document.getElementById('pkgCustomerPrice').value);        const partPrice1 = parseFloat(document.getElementById('pkgPartPrice1').value); const partPrice2 = parseFloat(document.getElementById('pkgPartPrice2').value); const partPrice3 = parseFloat(document.getElementById('pkgPartPrice3').value);        if(id) { const index = packages.findIndex(p => p.id == id); packages[index] = { id: parseInt(id), name, customerPrice, partPrice1, partPrice2, partPrice3 }; document.getElementById('btnSavePkg').innerText = "บันทึกแพ็กเกจ"; document.getElementById('btnSavePkg').classList.replace('btn-warning', 'btn-secondary');        } else { packages.push({ id: Date.now(), name, customerPrice, partPrice1, partPrice2, partPrice3 }); }        e.target.reset(); document.getElementById('pkgId').value = ""; saveData(); renderPackages(); updatePackageDropdown(); calculateLiveSummary();    });    function editPackage(id) {        const pkg = packages.find(p => p.id === id);        if(pkg) {            document.getElementById('pkgId').value = pkg.id; document.getElementById('pkgName').value = pkg.name; document.getElementById('pkgCustomerPrice').value = pkg.customerPrice;            document.getElementById('pkgPartPrice1').value = pkg.partPrice1; document.getElementById('pkgPartPrice2').value = pkg.partPrice2; document.getElementById('pkgPartPrice3').value = pkg.partPrice3 || pkg.partPrice1;            document.getElementById('btnSavePkg').innerText = "บันทึกการแก้ไข"; document.getElementById('btnSavePkg').classList.replace('btn-secondary', 'btn-warning'); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });        }    }    function deletePackage(id) { packages = packages.filter(p => p.id !== id); saveData(); renderPackages(); updatePackageDropdown(); calculateLiveSummary(); }    function renderPackages() {        const tbody = document.getElementById('packageTableBody'); tbody.innerHTML = '';        packages.forEach(pkg => {            const comm1 = pkg.customerPrice - pkg.partPrice1; const comm2 = pkg.customerPrice - pkg.partPrice2; const comm3 = pkg.customerPrice - (pkg.partPrice3 || pkg.partPrice1);            tbody.innerHTML += `<tr><td class="align-middle text-break" style="font-size:12px; max-width:110px;">${pkg.name}</td>                <td class="small align-middle text-nowrap"><span class="text-primary fw-bold" style="font-size:0.75rem;">🔵 ${comm1.toLocaleString()}</span><br><span class="text-warning fw-bold" style="font-size:0.75rem;">🟡 ${comm2.toLocaleString()}</span><br><span class="fw-bold" style="font-size:0.75rem; color:#fd7e14;">🟠 ${comm3.toLocaleString()}</span></td>                <td class="text-nowrap align-middle text-center"><button onclick="editPackage(${pkg.id})" class="btn btn-sm btn-warning py-0 px-1">✏️</button> <button onclick="deletePackage(${pkg.id})" class="btn btn-sm btn-danger py-0 px-1">❌</button></td></tr>`;        });    }    function updatePackageDropdown() {        const select = document.getElementById('jobPackage'), currentValue = select.value; select.innerHTML = '<option value="">-- ไม่เลือกแพ็กเกจ --</option>';        packages.forEach(pkg => { select.innerHTML += `<option value="${pkg.id}">${pkg.name}</option>`; });        if(currentValue) { const found = packages.find(p => p.id == currentValue || p.name == currentValue); if(found) select.value = found.id; }    }
     document.getElementById('extraForm').addEventListener('submit', function(e) {        e.preventDefault(); const id = document.getElementById('extId').value; const name = document.getElementById('extName').value; const custPrice = parseFloat(document.getElementById('extCustPrice').value);        const partPrice1 = parseFloat(document.getElementById('extPartPrice1').value); const partPrice2 = parseFloat(document.getElementById('extPartPrice2').value); const partPrice3 = parseFloat(document.getElementById('extPartPrice3').value);        if(id) { const index = extras.findIndex(p => p.id == id); extras[index] = { id: parseInt(id), name, custPrice, partPrice1, partPrice2, partPrice3 }; document.getElementById('btnSaveExt').innerText = "บันทึกงานเสริม"; document.getElementById('btnSaveExt').classList.replace('btn-warning', 'btn-primary');        } else { extras.push({ id: Date.now(), name, custPrice, partPrice1, partPrice2, partPrice3 }); } e.target.reset(); document.getElementById('extId').value = ""; saveData(); renderExtras(); updateExtraDropdown();    });    function editExtra(id) {        const ext = extras.find(p => p.id === id);        if(ext) {            document.getElementById('extId').value = ext.id; document.getElementById('extName').value = ext.name; document.getElementById('extCustPrice').value = ext.custPrice; document.getElementById('extPartPrice1').value = ext.partPrice1;            document.getElementById('extPartPrice2').value = ext.partPrice2; document.getElementById('extPartPrice3').value = ext.partPrice3 || ext.partPrice1; document.getElementById('btnSaveExt').innerText = "บันทึกการแก้ไข"; document.getElementById('btnSaveExt').classList.replace('btn-primary', 'btn-warning');        }    }    function deleteExtra(id) { extras = extras.filter(p => p.id !== id); saveData(); renderExtras(); updateExtraDropdown(); }    function renderExtras() {        const tbody = document.getElementById('extraTableBody'); tbody.innerHTML = '';        extras.forEach(ext => {            tbody.innerHTML += `<tr><td class="align-middle text-start text-break" style="font-size:12px; max-width:120px;">${ext.name}</td>                <td class="text-primary align-middle fw-bold small text-nowrap">${ext.custPrice.toLocaleString()} ฿</td>                <td class="text-nowrap align-middle"><button onclick="editExtra(${ext.id})" class="btn btn-sm btn-warning py-0 px-1">✏️</button> <button onclick="deleteExtra(${ext.id})" class="btn btn-sm btn-danger py-0 px-1">❌</button></td></tr>`;        });    }    function updateExtraDropdown() {        const select = document.getElementById('jobExtraSelect'); select.innerHTML = '<option value="">-- เลือกรายการ --</option>'; extras.forEach(ext => { select.innerHTML += `<option value="${ext.id}">${ext.name}</option>`; });    }
     // --- Dynamic Calculation Logic (Add Jobs) ---
     let jobBaseExtraItems = [];
@@ -2741,11 +2778,11 @@
                 <button type="button" class="job-extra-chip-remove" onclick="removeJobBaseExtraItem(${index})" aria-label="ลบ ${escapeHandoverText(item.name || 'รายการ')}">×</button>
                 <div class="job-extra-chip-prices">
                     <div class="job-extra-price-field customer">
-                        <label for="job-extra-customer-${index}">เก็บลูกค้าเพิ่ม (บาท)</label>
+                        <label for="job-extra-customer-${index}">เก็บลูกค้า</label>
                         <input type="number" id="job-extra-customer-${index}" min="0" step="1" inputmode="decimal" value="${Number(item.customerPrice) || 0}" oninput="updateJobBaseExtraItemPrice(${index}, 'customerPrice', this.value)">
                     </div>
                     <div class="job-extra-price-field partner">
-                        <label for="job-extra-partner-${index}">ทุนช่างเพิ่ม (บาท)</label>
+                        <label for="job-extra-partner-${index}">ทุนช่าง</label>
                         <input type="number" id="job-extra-partner-${index}" min="0" step="1" inputmode="decimal" value="${Number(item.partnerPrice) || 0}" oninput="updateJobBaseExtraItemPrice(${index}, 'partnerPrice', this.value)">
                     </div>
                 </div>
@@ -2890,20 +2927,6 @@
         select.value = '';
     }
 
-    function addFiber() {
-        const input = document.getElementById('fiberMeters');
-        const meters = Number(input.value) || 0;
-        if(meters <= 0) return;
-        const selectedTeam = document.getElementById('jobTeam').value;
-        addJobBaseExtraItem({
-            type: 'fiber',
-            meters,
-            name: `สายไฟเบอร์ 16 เกิน ${meters}ม.`,
-            customerPrice: meters * (Number(fiberSettings.custPrice) || 0),
-            partnerPrice: meters * getFiberPartnerUnitForTeam(selectedTeam)
-        });
-        input.value = '';
-    }
 
     function clearExtraJob() {
         jobBaseExtraItems = [];
@@ -2917,15 +2940,18 @@
         const selectedTeam = document.getElementById('jobTeam').value;
         const summaryDiv = document.getElementById('jobSummary');
         syncJobBaseExtraItemsToForm();
-        if(!pkgVal) { summaryDiv.style.display = 'none'; return; }
-        const pkg = packages.find(p => p.id == pkgVal || p.name == pkgVal);
-        if(!pkg) return;
-        let basePartPrice = pkg.partPrice1;
-        if(selectedTeam === 'team3') basePartPrice = pkg.partPrice3 || pkg.partPrice1;
-        else if(selectedTeam === 'team2') basePartPrice = pkg.partPrice2;
+        const pkg = packages.find(p => p.id == pkgVal || p.name == pkgVal) || null;
+        let basePartPrice = 0;
+        let baseCustomerPrice = 0;
+        if(pkg) {
+            baseCustomerPrice = Number(pkg.customerPrice) || 0;
+            basePartPrice = Number(pkg.partPrice1) || 0;
+            if(selectedTeam === 'team3') basePartPrice = Number(pkg.partPrice3 ?? pkg.partPrice1) || 0;
+            else if(selectedTeam === 'team2') basePartPrice = Number(pkg.partPrice2) || 0;
+        }
         const sums = getJobBaseExtraSums();
-        const cPrice = (Number(pkg.customerPrice) || 0) + sums.customer;
-        const pPrice = (Number(basePartPrice) || 0) + sums.partner;
+        const cPrice = baseCustomerPrice + sums.customer;
+        const pPrice = basePartPrice + sums.partner;
         document.getElementById('summaryCustPrice').innerHTML = cPrice.toLocaleString();
         document.getElementById('summaryPartnerPrice').innerHTML = pPrice.toLocaleString();
         document.getElementById('summaryCommission').innerHTML = formatCommission(cPrice - pPrice);
@@ -2937,15 +2963,17 @@
         const saveButton = document.getElementById('btnSaveJob');
         const originalButtonText = saveButton.innerHTML;
         const pkgVal = document.getElementById('jobPackage').value;
-        const pkg = packages.find(p => p.id == pkgVal || p.name == pkgVal);
-        if(!pkg) return alert('กรุณาเลือกแพ็กเกจหลัก');
+        const pkg = packages.find(p => p.id == pkgVal || p.name == pkgVal) || null;
 
         const editId = document.getElementById('editJobId').value;
         const custNameInput = document.getElementById('jobCustomerName').value.trim() || 'ไม่ระบุชื่อ';
         const selectedTeam = document.getElementById('jobTeam').value;
-        let finalPkgPartnerPrice = pkg.partPrice1;
-        if (selectedTeam === 'team3') finalPkgPartnerPrice = pkg.partPrice3 || pkg.partPrice1;
-        else if (selectedTeam === 'team2') finalPkgPartnerPrice = pkg.partPrice2;
+        let finalPkgPartnerPrice = 0;
+        if(pkg) {
+            finalPkgPartnerPrice = Number(pkg.partPrice1) || 0;
+            if (selectedTeam === 'team3') finalPkgPartnerPrice = Number(pkg.partPrice3 ?? pkg.partPrice1) || 0;
+            else if (selectedTeam === 'team2') finalPkgPartnerPrice = Number(pkg.partPrice2) || 0;
+        }
 
         const jobData = {
             id: editId ? parseInt(editId) : Date.now(),
@@ -2956,9 +2984,9 @@
             installAddress: document.getElementById('jobInstallAddress').value.trim(),
             mapLink: document.getElementById('jobMapLink').value.trim(),
             team: selectedTeam,
-            packageName: pkg.name,
+            packageName: pkg ? pkg.name : '',
             pkgPartnerPrice: finalPkgPartnerPrice,
-            pkgCustomerPrice: pkg.customerPrice,
+            pkgCustomerPrice: pkg ? (Number(pkg.customerPrice) || 0) : 0,
             extraDetail: document.getElementById('jobExtraDetail').value,
             extraPartnerPrice: parseFloat(document.getElementById('jobExtraPartnerPrice').value) || 0,
             extraCustomerPrice: parseFloat(document.getElementById('jobExtraCustomerPrice').value) || 0,
@@ -3691,6 +3719,65 @@
         return ok;
     }
 
+
+    let phonePressTimer = null;
+
+    function normalizePhoneForDial(phone) {
+        return String(phone || '').replace(/[^0-9+*#]/g, '');
+    }
+
+    function callCustomerPhone(phone) {
+        const dialNumber = normalizePhoneForDial(phone);
+        if(!dialNumber) return showSaveNotice('⚠️ ไม่มีเบอร์โทรสำหรับโทรออก', false);
+        window.location.href = `tel:${dialNumber}`;
+    }
+
+    function beginCustomerPhonePress(event) {
+        if(event.pointerType === 'mouse' && event.button !== 0) return;
+        const button = event.currentTarget;
+        clearTimeout(phonePressTimer);
+        button.dataset.longPressed = '0';
+        button.classList.add('is-pressing');
+        try { button.setPointerCapture?.(event.pointerId); } catch(error) {}
+        phonePressTimer = setTimeout(async () => {
+            button.dataset.longPressed = '1';
+            const phone = button.dataset.phone || '';
+            const copied = await copyPlainText(phone);
+            if(navigator.vibrate) navigator.vibrate(45);
+            showSaveNotice(
+                copied ? `📋 คัดลอกเบอร์ ${phone} แล้ว` : '❌ คัดลอกเบอร์ไม่สำเร็จ',
+                copied
+            );
+        }, 650);
+    }
+
+    function endCustomerPhonePress(event) {
+        const button = event.currentTarget;
+        clearTimeout(phonePressTimer);
+        phonePressTimer = null;
+        button.classList.remove('is-pressing');
+        if(button.dataset.longPressed === '1') {
+            button.dataset.longPressed = '0';
+            return;
+        }
+        callCustomerPhone(button.dataset.phone || '');
+    }
+
+    function cancelCustomerPhonePress(event) {
+        clearTimeout(phonePressTimer);
+        phonePressTimer = null;
+        const button = event.currentTarget;
+        button.classList.remove('is-pressing');
+        button.dataset.longPressed = '0';
+    }
+
+    function handleCustomerPhoneKeyboard(event) {
+        event.preventDefault();
+        // click ที่เกิดจาก pointer ถูกจัดการใน pointerup แล้ว; detail=0 คือ Enter/Space จากคีย์บอร์ด
+        if(event.detail === 0) callCustomerPhone(event.currentTarget.dataset.phone || '');
+        return false;
+    }
+
     async function shareCommissionText(message, title = 'สรุปยอดโอน') {
         if(navigator.share && window.isSecureContext) {
             try {
@@ -3965,7 +4052,7 @@ ${message}`);
             const paymentStatusHtml = paymentAwaitingReview ? `<span class="job-payment-pill">💵 รับเงินแล้ว • รอตรวจภาพ</span>` : '';                        let adminActionHeaderHTML = isAdmin ? `                <div class="job-admin-strip d-flex align-items-center justify-content-between flex-wrap gap-2">                    <button onclick="toggleJobStatus(${job.id})" class="btn btn-sm ${job.isCompleted ? 'btn-success' : 'btn-outline-dark'} fw-bold rounded-pill px-3">                        ${job.isCompleted ? '🔐 ปิดงานแล้ว' : '⏳ รอตรวจงาน'}                    </button>                    <div>${teamBadge}</div>                </div>` : '';
             let moneyDisplayHTML = isAdmin ? `                <div class="job-money-grid">                    <div class="job-money-box job-money-partner"><div class="job-money-label">ช่าง(ทุน)</div><div class="job-money-value">${tPart.toLocaleString()}</div></div>                    <div class="job-money-box job-money-customer"><div class="job-money-label">เก็บลูกค้า</div><div class="job-money-value">${tCust.toLocaleString()} ฿</div></div>                    <div class="job-money-box job-money-commission"><div class="job-money-label">คอมฯ</div><div class="job-money-value">${formatCommission(tComm)}</div></div>                </div>            ` : `                <div class="job-cash-collect">                    <div class="job-cash-label">💵 ยอดที่ต้องเก็บเงินลูกค้าหน้างาน</div>                    <div class="job-cash-value">${tCust.toLocaleString()} ฿</div>                </div>`;
             let actionButtonsHTML = isAdmin ? `                <div class="job-admin-actions">                    <button onclick="editJobData(${job.id})" class="btn btn-sm btn-warning px-3 py-1 fw-bold">✏️ แก้ไขข้อมูล</button>                    <button onclick="deleteJob(${job.id})" class="btn btn-sm btn-outline-danger px-3 py-1 fw-bold" title="ต้องใส่รหัสลบงาน 4 หลัก">🔐 ลบงาน</button>                </div>` : '';
-            container.innerHTML += `                <div class="col-12 col-md-6 job-card-container">                    <div class="card h-100 job-card ${teamThemeClass} ${completionClass} ${paymentAwaitingClass}">                        <div class="job-card-top d-flex justify-content-between align-items-center gap-2">                            <div class="job-date-line">                                <span class="job-date-text">📅 ${formatThaiDate(job.installDate)}</span>                            </div>                            <div class="job-header-badges">                                ${paymentStatusHtml}                                ${saveStatusHtml}                                ${job.isCompleted ? '<span class="job-status-pill">✅ เสร็จสิ้น</span>' : '<span class="job-status-pill">⏳ รอดำเนินการ</span>'}                            </div>                        </div>                        ${adminActionHeaderHTML}                        <div class="card-body job-card-body d-flex flex-column">                            <h4 class="job-customer-name">${job.visitPeriod ? `<span class="job-period-tag">${escapeHandoverText(job.visitPeriod)}</span>` : ''}👤 ${escapeHandoverText(job.customerName)}</h4>                            ${job.installAddress ? `<div class="job-address-preview">🏠 ${escapeHandoverText(job.installAddress)}</div>` : '<div class="job-address-preview text-warning">⚠️ ยังไม่มีที่อยู่สำหรับออกเอกสาร</div>'}                            <div class="job-quick-actions">                                <a href="tel:${job.phone}" class="btn job-phone-btn" style="font-size: 0.95rem;">📞 ${job.phone}</a>                                <a href="${job.mapLink}" target="_blank" class="btn job-map-btn" style="font-size: 0.95rem;">📍 แผนที่</a>                            </div>                                                        <div class="job-package-panel">                                <div class="job-package-main">📦แพ็จเกจ: ${job.packageName}</div>                                ${job.extraDetail ? `<div class="job-extra-line">🛠️ เพิ่มเติม: ${job.extraDetail}</div>` : ''}                                ${adminSiteExtraHTML}                            </div>                                                        ${moneyDisplayHTML}                                                        <button onclick="openHandover(${job.id})" class="btn w-100 fw-bold py-2 fs-6 mb-1 job-handover-btn">                                📝 ออกใบส่งมอบให้ลูกค้าเซ็น                            </button>                                                        ${actionButtonsHTML}                        </div>                    </div>                </div>`;        });                if(container.innerHTML === '') container.innerHTML = `<div class="col-12 text-center text-muted py-5"><h5 class="fw-bold">📭 ไม่มีรายการงาน</h5></div>`;    }
+            container.innerHTML += `                <div class="col-12 col-md-6 job-card-container">                    <div class="card h-100 job-card ${teamThemeClass} ${completionClass} ${paymentAwaitingClass}">                        <div class="job-card-top d-flex justify-content-between align-items-center gap-2">                            <div class="job-date-line">                                <span class="job-date-text">📅 ${formatThaiDate(job.installDate)}</span>                            </div>                            <div class="job-header-badges">                                ${paymentStatusHtml}                                ${saveStatusHtml}                                ${job.isCompleted ? '<span class="job-status-pill">✅ เสร็จสิ้น</span>' : '<span class="job-status-pill">⏳ รอดำเนินการ</span>'}                            </div>                        </div>                        ${adminActionHeaderHTML}                        <div class="card-body job-card-body d-flex flex-column">                            <h4 class="job-customer-name">${job.visitPeriod ? `<span class="job-period-tag">${escapeHandoverText(job.visitPeriod)}</span>` : ''}👤 ${escapeHandoverText(job.customerName)}</h4>                            ${job.installAddress ? `<div class="job-address-preview">🏠 ${escapeHandoverText(job.installAddress)}</div>` : '<div class="job-address-preview text-warning">⚠️ ยังไม่มีที่อยู่สำหรับออกเอกสาร</div>'}                            <div class="job-quick-actions">                                <button type="button" class="btn job-phone-btn" style="font-size:0.95rem;" data-phone="${escapeHandoverText(job.phone || '')}" aria-label="แตะเพื่อโทร กดค้างเพื่อคัดลอกเบอร์ ${escapeHandoverText(job.phone || '')}" onpointerdown="beginCustomerPhonePress(event)" onpointerup="endCustomerPhonePress(event)" onpointercancel="cancelCustomerPhonePress(event)" oncontextmenu="event.preventDefault(); return false;" onclick="return handleCustomerPhoneKeyboard(event)">📞 ${escapeHandoverText(job.phone || '-')}</button>                                <a href="${job.mapLink}" target="_blank" class="btn job-map-btn" style="font-size: 0.95rem;">📍 แผนที่</a>                            </div>                                                        <div class="job-package-panel">                                <div class="job-package-main">${job.packageName ? `📦 แพ็กเกจ: ${escapeHandoverText(job.packageName)}` : '📦 ไม่ได้เลือกแพ็กเกจ'}</div>                                ${job.extraDetail ? `<div class="job-extra-line">🛠️ เพิ่มเติม: ${job.extraDetail}</div>` : ''}                                ${adminSiteExtraHTML}                            </div>                                                        ${moneyDisplayHTML}                                                        <button onclick="openHandover(${job.id})" class="btn w-100 fw-bold py-2 fs-6 mb-1 job-handover-btn">                                📝 ออกใบส่งมอบให้ลูกค้าเซ็น                            </button>                                                        ${actionButtonsHTML}                        </div>                    </div>                </div>`;        });                if(container.innerHTML === '') container.innerHTML = `<div class="col-12 text-center text-muted py-5"><h5 class="fw-bold">📭 ไม่มีรายการงาน</h5></div>`;    }
     // ==========================================
     // ระบบใบส่งมอบงานและลายเซ็น: บันทึกกลับมาแก้ต่อ + รูปพร้อมส่ง
     // ==========================================
